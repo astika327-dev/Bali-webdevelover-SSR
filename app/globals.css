@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* warna dasar pastel hangat */
+  --cream:  #f8f5ee;   /* putih pasir */
+  --tan:    #e8d8c3;   /* pasir hangat */
+  --brown:  #5c4033;   /* cokelat kayu */
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  background-color: var(--cream);
+  color: var(--brown);
+  @apply antialiased;
+}
+
+/* gradien lembut di background */
+.gradient {
+  background-image:
+    radial-gradient(80rem 60rem at 10% -10%, rgba(92,64,51,0.06), transparent 50%),
+    radial-gradient(50rem 50rem at 110% 10%, rgba(232,216,195,0.3), transparent 50%);
+}
