@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import type { Route } from 'next';          // <-- ini kuncinya
@@ -21,39 +22,42 @@ export default function Navbar() {
     <header className="sticky top-0 z-50 backdrop-blur bg-white/70 border-b">
       <div className="container flex items-center justify-between py-3">
         <Link href="/" className="flex items-center gap-2 font-semibold tracking-tight">
-  <img
-    src="/icon.png"         // atau /logo.svg
-    alt="Logo"
-    className="w-6 h-6 object-contain"
-  />
-  <span>{site.company}</span>
-</Link>
+          <Image
+            src="/icon.png"         // atau /logo.svg
+            alt={`${site.company} logo`}
+            width={28}
+            height={28}
+            className="h-7 w-7"
+            priority
+          />
+          <span>{site.company}</span>
+        </Link>
 
 
         {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-6 text-sm">
-          {links.map(l => (
-            <Link key={l.href} href={l.href}>{l.label}</Link>
-          ))}
-          <Link
-          href="/contact"
-         className="px-4 py-2 rounded-full bg-[var(--brown)] text-[var(--cream)] hover:bg-opacity-90 transition"
->
-         Start a Project
-    </Link>
-
-
-        </nav>
+          <nav className="hidden md:flex items-center gap-6 text-sm">
+            {links.map(l => (
+              <Link key={l.href} href={l.href}>
+                {l.label}
+              </Link>
+            ))}
+            <Link
+              href="/contact"
+              className="px-4 py-2 rounded-full bg-[var(--brown)] text-[var(--cream)] hover:bg-opacity-90 transition"
+            >
+              Start a Project
+            </Link>
+          </nav>
 
         {/* Mobile toggle */}
         <button
-         className="md:hidden inline-flex items-center justify-center p-2 rounded-lg border border-[var(--brown)] text-[var(--brown)] bg-[var(--cream)] hover:bg-[var(--tan)] transition"
-             aria-controls="primary-nav"
-             aria-expanded={open}
-             aria-label="Toggle navigation"
-         onClick={() => setOpen(v => !v)}
->
-         {open ? <X size={20} /> : <Menu size={20} />}
+          className="md:hidden inline-flex items-center justify-center p-2 rounded-lg border border-[var(--brown)] text-[var(--brown)] bg-[var(--cream)] hover:bg-[var(--tan)] transition"
+          aria-controls="primary-nav"
+          aria-expanded={open}
+          aria-label="Toggle navigation"
+          onClick={() => setOpen(v => !v)}
+        >
+          {open ? <X size={20} /> : <Menu size={20} />}
         </button>
       </div>
 
