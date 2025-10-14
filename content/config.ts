@@ -8,13 +8,35 @@ export type Plan = {
   eta: string;
   badge?: string;
 };
+
+export type Stat = {
+  value: string;
+  label: string;
+  description: string;
+};
+
+export type Testimonial = {
+  name: string;
+  role: string;
+  company: string;
+  quote: string;
+  locale?: 'en' | 'id';
+};
+
+export type Client = {
+  name: string;
+  href?: string;
+};
 export const site = {
   company: "Bali-WebDevelover",
   tagline: "Clean, speedy websites that convert",
   blurb:
     "We craft lean, high‑polish websites, landing pages, and micro apps for founders, villas, cafés, and growing brands. Built with solid fundamentals so Google and humans both approve.",
-  location: "Bali, Indonesia"
-};
+  location: "Bali, Indonesia",
+  taglineId: "Website profesional yang terasa premium namun tetap ringan",
+  mission:
+    "We help hospitality brands, founders, and boutique businesses look global-ready without losing their local soul.",
+}; 
 
 export const certificates: Certificate[] = [
   { title: "freeCodeCamp — Front End Development Libraries", href: "https://www.freecodecamp.org/certification/astika/front-end-development-libraries" },
@@ -138,5 +160,33 @@ export const portfolio = [
       '/screenshot/ssporto2.png'
     ]
   }
+];
+
+export const stats: Stat[] = [
+  {
+    value: '3–5 hari',
+    label: 'Landing page turnaround',
+    description: 'Perkiraan waktu pengerjaan paket Starter dari kickoff hingga handover.',
+  },
+  {
+    value: 'Next.js + Tailwind',
+    label: 'Tech stack utama',
+    description: 'Teknologi modern yang kami gunakan untuk performa cepat dan mudah dirawat.',
+  },
+  {
+    value: '24h',
+    label: 'Response time',
+    description: 'Akses langsung via WhatsApp/email dengan balasan maksimal hari kerja berikutnya.',
+  },
+];
+
+export const testimonials: Testimonial[] = [];
+
+export const clients: Client[] = [
+  { name: 'OpsPlaybook', href: 'https://astika327-dev.github.io/opsplaybook-hospitality/' },
+  { name: 'MiniTools', href: 'https://astika327-dev.github.io/minitools/' },
+  { name: 'Villa Atmaja' },
+  { name: 'Café Lago' },
+  { name: 'Astika Personal' },
 ];
 
