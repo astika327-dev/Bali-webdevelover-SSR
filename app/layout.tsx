@@ -4,34 +4,44 @@ import { site } from '../content/config'; // pakai path relatif
 import Link from 'next/link';
 import Navbar from '../components/navbar';
 
-export const metadata = {
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://bali-webdevelover.com';
+
+export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: `${site.company} — ${site.tagline}`,
   description: site.blurb,
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
     title: `${site.company} — ${site.tagline}`,
     description: site.blurb,
-    url: 'https://bali-webdevelover.com', // ubah nanti ke domain aslimu
+    url: siteUrl,
     siteName: site.company,
     locale: 'en_US',
     type: 'website',
     images: [
       {
-        url: '/ogimg.png', // atau og-image.jpg
+        url: '/ogimg.png',
         width: 1200,
         height: 630,
-        alt: 'Preview — Bali WebDevelover'
-      }
+        alt: 'Preview — Bali WebDevelover',
+      },
     ],
   },
   twitter: {
     card: 'summary_large_image',
     title: `${site.company} — ${site.tagline}`,
     description: site.blurb,
-    images: ['/og.png'],
+    images: ['/ogimg.png'],
   },
   icons: {
     icon: '/favicon.png',
     apple: '/apple-touch-icon.png',
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 

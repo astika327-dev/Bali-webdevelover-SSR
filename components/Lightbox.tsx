@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useCallback } from 'react';
 import Image from 'next/image';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 type Props = {
   images: string[];
@@ -66,22 +67,22 @@ export default function Lightbox({ images, title, link, initialIndex = 0, onClos
             fill
             className="object-contain"
             sizes="(min-width: 1024px) 1024px, 100vw"
-            priority
+            priority={i === 0}
           />
           {/* controls */}
           <button
             onClick={prev}
             aria-label="Previous"
-            className="absolute left-2 top-1/2 -translate-y-1/2 rounded-full px-3 py-2 bg-white/80 hover:bg-white text-black"
+            className="absolute left-2 top-1/2 -translate-y-1/2 rounded-full p-2 bg-white/80 hover:bg-white text-black transition"
           >
-            ‹
+            <ChevronLeft size={22} />
           </button>
           <button
             onClick={next}
             aria-label="Next"
-            className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full px-3 py-2 bg-white/80 hover:bg-white text-black"
+            className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full p-2 bg-white/80 hover:bg-white text-black transition"
           >
-            ›
+            <ChevronRight size={22} />
           </button>
 
           <div className="absolute bottom-2 left-1/2 -translate-x-1/2 text-xs text-white/90 bg-black/40 px-2 py-1 rounded-full">
@@ -98,7 +99,7 @@ export default function Lightbox({ images, title, link, initialIndex = 0, onClos
               aria-label={`Go to image ${idx + 1}`}
               className={`relative h-16 w-24 rounded-lg overflow-hidden border ${i === idx ? 'border-[var(--brown)]' : 'border-[var(--tan)]'}`}
             >
-              <Image src={src} alt="" fill className="object-cover" sizes="96px" />
+              <Image src={src} alt="" fill className="object-cover" sizes="96px" loading="lazy" />
             </button>
           ))}
         </div>

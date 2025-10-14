@@ -1,8 +1,63 @@
 import { NextRequest } from "next/server";
 import nodemailer from "nodemailer";
+import { contactSchema } from "@/lib/validation";
+
+type RateBucket = { count: number; reset: number };
+
+const RATE_LIMIT_MAX = 5;
+const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
+
+const rateStore: Map<string, RateBucket> = (globalThis as any).__contactRateStore || new Map();
+if (!(globalThis as any).__contactRateStore) {
+  (globalThis as any).__contactRateStore = rateStore;
+}
+
+function getClientIp(req: NextRequest) {
+  const header = req.headers.get("x-forwarded-for");
+  if (header) {
+    return header.split(",")[0]?.trim() || "anonymous";
+  }
+  return req.ip ?? "anonymous";
+}
 
 export async function POST(req: NextRequest) {
-  const { name, email, whatsapp, message } = await req.json();
+  let payload: unknown;
+  try {
+    payload = await req.json();
+  } catch {
+    return new Response(JSON.stringify({ ok: false, error: "Invalid request payload" }), { status: 400 });
+  }
+
+  const parsed = contactSchema.safeParse(payload);
+  if (!parsed.success) {
+    const fieldErrors = parsed.error.flatten().fieldErrors;
+    return new Response(
+      JSON.stringify({ ok: false, error: "Validation failed", details: fieldErrors }),
+      { status: 400 }
+    );
+  }
+
+  const data = parsed.data;
+  const ip = getClientIp(req);
+  const now = Date.now();
+  const bucket = rateStore.get(ip);
+
+  if (bucket && bucket.reset > now) {
+    if (bucket.count >= RATE_LIMIT_MAX) {
+      return new Response(
+        JSON.stringify({ ok: false, error: "Too many requests. Please try again in a few minutes." }),
+        { status: 429 }
+      );
+    }
+    bucket.count += 1;
+  } else {
+    rateStore.set(ip, { count: 1, reset: now + RATE_LIMIT_WINDOW_MS });
+  }
+
+  if (!process.env.SMTP_HOST || !process.env.SMTP_USER || !process.env.SMTP_PASS) {
+    return new Response(JSON.stringify({ ok: false, error: "Mail service unavailable" }), { status: 500 });
+  }
+
   try {
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST,
@@ -15,16 +70,16 @@ export async function POST(req: NextRequest) {
     const info = await transporter.sendMail({
       from: process.env.SMTP_USER,
       to,
-      subject: `New inquiry from ${name}`,
-      replyTo: email,
-      text: `Name: ${name}
-Email: ${email}
-WhatsApp: ${whatsapp || "-"}
+      subject: `New inquiry from ${data.name}`,
+      replyTo: data.email,
+      text: `Name: ${data.name}
+Email: ${data.email}
+WhatsApp: ${data.whatsapp || "-"}
 
-${message}`
+${data.message}`
     });
     return new Response(JSON.stringify({ ok: true, id: info.messageId }), { status: 200 });
   } catch (e: any) {
-    return new Response(JSON.stringify({ ok: false, error: e?.message || "Email failed" }), { status: 500 });
+    return new Response(JSON.stringify({ ok: false, error: "Failed to send email" }), { status: 500 });
   }
 }
