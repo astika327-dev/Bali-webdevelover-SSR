@@ -18,6 +18,7 @@ const toPrompt = (messages: Message[]) => {
   return `${header}\n\n${convo}\nAssistant:`;
 };
 
+// Helper untuk ekstraksi parts dari payload (dipakai SDK fallback dan REST)
 const pickParts = (payload: any) =>
   (payload?.candidates?.[0]?.content?.parts || [])
     .map((part: any) => part?.text || "")
@@ -39,11 +40,10 @@ async function generateWithSDK(prompt: string, key: string) {
   const model = gen.getGenerativeModel({ model: MODEL_NAME });
   const result = await model.generateContent(prompt);
   try {
+    // Ambil via API text(); kalau kosong, coba baca dari struktur parts
     if (typeof result?.response?.text === "function") {
       const text = result.response.text() || "";
-      if (text.trim()) {
-        return text;
-      }
+      if (text.trim()) return text;
     }
     return pickParts(result?.response) || "";
   } catch (error) {
@@ -70,37 +70,30 @@ async function generateWithREST(prompt: string, key: string) {
 
 export async function POST(req: NextRequest) {
   const key = process.env.GEMINI_API_KEY;
-
-  if (!key) {
-    return fail(500, "Missing GEMINI_API_KEY");
-  }
+  if (!key) return fail(500, "Missing GEMINI_API_KEY");
 
   try {
-    const body = await req
-      .json()
-      .catch(() => ({ messages: [] }));
+    const body = await req.json().catch(() => ({ messages: [] }));
     const messages: Message[] = Array.isArray(body?.messages) ? body.messages : [];
-
-    if (!messages.length) {
-      return fail(400, "No messages provided");
-    }
+    if (!messages.length) return fail(400, "No messages provided");
 
     const prompt = toPrompt(messages);
 
+    // 1) Coba SDK dulu
     try {
       const sdkText = await generateWithSDK(prompt, key);
-      if (sdkText.trim()) {
-        return respond(sdkText);
-      }
+      if (sdkText.trim()) return respond(sdkText);
     } catch (error) {
       console.warn("[/api/ai] SDK call failed, falling back to REST", error);
     }
 
+    // 2) Fallback ke REST
     try {
       const restText = await generateWithREST(prompt, key);
       return respond(restText);
     } catch (error) {
-      console.error("[/api/ai] REST fallback failed", error);
+      console.error("[/api/ai] REST fallback failed", (error as any)?.message || error);
+      // Error nyata (quota/429, key invalid, dsb) → biar kelihatan jelas di Network/logs
       return fail(502, (error as Error)?.message || error);
     }
   } catch (error) {
