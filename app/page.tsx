@@ -41,7 +41,7 @@ function AIWidget() {
     setLoading(true);
 
     try {
-      const res = await fetch('/api/assistant', {
+      const res = await fetch('/api/ai', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ messages: next.slice(-12) }),
@@ -71,7 +71,7 @@ function AIWidget() {
       <div className="flex items-center gap-2">
         <div className="inline-flex items-center gap-2 rounded-full border border-[var(--brown)] px-3 py-1 text-[var(--brown)]">
           <Sparkles size={16} />
-          <span className="text-sm font-medium">AI Project Copilot</span>
+          <span className="text-sm font-medium">AI Project BaliWebDev</span>
         </div>
         <span className="text-xs text-[var(--brown)]/70">Advises on performance, SEO, and stack</span>
       </div>
