@@ -3,7 +3,7 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 
 export const runtime = "nodejs";
 
-const MODEL_NAME = "gemini-1.5-flash";
+const MODEL_NAME = "gemini-1.5-flash-latest";
 const MAX_PROMPT_LEN = 2000;
 const clamp = (s: string) => (s || "").replace(/\s+/g, " ").trim().slice(0, MAX_PROMPT_LEN);
 
@@ -89,7 +89,7 @@ async function generateWithSDK(prompt: string, key: string) {
 }
 
 async function generateWithREST(prompt: string, key: string) {
-  const url = `https://generativelanguage.googleapis.com/v1beta/models/${MODEL_NAME}:generateContent?key=${key}`;
+  const url = `https://generativelanguage.googleapis.com/v1/models/${MODEL_NAME}:generateContent?key=${key}`;
   const response = await fetch(url, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
