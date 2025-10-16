@@ -1,103 +1,41 @@
 import { NextRequest, NextResponse } from "next/server";
-import { GoogleGenerativeAI } from "@google/generative-ai";
 
 export const runtime = "nodejs";
 
-const MODEL_NAME = "gemini-1.5-flash";
-const MAX_PROMPT_LEN = 2000;
-const clamp = (s: string) => (s || "").replace(/\s+/g, " ").trim().slice(0, MAX_PROMPT_LEN);
+const MODEL = "gemini-1.5-flash-latest";
+const clamp = (s: string) => (s || "").replace(/\s+/g, " ").trim().slice(0, 2000);
 
-type Message = { role: "user" | "assistant"; content: string };
+export async function POST(req: NextRequest) {
+  const key = process.env.GEMINI_API_KEY;
+  if (!key)
+    return NextResponse.json({ ok: false, error: "Missing GEMINI_API_KEY" }, { status: 500 });
 
-const toPrompt = (messages: Message[]) => {
-  const header =
-    "You are a concise web-dev copilot. Prioritize performance, SEO, a11y, and clean stack suggestions. Be direct. Say when unsure.";
-  const convo = (messages || [])
-    .map(m => `${m.role === "user" ? "User" : "Assistant"}: ${clamp(m.content)}`)
+  const { messages = [] } = await req.json().catch(() => ({}));
+  if (!Array.isArray(messages) || messages.length === 0)
+    return NextResponse.json({ ok: false, error: "No messages provided" }, { status: 400 });
+
+  const prompt = messages
+    .map((m: any) => `${m.role}: ${clamp(m.content)}`)
     .join("\n");
-  return `${header}\n\n${convo}\nAssistant:`;
-};
 
-// Helper untuk ekstraksi parts dari payload (dipakai SDK fallback dan REST)
-const pickParts = (payload: any) =>
-  (payload?.candidates?.[0]?.content?.parts || [])
-    .map((part: any) => part?.text || "")
-    .join("")
-    .trim();
-
-const pickREST = (payload: any) => pickParts(payload) || "No response.";
-
-const fail = (status: number, error: unknown) => {
-  const message = typeof error === "string" ? error : (error as any)?.message || "Unknown error";
-  return NextResponse.json({ ok: false, error: message }, { status });
-};
-
-const respond = (text: string) =>
-  NextResponse.json({ reply: { content: text?.trim() ? text.trim() : "No response." } });
-
-async function generateWithSDK(prompt: string, key: string) {
-  const gen = new GoogleGenerativeAI(key);
-  const model = gen.getGenerativeModel({ model: MODEL_NAME });
-  const result = await model.generateContent(prompt);
-  try {
-    // Ambil via API text(); kalau kosong, coba baca dari struktur parts
-    if (typeof result?.response?.text === "function") {
-      const text = result.response.text() || "";
-      if (text.trim()) return text;
-    }
-    return pickParts(result?.response) || "";
-  } catch (error) {
-    console.warn("[/api/ai] SDK text extraction failed", error);
-    return "";
-  }
-}
-
-async function generateWithREST(prompt: string, key: string) {
-  const url = `https://generativelanguage.googleapis.com/v1beta/models/${MODEL_NAME}:generateContent?key=${key}`;
-  const response = await fetch(url, {
+  const url = `https://generativelanguage.googleapis.com/v1/models/${MODEL}:generateContent?key=${key}`;
+  const r = await fetch(url, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ contents: [{ role: "user", parts: [{ text: prompt }] }] })
   });
 
-  const data = await response.json();
-  if (!response.ok) {
-    throw new Error(`Gemini error (${response.status}): ${data?.error?.message || JSON.stringify(data)}`);
+  const json = await r.json();
+  if (!r.ok) {
+    const msg = json?.error?.message || JSON.stringify(json);
+    return NextResponse.json({ ok: false, error: `Gemini error (${r.status}): ${msg}` }, { status: r.status });
   }
 
-  return pickREST(data);
-}
+  const text =
+    (json?.candidates?.[0]?.content?.parts || [])
+      .map((p: any) => p?.text || "")
+      .join("")
+      .trim() || "No response.";
 
-export async function POST(req: NextRequest) {
-  const key = process.env.GEMINI_API_KEY;
-  if (!key) return fail(500, "Missing GEMINI_API_KEY");
-
-  try {
-    const body = await req.json().catch(() => ({ messages: [] }));
-    const messages: Message[] = Array.isArray(body?.messages) ? body.messages : [];
-    if (!messages.length) return fail(400, "No messages provided");
-
-    const prompt = toPrompt(messages);
-
-    // 1) Coba SDK dulu
-    try {
-      const sdkText = await generateWithSDK(prompt, key);
-      if (sdkText.trim()) return respond(sdkText);
-    } catch (error) {
-      console.warn("[/api/ai] SDK call failed, falling back to REST", error);
-    }
-
-    // 2) Fallback ke REST
-    try {
-      const restText = await generateWithREST(prompt, key);
-      return respond(restText);
-    } catch (error) {
-      console.error("[/api/ai] REST fallback failed", (error as any)?.message || error);
-      // Error nyata (quota/429, key invalid, dsb) → biar kelihatan jelas di Network/logs
-      return fail(502, (error as Error)?.message || error);
-    }
-  } catch (error) {
-    console.error("[/api/ai] Unexpected error", (error as any)?.message || error);
-    return fail(500, error);
-  }
+  return NextResponse.json({ reply: { content: text } });
 }

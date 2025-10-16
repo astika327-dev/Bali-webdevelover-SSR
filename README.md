@@ -30,6 +30,7 @@ npm run build && npm start
 - `CONTACT_TO`: where submissions are delivered
 - `NEXT_PUBLIC_WHATSAPP_NUMBER`: phone number for the WhatsApp link (digits only)
 - `NEXT_PUBLIC_PUBLIC_EMAIL`: email shown on the contact page
+- `GEMINI_API_KEY`: Google Gemini API key that powers the AI widget (omit it to use the built-in offline fallback copy)
 
 ### Notes
 

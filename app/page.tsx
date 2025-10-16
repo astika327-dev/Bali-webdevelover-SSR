@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import type { Route } from 'next';
 import { useEffect, useRef, useState } from 'react';
-import { ArrowRight, Send, Sparkles, Loader2, Check } from 'lucide-react';
+import { ArrowRight, Send, Sparkles, Loader2 } from 'lucide-react';
 import { certificates, services, site } from '../content/config';
 
 /* =========================
@@ -46,16 +46,28 @@ function AIWidget() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ messages: next.slice(-12) }),
       });
-      const data = await res.json();
-      if (!res.ok || !data?.reply?.content) throw new Error(data?.error || 'Request failed');
-      setMessages((m) => [...m, { role: 'assistant', content: data.reply.content }]);
+      const data = await res.json().catch(() => null);
+      if (!res.ok) {
+        const message = data?.error || `Request failed (${res.status})`;
+        throw new Error(message);
+      }
+
+      const content = data?.reply?.content?.toString().trim();
+      if (!content) {
+        throw new Error('Assistant returned an empty reply.');
+      }
+
+      const warning = typeof data?.meta?.warning === 'string' ? data.meta.warning : null;
+      const combined = warning ? `${content}\n\n(${warning})` : content;
+
+      setMessages((m) => [...m, { role: 'assistant', content: combined }]);
     } catch (e) {
+      const message = e instanceof Error ? e.message : 'Unexpected error';
       setMessages((m) => [
         ...m,
         {
           role: 'assistant',
-          content:
-            "Sorry, the assistant couldn't reply. Check the server logs or your API key in .env.",
+          content: `Sorry, the assistant couldn't reply. ${message}`,
         },
       ]);
     } finally {
