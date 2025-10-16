@@ -32,8 +32,44 @@ const fail = (status: number, error: unknown) => {
   return NextResponse.json({ ok: false, error: message }, { status });
 };
 
-const respond = (text: string) =>
-  NextResponse.json({ reply: { content: text?.trim() ? text.trim() : "No response." } });
+const respond = (text: string, init?: ResponseInit, meta?: Record<string, unknown>) => {
+  const payload: Record<string, unknown> = {
+    reply: { content: text?.trim() ? text.trim() : "No response." }
+  };
+  if (meta && Object.keys(meta).length > 0) {
+    payload.meta = meta;
+  }
+  return NextResponse.json(payload, init);
+};
+
+const FALLBACK_TIPS = [
+  "Audit Core Web Vitals and largest contentful paint with PageSpeed Insights.",
+  "Ship only the scripts you need — trim unused libraries and defer below-the-fold code.",
+  "Structure headings logically (H1 → H2 → H3) and pair them with descriptive meta titles.",
+  "Add internal links from high-authority pages to the ones you want indexed quickly."
+];
+
+const fallbackReply = (messages: Message[], reason: string) => {
+  const lastUserMessage = [...messages]
+    .reverse()
+    .find(message => message.role === "user")?.content
+    ?.trim();
+
+  const intro =
+    `I couldn't reach the Gemini API (${reason}). Double-check your GEMINI_API_KEY and billing configuration. ` +
+    "Here are baseline steps you can take right away:";
+
+  const contextual = lastUserMessage
+    ? `\n\nRegarding “${lastUserMessage.slice(0, 180)}”, start with:`
+    : "";
+
+  const tips = FALLBACK_TIPS.map(tip => `• ${tip}`).join("\n");
+
+  return `${intro}${contextual}\n${tips}`;
+};
+
+const respondWithFallback = (messages: Message[], reason: string) =>
+  respond(fallbackReply(messages, reason), undefined, { warning: reason });
 
 async function generateWithSDK(prompt: string, key: string) {
   const gen = new GoogleGenerativeAI(key);
@@ -69,13 +105,18 @@ async function generateWithREST(prompt: string, key: string) {
 }
 
 export async function POST(req: NextRequest) {
-  const key = process.env.GEMINI_API_KEY;
-  if (!key) return fail(500, "Missing GEMINI_API_KEY");
+  let messages: Message[] = [];
 
   try {
     const body = await req.json().catch(() => ({ messages: [] }));
-    const messages: Message[] = Array.isArray(body?.messages) ? body.messages : [];
+    messages = Array.isArray(body?.messages) ? body.messages : [];
     if (!messages.length) return fail(400, "No messages provided");
+
+    const key = process.env.GEMINI_API_KEY;
+    if (!key) {
+      console.warn("[/api/ai] Missing GEMINI_API_KEY; responding with fallback copy");
+      return respondWithFallback(messages, "GEMINI_API_KEY is not configured");
+    }
 
     const prompt = toPrompt(messages);
 
@@ -92,12 +133,13 @@ export async function POST(req: NextRequest) {
       const restText = await generateWithREST(prompt, key);
       return respond(restText);
     } catch (error) {
-      console.error("[/api/ai] REST fallback failed", (error as any)?.message || error);
-      // Error nyata (quota/429, key invalid, dsb) → biar kelihatan jelas di Network/logs
-      return fail(502, (error as Error)?.message || error);
+      const message = (error as Error)?.message || String(error);
+      console.error("[/api/ai] REST fallback failed", message);
+      return respondWithFallback(messages, message || "Gemini REST request failed");
     }
   } catch (error) {
-    console.error("[/api/ai] Unexpected error", (error as any)?.message || error);
-    return fail(500, error);
+    const message = (error as Error)?.message || String(error);
+    console.error("[/api/ai] Unexpected error", message);
+    return respondWithFallback(messages, message || "Unexpected server error");
   }
 }
