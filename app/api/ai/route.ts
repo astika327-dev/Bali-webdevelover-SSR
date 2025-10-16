@@ -3,7 +3,8 @@ import { NextRequest, NextResponse } from "next/server";
 export const runtime = "nodejs";
 
 const MODEL_NAME = "gemini-2.5-flash";
-const clamp = (s: string) => (s || "").replace(/\s+/g, " ").trim().slice(0, 2000);
+const MAX_PROMPT_LEN = 2000;
+const clamp = (s: string) => (s || "").replace(/\s+/g, " ").trim().slice(0, MAX_PROMPT_LEN);
 
 export async function POST(req: NextRequest) {
   const key = process.env.GEMINI_API_KEY;
@@ -19,28 +20,35 @@ export async function POST(req: NextRequest) {
     .join("\n");
 
   const url = `https://generativelanguage.googleapis.com/v1/models/${MODEL_NAME}:generateContent?key=${key}`;
-  const r = await fetch(url, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ contents: [{ role: "user", parts: [{ text: prompt }] }] })
-  });
 
-  const json = await r.json();
-  if (!r.ok) {
-    const msg = json?.error?.message || JSON.stringify(json);
-    return NextResponse.json({ ok: false, error: `Gemini error (${r.status}): ${msg}` }, { status: r.status });
+  try {
+    const r = await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ contents: [{ role: "user", parts: [{ text: prompt }] }] })
+    });
+
+    const json = await r.json();
+    if (!r.ok) {
+      const msg = json?.error?.message || JSON.stringify(json) || "Unknown Gemini error";
+      return NextResponse.json({ ok: false, error: `Gemini error (${r.status}): ${msg}` }, { status: r.status });
+    }
+
+    if (!json?.candidates) {
+      console.error("[/api/ai] No candidates returned from Gemini:", json);
+      return NextResponse.json({ ok: false, error: "Gemini returned no candidates" }, { status: 502 });
+    }
+
+    const text =
+      (json?.candidates?.[0]?.content?.parts || [])
+        .map((p: any) => p?.text || "")
+        .join("")
+        .trim() || "No response.";
+
+    return NextResponse.json({ reply: { content: text } });
+  } catch (e: any) {
+    const msg = e?.message || String(e);
+    console.error("[/api/ai] REST request failed:", msg);
+    return NextResponse.json({ ok: false, error: msg }, { status: 500 });
   }
-
-  if (!json?.candidates) {
-    console.error("[/api/ai] No candidates returned from Gemini:", json);
-    return NextResponse.json({ ok: false, error: "Gemini returned no candidates" }, { status: 502 });
-  }
-
-  const text =
-    (json?.candidates?.[0]?.content?.parts || [])
-      .map((p: any) => p?.text || "")
-      .join("")
-      .trim() || "No response.";
-
-  return NextResponse.json({ reply: { content: text } });
 }
