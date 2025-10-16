@@ -2,53 +2,43 @@ import { NextRequest, NextResponse } from "next/server";
 
 export const runtime = "nodejs";
 
-const MODEL_NAME = "gemini-1.5-flash-latest";
+const MODEL_NAME = "gemini-2.5-flash";
 const MAX_PROMPT_LEN = 2000;
 const clamp = (s: string) => (s || "").replace(/\s+/g, " ").trim().slice(0, MAX_PROMPT_LEN);
 
 export async function POST(req: NextRequest) {
   const key = process.env.GEMINI_API_KEY;
   if (!key)
-    return NextResponse.json(
-      { ok: false, error: "Missing GEMINI_API_KEY" },
-      { status: 500 }
-    );
+    return NextResponse.json({ ok: false, error: "Missing GEMINI_API_KEY" }, { status: 500 });
 
   const { messages = [] } = await req.json().catch(() => ({}));
   if (!Array.isArray(messages) || messages.length === 0)
-    return NextResponse.json(
-      { ok: false, error: "No messages provided" },
-      { status: 400 }
-    );
+    return NextResponse.json({ ok: false, error: "No messages provided" }, { status: 400 });
 
-  // Bangun prompt sederhana dari array pesan
   const prompt = messages
     .map((m: any) => `${m.role}: ${clamp(m.content)}`)
     .join("\n");
 
-  // Hanya gunakan endpoint REST v1
   const url = `https://generativelanguage.googleapis.com/v1/models/${MODEL_NAME}:generateContent?key=${key}`;
 
   try {
     const r = await fetch(url, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        contents: [{ role: "user", parts: [{ text: prompt }] }],
-      }),
+      body: JSON.stringify({ contents: [{ role: "user", parts: [{ text: prompt }] }] })
     });
 
     const json = await r.json();
     if (!r.ok) {
-      const msg =
-        json?.error?.message || JSON.stringify(json) || "Unknown Gemini error";
-      return NextResponse.json(
-        { ok: false, error: `Gemini error (${r.status}): ${msg}` },
-        { status: r.status }
-      );
+      const msg = json?.error?.message || JSON.stringify(json) || "Unknown Gemini error";
+      return NextResponse.json({ ok: false, error: `Gemini error (${r.status}): ${msg}` }, { status: r.status });
     }
 
-    // Ambil teks dari hasil kandidat
+    if (!json?.candidates) {
+      console.error("[/api/ai] No candidates returned from Gemini:", json);
+      return NextResponse.json({ ok: false, error: "Gemini returned no candidates" }, { status: 502 });
+    }
+
     const text =
       (json?.candidates?.[0]?.content?.parts || [])
         .map((p: any) => p?.text || "")
