@@ -1,5 +1,6 @@
 import { addons, plans } from "@/content/config";
 import { Check } from "lucide-react";
+import Link from 'next/link'; // 1. Impor komponen Link
 
 export default function ServicesPage() {
   return (
@@ -24,11 +25,21 @@ export default function ServicesPage() {
               ))}
             </ul>
             <div className="mt-4 text-sm text-neutral-600">{p.eta}</div>
-            <button className="mt-6 rounded-full border px-4 py-2 hover:bg-neutral-50">{p.cta}</button>
+            
+            {/* --- BAGIAN YANG DIPERBAIKI --- */}
+            <Link 
+              href="/contact" 
+              className="mt-6 rounded-full border px-4 py-2 text-center hover:bg-neutral-50"
+            >
+              {p.cta}
+            </Link>
+            {/* --------------------------- */}
+            
           </div>
         ))}
       </div>
 
+      {/* ... sisa kode Anda tetap sama ... */}
       <div className="mt-12">
         <h2 className="text-xl font-semibold">Add-ons</h2>
         <div className="grid md:grid-cols-3 gap-6 mt-4">

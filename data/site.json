@@ -1,0 +1,80 @@
+{
+  "brand": {
+    "name": "Bali WebDevelover",
+    "tagline": "Fast, elegant websites that convert",
+    "description": "Developer berbasis di Bali, fokus pada website bisnis, hospitality, dan portofolio profesional."
+  },
+  "bio": {
+    "name": "Bali WebDevelover",
+    "headline": "Web Develover",
+    "about": "Saya membangun website modern yang cepat, clean, dan siap dipakai bisnis. Fokus ke UX, performa, dan integrasi yang masuk akal.",
+    "skills": [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Node.js",
+      "UI/UX",
+      "SEO dasar"
+    ]
+  },
+  "contact": {
+    "email": "baliwebdevelover@gmail.com",
+    "whatsapp": "628214617846",
+    "location": "Bali, Indonesia"
+  },
+  "services": [
+    {
+      "slug": "company-profile",
+      "title": "Company Profile",
+      "summary": "Website profil bisnis modern, cepat, SEO-ready.",
+      "price": "Rp 2.5–6 juta",
+      "features": [
+        "Landing + 5 halaman",
+        "Responsive & cepat",
+        "Form kontak & WA",
+        "SEO dasar",
+        "Deploy & domain setup"
+      ]
+    },
+    {
+      "slug": "hospitality-website",
+      "title": "Hospitality Website",
+      "summary": "Website villa/guesthouse dengan fokus UX tamu.",
+      "price": "Rp 4–10 juta",
+      "features": [
+        "Galeri & rooms",
+        "Map & CTA booking",
+        "Optimasi mobile",
+        "Integrasi WhatsApp",
+        "Panduan konten"
+      ]
+    },
+    {
+      "slug": "seo-optimization",
+      "title": "Optimasi SEO",
+      "summary": "Perbaiki visibilitas pencarian & performa teknis.",
+      "price": "Rp 1.5–4 juta",
+      "features": [
+        "Audit teknis",
+        "Perbaikan meta/og",
+        "Kecepatan & image",
+        "Schema dasar",
+        "Checklist konten"
+      ]
+    }
+  ],
+  "certificates": [
+    {
+      "name": "FreeCodeCamp - Responsive Web Design",
+      "issuer": "freeCodeCamp",
+      "year": 2025,
+      "url": "https://www.freecodecamp.org/"
+    },
+    {
+      "name": "Foundational C#",
+      "issuer": "Microsoft",
+      "year": 2025,
+      "url": "https://learn.microsoft.com/"
+    }
+  ]
+}
