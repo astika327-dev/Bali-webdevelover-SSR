@@ -1,17 +1,17 @@
 "use client";
 import { useState, type FC, type InputHTMLAttributes } from "react";
 import { contactSchema, type ContactPayload } from "@/lib/validation";
-import { Mail, MessageSquare, MapPin, Loader2 } from "lucide-react";
+import { Mail, MessageSquare, MapPin, Loader2, Instagram, Facebook } from "lucide-react"; // <-- ICON BARU DITAMBAHKAN
 
 // -----------------------------------------------------------------------------
-// Reusable Input Field Component
+// Reusable Input Field Component (TIDAK ADA PERUBAHAN)
 // -----------------------------------------------------------------------------
 interface InputFieldProps extends InputHTMLAttributes<HTMLInputElement | HTMLTextAreaElement> {
   id: string;
   label: string;
   error?: string;
   as?: "input" | "textarea";
-  rows?: number; // <-- FIX #2: Properti 'rows' ditambahkan di sini
+  rows?: number;
 }
 
 const InputField: FC<InputFieldProps> = ({ id, label, error, as = "input", ...props }) => {
@@ -43,7 +43,7 @@ const InputField: FC<InputFieldProps> = ({ id, label, error, as = "input", ...pr
 
 
 // -----------------------------------------------------------------------------
-// Reusable Contact Info Card Component
+// Reusable Contact Info Card Component (TIDAK ADA PERUBAHAN)
 // -----------------------------------------------------------------------------
 interface ContactInfoCardProps {
   icon: React.ReactNode;
@@ -63,11 +63,10 @@ const ContactInfoCard: FC<ContactInfoCardProps> = ({ icon, title, children }) =>
 
 
 // -----------------------------------------------------------------------------
-// Main Contact Page Component
+// Main Contact Page Component (PERUBAHAN DI SINI)
 // -----------------------------------------------------------------------------
 export default function ContactPage() {
   const [form, setForm] = useState<ContactPayload>({ name: "", email: "", whatsapp: undefined, message: "" });
-  // FIX #1: Gunakan 'Partial' agar objek kosong diizinkan saat inisialisasi
   const [errors, setErrors] = useState<Partial<Record<keyof ContactPayload, string | undefined>>>({});
   const [status, setStatus] = useState<{ type: "idle" | "loading" | "success" | "error"; message?: string }>({ type: "idle" });
 
@@ -116,6 +115,10 @@ export default function ContactPage() {
 
   const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER;
   const emailAddress = process.env.NEXT_PUBLIC_PUBLIC_EMAIL;
+  
+  // --- Ganti dengan URL profil media sosial Anda ---
+  const instagramUrl = "https://instagram.com/baliwebdevelover";
+  const facebookUrl = "https://facebook.com/share/17df5guFcR/";
 
   return (
     <section className="container py-16 md:py-24">
@@ -161,7 +164,7 @@ export default function ContactPage() {
             label="Tell us about your project"
             as="textarea"
             name="message"
-            rows={6} // Sekarang ini valid
+            rows={6}
             value={form.message}
             onChange={(e) => updateField("message", e.target.value)}
             error={errors.message}
@@ -194,26 +197,50 @@ export default function ContactPage() {
         <div className="space-y-4">
           <ContactInfoCard icon={<Mail size={24} />} title="Email">
             {emailAddress ? (
-              <a className="text-blue-600 underline hover:text-blue-700" href={`mailto:${emailAddress}`}>
-                {emailAddress}
-              </a>
+              <>
+                <p className="mb-3">Get in touch via email for detailed inquiries.</p>
+                {/* --- PERUBAHAN DESAIN TOMBOL EMAIL --- */}
+                <a className="inline-block text-sm font-medium text-black bg-white border border-neutral-300 rounded-full px-4 py-2 hover:bg-neutral-50 transition-colors" href={`mailto:${emailAddress}`}>
+                  {emailAddress}
+                </a>
+              </>
             ) : (
               <span className="text-xs">Email address is not configured.</span>
             )}
           </ContactInfoCard>
+          
           <ContactInfoCard icon={<MessageSquare size={24} />} title="WhatsApp">
             {whatsappNumber ? (
-              <a className="text-blue-600 underline hover:text-blue-700" href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noreferrer">
-                Chat with us on WhatsApp
-              </a>
+              <>
+                <p className="mb-3">For a faster response, chat with us directly.</p>
+                 {/* --- PERUBAHAN DESAIN TOMBOL WHATSAPP --- */}
+                <a className="inline-block text-sm font-medium text-black bg-white border border-neutral-300 rounded-full px-4 py-2 hover:bg-neutral-50 transition-colors" href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noreferrer">
+                  Chat on WhatsApp
+                </a>
+              </>
             ) : (
               <span className="text-xs">WhatsApp is not configured.</span>
             )}
           </ContactInfoCard>
+          
           <ContactInfoCard icon={<MapPin size={24} />} title="Our Office">
             Bali, Indonesia <br />
             (Remote-first company)
           </ContactInfoCard>
+
+          {/* --- BAGIAN BARU: SOCIAL MEDIA --- */}
+          <div className="pt-4">
+            <h3 className="font-semibold text-neutral-800">Find Us Elsewhere</h3>
+            <div className="flex items-center gap-3 mt-3">
+              <a href={instagramUrl} target="_blank" rel="noreferrer" aria-label="Instagram" className="p-2 rounded-full border bg-white/70 hover:bg-neutral-100 transition-colors">
+                <Instagram size={20} className="text-neutral-600" />
+              </a>
+              <a href={facebookUrl} target="_blank" rel="noreferrer" aria-label="Facebook" className="p-2 rounded-full border bg-white/70 hover:bg-neutral-100 transition-colors">
+                <Facebook size={20} className="text-neutral-600" />
+              </a>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
