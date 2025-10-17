@@ -1,6 +1,6 @@
 import { addons, plans } from "@/content/config";
 import { Check } from "lucide-react";
-import Link from 'next/link'; // 1. Impor komponen Link
+import Link from 'next/link';
 
 export default function ServicesPage() {
   return (
@@ -17,23 +17,28 @@ export default function ServicesPage() {
               <h2 className="text-2xl font-semibold">{p.name}</h2>
             </div>
             <div className="text-3xl font-semibold mt-4">{p.price}</div>
-            <ul className="mt-4 space-y-2 text-sm">
+            
+            {/* --- INI PERBAIKANNYA ---
+              Menambahkan 'flex-1' akan membuat <ul> ini mengisi ruang kosong
+              dan mendorong konten di bawahnya (ETA & Tombol) ke bawah.
+            */}
+            <ul className="mt-4 space-y-2 text-sm flex-1">
               {p.features.map((f) => (
                 <li key={f} className="flex items-start gap-2">
                   <Check size={16} className="mt-1" /> <span>{f}</span>
                 </li>
               ))}
             </ul>
+            {/* --------------------- */}
+
             <div className="mt-4 text-sm text-neutral-600">{p.eta}</div>
             
-            {/* --- BAGIAN YANG DIPERBAIKI --- */}
             <Link 
               href="/contact" 
               className="mt-6 rounded-full border px-4 py-2 text-center hover:bg-neutral-50"
             >
               {p.cta}
             </Link>
-            {/* --------------------------- */}
             
           </div>
         ))}

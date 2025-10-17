@@ -63,7 +63,7 @@ export const plans: Plan[] = [
   {
     name: "Starter",
     subtitle: "Launch‑ready landing page",
-    price: "Rp 800.000",
+    price: "Rp 1.500.000 - Rp 2.500.000",
     features: [
       "1–3 sections, custom look",
       "Responsive and accessible",
@@ -77,7 +77,7 @@ export const plans: Plan[] = [
   {
     name: "Growth",
     subtitle: "Small business website",
-    price: "Rp 2.500.000",
+    price: "Rp 4.000.000 - Rp 6.000.000",
     features: [
       "Up to 5–7 custom pages",
       "Checked against Core Web Vitals",
@@ -93,7 +93,7 @@ export const plans: Plan[] = [
   {
     name: "Premium",
     subtitle: "Brand‑level experience",
-    price: "Rp 5.500.000",
+    price: "Rp 8.000.000 - Rp 12.000.000",
     features: [
       "12–15 uniquely designed pages",
       "Premium UI with tasteful motion",
@@ -109,6 +109,11 @@ export const plans: Plan[] = [
 ];
 
 export const addons = [
+  {
+    title: "Custom Feature AI",
+    desc: "Separate pricing for custom features requiring dedicated backend and API integration (e.g., Gemini, complex booking systems).",
+    from: "from Rp 4,000,000"
+  },
   {
     title: "Booking Integration",
     desc: "Channel manager or booking widget (e.g., SiteMinder, Cloudbeds, or a custom form)",

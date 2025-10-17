@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: '/ogimg.png',
+        url: '/app/ogimg.png',
         width: 1200,
         height: 630,
         alt: 'Preview — Bali WebDevelover',
@@ -33,10 +33,10 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: `${site.company} — ${site.tagline}`,
     description: site.blurb,
-    images: ['/ogimg.png'],
+    images: ['/app/ogimg.png'],
   },
   icons: {
-    icon: '/favicon.png',
+    icon: '/app/favicon.png',
     apple: '/apple-touch-icon.png',
   },
   robots: {

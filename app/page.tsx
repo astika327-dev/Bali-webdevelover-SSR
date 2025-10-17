@@ -140,12 +140,12 @@ function AIWidget() {
           value={input}
           onChange={(e) => setInput(e.target.value)}
           placeholder="Ask about SEO, performance, stack, content structure…"
-          className="flex-1 rounded-xl border border-[var(--tan)] bg-white/70 px-3 py-2 text-[var(--brown)] placeholder:text-[var(--brown)]/50 focus:outline-none focus:ring-2 focus:ring-[var(--tan)]"
+          className="flex-1 min-w-0 rounded-xl border border-[var(--tan)] bg-white/70 px-3 py-2 text-[var(--brown)] placeholder:text-[var(--brown)]/50 focus:outline-none focus:ring-2 focus:ring-[var(--tan)]"
         />
         <button
           type="submit"
           disabled={loading || !input.trim()}
-          className="inline-flex items-center gap-2 rounded-xl border border-[var(--brown)] bg-[var(--brown)] px-3 py-2 text-[var(--cream)] disabled:opacity-60"
+          className="inline-flex flex-shrink-0 items-center gap-2 rounded-xl border border-[var(--brown)] bg-[var(--brown)] px-3 py-2 text-[var(--cream)] disabled:opacity-60"
         >
           <Send size={16} />
           Send
@@ -158,7 +158,6 @@ function AIWidget() {
     </section>
   );
 }
-
 /* =========================
    Home Page
    ========================= */
