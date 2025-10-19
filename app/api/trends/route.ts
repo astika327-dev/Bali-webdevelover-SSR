@@ -19,3 +19,4 @@ export async function GET() {
     return NextResponse.json({ error: 'Gagal mengambil data tren dari server.' }, { status: 500 });
   }
 }
+
