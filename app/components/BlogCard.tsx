@@ -4,8 +4,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { format, isValid } from 'date-fns';
 import { id } from 'date-fns/locale';
-<<<<<<< HEAD
-import type { Route } from 'next';
 
 // Definisi tipe data lokal untuk memutus hubungan ke file server
 export type PostMetadata = {
@@ -19,21 +17,6 @@ export type PostMetadata = {
   readingTime: number;
 };
 
-=======
-
-// Definisi tipe data lokal untuk memutus hubungan ke file server
-export type PostMetadata = {
-  slug: string;
-  title: string;
-  description: string;
-  date: string;
-  category: string;
-  featured: boolean;
-  image: string;
-  readingTime: number;
-};
-
->>>>>>> a5034277845886abb7bf9265ffa676344006e351
 interface BlogCardProps {
   post: PostMetadata;
 }
@@ -49,16 +32,11 @@ export default function BlogCard({ post }: BlogCardProps) {
 
   return (
     <Link 
-<<<<<<< HEAD
-      // Perbaikan: gunakan URL yang sudah di-resolve (hindari '/blog/[slug]' literal)
-      href={`/blog/${post.slug}` as Route}
-=======
-      // PERBAIKAN DI SINI: Menggunakan format objek untuk href
+      // Menggunakan format objek untuk href agar kompatibel dengan typedRoutes
       href={{
         pathname: '/blog/[slug]',
         query: { slug: post.slug },
       }}
->>>>>>> a5034277845886abb7bf9265ffa676344006e351
       className="group block overflow-hidden rounded-2xl border bg-white border-gray-200/50 shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1.5"
     >
       <div className="relative h-48 w-full">
@@ -92,8 +70,5 @@ export default function BlogCard({ post }: BlogCardProps) {
       </div>
     </Link>
   );
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> a5034277845886abb7bf9265ffa676344006e351
+
