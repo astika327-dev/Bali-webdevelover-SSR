@@ -15,7 +15,8 @@ export default function Navbar() {
     { href: '/' as Route, label: 'Home' },
     { href: '/services' as Route, label: 'Services' },
     { href: '/portfolio' as Route, label: 'Portfolio' },
-    { href: '/about' as Route, label: 'About' }
+    { href: '/about' as Route, label: 'About' },
+    { href: '/blog' as Route, label: 'Blog' },
   ];
 
   return (
