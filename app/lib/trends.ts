@@ -1,35 +1,37 @@
 import Parser from 'rss-parser';
 
-// URL RSS feed resmi dari Google Trends Indonesia
-const TRENDS_URL = 'https://trends.google.co.id/trends/trendingsearches/daily/rss?geo=ID';
+// PERBAIKAN: Menggunakan domain .com yang baru
+const TRENDS_URL = 'https://trends.google.com/trends/trendingsearches/daily/rss?geo=ID';
 
-// Definisikan tipe data untuk hasil tren agar sesuai dengan komponen Anda
 export interface TrendItem {
   title: string;
   link: string;
   source: string;
 }
 
-// Ganti nama fungsi menjadi lebih deskriptif
 export async function getGoogleTrends(): Promise<TrendItem[]> {
-  // Gunakan rss-parser yang sudah kita install
   const parser = new Parser();
-
+  
   try {
-    // Ambil dan parse data dari URL RSS
+    console.log(`[DIAGNOSTIK] Mencoba mengambil data dari: ${TRENDS_URL}`);
     const feed = await parser.parseURL(TRENDS_URL);
+    console.log('[DIAGNOSTIK] Berhasil mendapatkan data!');
     
-    // Ambil 5 item teratas dan format datanya
     return feed.items.slice(0, 5).map(item => ({
       title: item.title || 'Judul tidak tersedia',
       link: item.link || '#',
-      // 'ht:news_item_source' adalah properti spesifik dari RSS feed Google
       source: (item as any)['ht:news_item_source'] || 'Google Trends'
     }));
     
   } catch (error) {
-    console.error("Gagal mengambil Google Trends via RSS:", error);
-    // Kembalikan array kosong jika terjadi error
-    return [];
+    console.error("======================================================");
+    console.error("!!! GAGAL MENGAMBIL DATA GOOGLE TRENDS !!!");
+    console.error("======================================================");
+    console.error("Pesan Error Lengkap:");
+    console.error(error);
+    console.error("======================================================");
+    
+    return []; 
   }
 }
+

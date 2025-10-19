@@ -1,7 +1,7 @@
 "use client"; // <-- Ini SANGAT PENTING
 
 import { useState, useMemo } from 'react';
-import { PostMetadata } from 'app/lib/posts';
+import type { PostMetadata } from 'app/lib/posts';
 import SearchBar from 'app/components/SearchBar';
 import FilterTabs from 'app/components/FilterTabs';
 import BlogCard from 'app/components/BlogCard';
@@ -63,4 +63,3 @@ export default function BlogListClient({ posts }: BlogListClientProps) {
     </div>
   );
 }
-

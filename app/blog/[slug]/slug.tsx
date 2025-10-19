@@ -10,12 +10,27 @@ type Props = {
   params: { slug: string };
 };
 
-// ... fungsi generateMetadata ...
+// Fungsi untuk generate metadata SEO dinamis untuk setiap halaman artikel
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const post = await getPostBySlug(params.slug);
+  if (!post) {
+    return { title: 'Artikel Tidak Ditemukan' };
+  }
+  return {
+    title: `${post.frontmatter.title} | Bali Web Develover`,
+    description: post.frontmatter.description,
+    openGraph: {
+        title: post.frontmatter.title,
+        description: post.frontmatter.description,
+        // Pastikan URL gambar adalah URL absolut untuk Open Graph
+        images: [`https://bali-webdevelover.com${post.frontmatter.image}`],
+    }
+  };
+}
 
-// FUNGSI KUNCI UNTUK MENGHINDARI 404
+// Fungsi ini memberitahu Next.js halaman mana saja yang harus dibuat saat build
 export async function generateStaticParams() {
   const posts = getAllPostsMetadata();
-  // Ini akan menghasilkan daftar seperti [{ slug: 'artikel-pertama' }, { slug: 'apa-itu-api' }]
   return posts.map((post) => ({
     slug: post.slug,
   }));
@@ -24,11 +39,12 @@ export async function generateStaticParams() {
 export default async function PostPage({ params }: Props) {
   const post = await getPostBySlug(params.slug);
 
+  // Jika getPostBySlug mengembalikan null, panggil notFound() untuk menampilkan halaman 404
   if (!post) {
     notFound();
   }
-  
-  // ... sisa kode Anda untuk menampilkan halaman ...
+
+  // Format tanggal dengan aman
   let formattedDate = '';
   if (post.frontmatter.date) {
     const dateObj = new Date(post.frontmatter.date);
@@ -41,8 +57,10 @@ export default async function PostPage({ params }: Props) {
     <article className="min-h-screen" style={{backgroundColor: '#FBF9F6'}}>
         <div className="container mx-auto px-4 py-12 md:py-20">
             <div className="max-w-3xl mx-auto">
+                {/* Tombol kembali ke halaman blog utama */}
                 <Link href="/blog" className="text-amber-800 hover:text-amber-900 font-semibold mb-6 inline-block">&larr; Kembali ke semua artikel</Link>
                 
+                {/* Header Artikel */}
                 <header className="mb-8">
                     <p className="text-amber-800 font-semibold">{post.frontmatter.category}</p>
                     <h1 className="mt-2 text-3xl md:text-4xl font-extrabold tracking-tight" style={{color: '#5C4033'}}>
@@ -51,16 +69,18 @@ export default async function PostPage({ params }: Props) {
                     <p className="mt-4 text-gray-500 text-sm">{formattedDate}</p>
                 </header>
                 
+                {/* Gambar Utama Artikel */}
                 <div className="relative h-64 md:h-96 w-full rounded-2xl overflow-hidden shadow-lg mb-8">
                     <Image 
                         src={post.frontmatter.image} 
                         alt={post.frontmatter.title}
                         fill
                         className="object-cover"
-                        priority
+                        priority // Prioritaskan gambar utama untuk LCP
                     />
                 </div>
 
+                {/* Konten Artikel MDX yang di-render */}
                 <div className="prose prose-lg prose-headings:text-amber-900 prose-a:text-amber-800 prose-strong:text-gray-800 max-w-none">
                     {post.content}
                 </div>
