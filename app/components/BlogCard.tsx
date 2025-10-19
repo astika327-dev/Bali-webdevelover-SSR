@@ -1,19 +1,28 @@
+"use client";
+
 import Link from 'next/link';
 import Image from 'next/image';
 import { format, isValid } from 'date-fns';
 import { id } from 'date-fns/locale';
-import { PostMetadata } from '@/app/lib/posts';
 
-// 1. Definisikan tipe untuk props yang akan diterima komponen ini
+// Definisi tipe data lokal untuk memutus hubungan ke file server
+export type PostMetadata = {
+  slug: string;
+  title: string;
+  description: string;
+  date: string;
+  category: string;
+  featured: boolean;
+  image: string;
+  readingTime: number;
+};
+
 interface BlogCardProps {
   post: PostMetadata;
 }
 
-// 2. Gunakan tipe props tersebut di dalam definisi function
 export default function BlogCard({ post }: BlogCardProps) {
   let formattedDate = '';
-
-  // Coba format tanggal hanya jika post.date ada dan valid
   if (post.date) {
     const dateObj = new Date(post.date);
     if (isValid(dateObj)) {
@@ -23,7 +32,11 @@ export default function BlogCard({ post }: BlogCardProps) {
 
   return (
     <Link 
-      href={`/blog/${post.slug}`} 
+      // PERBAIKAN DI SINI: Menggunakan format objek untuk href
+      href={{
+        pathname: '/blog/[slug]',
+        query: { slug: post.slug },
+      }}
       className="group block overflow-hidden rounded-2xl border bg-white border-gray-200/50 shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1.5"
     >
       <div className="relative h-48 w-full">
@@ -58,4 +71,3 @@ export default function BlogCard({ post }: BlogCardProps) {
     </Link>
   );
 }
-
