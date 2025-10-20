@@ -2,6 +2,8 @@ import { NextResponse } from 'next/server';
 import { kv } from '@vercel/kv';
 import googleTrends from 'google-trends-api';
 
+export const dynamic = 'force-dynamic';
+
 export async function GET() {
   try {
     const trendsDataString = await googleTrends.dailyTrends({ geo: 'ID' });
