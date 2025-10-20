@@ -5,11 +5,9 @@ export async function GET() {
   try {
     const trends = await googleTrends.dailyTrends({ geo: 'ID' });
 
-    // Check if the response is valid JSON
     if (trends.trim().startsWith('<')) {
-      // The response is likely HTML (e.g., a CAPTCHA page)
       console.error('Received HTML instead of JSON from Google Trends');
-      return NextResponse.json({ error: 'Failed to fetch valid JSON from Google Trends' }, { status: 502 }); // 502 Bad Gateway
+      return NextResponse.json({ error: 'Failed to fetch valid JSON from Google Trends' }, { status: 502 });
     }
 
     const parsedTrends = JSON.parse(trends);

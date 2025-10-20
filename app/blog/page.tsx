@@ -1,7 +1,12 @@
 import { getAllPostsMetadata } from 'app/lib/posts';
 import { Metadata } from 'next';
+import dynamic from 'next/dynamic';
 import BlogListClient from './BlogListClient';
-import GoogleTrendsChart from 'app/components/GoogleTrendsChart';
+
+const GoogleTrendsChart = dynamic(() => import('app/components/GoogleTrendsChart'), {
+  ssr: false,
+  loading: () => <p>Loading Trends...</p>,
+});
 
 // Metadata untuk SEO
 export const metadata: Metadata = {
