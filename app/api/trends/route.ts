@@ -2,18 +2,17 @@ import { NextResponse } from 'next/server';
 import googleTrends from 'google-trends-api';
 
 export async function GET() {
-  console.log('API route /api/trends hit');
   try {
-    console.log('Fetching daily trends for Indonesia...');
     const trends = await googleTrends.dailyTrends({ geo: 'ID' });
-    console.log('Successfully fetched trends.');
-    
-    // Log the raw response to understand its structure
-    // console.log('Raw trends data:', trends);
+
+    // Check if the response is valid JSON
+    if (trends.trim().startsWith('<')) {
+      // The response is likely HTML (e.g., a CAPTCHA page)
+      console.error('Received HTML instead of JSON from Google Trends');
+      return NextResponse.json({ error: 'Failed to fetch valid JSON from Google Trends' }, { status: 502 }); // 502 Bad Gateway
+    }
 
     const parsedTrends = JSON.parse(trends);
-    console.log('Successfully parsed trends data.');
-
     return NextResponse.json(parsedTrends);
   } catch (error) {
     console.error('Error in /api/trends:', error);

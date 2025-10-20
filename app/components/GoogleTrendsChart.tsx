@@ -56,7 +56,7 @@ const GoogleTrendsChart = () => {
   }
 
   if (error) {
-    return <div>{error}</div>;
+    return <div>Error loading trends. The data may be temporarily unavailable.</div>;
   }
 
   return (
