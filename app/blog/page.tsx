@@ -1,8 +1,14 @@
 import { getAllPostsMetadata } from 'app/lib/posts';
-import { getGoogleTrends } from 'app/lib/trends';
 import { Metadata } from 'next';
-import BlogListClient from './BlogListClient'; // <- Impor komponen client kita
-import TrendingNews from 'app/components/TrendingNews';
+import dynamicNext from 'next/dynamic';
+import BlogListClient from './BlogListClient';
+
+export const dynamic = 'force-dynamic';
+
+const GoogleTrendsChart = dynamicNext(() => import('app/components/GoogleTrendsChart'), {
+  ssr: false,
+  loading: () => <p>Loading Trends...</p>,
+});
 
 // Metadata untuk SEO
 export const metadata: Metadata = {
@@ -14,7 +20,6 @@ export const metadata: Metadata = {
 export default async function BlogPage() {
   // Ambil semua data di sisi server
   const allPosts = getAllPostsMetadata();
-  const trendingTopics = await getGoogleTrends();
 
   return (
     <main className="min-h-screen" style={{backgroundColor: '#FBF9F6'}}>
@@ -36,7 +41,7 @@ export default async function BlogPage() {
             
             <aside className="lg:col-span-1">
                 <div className="sticky top-24">
-                    <TrendingNews topics={trendingTopics} />
+                    <GoogleTrendsChart />
                 </div>
             </aside>
         </div>

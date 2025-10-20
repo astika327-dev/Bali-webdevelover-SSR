@@ -1,22 +1,19 @@
 import { NextResponse } from 'next/server';
-// Perbaikan: Menggunakan nama fungsi dan tipe yang benar dari file lib/trends.ts
-import { getGoogleTrends, TrendItem } from '@/app/lib/trends'; 
-
-export const dynamic = 'force-dynamic'; // Selalu ambil data terbaru
+import googleTrends from 'google-trends-api';
 
 export async function GET() {
   try {
-    // Perbaikan: Memanggil fungsi getGoogleTrends()
-    const trends: TrendItem[] = await getGoogleTrends();
-    
-    if (trends.length === 0) {
-      return NextResponse.json({ message: 'Tidak ada data tren ditemukan saat ini.' }, { status: 404 });
+    const trends = await googleTrends.dailyTrends({ geo: 'ID' });
+
+    if (trends.trim().startsWith('<')) {
+      console.error('Received HTML instead of JSON from Google Trends');
+      return NextResponse.json({ error: 'Failed to fetch valid JSON from Google Trends' }, { status: 502 });
     }
 
-    return NextResponse.json(trends);
+    const parsedTrends = JSON.parse(trends);
+    return NextResponse.json(parsedTrends);
   } catch (error) {
-    console.error('API Error:', error);
-    return NextResponse.json({ error: 'Gagal mengambil data tren dari server.' }, { status: 500 });
+    console.error('Error in /api/trends:', error);
+    return NextResponse.json({ error: 'Failed to fetch Google Trends data' }, { status: 500 });
   }
 }
-
