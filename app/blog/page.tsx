@@ -3,6 +3,8 @@ import { Metadata } from 'next';
 import dynamic from 'next/dynamic';
 import BlogListClient from './BlogListClient';
 
+export const dynamic = 'force-dynamic';
+
 const GoogleTrendsChart = dynamic(() => import('app/components/GoogleTrendsChart'), {
   ssr: false,
   loading: () => <p>Loading Trends...</p>,
