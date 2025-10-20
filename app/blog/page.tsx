@@ -10,6 +10,7 @@ const GoogleTrendsChart = dynamicNext(() => import('app/components/GoogleTrendsC
   loading: () => <p>Loading Trends...</p>,
 });
 
+// Force Vercel to recognize new changes
 // Metadata untuk SEO
 export const metadata: Metadata = {
   title: 'Blog | Bali Web Develover',
