@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { site } from '../content/config'; // pakai path relatif
 import Link from 'next/link';
 import Navbar from '../components/navbar';
+import { Analytics } from "@vercel/analytics/next"
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://bali-webdevelover.com';
 
@@ -80,6 +81,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 </footer>
 
         </div>
+        <Analytics />
       </body>
     </html>
   );
