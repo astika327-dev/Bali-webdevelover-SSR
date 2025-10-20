@@ -5,6 +5,7 @@ import type { Route } from 'next';
 import { useEffect, useRef, useState } from 'react';
 import { ArrowRight, Send, Sparkles, Loader2 } from 'lucide-react';
 import { certificates, services, site } from '../content/config';
+import { Analytics } from "@vercel/analytics/next"
 
 /* =========================
    AI Widget (inline)
