@@ -32,11 +32,8 @@ export default function BlogCard({ post }: BlogCardProps) {
 
   return (
     <Link 
-      // Menggunakan format objek untuk href agar kompatibel dengan typedRoutes
-      href={{
-        pathname: '/blog/[slug]',
-        query: { slug: post.slug },
-      }}
+      // Perbaikan: Menggunakan string literal untuk href agar URL terbentuk dengan benar
+      href={`/blog/${post.slug}`}
       className="group block overflow-hidden rounded-2xl border bg-white border-gray-200/50 shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1.5"
     >
       <div className="relative h-48 w-full">
