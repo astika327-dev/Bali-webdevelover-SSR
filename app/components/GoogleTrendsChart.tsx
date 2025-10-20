@@ -16,32 +16,31 @@ const GoogleTrendsChart = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('/api/trends');
+        const response = await fetch('/api/get-trends');
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         const trendsData = await response.json();
 
-        const formattedData = trendsData.default.trendingSearchesDays[0].trendingSearches
-          .slice(0, 10)
+        const formattedData = trendsData
           .map((trend: any) => {
-            let traffic = 0;
-            const trafficStr = trend.formattedTraffic;
-            if (trafficStr.endsWith('K+')) {
-              traffic = parseFloat(trafficStr) * 1000;
-            } else if (trafficStr.endsWith('M+')) {
-              traffic = parseFloat(trafficStr) * 1000000;
+            let trafficValue = 0;
+            const trafficStr = trend.traffic || '0';
+            if (trafficStr.includes('K+')) {
+              trafficValue = parseFloat(trafficStr.replace('K+', '')) * 1000;
+            } else if (trafficStr.includes('M+')) {
+              trafficValue = parseFloat(trafficStr.replace('M+', '')) * 1000000;
             }
             return {
-              name: trend.title.query,
-              traffic: traffic,
+              name: trend.name,
+              traffic: trafficValue,
             };
           })
-          .sort((a: TrendData, b: TrendData) => b.traffic - a.traffic);
+          .sort((a: TrendData, b: TrendData) => a.traffic - b.traffic);
 
         setData(formattedData);
       } catch (err: any) {
-        setError(`Failed to load trends: ${err.message}`);
+        setError('Failed to load trends data. It may be updating.');
         console.error(err);
       } finally {
         setLoading(false);
@@ -56,18 +55,18 @@ const GoogleTrendsChart = () => {
   }
 
   if (error) {
-    return <div>Error loading trends. The data may be temporarily unavailable.</div>;
+    return <div style={{ padding: '20px', textAlign: 'center' }}>{error}</div>;
   }
 
   return (
     <div style={{ width: '100%', height: 400 }}>
-      <h3 style={{textAlign: 'center'}}>Daily Google Trends (Indonesia)</h3>
+      <h3 style={{ textAlign: 'center', marginBottom: '20px' }}>Daily Google Trends (ID)</h3>
       <ResponsiveContainer>
         <BarChart
           data={data}
           layout="vertical"
           margin={{
-            top: 20,
+            top: 5,
             right: 30,
             left: 20,
             bottom: 5,
@@ -75,7 +74,7 @@ const GoogleTrendsChart = () => {
         >
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis type="number" />
-          <YAxis dataKey="name" type="category" width={120} />
+          <YAxis dataKey="name" type="category" width={120} tick={{ fontSize: 12 }} />
           <Tooltip />
           <Legend />
           <Bar dataKey="traffic" fill="#8884d8" background={{ fill: '#eee' }} isAnimationActive={true} />
