@@ -1,5 +1,5 @@
 'use client';
-
+import { Analytics } from "@vercel/analytics/next"
 import Link from 'next/link';
 import type { Route } from 'next';
 import { useEffect, useRef, useState } from 'react';
