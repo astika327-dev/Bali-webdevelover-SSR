@@ -1,12 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
-import {
-  GEMINI_REST_URL,
-  MAX_MESSAGES,
-  MAX_PROMPT_LEN,
-  REQUEST_TIMEOUT_MS,
-} from "./config";
 
 export const runtime = "nodejs";
+
+// Konfigurasi
+const MODEL_NAME = "gemini-2.5-flash";
+const GEMINI_REST_URL = `https://generativelanguage.googleapis.com/v1/models/${MODEL_NAME}:generateContent`;
+const MAX_PROMPT_LEN = 2000;
+const MAX_MESSAGES = 12;
+const REQUEST_TIMEOUT_MS = 15000;
 
 // Helper
 const clamp = (value: unknown) => {
