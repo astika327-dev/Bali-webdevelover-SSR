@@ -1,9 +1,9 @@
 import { getAllPostsMetadata } from 'app/lib/posts';
 import { Metadata } from 'next';
 import BlogListClient from './BlogListClient'; // <- Impor komponen client kita
-import dynamicNext from 'next/dynamic';
+import dynamic from 'next/dynamic';
 
-const GoogleTrendsChart = dynamicNext(() => import('app/components/GoogleTrendsChart'), {
+const GoogleTrendsChart = dynamic(() => import('app/components/GoogleTrendsChart'), {
   ssr: false,
   loading: () => <p>Loading Trends...</p>,
 });
