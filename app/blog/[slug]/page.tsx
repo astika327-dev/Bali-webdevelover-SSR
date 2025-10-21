@@ -5,6 +5,10 @@ import { format, isValid } from 'date-fns';
 import { id } from 'date-fns/locale';
 import Image from 'next/image';
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
+
+// Memuat komponen chart secara dinamis di sisi klien
+const GoogleTrendsChart = dynamic(() => import('@/components/GoogleTrendsChart'), { ssr: false });
 
 type Props = {
   params: { slug: string };
@@ -22,8 +26,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
         title: post.frontmatter.title,
         description: post.frontmatter.description,
-        // Pastikan URL gambar adalah URL absolut untuk Open Graph
-        images: [`https://bali-webdevelover.com${post.frontmatter.image}`],
+        // Menggunakan variabel lingkungan untuk base URL
+        images: [`${process.env.NEXT_PUBLIC_BASE_URL}${post.frontmatter.image}`],
     }
   };
 }
@@ -56,33 +60,48 @@ export default async function PostPage({ params }: Props) {
   return (
     <article className="min-h-screen" style={{backgroundColor: '#FBF9F6'}}>
         <div className="container mx-auto px-4 py-12 md:py-20">
-            <div className="max-w-3xl mx-auto">
-                {/* Tombol kembali ke halaman blog utama */}
-                <Link href="/blog" className="text-amber-800 hover:text-amber-900 font-semibold mb-6 inline-block">&larr; Kembali ke semua artikel</Link>
-                
-                {/* Header Artikel */}
-                <header className="mb-8">
-                    <p className="text-amber-800 font-semibold">{post.frontmatter.category}</p>
-                    <h1 className="mt-2 text-3xl md:text-4xl font-extrabold tracking-tight" style={{color: '#5C4033'}}>
-                        {post.frontmatter.title}
-                    </h1>
-                    <p className="mt-4 text-gray-500 text-sm">{formattedDate}</p>
-                </header>
-                
-                {/* Gambar Utama Artikel */}
-                <div className="relative h-64 md:h-96 w-full rounded-2xl overflow-hidden shadow-lg mb-8">
-                    <Image 
-                        src={post.frontmatter.image} 
-                        alt={post.frontmatter.title}
-                        fill
-                        className="object-cover"
-                        priority // Prioritaskan gambar utama untuk LCP
-                    />
-                </div>
+            <div className="max-w-6xl mx-auto">
+                 {/* Tombol kembali ke halaman blog utama */}
+                 <Link href="/blog" className="text-amber-800 hover:text-amber-900 font-semibold mb-8 inline-block">&larr; Kembali ke semua artikel</Link>
 
-                {/* Konten Artikel MDX yang di-render */}
-                <div className="prose prose-lg prose-headings:text-amber-900 prose-a:text-amber-800 prose-strong:text-gray-800 max-w-none">
-                    {post.content}
+                <div className="flex flex-col lg:flex-row lg:space-x-12">
+                    {/* Kolom Utama: Konten Artikel */}
+                    <div className="lg:w-2/3">
+                        {/* Header Artikel */}
+                        <header className="mb-8">
+                            <p className="text-amber-800 font-semibold">{post.frontmatter.category}</p>
+                            <h1 className="mt-2 text-3xl md:text-4xl font-extrabold tracking-tight" style={{color: '#5C4033'}}>
+                                {post.frontmatter.title}
+                            </h1>
+                            <p className="mt-4 text-gray-500 text-sm">{formattedDate}</p>
+                        </header>
+
+                        {/* Gambar Utama Artikel */}
+                        <div className="relative h-64 md:h-96 w-full rounded-2xl overflow-hidden shadow-lg mb-8">
+                            <Image
+                                src={post.frontmatter.image}
+                                alt={post.frontmatter.title}
+                                fill
+                                className="object-cover"
+                                priority // Prioritaskan gambar utama untuk LCP
+                            />
+                        </div>
+
+                        {/* Konten Artikel MDX yang di-render */}
+                        <div className="prose prose-lg prose-headings:text-amber-900 prose-a:text-amber-800 prose-strong:text-gray-800 max-w-none">
+                            {post.content}
+                        </div>
+                    </div>
+
+                    {/* Sidebar: Google Trends */}
+                    <aside className="lg:w-1/3 mt-12 lg:mt-0">
+                        <div className="sticky top-24 p-6 rounded-2xl shadow-lg" style={{backgroundColor: '#FFFDF9'}}>
+                            <h3 className="text-xl font-bold mb-4" style={{color: '#5C4033'}}>Trending di Indonesia</h3>
+                            <div className="h-96">
+                                <GoogleTrendsChart />
+                            </div>
+                        </div>
+                    </aside>
                 </div>
             </div>
         </div>
