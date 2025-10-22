@@ -6,6 +6,7 @@ import { id } from 'date-fns/locale';
 import Image from 'next/image';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
+import CtaBanner from '@/app/components/CtaBanner';
 
 // Memuat komponen chart secara dinamis di sisi klien
 const GoogleTrendsChart = dynamic(() => import('@/components/GoogleTrendsChart'), { ssr: false });
@@ -90,6 +91,11 @@ export default async function PostPage({ params }: Props) {
                         {/* Konten Artikel MDX yang di-render */}
                         <div className="prose prose-lg prose-headings:text-amber-900 prose-a:text-amber-800 prose-strong:text-gray-800 max-w-none">
                             {post.content}
+                        </div>
+
+                        {/* CTA Banner setelah konten artikel */}
+                        <div className="mt-12">
+                            <CtaBanner />
                         </div>
                     </div>
 

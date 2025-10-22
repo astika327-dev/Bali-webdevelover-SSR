@@ -21,10 +21,10 @@ export default async function BlogPage() {
       <div className="container mx-auto px-4 py-12 md:py-20">
         <header className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight" style={{color: '#5C4033'}}>
-            Resource Center
+            Wawasan & Artikel Terbaru
           </h1>
           <p className="mt-4 max-w-2xl mx-auto text-lg text-gray-600">
-            Panduan, tips, dan wawasan terbaru seputar dunia web development dan optimasi digital.
+            Jelajahi panduan, tips, dan artikel mendalam dari kami seputar dunia web development, teknologi, dan strategi digital.
           </p>
         </header>
 

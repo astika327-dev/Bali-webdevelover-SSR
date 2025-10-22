@@ -59,11 +59,17 @@ export default function BlogCard({ post }: BlogCardProps) {
         <p className="mt-2 text-gray-600 line-clamp-2">
           {post.description}
         </p>
-        {formattedDate && (
-          <p className="mt-4 text-xs text-gray-400">
-            {formattedDate}
-          </p>
-        )}
+        {/* Footer Kartu */}
+        <div className="mt-4 pt-4 border-t border-gray-100 flex items-center justify-between">
+          {formattedDate ? (
+            <p className="text-xs text-gray-400">{formattedDate}</p>
+          ) : (
+            <div /> // Placeholder to keep alignment
+          )}
+          <span className="text-sm font-semibold text-amber-800 transition-colors duration-200 group-hover:text-amber-900">
+            Baca Selengkapnya &rarr;
+          </span>
+        </div>
       </div>
     </Link>
   );
