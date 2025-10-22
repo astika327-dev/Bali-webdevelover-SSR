@@ -26,12 +26,12 @@ export default function TrendingNews({ topics }: TrendingNewsProps) {
         </h3>
         <div className="space-y-4">
             {topics.map((topic, index) => (
-                <a 
-                  key={index} 
-                  href={topic.link} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="group block text-sm border-b border-gray-100 pb-2 last:border-b-0"
+                <a
+                  key={index}
+                  href={topic.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group block text-sm"
                 >
                     <p className="font-semibold text-gray-700 group-hover:text-amber-800 transition-colors leading-snug">{topic.title}</p>
                 </a>

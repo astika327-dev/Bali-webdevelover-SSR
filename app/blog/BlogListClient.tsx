@@ -1,45 +1,40 @@
-"use client"; // <-- Ini SANGAT PENTING
+"use client";
 
 import { useState, useMemo } from 'react';
-import type { PostMetadata } from 'app/lib/posts';
-import SearchBar from 'app/components/SearchBar';
-import FilterTabs from 'app/components/FilterTabs';
-import BlogCard from 'app/components/BlogCard';
-import CtaBanner from 'app/components/CtaBanner';
+import type { Post } from '@/app/lib/posts';
+import SearchBar from '@/app/components/SearchBar';
+import FilterTabs from '@/app/components/FilterTabs';
+import BlogCard from '@/app/components/BlogCard';
 
-// Terima 'posts' sebagai prop dari server
 interface BlogListClientProps {
-  posts: PostMetadata[];
+  posts: Post[];
 }
 
 export default function BlogListClient({ posts }: BlogListClientProps) {
   const [searchQuery, setSearchQuery] = useState('');
   const [activeCategory, setActiveCategory] = useState('All');
 
-  // Ambil kategori unik dari semua post
   const categories = useMemo(() => {
-    // new Set() secara otomatis membuang duplikat
-    return [...new Set(posts.map(p => p.category))];
+    const postCategories = posts.map(p => p.frontmatter.category).filter(Boolean);
+    return ['All', ...Array.from(new Set(postCategories))];
   }, [posts]);
 
-  // Filter artikel berdasarkan state search dan filter yang aktif
   const filteredPosts = useMemo(() => {
-  return posts.filter(post => {
-    const matchesCategory = activeCategory === 'All' || post.category === activeCategory;
-    
-    // Gunakan '??' untuk memberikan nilai default string kosong jika title/description tidak ada
-    const titleMatch = (post.title ?? '').toLowerCase().includes(searchQuery.toLowerCase());
-    const descriptionMatch = (post.description ?? '').toLowerCase().includes(searchQuery.toLowerCase());
-    
-    const matchesSearch = titleMatch || descriptionMatch;
-    
-    return matchesCategory && matchesSearch;
-  });
-}, [posts, searchQuery, activeCategory]);
+    return posts.filter(post => {
+      const { frontmatter } = post;
+      const matchesCategory = activeCategory === 'All' || frontmatter.category === activeCategory;
+
+      const titleMatch = (frontmatter.title ?? '').toLowerCase().includes(searchQuery.toLowerCase());
+      const descriptionMatch = (frontmatter.description ?? '').toLowerCase().includes(searchQuery.toLowerCase());
+
+      const matchesSearch = titleMatch || descriptionMatch;
+
+      return matchesCategory && matchesSearch;
+    });
+  }, [posts, searchQuery, activeCategory]);
 
   return (
     <div>
-      {/* Kontrol untuk Search dan Filter */}
       <div className="mb-10 flex flex-col md:flex-row gap-6 items-center justify-between">
           <SearchBar onSearch={setSearchQuery} />
           <FilterTabs 
@@ -49,11 +44,13 @@ export default function BlogListClient({ posts }: BlogListClientProps) {
           />
       </div>
 
-      {/* Grid untuk menampilkan semua kartu artikel */}
       {filteredPosts.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredPosts.map((post) => (
-            <BlogCard key={post.slug} post={post} />
+            <BlogCard
+                key={post.slug}
+                post={post}
+            />
           ))}
         </div>
       ) : (
@@ -61,11 +58,6 @@ export default function BlogListClient({ posts }: BlogListClientProps) {
           <p>Tidak ada artikel yang cocok dengan pencarian Anda.</p>
         </div>
       )}
-
-      {/* Menambahkan CTA Banner di bagian bawah */}
-      <div className="mt-20">
-        <CtaBanner />
-      </div>
     </div>
   );
 }

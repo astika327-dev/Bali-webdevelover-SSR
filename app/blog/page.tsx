@@ -1,47 +1,54 @@
-import { getAllPostsMetadata } from 'app/lib/posts';
-import { getTrendingNews } from 'app/lib/trends';
-import { Metadata } from 'next';
-import BlogListClient from './BlogListClient'; // <- Impor komponen client kita
-import TrendingNews from 'app/components/TrendingNews';
+import { getAllPosts } from "@/app/lib/posts";
+import BlogListClient from "./BlogListClient";
+import CtaBanner from "@/app/components/CtaBanner";
+import Balancer from "react-wrap-balancer";
+import { compareDesc } from 'date-fns';
+import { Metadata } from "next";
 
-// Metadata untuk SEO
 export const metadata: Metadata = {
-  title: 'Blog | Bali Web Develover',
-  description: 'Artikel, panduan, dan wawasan terbaru seputar web development, SEO, dan optimasi performa.',
+  title: "Blog | Wawasan & Artikel Terbaru",
+  description: "Jelajahi analisis mendalam, tren teknologi, dan strategi startup dari tim kami di blog Samsul.dev.",
+  openGraph: {
+    title: "Blog | Wawasan & Artikel Terbaru",
+    description: "Jelajahi analisis mendalam, tren teknologi, dan strategi startup dari tim kami di blog Samsul.dev.",
+    url: "/blog",
+    images: [
+      {
+        url: "/images/og-image-blog.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Blog Samsul.dev",
+      },
+    ],
+  },
 };
 
-// Ini adalah Server Component, tugasnya hanya mengambil data
 export default async function BlogPage() {
-  // Ambil semua data di sisi server
-  const allPosts = getAllPostsMetadata();
-  const trendingTopics = await getTrendingNews();
+  const allPosts = await getAllPosts();
+  const posts = allPosts
+    .filter((post): post is NonNullable<typeof post> => post !== null)
+    .sort((a, b) =>
+      compareDesc(new Date(a.frontmatter.date), new Date(b.frontmatter.date))
+    );
 
   return (
-    <main className="min-h-screen" style={{backgroundColor: '#FBF9F6'}}>
-      <div className="container mx-auto px-4 py-12 md:py-20">
-        <header className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight" style={{color: '#5C4033'}}>
-            Wawasan & Artikel Terbaru
-          </h1>
-          <p className="mt-4 max-w-2xl mx-auto text-lg text-gray-600">
-            Jelajahi panduan, tips, dan artikel mendalam dari kami seputar dunia web development, teknologi, dan strategi digital.
-          </p>
-        </header>
-
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-12">
-            <div className="lg:col-span-3">
-                {/* Serahkan data 'allPosts' ke komponen client */}
-                <BlogListClient posts={allPosts} />
-            </div>
-            
-            <aside className="lg:col-span-1">
-                <div className="sticky top-24">
-                    <TrendingNews topics={trendingTopics} />
-                </div>
-            </aside>
+    <div className="py-8">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-12">
+            <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
+                <Balancer>Wawasan & Artikel Terbaru</Balancer>
+            </h1>
+            <p className="mt-6 text-lg leading-8 text-gray-600">
+                <Balancer>
+                    Jelajahi pemikiran kami tentang teknologi, desain, dan transformasi digital.
+                </Balancer>
+            </p>
         </div>
+
+        <BlogListClient posts={posts} />
+
+        <CtaBanner />
       </div>
-    </main>
+    </div>
   );
 }
-

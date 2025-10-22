@@ -1,115 +1,95 @@
-import { getAllPostsMetadata, getPostBySlug } from '@/app/lib/posts';
-import { Metadata } from 'next';
-import { notFound } from 'next/navigation';
-import { format, isValid } from 'date-fns';
-import { id } from 'date-fns/locale';
-import Image from 'next/image';
-import Link from 'next/link';
-import CtaBanner from '@/app/components/CtaBanner';
-import { getTrendingNews } from '@/app/lib/trends';
-import TrendingNews from '@/app/components/TrendingNews';
+import { getAllPosts, getPostBySlug } from "@/app/lib/posts";
+import { notFound } from "next/navigation";
+import Image from "next/image";
+import { MDXRemote } from "next-mdx-remote/rsc";
+import CtaBanner from "@/app/components/CtaBanner";
+import Balancer from "react-wrap-balancer";
+import type { Metadata } from "next";
 
-type Props = {
-  params: { slug: string };
-};
-
-// Fungsi untuk generate metadata SEO dinamis untuk setiap halaman artikel
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
   const post = await getPostBySlug(params.slug);
   if (!post) {
-    return { title: 'Artikel Tidak Ditemukan' };
+    return {
+      title: "Artikel Tidak Ditemukan",
+    };
   }
   return {
-    title: `${post.frontmatter.title} | Bali Web Develover`,
+    title: post.frontmatter.title,
     description: post.frontmatter.description,
     openGraph: {
-        title: post.frontmatter.title,
-        description: post.frontmatter.description,
-        // Menggunakan variabel lingkungan untuk base URL
-        images: [`${process.env.NEXT_PUBLIC_BASE_URL}${post.frontmatter.image}`],
-    }
+      title: post.frontmatter.title,
+      description: post.frontmatter.description,
+      images: [
+        {
+          url: post.frontmatter.image || "/images/blog/default-image.jpg",
+          width: 1200,
+          height: 630,
+          alt: post.frontmatter.title,
+        },
+      ],
+    },
   };
 }
 
-// Fungsi ini memberitahu Next.js halaman mana saja yang harus dibuat saat build
+
 export async function generateStaticParams() {
-  const posts = getAllPostsMetadata();
-  return posts.map((post) => ({
-    slug: post.slug,
-  }));
+  const posts = await getAllPosts();
+  return posts
+    .filter((post): post is NonNullable<typeof post> => post !== null)
+    .map((post) => ({
+      slug: post.slug,
+    }));
 }
 
-export default async function PostPage({ params }: Props) {
+export default async function Page({ params }: { params: { slug: string } }) {
   const post = await getPostBySlug(params.slug);
 
-  // Jika getPostBySlug mengembalikan null, panggil notFound() untuk menampilkan halaman 404
   if (!post) {
     notFound();
   }
 
-  // Ambil data berita terbaru
-  const trendingTopics = await getTrendingNews();
-
-  // Format tanggal dengan aman
-  let formattedDate = '';
-  if (post.frontmatter.date) {
-    const dateObj = new Date(post.frontmatter.date);
-    if(isValid(dateObj)){
-        formattedDate = format(dateObj, 'EEEE, d MMMM yyyy', { locale: id });
-    }
-  }
+  const { title, author, date, category, image, readingTime } = post.frontmatter;
 
   return (
-    <article className="min-h-screen" style={{backgroundColor: '#FBF9F6'}}>
-        <div className="container mx-auto px-4 py-12 md:py-20">
-            <div className="max-w-6xl mx-auto">
-                 {/* Tombol kembali ke halaman blog utama */}
-                 <Link href="/blog" className="text-amber-800 hover:text-amber-900 font-semibold mb-8 inline-block">&larr; Kembali ke semua artikel</Link>
-
-                <div className="flex flex-col lg:flex-row lg:space-x-12">
-                    {/* Kolom Utama: Konten Artikel */}
-                    <div className="lg:w-2/3">
-                        {/* Header Artikel */}
-                        <header className="mb-8">
-                            <p className="text-amber-800 font-semibold">{post.frontmatter.category}</p>
-                            <h1 className="mt-2 text-3xl md:text-4xl font-extrabold tracking-tight" style={{color: '#5C4033'}}>
-                                {post.frontmatter.title}
-                            </h1>
-                            <p className="mt-4 text-gray-500 text-sm">{formattedDate}</p>
-                        </header>
-
-                        {/* Gambar Utama Artikel */}
-                        <div className="relative h-64 md:h-96 w-full rounded-2xl overflow-hidden shadow-lg mb-8">
-                            <Image
-                                src={post.frontmatter.image}
-                                alt={post.frontmatter.title}
-                                fill
-                                className="object-cover"
-                                priority // Prioritaskan gambar utama untuk LCP
-                            />
-                        </div>
-
-                        {/* Konten Artikel MDX yang di-render */}
-                        <div className="prose prose-lg prose-headings:text-amber-900 prose-a:text-amber-800 prose-strong:text-gray-800 max-w-none">
-                            {post.content}
-                        </div>
-
-                        {/* CTA Banner setelah konten artikel */}
-                        <div className="mt-12">
-                            <CtaBanner />
-                        </div>
-                    </div>
-
-                    {/* Sidebar: Berita Terbaru */}
-                    <aside className="lg:w-1/3 mt-12 lg:mt-0">
-                        <div className="sticky top-24">
-                           <TrendingNews topics={trendingTopics} />
-                        </div>
-                    </aside>
-                </div>
+    <div className="bg-white dark:bg-gray-900">
+      <div className="container mx-auto px-4 py-8 lg:py-16">
+        <article className="prose prose-lg dark:prose-invert mx-auto max-w-4xl">
+          <header className="mb-8 not-prose">
+            <span className="mb-4 inline-block rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-800 dark:bg-purple-900 dark:text-purple-300">
+              {category}
+            </span>
+            <h1 className="text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white lg:text-5xl">
+              <Balancer>{title}</Balancer>
+            </h1>
+            <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 text-gray-500 dark:text-gray-400">
+              <span>Oleh {author}</span>
+              <span className="hidden sm:inline">•</span>
+              <time dateTime={date}>{date}</time>
+              <span className="hidden sm:inline">•</span>
+              <span>{readingTime} menit baca</span>
             </div>
+          </header>
+
+          {image && (
+            <div className="my-8 rounded-lg overflow-hidden not-prose">
+              <Image
+                src={image}
+                alt={`Gambar untuk artikel ${title}`}
+                width={1200}
+                height={630}
+                className="w-full object-cover"
+                priority
+              />
+            </div>
+          )}
+
+          <MDXRemote source={post.rawContent} />
+
+        </article>
+        <div className="max-w-4xl mx-auto mt-12">
+            <CtaBanner />
         </div>
-    </article>
+      </div>
+    </div>
   );
 }
-

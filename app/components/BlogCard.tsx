@@ -1,77 +1,71 @@
-"use client";
-
-import Link from 'next/link';
-import Image from 'next/image';
-import { format, isValid } from 'date-fns';
-import { id } from 'date-fns/locale';
-
-// Definisi tipe data lokal untuk memutus hubungan ke file server
-export type PostMetadata = {
-  slug: string;
-  title: string;
-  description: string;
-  date: string;
-  category: string;
-  featured: boolean;
-  image: string;
-  readingTime: number;
-};
+import Link from "next/link";
+import Image from "next/image";
+import { Post } from "@/lib/posts";
 
 interface BlogCardProps {
-  post: PostMetadata;
+  post: Post;
 }
 
-export default function BlogCard({ post }: BlogCardProps) {
-  let formattedDate = '';
-  if (post.date) {
-    const dateObj = new Date(post.date);
-    if (isValid(dateObj)) {
-      formattedDate = format(dateObj, 'd MMMM yyyy', { locale: id });
-    }
-  }
+const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
+  const { title, date, category, image, readingTime, description } =
+    post.frontmatter;
 
   return (
-    <Link 
-      // Perbaikan: Menggunakan string literal untuk href agar URL terbentuk dengan benar
-      href={`/blog/${post.slug}`}
-      className="group block overflow-hidden rounded-2xl border bg-white border-gray-200/50 shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1.5"
-    >
-      <div className="relative h-48 w-full">
-        <Image
-          src={post.image}
-          alt={`Gambar thumbnail untuk ${post.title}`}
-          fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          className="object-cover transition-transform duration-300 group-hover:scale-105"
-          onError={(e) => { e.currentTarget.src = 'https://placehold.co/600x400/D2B48C/5C4033?text=Gambar'; }}
-        />
-      </div>
-      <div className="p-5">
-        <div className="flex items-center justify-between text-sm text-gray-500">
-          <span className="inline-block rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wider" style={{backgroundColor: '#F5F5DC', color: '#5C4033'}}>
-            {post.category}
-          </span>
-          <span>{post.readingTime} min baca</span>
+    <article className="group flex flex-col overflow-hidden rounded-lg border border-gray-200 shadow-md transition-shadow duration-300 hover:shadow-xl dark:border-gray-700 dark:bg-gray-800">
+      {image && (
+        <Link href={`/blog/${post.slug}`} className="block shrink-0">
+          <Image
+            src={image}
+            alt={`Gambar thumbnail untuk ${title}`}
+            width={400}
+            height={200}
+            className="h-48 w-full object-cover transition-transform duration-500 group-hover:scale-105"
+          />
+        </Link>
+      )}
+      <div className="flex flex-1 flex-col justify-between bg-white p-6 dark:bg-gray-800">
+        <div className="flex-1">
+          <div className="mb-2 flex items-center justify-between text-sm text-gray-500 dark:text-gray-400">
+            <span className="whitespace-nowrap rounded-full bg-purple-100 px-2.5 py-0.5 text-xs font-medium text-purple-600 dark:bg-purple-900 dark:text-purple-300">
+              {category}
+            </span>
+            <time dateTime={date}>{date}</time>
+          </div>
+          <Link href={`/blog/${post.slug}`} className="mt-2 block">
+            <h3 className="text-xl font-bold text-gray-900 transition-colors duration-300 group-hover:text-indigo-600 dark:text-white dark:group-hover:text-indigo-400">
+              {title}
+            </h3>
+          </Link>
+          <p className="mt-3 text-base text-gray-500 dark:text-gray-400">
+            {description}
+          </p>
         </div>
-        <h3 className="mt-4 text-xl font-bold text-gray-800 transition-colors duration-200 group-hover:text-amber-900" style={{color: '#8B4513'}}>
-          {post.title}
-        </h3>
-        <p className="mt-2 text-gray-600 line-clamp-2">
-          {post.description}
-        </p>
-        {/* Footer Kartu */}
-        <div className="mt-4 pt-4 border-t border-gray-100 flex items-center justify-between">
-          {formattedDate ? (
-            <p className="text-xs text-gray-400">{formattedDate}</p>
-          ) : (
-            <div /> // Placeholder to keep alignment
-          )}
-          <span className="text-sm font-semibold text-amber-800 transition-colors duration-200 group-hover:text-amber-900">
-            Baca Selengkapnya &rarr;
-          </span>
+        <div className="mt-6 flex items-center justify-between">
+          <div className="text-sm text-gray-500 dark:text-gray-400">
+            {readingTime} menit baca
+          </div>
+          <Link
+            href={`/blog/${post.slug}`}
+            className="inline-flex items-center font-medium text-indigo-600 transition-colors duration-300 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300"
+          >
+            Baca Selengkapnya
+            <svg
+              className="ml-2 h-4 w-4"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fillRule="evenodd"
+                d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                clipRule="evenodd"
+              ></path>
+            </svg>
+          </Link>
         </div>
       </div>
-    </Link>
+    </article>
   );
-}
+};
 
+export default BlogCard;
