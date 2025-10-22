@@ -63,8 +63,31 @@ export async function getAllPosts(): Promise<Post[]> {
     })
   );
 
-  // Filter out null posts and unpublished posts, and assert the type
-  return posts.filter((post): post is Post =>
-    post !== null && post.frontmatter.published !== false
-  );
+  // Filter out null posts and unpublished posts, sort by date, and assert the type
+  return posts
+    .filter((post): post is Post =>
+      post !== null && post.frontmatter.published !== false
+    )
+    .sort((a, b) => new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime());
+}
+
+export async function getAdjacentPosts(slug: string): Promise<{ prevPost: { slug: string, title: string } | null, nextPost: { slug: string, title: string } | null }> {
+  const allPosts = await getAllPosts();
+  const currentPostIndex = allPosts.findIndex(post => post.slug === slug);
+
+  if (currentPostIndex === -1) {
+    return { prevPost: null, nextPost: null };
+  }
+
+  const prevPost = currentPostIndex > 0 ? {
+    slug: allPosts[currentPostIndex - 1].slug,
+    title: allPosts[currentPostIndex - 1].frontmatter.title,
+  } : null;
+
+  const nextPost = currentPostIndex < allPosts.length - 1 ? {
+    slug: allPosts[currentPostIndex + 1].slug,
+    title: allPosts[currentPostIndex + 1].frontmatter.title,
+  } : null;
+
+  return { prevPost, nextPost };
 }
