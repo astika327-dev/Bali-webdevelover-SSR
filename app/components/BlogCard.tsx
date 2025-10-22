@@ -1,68 +1,88 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Post } from "@/app/lib/posts";
+import { formatDate } from "@/app/lib/utils";
 
 interface BlogCardProps {
   post: Post;
+  isFeatured?: boolean;
 }
 
-const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
-  const { title, date, category, image, description } =
-    post.frontmatter;
+const BlogCard: React.FC<BlogCardProps> = ({ post, isFeatured = false }) => {
+  const { title, date, category, image, description } = post.frontmatter;
   const { readingTime } = post;
 
-  return (
-    <article className="group flex flex-col overflow-hidden rounded-lg border border-gray-200 shadow-md transition-shadow duration-300 hover:shadow-xl dark:border-gray-700 dark:bg-gray-800">
-      {image && (
-        <Link href={`/blog/${post.slug}`} className="block shrink-0">
-          <Image
-            src={image}
-            alt={`Gambar thumbnail untuk ${title}`}
-            width={400}
-            height={200}
-            className="h-48 w-full object-cover transition-transform duration-500 group-hover:scale-105"
-          />
-        </Link>
-      )}
-      <div className="flex flex-1 flex-col justify-between bg-white p-6 dark:bg-gray-800">
-        <div className="flex-1">
-          <div className="mb-2 flex items-center justify-between text-sm text-gray-500 dark:text-gray-400">
-            <span className="whitespace-nowrap rounded-full bg-purple-100 px-2.5 py-0.5 text-xs font-medium text-purple-600 dark:bg-purple-900 dark:text-purple-300">
-              {category}
-            </span>
-            <time dateTime={date}>{date}</time>
+  if (isFeatured) {
+    return (
+      <article className="group relative w-full transition-shadow duration-300 hover:shadow-xl rounded-lg">
+        <Link href={`/blog/${post.slug}`} className="block">
+          <div className="md:grid md:grid-cols-2 md:gap-8 items-center bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
+            {image && (
+              <div className="relative h-64 md:h-full">
+                <Image
+                  src={image}
+                  alt={`Gambar untuk ${title}`}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+              </div>
+            )}
+            <div className="p-8">
+              <div className="mb-3 text-xs uppercase text-purple-600 dark:text-purple-400 font-semibold tracking-wider">
+                {category}
+              </div>
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4 leading-tight group-hover:text-purple-700 dark:group-hover:text-purple-400 transition-colors">
+                {title}
+              </h2>
+              <p className="text-gray-600 dark:text-gray-400 mb-4 line-clamp-3">
+                {description}
+              </p>
+              <div className="text-sm text-gray-500 dark:text-gray-500">
+                <span>{formatDate(date)}</span>
+                <span className="mx-2">&bull;</span>
+                <span>{readingTime} menit baca</span>
+              </div>
+            </div>
           </div>
-          <Link href={`/blog/${post.slug}`} className="mt-2 block">
-            <h3 className="text-xl font-bold text-gray-900 transition-colors duration-300 group-hover:text-indigo-600 dark:text-white dark:group-hover:text-indigo-400">
+        </Link>
+      </article>
+    );
+  }
+
+  return (
+    <article className="group relative flex flex-col overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm transition-all duration-300 hover:shadow-lg dark:border-gray-700 dark:bg-gray-800">
+       <Link href={`/blog/${post.slug}`} className="block">
+        {image && (
+            <div className="relative h-48 w-full overflow-hidden">
+            <Image
+                src={image}
+                alt={`Gambar thumbnail untuk ${title}`}
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+            </div>
+        )}
+      </Link>
+      <div className="flex flex-1 flex-col justify-between p-6">
+        <div>
+          <div className="mb-2 text-xs font-semibold uppercase tracking-wider text-purple-600 dark:text-purple-400">
+            {category}
+          </div>
+          <Link href={`/blog/${post.slug}`} className="mt-1 block">
+            <h3 className="text-xl font-bold text-gray-900 transition-colors duration-300 group-hover:text-purple-700 dark:text-white dark:group-hover:text-purple-400">
               {title}
             </h3>
           </Link>
-          <p className="mt-3 text-base text-gray-500 dark:text-gray-400">
+          <p className="mt-3 text-sm text-gray-600 dark:text-gray-400 line-clamp-3">
             {description}
           </p>
         </div>
-        <div className="mt-6 flex items-center justify-between">
-          <div className="text-sm text-gray-500 dark:text-gray-400">
-            {readingTime} menit baca
-          </div>
-          <Link
-            href={`/blog/${post.slug}`}
-            className="inline-flex items-center font-medium text-indigo-600 transition-colors duration-300 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300"
-          >
-            Baca Selengkapnya
-            <svg
-              className="ml-2 h-4 w-4"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fillRule="evenodd"
-                d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                clipRule="evenodd"
-              ></path>
-            </svg>
-          </Link>
+        <div className="mt-4 text-xs text-gray-500 dark:text-gray-500">
+            <span>{formatDate(date)}</span>
+            <span className="mx-2">&bull;</span>
+            <span>{readingTime} menit baca</span>
         </div>
       </div>
     </article>

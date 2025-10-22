@@ -1,10 +1,12 @@
-import { getAllPosts, getPostBySlug, getAdjacentPosts } from "@/app/lib/posts";
+import { getAllPosts, getPostBySlug, getAdjacentPosts, getRelatedPosts } from "@/app/lib/posts";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import CtaBanner from "@/app/components/CtaBanner";
 import Balancer from "react-wrap-balancer";
 import type { Metadata } from "next";
 import PostNavigation from "@/app/components/PostNavigation";
+import { formatDate } from "@/app/lib/utils";
+import RelatedPosts from "@/app/components/RelatedPosts"; // Import RelatedPosts
 
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
   const post = await getPostBySlug(params.slug);
@@ -49,49 +51,55 @@ export default async function Page({ params }: { params: { slug: string } }) {
   }
 
   const { prevPost, nextPost } = await getAdjacentPosts(params.slug);
-
   const { title, author, date, category, image } = post.frontmatter;
   const { readingTime } = post;
 
-  return (
-    <div className="container mx-auto px-4 py-8 lg:py-16">
-      <article className="prose prose-lg mx-auto max-w-4xl rounded-lg bg-white p-6 text-[#4A3A2C] shadow-md dark:bg-slate-50 dark:text-zinc-800">
-        <header className="mb-8 not-prose">
-            <span className="mb-4 inline-block rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-800 dark:bg-purple-900 dark:text-purple-300">
-              {category}
-            </span>
-            <h1 className="text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white lg:text-5xl">
-              <Balancer>{title}</Balancer>
-            </h1>
-            <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 text-gray-500 dark:text-gray-400">
-              <span>Oleh {author}</span>
-              <span className="hidden sm:inline">•</span>
-              <time dateTime={date}>{date}</time>
-              <span className="hidden sm:inline">•</span>
-              <span>{readingTime} menit baca</span>
-            </div>
-          </header>
+  // Fetch related posts
+  const relatedPosts = await getRelatedPosts(category, params.slug);
 
-          {image && (
-            <div className="my-8 rounded-lg overflow-hidden not-prose">
-              <Image
+  return (
+    <div>
+      {/* Header */}
+      <div className="relative bg-gray-900 py-24 sm:py-32">
+        {image && (
+            <Image
                 src={image}
                 alt={`Gambar untuk artikel ${title}`}
-                width={1200}
-                height={630}
-                className="w-full object-cover"
+                fill
+                className="absolute inset-0 h-full w-full object-cover opacity-30"
                 priority
-              />
+            />
+        )}
+        <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
+            <div className="mx-auto max-w-4xl text-center">
+                <div className="text-base font-semibold uppercase tracking-wider text-purple-400">
+                    {category}
+                </div>
+                <h1 className="mt-4 text-4xl font-bold tracking-tight text-white sm:text-6xl">
+                    <Balancer>{title}</Balancer>
+                </h1>
+                <div className="mt-6 flex justify-center items-center gap-x-4 text-gray-300">
+                    <span>Oleh {author}</span>
+                    <span className="opacity-50">•</span>
+                    <time dateTime={date}>{formatDate(date)}</time>
+                    <span className="opacity-50">•</span>
+                    <span>{readingTime} menit baca</span>
+                </div>
             </div>
-          )}
+        </div>
+      </div>
 
-          {post.content}
-
+      {/* Content */}
+      <div className="container mx-auto px-4 py-16">
+        <article className="prose prose-lg mx-auto max-w-4xl">
+            {post.content}
         </article>
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-4xl mx-auto mt-16">
             <PostNavigation prevPost={prevPost} nextPost={nextPost} />
+            <RelatedPosts posts={relatedPosts} />
             <CtaBanner />
         </div>
+      </div>
     </div>
   );
 }
