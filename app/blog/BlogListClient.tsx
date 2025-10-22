@@ -5,6 +5,7 @@ import type { PostMetadata } from 'app/lib/posts';
 import SearchBar from 'app/components/SearchBar';
 import FilterTabs from 'app/components/FilterTabs';
 import BlogCard from 'app/components/BlogCard';
+import CtaBanner from 'app/components/CtaBanner';
 
 // Terima 'posts' sebagai prop dari server
 interface BlogListClientProps {
@@ -60,6 +61,11 @@ export default function BlogListClient({ posts }: BlogListClientProps) {
           <p>Tidak ada artikel yang cocok dengan pencarian Anda.</p>
         </div>
       )}
+
+      {/* Menambahkan CTA Banner di bagian bawah */}
+      <div className="mt-20">
+        <CtaBanner />
+      </div>
     </div>
   );
 }
