@@ -174,7 +174,7 @@ export default function ContactPage() {
           <div className="flex items-center gap-4 pt-2">
             <button
               type="submit"
-              className="inline-flex items-center justify-center rounded-full bg-black text-white px-6 py-2.5 font-medium disabled:cursor-not-allowed disabled:bg-neutral-400 transition-colors"
+              className="inline-flex items-center justify-center rounded-full bg-amber-100 text-amber-900 px-6 py-2.5 font-medium hover:bg-amber-200 disabled:cursor-not-allowed disabled:bg-neutral-200 disabled:text-neutral-500 transition-colors"
               disabled={status.type === "loading"}
             >
               {status.type === "loading" ? (
