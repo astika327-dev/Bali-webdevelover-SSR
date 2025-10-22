@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     url: "/blog",
     images: [
       {
-        url: "/app/ogimg.png",
+        url: "/ogimg.png",
         width: 1200,
         height: 630,
         alt: `Blog ${site.company}`,

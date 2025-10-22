@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: '/app/ogimg.png',
+        url: '/ogimg.png',
         width: 1200,
         height: 630,
         alt: 'Preview — Bali WebDevelover',
@@ -34,10 +34,10 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: `${site.company} — ${site.tagline}`,
     description: site.blurb,
-    images: ['/app/ogimg.png'],
+    images: ['/ogimg.png'],
   },
   icons: {
-    icon: '/app/favicon.png',
+    icon: '/favicon.png',
     apple: '/apple-touch-icon.png',
   },
   robots: {
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className="bg-[var(--creme)]">
+      <body className="bg-[var(--cream)]">
         <div className="min-h-screen flex flex-col gradient">
           <Navbar />
           <main className="flex-1">{children}</main>

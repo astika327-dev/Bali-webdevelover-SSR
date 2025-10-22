@@ -24,7 +24,7 @@ export default function Navbar() {
       <div className="container flex items-center justify-between py-3">
         <Link href="/" className="flex items-center gap-2 font-semibold tracking-tight">
           <Image
-            src="/icon.png"         // atau /logo.svg
+            src="/icon.png"
             alt={`${site.company} logo`}
             width={28}
             height={28}
@@ -79,7 +79,7 @@ export default function Navbar() {
             <Link
               href={'/contact' as Route}
               onClick={() => setOpen(false)}
-              className="px-3 py-2 rounded-full bg-black text-white text-center"
+              className="px-4 py-2 rounded-full bg-[var(--brown)] text-[var(--cream)] text-center hover:bg-opacity-90 transition"
             >
               Start a Project
             </Link>
