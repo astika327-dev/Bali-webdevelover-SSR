@@ -1,14 +1,15 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Post } from "@/lib/posts";
+import { Post } from "@/app/lib/posts";
 
 interface BlogCardProps {
   post: Post;
 }
 
 const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
-  const { title, date, category, image, readingTime, description } =
+  const { title, date, category, image, description } =
     post.frontmatter;
+  const { readingTime } = post;
 
   return (
     <article className="group flex flex-col overflow-hidden rounded-lg border border-gray-200 shadow-md transition-shadow duration-300 hover:shadow-xl dark:border-gray-700 dark:bg-gray-800">

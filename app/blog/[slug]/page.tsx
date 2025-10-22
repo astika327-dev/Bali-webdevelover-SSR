@@ -48,7 +48,8 @@ export default async function Page({ params }: { params: { slug: string } }) {
     notFound();
   }
 
-  const { title, author, date, category, image, readingTime } = post.frontmatter;
+  const { title, author, date, category, image } = post.frontmatter;
+  const { readingTime } = post;
 
   return (
     <div className="bg-white dark:bg-gray-900">
@@ -83,7 +84,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
             </div>
           )}
 
-          <MDXRemote source={post.rawContent} />
+          {post.content}
 
         </article>
         <div className="max-w-4xl mx-auto mt-12">

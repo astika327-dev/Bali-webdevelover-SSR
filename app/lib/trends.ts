@@ -13,8 +13,8 @@ export async function getTrendingNews(): Promise<NewsItem[]> {
   const parser = new Parser();
 
   try {
-    console.log(`[DIAGNOSTIK] Mencoba mengambil data dari: ${TRENDS_URL}`);
-    const feed = await parser.parseURL(TRENDS_URL);
+    console.log(`[DIAGNOSTIK] Mencoba mengambil data dari: ${CNN_TECH_RSS}`);
+    const feed = await parser.parseURL(CNN_TECH_RSS);
     console.log('[DIAGNOSTIK] Berhasil mendapatkan data!');
 
     return feed.items.slice(0, 5).map(item => ({
