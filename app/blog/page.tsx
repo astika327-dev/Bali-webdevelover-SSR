@@ -1,47 +1,58 @@
-import { getAllPostsMetadata } from 'app/lib/posts';
-import { getGoogleTrends } from 'app/lib/trends';
-import { Metadata } from 'next';
-import BlogListClient from './BlogListClient'; // <- Impor komponen client kita
-import TrendingNews from 'app/components/TrendingNews';
+import { getAllPosts } from "@/app/lib/posts";
+import BlogListClient from "./BlogListClient";
+import CtaBanner from "@/app/components/CtaBanner";
+import Balancer from "react-wrap-balancer";
+import { compareDesc } from 'date-fns';
+import { Metadata } from "next";
+import { site } from "@/content/config";
 
-// Metadata untuk SEO
 export const metadata: Metadata = {
-  title: 'Blog | Bali Web Develover',
-  description: 'Artikel, panduan, dan wawasan terbaru seputar web development, SEO, dan optimasi performa.',
+  title: `Blog | ${site.company}`,
+  description: `Jelajahi analisis mendalam, tren teknologi, dan wawasan dari tim ${site.company}.`,
+  openGraph: {
+    title: `Blog | ${site.company}`,
+    description: `Jelajahi analisis mendalam, tren teknologi, dan wawasan dari tim ${site.company}.`,
+    url: "/blog",
+    images: [
+      {
+        url: "/app/ogimg.png",
+        width: 1200,
+        height: 630,
+        alt: `Blog ${site.company}`,
+      },
+    ],
+  },
 };
 
-// Ini adalah Server Component, tugasnya hanya mengambil data
 export default async function BlogPage() {
-  // Ambil semua data di sisi server
-  const allPosts = getAllPostsMetadata();
-  const trendingTopics = await getGoogleTrends();
+  const allPosts = await getAllPosts();
+  const posts = allPosts
+    .filter((post): post is NonNullable<typeof post> => post !== null)
+    .sort((a, b) =>
+      compareDesc(new Date(a.frontmatter.date), new Date(b.frontmatter.date))
+    );
 
   return (
-    <main className="min-h-screen" style={{backgroundColor: '#FBF9F6'}}>
-      <div className="container mx-auto px-4 py-12 md:py-20">
-        <header className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight" style={{color: '#5C4033'}}>
-            Resource Center
-          </h1>
-          <p className="mt-4 max-w-2xl mx-auto text-lg text-gray-600">
-            Panduan, tips, dan wawasan terbaru seputar dunia web development dan optimasi digital.
-          </p>
-        </header>
-
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-12">
-            <div className="lg:col-span-3">
-                {/* Serahkan data 'allPosts' ke komponen client */}
-                <BlogListClient posts={allPosts} />
-            </div>
-            
-            <aside className="lg:col-span-1">
-                <div className="sticky top-24">
-                    <TrendingNews topics={trendingTopics} />
-                </div>
-            </aside>
+    <div>
+      <div className="py-24 sm:py-32 bg-[var(--cream)]">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="mx-auto max-w-2xl text-center">
+            <h1 className="text-4xl font-bold tracking-tight text-[var(--brown)] sm:text-6xl">
+              <Balancer>Wawasan & Artikel Terbaru</Balancer>
+            </h1>
+            <p className="mt-6 text-lg leading-8 text-[var(--brown)]/80">
+              <Balancer>
+                Jelajahi analisis mendalam, tren teknologi, dan strategi startup dari tim kami.
+              </Balancer>
+            </p>
+          </div>
         </div>
       </div>
-    </main>
+
+      <div className="container mx-auto px-4 py-16">
+        <BlogListClient posts={posts} />
+        <CtaBanner />
+      </div>
+    </div>
   );
 }
-

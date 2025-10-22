@@ -49,7 +49,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body>
+      <body className="bg-[var(--creme)]">
         <div className="min-h-screen flex flex-col gradient">
           <Navbar />
           <main className="flex-1">{children}</main>
@@ -65,6 +65,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <Link href="/services">Services</Link>
       <Link href="/portfolio">Portfolio</Link>
       <Link href="/about">About</Link>
+      <Link href="/blog">Blog</Link>
+      <Link href="/contact">Contact</Link>
       <Link href="/privacy">Privacy</Link>
       <Link href="/terms">Terms</Link>
     </div>

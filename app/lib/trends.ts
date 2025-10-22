@@ -1,37 +1,37 @@
+
 import Parser from 'rss-parser';
 
-// PERBAIKAN: Menggunakan domain .com yang baru
-const TRENDS_URL = 'https://trends.google.com/trends/trendingsearches/daily/rss?geo=ID';
+const CNN_TECH_RSS = 'https://www.cnnindonesia.com/teknologi/rss';
 
-export interface TrendItem {
+export interface NewsItem {
   title: string;
   link: string;
-  source: string;
+  isoDate?: string;
 }
 
-export async function getGoogleTrends(): Promise<TrendItem[]> {
+export async function getTrendingNews(): Promise<NewsItem[]> {
   const parser = new Parser();
-  
+
   try {
-    console.log(`[DIAGNOSTIK] Mencoba mengambil data dari: ${TRENDS_URL}`);
-    const feed = await parser.parseURL(TRENDS_URL);
+    console.log(`[DIAGNOSTIK] Mencoba mengambil data dari: ${CNN_TECH_RSS}`);
+    const feed = await parser.parseURL(CNN_TECH_RSS);
     console.log('[DIAGNOSTIK] Berhasil mendapatkan data!');
-    
+
     return feed.items.slice(0, 5).map(item => ({
       title: item.title || 'Judul tidak tersedia',
       link: item.link || '#',
-      source: (item as any)['ht:news_item_source'] || 'Google Trends'
+      isoDate: item.isoDate,
     }));
-    
+
   } catch (error) {
     console.error("======================================================");
-    console.error("!!! GAGAL MENGAMBIL DATA GOOGLE TRENDS !!!");
+    console.error("!!! GAGAL MENGAMBIL BERITA DARI RSS FEED !!!");
     console.error("======================================================");
+    console.error("URL:", CNN_TECH_RSS);
     console.error("Pesan Error Lengkap:");
     console.error(error);
     console.error("======================================================");
-    
-    return []; 
+
+    return [];
   }
 }
-

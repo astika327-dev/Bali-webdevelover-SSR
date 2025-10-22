@@ -167,7 +167,7 @@ export default function HomePage() {
       {/* Hero */}
       <div>
         <p className="text-sm uppercase tracking-wider text-[var(--brown)]/70">
-          Independent Web Studio · Bali & Remote
+          Independent Boutique Web Studio · Bali & Remote
         </p>
         <h1 className="text-4xl md:text-6xl font-semibold tracking-tight mt-3 text-[var(--brown)]">
           {site.tagline}.

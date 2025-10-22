@@ -1,7 +1,7 @@
 "use client";
 import { useState, type FC, type InputHTMLAttributes } from "react";
-import { contactSchema, type ContactPayload } from "@/lib/validation";
-import { Mail, MessageSquare, MapPin, Loader2, Instagram, Facebook } from "lucide-react"; // <-- ICON BARU DITAMBAHKAN
+import { contactSchema, type ContactPayload } from "@/lib/validation"; // <-- ICON BARU DITAMBAHKAN
+import { Mail, MessageSquare, MapPin, Loader2, Instagram, Facebook, Github } from "lucide-react";
 
 // -----------------------------------------------------------------------------
 // Reusable Input Field Component (TIDAK ADA PERUBAHAN)
@@ -119,6 +119,7 @@ export default function ContactPage() {
   // --- Ganti dengan URL profil media sosial Anda ---
   const instagramUrl = "https://instagram.com/baliwebdevelover";
   const facebookUrl = "https://facebook.com/share/17df5guFcR/";
+  const githubUrl = "https://github.com/astika327-dev"; // Ganti dengan URL GitHub Anda
 
   return (
     <section className="container py-16 md:py-24">
@@ -174,7 +175,7 @@ export default function ContactPage() {
           <div className="flex items-center gap-4 pt-2">
             <button
               type="submit"
-              className="inline-flex items-center justify-center rounded-full bg-black text-white px-6 py-2.5 font-medium disabled:cursor-not-allowed disabled:bg-neutral-400 transition-colors"
+              className="inline-flex items-center justify-center rounded-full bg-amber-100 text-amber-900 px-6 py-2.5 font-medium hover:bg-amber-200 disabled:cursor-not-allowed disabled:bg-neutral-200 disabled:text-neutral-500 transition-colors"
               disabled={status.type === "loading"}
             >
               {status.type === "loading" ? (
@@ -238,6 +239,10 @@ export default function ContactPage() {
               <a href={facebookUrl} target="_blank" rel="noreferrer" aria-label="Facebook" className="p-2 rounded-full border bg-white/70 hover:bg-neutral-100 transition-colors">
                 <Facebook size={20} className="text-neutral-600" />
               </a>
+              <a href={githubUrl} target="_blank" rel="noreferrer" aria-label="GitHub" className="p-2 rounded-full border bg-white/70 hover:bg-neutral-100 transition-colors">
+                <Github size={20} className="text-neutral-600" />
+              </a>
+              
             </div>
           </div>
 
