@@ -46,13 +46,25 @@ export default function BlogListClient({ posts }: BlogListClientProps) {
       </div>
 
       {filteredPosts.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredPosts.map((post) => (
+        <div>
+          {/* Featured Post */}
+          <div className="mb-12">
             <BlogCard
-                key={post.slug}
-                post={post}
+              key={filteredPosts[0].slug}
+              post={filteredPosts[0]}
+              isFeatured={true}
             />
-          ))}
+          </div>
+
+          {/* Regular Posts Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {filteredPosts.slice(1).map((post) => (
+              <BlogCard
+                  key={post.slug}
+                  post={post}
+              />
+            ))}
+          </div>
         </div>
       ) : (
         <div className="text-center py-16 text-gray-500 col-span-full">

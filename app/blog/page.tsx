@@ -32,21 +32,26 @@ export default async function BlogPage() {
     );
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-                <Balancer>Wawasan & Artikel Terbaru</Balancer>
+    <div>
+      <div className="py-24 sm:py-32 bg-white dark:bg-gray-900">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="mx-auto max-w-2xl text-center">
+            <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl dark:text-white">
+              <Balancer>Wawasan & Artikel Terbaru</Balancer>
             </h1>
-            <p className="mt-6 text-lg leading-8 text-gray-600">
-                <Balancer>
-                    Jelajahi pemikiran kami tentang teknologi, desain, dan transformasi digital.
-                </Balancer>
+            <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-400">
+              <Balancer>
+                Jelajahi analisis mendalam, tren teknologi, dan strategi startup dari tim kami.
+              </Balancer>
             </p>
+          </div>
         </div>
+      </div>
 
+      <div className="container mx-auto px-4 py-16">
         <BlogListClient posts={posts} />
-
         <CtaBanner />
+      </div>
     </div>
   );
 }
