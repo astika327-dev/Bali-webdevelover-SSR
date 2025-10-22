@@ -1,21 +1,19 @@
 import { NextResponse } from 'next/server';
-// Perbaikan: Menggunakan nama fungsi dan tipe yang benar dari file lib/trends.ts
-import { getGoogleTrends, TrendItem } from '@/app/lib/trends';
+import { getTrendingNews, NewsItem } from '@/app/lib/trends';
 
 export const dynamic = 'force-dynamic'; // Selalu ambil data terbaru
 
 export async function GET() {
   try {
-    // Perbaikan: Memanggil fungsi getGoogleTrends()
-    const trends: TrendItem[] = await getGoogleTrends();
+    const news: NewsItem[] = await getTrendingNews();
 
-    if (trends.length === 0) {
-      return NextResponse.json({ message: 'Tidak ada data tren ditemukan saat ini.' }, { status: 404 });
+    if (news.length === 0) {
+      return NextResponse.json({ message: 'Tidak ada berita yang ditemukan saat ini.' }, { status: 404 });
     }
 
-    return NextResponse.json(trends);
+    return NextResponse.json(news);
   } catch (error) {
     console.error('API Error:', error);
-    return NextResponse.json({ error: 'Gagal mengambil data tren dari server.' }, { status: 500 });
+    return NextResponse.json({ error: 'Gagal mengambil data berita dari server.' }, { status: 500 });
   }
 }

@@ -5,11 +5,9 @@ import { format, isValid } from 'date-fns';
 import { id } from 'date-fns/locale';
 import Image from 'next/image';
 import Link from 'next/link';
-import dynamic from 'next/dynamic';
 import CtaBanner from '@/app/components/CtaBanner';
-
-// Memuat komponen chart secara dinamis di sisi klien
-const GoogleTrendsChart = dynamic(() => import('@/components/GoogleTrendsChart'), { ssr: false });
+import { getTrendingNews } from '@/app/lib/trends';
+import TrendingNews from '@/app/components/TrendingNews';
 
 type Props = {
   params: { slug: string };
@@ -48,6 +46,9 @@ export default async function PostPage({ params }: Props) {
   if (!post) {
     notFound();
   }
+
+  // Ambil data berita terbaru
+  const trendingTopics = await getTrendingNews();
 
   // Format tanggal dengan aman
   let formattedDate = '';
@@ -99,13 +100,10 @@ export default async function PostPage({ params }: Props) {
                         </div>
                     </div>
 
-                    {/* Sidebar: Google Trends */}
+                    {/* Sidebar: Berita Terbaru */}
                     <aside className="lg:w-1/3 mt-12 lg:mt-0">
-                        <div className="sticky top-24 p-6 rounded-2xl shadow-lg" style={{backgroundColor: '#FFFDF9'}}>
-                            <h3 className="text-xl font-bold mb-4" style={{color: '#5C4033'}}>Trending di Indonesia</h3>
-                            <div className="h-96">
-                                <GoogleTrendsChart />
-                            </div>
+                        <div className="sticky top-24">
+                           <TrendingNews topics={trendingTopics} />
                         </div>
                     </aside>
                 </div>

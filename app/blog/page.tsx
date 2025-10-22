@@ -1,5 +1,5 @@
 import { getAllPostsMetadata } from 'app/lib/posts';
-import { getGoogleTrends } from 'app/lib/trends';
+import { getTrendingNews } from 'app/lib/trends';
 import { Metadata } from 'next';
 import BlogListClient from './BlogListClient'; // <- Impor komponen client kita
 import TrendingNews from 'app/components/TrendingNews';
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 export default async function BlogPage() {
   // Ambil semua data di sisi server
   const allPosts = getAllPostsMetadata();
-  const trendingTopics = await getGoogleTrends();
+  const trendingTopics = await getTrendingNews();
 
   return (
     <main className="min-h-screen" style={{backgroundColor: '#FBF9F6'}}>
