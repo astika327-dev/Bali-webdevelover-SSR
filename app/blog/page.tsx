@@ -4,6 +4,7 @@ import CtaBanner from "@/app/components/CtaBanner";
 import Balancer from "react-wrap-balancer";
 import { compareDesc } from 'date-fns';
 import { Metadata } from "next";
+<<<<<<< HEAD
 import { site } from "@/content/config";
 
 export const metadata: Metadata = {
@@ -19,6 +20,22 @@ export const metadata: Metadata = {
         width: 1200,
         height: 630,
         alt: `Blog ${site.company}`,
+=======
+
+export const metadata: Metadata = {
+  title: "Blog | Wawasan & Artikel Terbaru",
+  description: "Jelajahi analisis mendalam, tren teknologi, dan strategi startup dari tim kami di blog Samsul.dev.",
+  openGraph: {
+    title: "Blog | Wawasan & Artikel Terbaru",
+    description: "Jelajahi analisis mendalam, tren teknologi, dan strategi startup dari tim kami di blog Samsul.dev.",
+    url: "/blog",
+    images: [
+      {
+        url: "/images/og-image-blog.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Blog Samsul.dev",
+>>>>>>> ef8b9085a1d0660daf2bc0890e74ca14d897431e
       },
     ],
   },
@@ -34,6 +51,7 @@ export default async function BlogPage() {
 
   return (
     <div>
+<<<<<<< HEAD
       <div className="py-24 sm:py-32 bg-[var(--cream)]">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
@@ -41,6 +59,15 @@ export default async function BlogPage() {
               <Balancer>Wawasan & Artikel Terbaru</Balancer>
             </h1>
             <p className="mt-6 text-lg leading-8 text-[var(--brown)]/80">
+=======
+      <div className="py-24 sm:py-32 bg-white dark:bg-gray-900">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="mx-auto max-w-2xl text-center">
+            <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl dark:text-white">
+              <Balancer>Wawasan & Artikel Terbaru</Balancer>
+            </h1>
+            <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-400">
+>>>>>>> ef8b9085a1d0660daf2bc0890e74ca14d897431e
               <Balancer>
                 Jelajahi analisis mendalam, tren teknologi, dan strategi startup dari tim kami.
               </Balancer>
