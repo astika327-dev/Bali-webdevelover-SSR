@@ -71,48 +71,22 @@ export async function getAllPosts(): Promise<Post[]> {
     .sort((a, b) => new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime());
 }
 
-export interface PostMeta {
-  slug: string;
-  frontmatter: PostFrontmatter;
-}
-
-export function getAllPostsMeta(): PostMeta[] {
-  const blogDirectory = path.join(contentDirectory, 'blog');
-  const filenames = fs.readdirSync(blogDirectory);
-
-  const posts = filenames.map((filename) => {
-    const filePath = path.join(blogDirectory, filename);
-    const fileContent = fs.readFileSync(filePath, { encoding: 'utf8' });
-    const { data } = matter(fileContent);
-
-    return {
-      slug: filename.replace(/\.mdx$/, ''),
-      frontmatter: data as PostFrontmatter,
-    };
-  });
-
-  // Filter out unpublished posts and sort by date
-  return posts
-    .filter((post) => post.frontmatter.published !== false)
-    .sort((a, b) => new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime());
-}
-
-export function getAdjacentPosts(slug: string): { prevPost: { slug: string, title: string } | null, nextPost: { slug: string, title: string } | null } {
-  const allPosts = getAllPostsMeta();
+export async function getAdjacentPosts(slug: string): Promise<{ prevPost: { slug: string, title: string } | null, nextPost: { slug: string, title: string } | null }> {
+  const allPosts = await getAllPosts();
   const currentPostIndex = allPosts.findIndex(post => post.slug === slug);
 
   if (currentPostIndex === -1) {
     return { prevPost: null, nextPost: null };
   }
 
-  const prevPost = currentPostIndex < allPosts.length - 1 ? {
-    slug: allPosts[currentPostIndex + 1].slug,
-    title: allPosts[currentPostIndex + 1].frontmatter.title,
-  } : null;
-
-  const nextPost = currentPostIndex > 0 ? {
+  const prevPost = currentPostIndex > 0 ? {
     slug: allPosts[currentPostIndex - 1].slug,
     title: allPosts[currentPostIndex - 1].frontmatter.title,
+  } : null;
+
+  const nextPost = currentPostIndex < allPosts.length - 1 ? {
+    slug: allPosts[currentPostIndex + 1].slug,
+    title: allPosts[currentPostIndex + 1].frontmatter.title,
   } : null;
 
   return { prevPost, nextPost };
