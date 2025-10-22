@@ -55,7 +55,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
 
   return (
     <div className="container mx-auto px-4 py-8 lg:py-16">
-      <article className="prose prose-lg mx-auto max-w-4xl rounded-lg bg-white p-6 shadow-md dark:bg-slate-50">
+      <article className="prose prose-lg mx-auto max-w-4xl rounded-lg bg-white p-6 text-[#4A3A2C] shadow-md dark:bg-slate-50 dark:text-zinc-800">
         <header className="mb-8 not-prose">
             <span className="mb-4 inline-block rounded-full bg-purple-100 px-3 py-1 text-sm font-semibold text-purple-800 dark:bg-purple-900 dark:text-purple-300">
               {category}
