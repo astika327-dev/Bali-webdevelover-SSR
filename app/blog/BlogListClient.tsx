@@ -15,8 +15,9 @@ export default function BlogListClient({ posts }: BlogListClientProps) {
   const [activeCategory, setActiveCategory] = useState('All');
 
   const categories = useMemo(() => {
-    const postCategories = posts.map(p => p.frontmatter.category).filter(Boolean);
-    return ['All', ...Array.from(new Set(postCategories))];
+    const postCategories = new Set(posts.map(p => p.frontmatter.category).filter(Boolean));
+    postCategories.delete('All');
+    return ['All', ...Array.from(postCategories)];
   }, [posts]);
 
   const filteredPosts = useMemo(() => {
