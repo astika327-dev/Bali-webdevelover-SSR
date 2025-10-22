@@ -1,13 +1,7 @@
 {
-  "builds": [
-    {
-      "src": "next.config.js",
-      "use": "@vercel/next"
-    }
-  ],
   "crons": [
     {
-      "path": "/api/update-trends",
+      "path": "/api/trends",
       "schedule": "0 5 * * *"
     }
   ]
