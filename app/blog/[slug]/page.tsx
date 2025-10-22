@@ -52,7 +52,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
   const { readingTime } = post;
 
   return (
-    <div className="bg-white dark:bg-gray-900">
+    <div className="bg-amber-50 dark:bg-gray-900">
       <div className="container mx-auto px-4 py-8 lg:py-16">
         <article className="prose prose-lg dark:prose-invert mx-auto max-w-4xl">
           <header className="mb-8 not-prose">
