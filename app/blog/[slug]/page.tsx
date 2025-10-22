@@ -1,10 +1,10 @@
-import { getAllPosts, getPostBySlug } from "@/app/lib/posts";
+import { getAllPosts, getPostBySlug, getAdjacentPosts } from "@/app/lib/posts";
 import { notFound } from "next/navigation";
 import Image from "next/image";
-import { MDXRemote } from "next-mdx-remote/rsc";
 import CtaBanner from "@/app/components/CtaBanner";
 import Balancer from "react-wrap-balancer";
 import type { Metadata } from "next";
+import PostNavigation from "@/app/components/PostNavigation";
 
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
   const post = await getPostBySlug(params.slug);
@@ -48,6 +48,8 @@ export default async function Page({ params }: { params: { slug: string } }) {
     notFound();
   }
 
+  const { prevPost, nextPost } = await getAdjacentPosts(params.slug);
+
   const { title, author, date, category, image } = post.frontmatter;
   const { readingTime } = post;
 
@@ -87,7 +89,8 @@ export default async function Page({ params }: { params: { slug: string } }) {
           {post.content}
 
         </article>
-        <div className="max-w-4xl mx-auto mt-12">
+        <div className="max-w-4xl mx-auto">
+            <PostNavigation prevPost={prevPost} nextPost={nextPost} />
             <CtaBanner />
         </div>
       </div>
