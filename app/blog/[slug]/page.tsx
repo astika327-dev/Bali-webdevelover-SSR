@@ -23,11 +23,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
       description: post.frontmatter.description,
       images: [
         {
-<<<<<<< HEAD
-          url: post.frontmatter.image ? post.frontmatter.image : "/images/blog/default-image.png",
-=======
-          url: post.frontmatter.image || "/images/blog/default-image.jpg",
->>>>>>> ef8b9085a1d0660daf2bc0890e74ca14d897431e
+          url: post.frontmatter.image || "/images/blog/default-image.png",
           width: 1200,
           height: 630,
           alt: post.frontmatter.title,
@@ -62,7 +58,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
   const relatedPosts = await getRelatedPosts(category, params.slug);
 
   return (
-    <div>
+    <>
       {/* Header */}
       <div className="relative bg-gray-900 py-24 sm:py-32">
         {image && (
@@ -83,11 +79,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
                     <Balancer>{title}</Balancer>
                 </h1>
                 <div className="mt-6 flex justify-center items-center gap-x-4 text-gray-300">
-<<<<<<< HEAD
                     <span>Oleh Bali-WebDevelover{author}</span>
-=======
-                    <span>Oleh {author}</span>
->>>>>>> ef8b9085a1d0660daf2bc0890e74ca14d897431e
                     <span className="opacity-50">•</span>
                     <time dateTime={date}>{formatDate(date)}</time>
                     <span className="opacity-50">•</span>
@@ -108,6 +100,6 @@ export default async function Page({ params }: { params: { slug: string } }) {
             <CtaBanner />
         </div>
       </div>
-    </div>
+    </>
   );
 }
