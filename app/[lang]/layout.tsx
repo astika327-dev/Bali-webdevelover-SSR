@@ -1,0 +1,104 @@
+import { notFound } from 'next/navigation';
+import { NextIntlClientProvider } from 'next-intl';
+import { site } from '../../content/config';
+import Link from 'next/link';
+import Navbar from '../../components/navbar';
+import type { Metadata } from 'next';
+
+export function generateStaticParams() {
+  return [{ lang: 'id' }, { lang: 'en' }];
+}
+
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://bali-webdevelover.com';
+
+export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
+  title: `${site.company} — ${site.tagline}`,
+  description: site.blurb,
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    title: `${site.company} — ${site.tagline}`,
+    description: site.blurb,
+    url: siteUrl,
+    siteName: site.company,
+    locale: 'en_US', // This should be dynamic later
+    type: 'website',
+    images: [
+      {
+        url: '/ogimg.png',
+        width: 1200,
+        height: 630,
+        alt: 'Preview — Bali WebDevelover',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: `${site.company} — ${site.tagline}`,
+    description: site.blurb,
+    images: ['/ogimg.png'],
+  },
+  icons: {
+    icon: '/favicon.png',
+    apple: '/apple-touch-icon.png',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
+
+export default async function LocaleLayout({
+  children,
+  params: { lang },
+}: {
+  children: React.ReactNode;
+  params: { lang: string };
+}) {
+  let messages;
+  try {
+    messages = (await import(`../../locales/${lang}.json`)).default;
+  } catch (error) {
+    notFound();
+  }
+
+  return (
+    <html lang={lang}>
+      <body className="bg-[var(--cream)]">
+        <NextIntlClientProvider locale={lang} messages={messages}>
+          <div className="min-h-screen flex flex-col gradient">
+            <Navbar />
+            <main className="flex-1">{children}</main>
+            <footer className="border-t mt-16 bg-[var(--cream)] text-[var(--brown)]">
+              <div className="container py-10 flex flex-col items-center text-center text-sm gap-4">
+                <div>
+                  <div className="font-semibold text-lg">{site.company}</div>
+                  <p className="text-[var(--brown)]/70 mt-1">{site.location}</p>
+                </div>
+                <div className="flex flex-wrap justify-center gap-4 mt-2">
+                  <Link href={`/${lang}/services`}>Services</Link>
+                  <Link href={`/${lang}/portfolio`}>Portfolio</Link>
+                  <Link href={`/${lang}/about`}>About</Link>
+                  <Link href="/blog">Blog</Link>
+                  <Link href={`/${lang}/contact`}>Contact</Link>
+                  <Link href={`/${lang}/privacy`}>Privacy</Link>
+                  <Link href={`/${lang}/terms`}>Terms</Link>
+                </div>
+              </div>
+              <div className="border-t border-[var(--tan)]">
+                <div className="container py-6 text-xs text-[var(--brown)]/80 text-center max-w-3xl mx-auto leading-relaxed">
+                  © {new Date().getFullYear()} {site.company}. Independent boutique web studio based in Bali,
+                  focused on building fast, elegant, and conversion-driven websites.
+                  We believe a website should not only look professional but also work as a valuable asset
+                  that drives measurable results for your company.
+                </div>
+              </div>
+            </footer>
+          </div>
+        </NextIntlClientProvider>
+      </body>
+    </html>
+  );
+}
