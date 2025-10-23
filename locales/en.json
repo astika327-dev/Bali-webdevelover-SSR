@@ -6,5 +6,9 @@
     "viewServices": "View Services",
     "certificatesTitle": "Certificates",
     "certificatesDescription": "Verified credentials covering responsive UI, accessibility, JavaScript, and performance."
+  },
+  "TestPage": {
+    "title": "Test Page",
+    "description": "This is a test page to verify i18n functionality."
   }
 }

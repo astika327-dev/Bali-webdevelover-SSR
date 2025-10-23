@@ -1,12 +1,13 @@
-import { notFound } from 'next/navigation';
-import { NextIntlClientProvider } from 'next-intl';
+import { NextIntlClientProvider, useMessages } from 'next-intl';
+import { setRequestLocale } from 'next-intl/server';
 import { site } from '../../content/config';
 import Link from 'next/link';
 import Navbar from '../../components/navbar';
 import type { Metadata } from 'next';
+import { supportedLangs } from '../../constants/langs';
 
 export function generateStaticParams() {
-  return [{ lang: 'id' }, { lang: 'en' }];
+  return supportedLangs.map((lang) => ({ lang }));
 }
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://bali-webdevelover.com';
@@ -23,7 +24,7 @@ export const metadata: Metadata = {
     description: site.blurb,
     url: siteUrl,
     siteName: site.company,
-    locale: 'en_US', // This should be dynamic later
+    locale: 'en_US', // This can be made dynamic later
     type: 'website',
     images: [
       {
@@ -50,19 +51,18 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function LocaleLayout({
+export default function LocaleLayout({
   children,
   params: { lang },
 }: {
   children: React.ReactNode;
   params: { lang: string };
 }) {
-  let messages;
-  try {
-    messages = (await import(`../../locales/${lang}.json`)).default;
-  } catch (error) {
-    notFound();
-  }
+  // Set the locale for this request. This is required for static rendering.
+  setRequestLocale(lang);
+
+  // useMessages() provides the messages that were configured in i18n.ts
+  const messages = useMessages();
 
   return (
     <html lang={lang}>
