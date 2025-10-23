@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const CtaBanner = () => {
   return (
-    <div className="bg-gray-800 text-white py-8 px-6 rounded-lg my-8 text-center">
+    <div className="bg-[var(--cream)]/80 border border-[var(--tan)] text-[var(--brown)] py-8 px-6 rounded-2xl my-8 text-center shadow-sm">
       <h2 className="text-2xl font-bold mb-2">
         Punya ide atau proyek?
       </h2>
@@ -11,7 +11,7 @@ const CtaBanner = () => {
       </p>
       <Link
         href="/contact"
-        className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg transition-colors duration-300"
+        className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[var(--brown)] text-[var(--cream)] font-medium hover:bg-opacity-90 transition"
       >
         Hubungi Kami
       </Link>

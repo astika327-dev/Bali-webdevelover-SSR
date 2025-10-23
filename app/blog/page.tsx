@@ -2,22 +2,23 @@ import { getAllPosts } from "@/app/lib/posts";
 import BlogListClient from "./BlogListClient";
 import CtaBanner from "@/app/components/CtaBanner";
 import Balancer from "react-wrap-balancer";
-import { compareDesc } from 'date-fns';
+import { compareDesc } from "date-fns";
 import { Metadata } from "next";
+import { site } from "@/content/config";
 
 export const metadata: Metadata = {
-  title: "Blog | Wawasan & Artikel Terbaru",
-  description: "Jelajahi analisis mendalam, tren teknologi, dan strategi startup dari tim kami di blog Samsul.dev.",
+  title: `Blog | ${site.company}`,
+  description: `Jelajahi analisis mendalam, tren teknologi, dan wawasan dari tim ${site.company}.`,
   openGraph: {
-    title: "Blog | Wawasan & Artikel Terbaru",
-    description: "Jelajahi analisis mendalam, tren teknologi, dan strategi startup dari tim kami di blog Samsul.dev.",
+    title: `Blog | ${site.company}`,
+    description: `Jelajahi analisis mendalam, tren teknologi, dan wawasan dari tim ${site.company}.`,
     url: "/blog",
     images: [
       {
-        url: "/images/og-image-blog.jpg",
+        url: "/ogimg.png",
         width: 1200,
         height: 630,
-        alt: "Blog Samsul.dev",
+        alt: `Blog ${site.company}`,
       },
     ],
   },
@@ -33,13 +34,13 @@ export default async function BlogPage() {
 
   return (
     <div>
-      <div className="py-24 sm:py-32 bg-white dark:bg-gray-900">
+      <div className="py-24 sm:py-32 bg-[var(--cream)]">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
-            <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl dark:text-white">
+            <h1 className="text-4xl font-bold tracking-tight text-[var(--brown)] sm:text-6xl">
               <Balancer>Wawasan & Artikel Terbaru</Balancer>
             </h1>
-            <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-400">
+            <p className="mt-6 text-lg leading-8 text-[var(--brown)]/80">
               <Balancer>
                 Jelajahi analisis mendalam, tren teknologi, dan strategi startup dari tim kami.
               </Balancer>

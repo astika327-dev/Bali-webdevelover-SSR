@@ -1,0 +1,14 @@
+{
+  "HomePage": {
+    "title": "Beranda",
+    "heroSubtitle": "Studio Web Butik Independen · Bali & Remote",
+    "startProject": "Mulai Proyek",
+    "viewServices": "Lihat Layanan",
+    "certificatesTitle": "Sertifikat",
+    "certificatesDescription": "Kredensial terverifikasi yang mencakup UI responsif, aksesibilitas, JavaScript, dan performa."
+  },
+  "TestPage": {
+    "title": "Halaman Tes",
+    "description": "Ini adalah halaman tes untuk memverifikasi fungsionalitas i18n."
+  }
+}
