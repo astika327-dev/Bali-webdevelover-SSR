@@ -5,7 +5,7 @@ import { Check } from "lucide-react";
 import Link from 'next/link';
 
 export default function ServicesPage() {
-  const { t } = useLanguage();
+  const { t, translations } = useLanguage();
 
   const plans = [
     {
@@ -36,6 +36,11 @@ export default function ServicesPage() {
     'services.faq.item4',
   ];
 
+  const getFeatures = (key: string): string[] => {
+    const features = translations[`${key}.features`];
+    return Array.isArray(features) ? features : [];
+  };
+
   return (
     <section className="container py-12 md:py-16">
       <h1 className="text-3xl md:text-4xl font-semibold tracking-tight">{t('services.title')}</h1>
@@ -52,7 +57,7 @@ export default function ServicesPage() {
             <div className="text-3xl font-semibold mt-4">{t(`${p.key}.price`)}</div>
             
             <ul className="mt-4 space-y-2 text-sm flex-1">
-              {(t(`${p.key}.features`, { returnObjects: true }) as unknown as string[]).map((f) => (
+              {getFeatures(p.key).map((f) => (
                 <li key={f} className="flex items-start gap-2">
                   <Check size={16} className="mt-1" /> <span>{f}</span>
                 </li>

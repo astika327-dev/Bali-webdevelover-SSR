@@ -6,6 +6,7 @@ interface LanguageContextType {
   language: string;
   setLanguage: (language: string) => void;
   t: (key: string) => string;
+  translations: Record<string, any>;
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
@@ -50,7 +51,7 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   };
 
   return (
-    <LanguageContext.Provider value={{ language, setLanguage, t }}>
+    <LanguageContext.Provider value={{ language, setLanguage, t, translations }}>
       {children}
     </LanguageContext.Provider>
   );
