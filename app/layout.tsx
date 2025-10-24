@@ -1,11 +1,11 @@
 import './globals.css';
-import type { Metadata } from 'next';
-import { site } from '../content/config'; // pakai path relatif
+import { site } from '../content/config';
 import Link from 'next/link';
 import Navbar from '../components/navbar';
 import { Analytics } from "@vercel/analytics/next"
 import { Providers } from './providers';
 import { LanguageProvider } from '../context/LanguageContext';
+import type { Metadata } from 'next';
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://bali-webdevelover.com';
 
@@ -48,7 +48,11 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en">
       <body className="bg-[var(--cream)]">

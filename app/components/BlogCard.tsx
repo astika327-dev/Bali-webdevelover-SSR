@@ -52,39 +52,37 @@ const BlogCard: React.FC<BlogCardProps> = ({ post, isFeatured = false }) => {
 
   return (
     <article className="group relative flex flex-col overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm transition-all duration-300 hover:shadow-lg dark:border-gray-700 dark:bg-gray-800">
-       <Link href={`/blog/${post.slug}`} className="block">
+      <Link href={`/blog/${post.slug}`} className="block h-full">
         {image && (
-            <div className="relative h-48 w-full overflow-hidden">
+          <div className="relative h-48 w-full overflow-hidden">
             <Image
-                src={image}
-                alt={`Gambar thumbnail untuk ${title}`}
-                fill
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
+              src={image}
+              alt={`Gambar thumbnail untuk ${title}`}
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              className="object-cover transition-transform duration-500 group-hover:scale-105"
             />
-            </div>
-        )}
-      </Link>
-      <div className="flex flex-1 flex-col justify-between p-6">
-        <div>
-          <div className="mb-2 text-xs font-semibold uppercase tracking-wider text-purple-600 dark:text-purple-400">
-            {category}
           </div>
-          <Link href={`/blog/${post.slug}`} className="mt-1 block">
+        )}
+        <div className="flex flex-1 flex-col justify-between p-6">
+          <div>
+            <div className="mb-2 text-xs font-semibold uppercase tracking-wider text-purple-600 dark:text-purple-400">
+              {category}
+            </div>
             <h3 className="text-xl font-bold text-gray-900 transition-colors duration-300 group-hover:text-purple-700 dark:text-white dark:group-hover:text-purple-400">
               {title}
             </h3>
-          </Link>
-          <p className="mt-3 text-sm text-gray-600 dark:text-gray-400 line-clamp-3">
-            {description}
-          </p>
-        </div>
-        <div className="mt-4 text-xs text-gray-500 dark:text-gray-500">
+            <p className="mt-3 text-sm text-gray-600 dark:text-gray-400 line-clamp-3">
+              {description}
+            </p>
+          </div>
+          <div className="mt-4 text-xs text-gray-500 dark:text-gray-500">
             <span>{formatDate(date)}</span>
             <span className="mx-2">&bull;</span>
             <span>{readingTime} menit baca</span>
+          </div>
         </div>
-      </div>
+      </Link>
     </article>
   );
 };
