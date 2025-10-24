@@ -10,7 +10,6 @@ export default function PortfolioPage() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const { t } = useLanguage();
 
-  const active = openIndex !== null ? portfolio[openIndex] : null;
 
   const portfolioItems = [
     {
@@ -62,11 +61,11 @@ export default function PortfolioPage() {
         ))}
       </div>
 
-      {active && (
+      {openIndex !== null && (
         <Lightbox
-          images={active.images}
+          images={portfolio[openIndex].images}
           title={t(`portfolio.item${openIndex + 1}.title`)}
-          link={active.link}
+          link={portfolio[openIndex].link}
           onClose={() => setOpenIndex(null)}
         />
       )}
