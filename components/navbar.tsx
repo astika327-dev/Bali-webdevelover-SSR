@@ -4,19 +4,22 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
-import type { Route } from 'next';          // <-- ini kuncinya
+import type { Route } from 'next';
 import { site } from '../content/config';
+import { useLanguage } from '../context/LanguageContext';
+import LanguageToggle from './LanguageToggle';
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const { t } = useLanguage();
 
-  // Pastikan setiap href dikenali sebagai Route
-  const links: Array<{ href: Route; label: string }> = [
-    { href: '/' as Route, label: 'Home' },
-    { href: '/services' as Route, label: 'Services' },
-    { href: '/portfolio' as Route, label: 'Portfolio' },
-    { href: '/about' as Route, label: 'About' },
-    { href: '/blog' as Route, label: 'Blog' },
+  const links: Array<{ href: Route; labelKey: string }> = [
+    { href: '/' as Route, labelKey: 'nav.home' },
+    { href: '/about' as Route, labelKey: 'nav.about' },
+    { href: '/services' as Route, labelKey: 'nav.services' },
+    { href: '/portfolio' as Route, labelKey: 'nav.portfolio' },
+    { href: '/blog' as Route, labelKey: 'blog' },
+    { href: '/contact' as Route, labelKey: 'nav.contact' },
   ];
 
   return (
@@ -34,21 +37,15 @@ export default function Navbar() {
           <span>{site.company}</span>
         </Link>
 
-
         {/* Desktop nav */}
-          <nav className="hidden md:flex items-center gap-6 text-sm">
-            {links.map(l => (
-              <Link key={l.href} href={l.href}>
-                {l.label}
-              </Link>
-            ))}
-            <Link
-              href="/contact"
-              className="px-4 py-2 rounded-full bg-[var(--brown)] text-[var(--cream)] hover:bg-opacity-90 transition"
-            >
-              Start a Project
+        <nav className="hidden md:flex items-center gap-6 text-sm">
+          {links.map(l => (
+            <Link key={l.href} href={l.href}>
+              {t(l.labelKey)}
             </Link>
-          </nav>
+          ))}
+          <LanguageToggle />
+        </nav>
 
         {/* Mobile toggle */}
         <button
@@ -73,16 +70,12 @@ export default function Navbar() {
                 onClick={() => setOpen(false)}
                 className="py-2"
               >
-                {l.label}
+                {t(l.labelKey)}
               </Link>
             ))}
-            <Link
-              href={'/contact' as Route}
-              onClick={() => setOpen(false)}
-              className="px-4 py-2 rounded-full bg-[var(--brown)] text-[var(--cream)] text-center hover:bg-opacity-90 transition"
-            >
-              Start a Project
-            </Link>
+            <div className="pt-2">
+              <LanguageToggle />
+            </div>
           </nav>
         </div>
       )}

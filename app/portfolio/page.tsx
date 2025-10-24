@@ -4,38 +4,58 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { portfolio } from 'content/config';
 import Lightbox from 'components/Lightbox';
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function PortfolioPage() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const { t } = useLanguage();
 
   const active = openIndex !== null ? portfolio[openIndex] : null;
+
+  const portfolioItems = [
+    {
+      key: 'portfolio.item1',
+      image: portfolio[0].images[0],
+      link: portfolio[0].link,
+    },
+    {
+      key: 'portfolio.item2',
+      image: portfolio[1].images[0],
+      link: portfolio[1].link,
+    },
+    {
+      key: 'portfolio.item3',
+      image: portfolio[2].images[0],
+      link: portfolio[2].link,
+    },
+  ];
 
   return (
     <section className="container py-12 md:py-16">
       <h1 className="text-3xl md:text-4xl font-semibold tracking-tight text-[var(--brown)]">
-        Portfolio
+        {t('portfolio.title')}
       </h1>
       <p className="text-[var(--brown)]/80 mt-2 max-w-2xl">
-        Selected works that highlight clean UI, solid performance, and results-driven builds.
+        {t('portfolio.description')}
       </p>
 
       <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8 mt-8">
-        {portfolio.map((p, idx) => (
+        {portfolioItems.map((p, idx) => (
           <div
-            key={p.title}
+            key={p.key}
             className="rounded-2xl border border-[var(--tan)] bg-[var(--cream)] overflow-hidden shadow-sm hover:shadow-md transition"
           >
             <button
               onClick={() => setOpenIndex(idx)}
               className="text-left w-full"
-              aria-label={`Open gallery for ${p.title}`}
+              aria-label={`Open gallery for ${t(`${p.key}.title`)}`}
             >
               <div className="relative aspect-[4/3]">
-                <Image src={p.images[0]} alt={p.title} fill className="object-cover" />
+                <Image src={p.image} alt={t(`${p.key}.title`)} fill className="object-cover" />
               </div>
               <div className="p-4">
-                <h2 className="font-semibold text-[var(--brown)]">{p.title}</h2>
-                <p className="text-sm text-[var(--brown)]/80 mt-1">{p.description}</p>
+                <h2 className="font-semibold text-[var(--brown)]">{t(`${p.key}.title`)}</h2>
+                <p className="text-sm text-[var(--brown)]/80 mt-1">{t(`${p.key}.description`)}</p>
               </div>
             </button>
           </div>
@@ -45,7 +65,7 @@ export default function PortfolioPage() {
       {active && (
         <Lightbox
           images={active.images}
-          title={active.title}
+          title={t(`portfolio.item${openIndex + 1}.title`)}
           link={active.link}
           onClose={() => setOpenIndex(null)}
         />
