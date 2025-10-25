@@ -11,13 +11,13 @@ const RelatedPosts: React.FC<RelatedPostsProps> = ({ posts }) => {
   }
 
   return (
-    <div className="mt-16">
-      <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white mb-8">
+    <div className="mt-16 ">
+      <h2 className="text-3xl font-bold tracking-tight text-gray-900 mb-8">
         Artikel Terkait Lainnya
       </h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {posts.map((post) => (
-          <BlogCard
+      <div className="flex overflow-x-auto gap-4">
+         {posts.map((post) => (
+          <div className="w-80 shrink-0"> <BlogCard
             key={post.slug}
             post={{
               slug: post.slug,
@@ -25,7 +25,7 @@ const RelatedPosts: React.FC<RelatedPostsProps> = ({ posts }) => {
               readingTime: post.readingTime,
               content: <></> // content is not needed for the card view
             }}
-          />
+          /></div>
         ))}
       </div>
     </div>
