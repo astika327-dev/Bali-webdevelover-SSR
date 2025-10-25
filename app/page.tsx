@@ -4,6 +4,7 @@ import type { Route } from 'next';
 import { ArrowRight } from 'lucide-react';
 import { certificates, services, site } from '../content/config';
 import { useLanguage } from '../context/LanguageContext';
+import AiWidget from './components/AiWidget';
 
 /* =========================
    Home Page
@@ -75,6 +76,9 @@ export default function HomePage() {
           ))}
         </div>
       </div>
+
+      {/* AI Widget */}
+      <AiWidget />
     </section>
   );
 }
