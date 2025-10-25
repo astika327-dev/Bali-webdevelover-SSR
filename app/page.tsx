@@ -1,8 +1,8 @@
 'use client';
 import Link from 'next/link';
 import type { Route } from 'next';
-import { ArrowRight } from 'lucide-react';
-import AiWidget from './components/AiWidget';
+import { ArrowRight, Sparkles } from 'lucide-react';
+import { useState, useEffect } from 'react';
 import { certificates, services, site } from '../content/config';
 import { useLanguage } from '../context/LanguageContext';
 
@@ -11,6 +11,38 @@ import { useLanguage } from '../context/LanguageContext';
    ========================= */
 export default function HomePage() {
   const { t } = useLanguage();
+
+  // AI Widget State and Logic
+  const [aiResponse, setAiResponse] = useState<string | null>(null);
+  const [isAiLoading, setIsAiLoading] = useState<boolean>(true);
+
+  useEffect(() => {
+    const fetchAiResponse = async () => {
+      setIsAiLoading(true);
+      try {
+        const res = await fetch('/api/ai');
+        if (!res.ok) {
+          throw new Error('Failed to fetch AI response');
+        }
+        const data = await res.json();
+
+        if (data.text) {
+          setAiResponse(data.text);
+        } else if (data.reply && data.reply.content) {
+          setAiResponse(data.reply.content);
+        } else {
+          throw new Error('Invalid AI response format');
+        }
+      } catch (err) {
+        setAiResponse("Maaf, koneksi ke AI sedang sibuk. Silakan coba lagi nanti.");
+      } finally {
+        setIsAiLoading(false);
+      }
+    };
+
+    fetchAiResponse();
+  }, []);
+
   return (
     <section className="container py-12 md:py-20 space-y-16">
       {/* Hero */}
@@ -56,7 +88,15 @@ export default function HomePage() {
       </div>
 
       {/* AI Widget */}
-      <AiWidget />
+      <div className="relative mt-12 rounded-xl bg-[var(--cream)] border border-[var(--tan)] shadow-lg p-6 max-w-2xl mx-auto text-center">
+        <div className="absolute -top-5 left-1/2 -translate-x-1/2 bg-[var(--brown)] text-white rounded-full p-3">
+          <Sparkles size={24} />
+        </div>
+        <h3 className="text-xl font-bold text-[var(--brown)] mb-3 pt-4">Saran Cerdas dari AI</h3>
+        <p className="text-md text-[var(--tan)] italic min-h-[48px] flex items-center justify-center">
+          {isAiLoading ? 'Memuat saran...' : aiResponse}
+        </p>
+      </div>
 
       {/* Certificates */}
       <div className="space-y-4">
