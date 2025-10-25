@@ -20,7 +20,16 @@ export default function HomePage() {
     const fetchAiResponse = async () => {
       setIsAiLoading(true);
       try {
-        const res = await fetch('/api/ai');
+        const res = await fetch('/api/ai', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            messages: [{ role: 'user', content: 'Give me a random, insightful tip about web development, SEO, or user experience in 1-2 sentences.' }],
+          }),
+        });
+
         if (!res.ok) {
           throw new Error('Failed to fetch AI response');
         }
