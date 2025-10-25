@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import type { Route } from 'next';
 import { ArrowRight } from 'lucide-react';
+import AiWidget from './components/AiWidget';
 import { certificates, services, site } from '../content/config';
 import { useLanguage } from '../context/LanguageContext';
 
@@ -53,6 +54,9 @@ export default function HomePage() {
           </div>
         </div>
       </div>
+
+      {/* AI Widget */}
+      <AiWidget />
 
       {/* Certificates */}
       <div className="space-y-4">
