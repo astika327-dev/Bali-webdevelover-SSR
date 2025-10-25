@@ -22,33 +22,6 @@ const SocialShareButtons = ({ title, slug }: SocialShareButtonsProps) => {
   const encodedTitle = encodeURIComponent(title);
   const encodedUrl = encodeURIComponent(url);
 
-  const socialPlatforms = [
-    {
-      name: 'Facebook',
-      icon: <Facebook size={24} />,
-      url: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`,
-      color: 'bg-[#1877F2] hover:bg-[#166eDb]',
-    },
-    {
-      name: 'Twitter',
-      icon: <Twitter size={24} />,
-      url: `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`,
-      color: 'bg-[#1DA1F2] hover:bg-[#1a91da]',
-    },
-    {
-        name: 'WhatsApp',
-        icon: <Send size={24} />, // Using Send icon as WhatsApp is not in lucide-react
-        url: `https://api.whatsapp.com/send?text=${encodedTitle}%20${encodedUrl}`,
-        color: 'bg-[#25D366] hover:bg-[#20b958]',
-    },
-    {
-      name: 'Instagram',
-      icon: <Instagram size={24} />,
-      action: shareOnInstagram,
-      color: 'bg-gradient-to-r from-purple-500 to-pink-500 hover:opacity-90',
-    },
-  ];
-
   const copyToClipboard = (text: string, platform: string = 'link') => {
     navigator.clipboard.writeText(text).then(() => {
       setCopied(true);
@@ -79,6 +52,33 @@ const SocialShareButtons = ({ title, slug }: SocialShareButtonsProps) => {
   const openPopup = (shareUrl: string) => {
     window.open(shareUrl, '_blank', 'noopener,noreferrer,width=600,height=400');
   };
+
+  const socialPlatforms = [
+    {
+      name: 'Facebook',
+      icon: <Facebook size={24} />,
+      url: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`,
+      color: 'bg-[#1877F2] hover:bg-[#166eDb]',
+    },
+    {
+      name: 'Twitter',
+      icon: <Twitter size={24} />,
+      url: `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`,
+      color: 'bg-[#1DA1F2] hover:bg-[#1a91da]',
+    },
+    {
+        name: 'WhatsApp',
+        icon: <Send size={24} />, // Using Send icon as WhatsApp is not in lucide-react
+        url: `https://api.whatsapp.com/send?text=${encodedTitle}%20${encodedUrl}`,
+        color: 'bg-[#25D366] hover:bg-[#20b958]',
+    },
+    {
+      name: 'Instagram',
+      icon: <Instagram size={24} />,
+      action: shareOnInstagram,
+      color: 'bg-gradient-to-r from-purple-500 to-pink-500 hover:opacity-90',
+    },
+  ];
 
   return (
     <>
