@@ -8,6 +8,7 @@ import PostNavigation from "@/app/components/PostNavigation";
 import { formatDate } from "@/app/lib/utils";
 import { site } from "@/content/config";
 import RelatedPosts from "@/app/components/RelatedPosts"; // Import RelatedPosts
+import SocialShareButtons from "@/app/components/SocialShareButtons";
 
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
   const post = await getPostBySlug(params.slug);
@@ -92,14 +93,18 @@ export default async function Page({ params }: { params: { slug: string } }) {
 
       {/* Content */}
       <div className="container mx-auto px-4 py-16">
-        <article className="prose prose-lg mx-auto max-w-4xl">
-            {post.content}
-        </article>
-        <div className="max-w-4xl mx-auto mt-16">
-            <PostNavigation prevPost={prevPost} nextPost={nextPost} />
-            <RelatedPosts posts={relatedPosts} />
-            <CtaBanner />
-        </div>
+          <div className="relative mx-auto max-w-4xl">
+              <article className="prose prose-lg">
+                  {post.content}
+              </article>
+              {/* Social Share Buttons */}
+              <SocialShareButtons title={title} slug={params.slug} />
+              <div className="mt-16">
+                  <PostNavigation prevPost={prevPost} nextPost={nextPost} />
+                  <RelatedPosts posts={relatedPosts} />
+                  <CtaBanner />
+              </div>
+          </div>
       </div>
     </>
   );
