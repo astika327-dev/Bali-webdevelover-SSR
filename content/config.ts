@@ -164,7 +164,27 @@ export const portfolio = [
       '/screenshot/ssporto1.png',
       '/screenshot/ssporto2.png'
     ]
-  }
+  },
+  {
+    title: 'U2CleanPro',
+    description:
+      'A clean, modern, and responsive website for U2Cleanpro. Professional cleaning services.',
+    link: 'https://cleanpro-beryl.vercel.app/',
+    images: [
+      '/screenshot/sscleanpro.png',
+      '/screenshot/sscleanpro2.png',
+      '/screenshot/sscleanpro3.png '
+    ]
+  },
+  {
+    title: 'PromptCraft',
+    description:
+      'AI prompt engineering platform for creating, sharing, and discovering high-quality prompts across various AI models.',
+    link: 'https://promptcraft-v2.vercel.app/',
+    images: [
+      '/screenshot/ssprompt.png',
+    ]
+  },
 ];
 
 export const stats: Stat[] = [
@@ -194,4 +214,3 @@ export const clients: Client[] = [
   { name: 'Café Lago' },
   { name: 'Astika Personal' },
 ];
-
