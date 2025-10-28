@@ -35,6 +35,26 @@
     --radius: 0.5rem;
   }
 
+  .nav-link-underline {
+    position: relative;
+    display: inline-block;
+  }
+
+  .nav-link-underline::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: currentColor;
+    transition: width 0.3s ease-in-out;
+  }
+
+  .nav-link-underline:hover::after {
+    width: 100%;
+  }
+
   .dark {
     --background: 20 30% 12%;
     --foreground: 43 33% 98%;
