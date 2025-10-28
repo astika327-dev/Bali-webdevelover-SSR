@@ -6,6 +6,7 @@ import { Analytics } from "@vercel/analytics/next"
 import { Providers } from './providers';
 import { LanguageProvider } from '../context/LanguageContext';
 import type { Metadata } from 'next';
+import PageTransition from './components/PageTransition';
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://bali-webdevelover.com';
 
@@ -60,7 +61,9 @@ export default function RootLayout({
           <LanguageProvider>
             <div className="min-h-screen flex flex-col">
               <Navbar />
-              <main className="flex-1">{children}</main>
+              <main className="flex-1">
+                <PageTransition>{children}</PageTransition>
+              </main>
 
               <footer className="border-t mt-16 bg-background text-foreground">
                 <div className="container py-10 flex flex-col items-center text-center text-sm gap-4">

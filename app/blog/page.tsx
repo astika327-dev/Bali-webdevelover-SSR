@@ -1,10 +1,10 @@
-import { getAllPosts } from "@/app/lib/posts";
-import BlogListClient from "./BlogListClient";
-import CtaBanner from "@/app/components/CtaBanner";
-import Balancer from "react-wrap-balancer";
-import { compareDesc } from "date-fns";
-import { Metadata } from "next";
-import { site } from "@/content/config";
+import { Suspense } from 'react';
+import BlogList from './BlogList';
+import CtaBanner from '@/app/components/CtaBanner';
+import Balancer from 'react-wrap-balancer';
+import { Metadata } from 'next';
+import { site } from '@/content/config';
+import SkeletonCard from '../components/SkeletonCard';
 
 export const metadata: Metadata = {
   title: `Blog | ${site.company}`,
@@ -24,14 +24,17 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function BlogPage() {
-  const allPosts = await getAllPosts();
-  const posts = allPosts
-    .filter((post): post is NonNullable<typeof post> => post !== null)
-    .sort((a, b) =>
-      compareDesc(new Date(a.frontmatter.date), new Date(b.frontmatter.date))
-    );
+function Skeletons() {
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {Array.from({ length: 3 }).map((_, i) => (
+        <SkeletonCard key={i} />
+      ))}
+    </div>
+  )
+}
 
+export default function BlogPage() {
   return (
     <div>
       <div className="py-24 sm:py-32 bg-[var(--cream)]">
@@ -50,7 +53,9 @@ export default async function BlogPage() {
       </div>
 
       <div className="container mx-auto px-4 py-16">
-        <BlogListClient posts={posts} />
+        <Suspense fallback={<Skeletons />}>
+          <BlogList />
+        </Suspense>
         <CtaBanner />
       </div>
     </div>

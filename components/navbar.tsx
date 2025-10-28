@@ -40,7 +40,7 @@ export default function Navbar() {
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-6 text-sm">
           {links.map(l => (
-            <Link key={l.href} href={l.href}>
+            <Link key={l.href} href={l.href} className="nav-link-underline">
               {t(l.labelKey)}
             </Link>
           ))}
