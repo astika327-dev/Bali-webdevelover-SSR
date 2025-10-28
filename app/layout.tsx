@@ -54,19 +54,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className="bg-[var(--cream)]">
+    <html lang="en" suppressHydrationWarning>
+      <body className="bg-background text-foreground">
         <Providers>
           <LanguageProvider>
-            <div className="min-h-screen flex flex-col gradient">
+            <div className="min-h-screen flex flex-col">
               <Navbar />
               <main className="flex-1">{children}</main>
 
-              <footer className="border-t mt-16 bg-[var(--cream)] text-[var(--brown)]">
+              <footer className="border-t mt-16 bg-background text-foreground">
                 <div className="container py-10 flex flex-col items-center text-center text-sm gap-4">
                   <div>
                     <div className="font-semibold text-lg">{site.company}</div>
-                    <p className="text-[var(--brown)]/70 mt-1">{site.location}</p>
+                    <p className="text-muted-foreground mt-1">{site.location}</p>
                   </div>
 
                   <div className="flex flex-wrap justify-center gap-4 mt-2">
@@ -80,8 +80,8 @@ export default function RootLayout({
                   </div>
                 </div>
 
-                <div className="border-t border-[var(--tan)]">
-                  <div className="container py-6 text-xs text-[var(--brown)]/80 text-center max-w-3xl mx-auto leading-relaxed">
+                <div className="border-t border-border">
+                  <div className="container py-6 text-xs text-muted-foreground text-center max-w-3xl mx-auto leading-relaxed">
                     © {new Date().getFullYear()} {site.company}. Independent boutique web studio based in Bali,
                     focused on building fast, elegant, and conversion-driven websites.
                     We believe a website should not only look professional but also work as a valuable asset
