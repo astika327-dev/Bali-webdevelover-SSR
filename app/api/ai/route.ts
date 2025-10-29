@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { getAllPostsMeta } from "../../lib/posts";
 import {
   GEMINI_MODEL,
   GEMINI_REST_URL,
@@ -61,11 +62,16 @@ const offlineResponse = (reason: string, lastUserMessage?: string) => {
 
 // Bangun format percakapan sesuai Gemini
 const buildConversation = (messages: ChatMessage[]) => {
-  const trimmed = messages.slice(-MAX_MESSAGES);
+  // Jangan potong pesan sistem dan pesan pengguna pertama
+  const systemMessages = messages.slice(0, 2);
+  const userMessages = messages.slice(2);
+  const trimmedUserMessages = userMessages.slice(-MAX_MESSAGES);
+  const finalMessages = [...systemMessages, ...trimmedUserMessages];
+
   const contents: GeminiContent[] = [];
   let lastUser: string | undefined;
 
-  for (const message of trimmed) {
+  for (const message of finalMessages) {
     if (!message || typeof message !== "object") continue;
 
     const role = message.role === "assistant" ? "model" : message.role === "user" ? "user" : null;
@@ -97,7 +103,36 @@ export async function POST(req: NextRequest) {
   if (!Array.isArray(messages) || messages.length === 0)
     return NextResponse.json({ ok: false, error: "No messages provided" }, { status: 400 });
 
-  const { contents, lastUser } = buildConversation(messages);
+  // Fetch blog posts metadata
+  const posts = await getAllPostsMeta();
+  const blogContext = posts
+    .map((p) => `[${p.frontmatter.category}] ${p.frontmatter.title}: ${p.frontmatter.description}`)
+    .join("\n");
+
+  const systemPrompt = `Anda adalah "BaliWebDev AI", asisten AI yang ramah dan sangat membantu di situs web pribadi I Made Deddy.
+Misi Anda adalah memberikan jawaban yang akurat, relevan, dan ringkas terkait pengembangan web, SEO, dan layanan yang ditawarkan.
+Gunakan informasi dari artikel blog yang disediakan di bawah ini untuk memperkaya jawaban Anda.
+Jika sebuah pertanyaan relevan dengan sebuah artikel, rujuklah dengan halus dalam jawaban Anda.
+Jangan pernah menyebutkan bahwa Anda memiliki akses ke "informasi di bawah" atau "konteks yang diberikan". Jawablah seolah-olah Anda sudah mengetahui informasi ini.
+
+Berikut adalah daftar artikel blog yang tersedia:
+${blogContext}
+
+Selalu berkomunikasi dalam Bahasa Indonesia, kecuali jika diminta sebaliknya.`;
+
+  const fullMessages: ChatMessage[] = [
+    {
+      role: "user",
+      content: systemPrompt,
+    },
+    {
+      role: "assistant",
+      content: "Tentu, saya siap membantu.",
+    },
+    ...messages,
+  ];
+
+  const { contents, lastUser } = buildConversation(fullMessages);
 
   if (contents.length === 0 || !contents.some((item) => item.role === "user"))
     return NextResponse.json({ ok: false, error: "At least one user message is required" }, { status: 400 });

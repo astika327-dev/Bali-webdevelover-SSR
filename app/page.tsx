@@ -19,7 +19,12 @@ export default function HomePage() {
   const { t } = useLanguage();
 
   // State untuk AI Chat
-  const [messages, setMessages] = useState<Message[]>([]);
+  const [messages, setMessages] = useState<Message[]>([
+    {
+      role: 'assistant',
+      content: "Halo! Saya BaliWebDev AI. Ada yang bisa saya bantu seputar pengembangan web atau layanan yang tersedia?",
+    },
+  ]);
   const [userInput, setUserInput] = useState('');
   const [isAiLoading, setIsAiLoading] = useState<boolean>(false);
   const chatContainerRef = useRef<HTMLDivElement>(null);
@@ -32,13 +37,17 @@ export default function HomePage() {
   }, [messages]);
 
   // Handler untuk mengirim pesan
-  const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault();
-    if (!userInput.trim()) return;
+  const handleSubmit = async (e: FormEvent<HTMLFormElement> | null = null, suggestedInput: string | null = null) => {
+    if (e) e.preventDefault();
+    const currentInput = suggestedInput || userInput;
+    if (!currentInput.trim()) return;
 
-    const newMessages: Message[] = [...messages, { role: 'user', content: userInput }];
+    const newMessages: Message[] = [...messages, { role: 'user', content: currentInput }];
     setMessages(newMessages);
-    setUserInput('');
+    // Clear input only if it was not a suggestion click
+    if (!suggestedInput) {
+      setUserInput('');
+    }
     setIsAiLoading(true);
 
     try {
@@ -66,6 +75,11 @@ export default function HomePage() {
     } finally {
       setIsAiLoading(false);
     }
+  };
+
+  const handleSuggestionClick = (suggestion: string) => {
+    // We don't set user input here because the form submission handles the message sending
+    handleSubmit(null, suggestion);
   };
 
   return (
@@ -117,20 +131,21 @@ export default function HomePage() {
         <div className="absolute -top-5 left-1/2 -translate-x-1/2 bg-[var(--brown)] text-white rounded-full p-3 shadow-md">
           <Sparkles size={24} />
         </div>
-        <h3 className="text-xl font-bold text-[var(--brown)] mb-3 pt-4 text-center">Tanya AI</h3>
+        <h3 className="text-xl font-bold text-[var(--brown)] mb-3 pt-4 text-center">BaliWebDev AI</h3>
 
         <div
           ref={chatContainerRef}
-          className="h-72 overflow-y-auto p-4 space-y-4 rounded-lg border border-gray-200 bg-gray-50 mb-4"
+          className="h-72 overflow-y-auto p-4 space-y-4 rounded-lg border border-[var(--tan)]/50 bg-[var(--tan)]/20 mb-4"
         >
-          {messages.length === 0 && !isAiLoading && (
-            <div className="flex justify-center items-center h-full">
-              <p className="text-gray-500">Mulai percakapan dengan mengirim pesan.</p>
-            </div>
-          )}
           {messages.map((msg, index) => (
             <div key={index} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-              <div className={`max-w-xs md:max-w-md p-3 rounded-2xl ${msg.role === 'user' ? 'bg-[var(--brown)] text-white' : 'bg-gray-200 text-gray-800'}`}>
+              <div
+                className={`max-w-xs md:max-w-md p-3 rounded-2xl shadow-sm ${
+                  msg.role === 'user'
+                    ? 'bg-[var(--brown)] text-white'
+                    : 'bg-white/80 text-[var(--brown)] border border-[var(--tan)]/80'
+                }`}
+              >
                 <p className="text-sm">{msg.content}</p>
               </div>
             </div>
@@ -161,6 +176,11 @@ export default function HomePage() {
             <Send size={20} />
           </button>
         </form>
+        <div className="flex flex-wrap gap-2 mt-3 justify-center">
+          <button onClick={() => handleSuggestionClick("Apa saja layanan yang ditawarkan?")} className="px-3 py-1 text-xs rounded-full bg-gray-200 text-gray-700 hover:bg-gray-300 transition">Layanan yang ditawarkan</button>
+          <button onClick={() => handleSuggestionClick("Bagaimana cara meningkatkan SEO website?")} className="px-3 py-1 text-xs rounded-full bg-gray-200 text-gray-700 hover:bg-gray-300 transition">Tanya soal SEO</button>
+          <button onClick={() => handleSuggestionClick("Jelaskan tentang React.js")} className="px-3 py-1 text-xs rounded-full bg-gray-200 text-gray-700 hover:bg-gray-300 transition">Tanya soal Teknologi</button>
+        </div>
       </div>
 
       {/* Certificates */}
