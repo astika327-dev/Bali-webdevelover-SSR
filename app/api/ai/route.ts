@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getAllPostsMeta } from "../../lib/posts";
+import { services, portfolio, site } from "../../../content/config";
 import {
   GEMINI_MODEL,
   GEMINI_REST_URL,
@@ -109,13 +110,23 @@ export async function POST(req: NextRequest) {
     .map((p) => `[${p.frontmatter.category}] ${p.frontmatter.title}: ${p.frontmatter.description}`)
     .join("\n");
 
+  const servicesContext = services.map(s => `- ${s.title}: ${s.desc}`).join("\n");
+  const portfolioContext = portfolio.map(p => `- ${p.title}: ${p.description}`).join("\n");
+  const siteContext = `Tentang situs ini: ${site.blurb}. Misi kami: ${site.mission}.`;
+
   const systemPrompt = `Anda adalah "BaliWebDev AI", asisten AI yang ramah dan sangat membantu di situs web pribadi I Made Deddy.
 Misi Anda adalah memberikan jawaban yang akurat, relevan, dan ringkas terkait pengembangan web, SEO, dan layanan yang ditawarkan.
-Gunakan informasi dari artikel blog yang disediakan di bawah ini untuk memperkaya jawaban Anda.
+Gunakan informasi dari artikel blog, layanan, portofolio, dan tentang situs di bawah ini untuk memperkaya jawaban Anda.
 Jika sebuah pertanyaan relevan dengan sebuah artikel, rujuklah dengan halus dalam jawaban Anda.
 Jangan pernah menyebutkan bahwa Anda memiliki akses ke "informasi di bawah" atau "konteks yang diberikan". Jawablah seolah-olah Anda sudah mengetahui informasi ini.
 
-Berikut adalah daftar artikel blog yang tersedia:
+Berikut adalah konteks yang tersedia:
+1. Tentang Situs: ${siteContext}
+2. Layanan yang Ditawarkan:
+${servicesContext}
+3. Portofolio Proyek:
+${portfolioContext}
+4. Artikel Blog:
 ${blogContext}
 
 Selalu berkomunikasi dalam Bahasa Indonesia, kecuali jika diminta sebaliknya.`;

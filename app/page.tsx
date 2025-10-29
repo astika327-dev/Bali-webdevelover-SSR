@@ -127,11 +127,11 @@ export default function HomePage() {
       </div>
 
       {/* AI Chat Widget */}
-      <div className="relative mt-12 rounded-xl bg-white/60 border border-[var(--tan)] shadow-lg p-4 max-w-2xl mx-auto">
-        <div className="absolute -top-5 left-1/2 -translate-x-1/2 bg-[var(--brown)] text-white rounded-full p-3 shadow-md">
-          <Sparkles size={24} />
+      <div className="relative mt-12 rounded-xl bg-white/60 border border-[var(--tan)] shadow-lg p-4 sm:p-6 max-w-2xl mx-auto">
+        <div className="absolute -top-5 left-1/2 -translate-x-1/2 bg-white text-[var(--brown)] rounded-full p-2 shadow-lg border border-[var(--tan)]/50">
+          <Sparkles size={28} />
         </div>
-        <h3 className="text-xl font-bold text-[var(--brown)] mb-3 pt-4 text-center">BaliWebDev AI</h3>
+        <h3 className="text-xl font-bold text-[var(--brown)] mb-4 pt-5 text-center">BaliWebDev AI</h3>
 
         <div
           ref={chatContainerRef}
@@ -164,22 +164,23 @@ export default function HomePage() {
             type="text"
             value={userInput}
             onChange={(e) => setUserInput(e.target.value)}
-            placeholder="Ketik pertanyaan Anda..."
-            className="flex-grow p-3 rounded-full border border-gray-300 focus:ring-2 focus:ring-[var(--tan)] focus:outline-none transition"
+            placeholder="Tanya tentang layanan, SEO, atau portofolio..."
+            className="flex-grow p-3 rounded-full border border-[var(--tan)]/80 focus:ring-2 focus:ring-[var(--tan)] focus:outline-none transition"
             disabled={isAiLoading}
           />
           <button
             type="submit"
-            className="p-3 rounded-full bg-[var(--brown)] text-white hover:bg-opacity-90 disabled:bg-opacity-50 transition"
+            className="p-3 rounded-full bg-[var(--brown)] text-white hover:bg-opacity-90 disabled:bg-opacity-50 transition flex-shrink-0"
             disabled={isAiLoading || !userInput.trim()}
+            aria-label="Kirim pesan"
           >
             <Send size={20} />
           </button>
         </form>
-        <div className="flex flex-wrap gap-2 mt-3 justify-center">
-          <button onClick={() => handleSuggestionClick("Apa saja layanan yang ditawarkan?")} className="px-3 py-1 text-xs rounded-full bg-gray-200 text-gray-700 hover:bg-gray-300 transition">Layanan yang ditawarkan</button>
-          <button onClick={() => handleSuggestionClick("Bagaimana cara meningkatkan SEO website?")} className="px-3 py-1 text-xs rounded-full bg-gray-200 text-gray-700 hover:bg-gray-300 transition">Tanya soal SEO</button>
-          <button onClick={() => handleSuggestionClick("Jelaskan tentang React.js")} className="px-3 py-1 text-xs rounded-full bg-gray-200 text-gray-700 hover:bg-gray-300 transition">Tanya soal Teknologi</button>
+        <div className="flex flex-wrap gap-2 mt-4 justify-center">
+          <button onClick={() => handleSuggestionClick("Apa saja layanan yang ditawarkan?")} className="px-3 py-1.5 text-xs rounded-full bg-white border border-[var(--tan)]/60 text-[var(--brown)]/80 hover:bg-[var(--tan)]/40 transition">Layanan</button>
+          <button onClick={() => handleSuggestionClick("Ceritakan tentang portofolio Anda")} className="px-3 py-1.5 text-xs rounded-full bg-white border border-[var(--tan)]/60 text-[var(--brown)]/80 hover:bg-[var(--tan)]/40 transition">Portofolio</button>
+          <button onClick={() => handleSuggestionClick("Bagaimana pendekatan Anda terhadap SEO?")} className="px-3 py-1.5 text-xs rounded-full bg-white border border-[var(--tan)]/60 text-[var(--brown)]/80 hover:bg-[var(--tan)]/40 transition">Tentang SEO</button>
         </div>
       </div>
 
