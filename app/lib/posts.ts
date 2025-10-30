@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import { compileMDX } from 'next-mdx-remote/rsc';
+import MdxImage from '../components/MdxImage';
 
 // Helper function to calculate reading time
 function calculateReadingTime(content: string): number {
@@ -42,6 +43,9 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
 
   const { content: compiledContent } = await compileMDX({
     source: content,
+    components: {
+      img: MdxImage as React.ElementType,
+    },
     options: { parseFrontmatter: false },
   });
 
