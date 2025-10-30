@@ -5,7 +5,9 @@ import { useState } from 'react';
 import { portfolio } from 'content/config';
 import Lightbox from 'components/Lightbox';
 import { useLanguage } from '@/context/LanguageContext';
-import FadeIn from '../components/FadeIn';
+import dynamic from 'next/dynamic';
+
+const FadeIn = dynamic(() => import('../components/FadeIn'), { ssr: false });
 
 export default function PortfolioPage() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
