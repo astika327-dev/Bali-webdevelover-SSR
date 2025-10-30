@@ -7,7 +7,8 @@
     "build": "next build",
     "postbuild": "next-sitemap",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "analyze": "ANALYZE=true next build"
   },
   "dependencies": {
     "@google/generative-ai": "^0.24.1",
@@ -33,6 +34,7 @@
     "zod": "^4.1.12"
   },
   "devDependencies": {
+    "@next/bundle-analyzer": "^16.0.1",
     "@tailwindcss/typography": "^0.5.19",
     "@types/node": "24.7.2",
     "@types/nodemailer": "^7.0.2",

@@ -2,11 +2,17 @@ import './globals.css';
 import { site } from '../content/config';
 import Link from 'next/link';
 import Navbar from '../components/navbar';
-import { Analytics } from "@vercel/analytics/next"
+import { Analytics } from "@vercel/analytics/next";
 import { Providers } from './providers';
 import { LanguageProvider } from '../context/LanguageContext';
 import type { Metadata } from 'next';
 import PageTransition from './components/PageTransition';
+import { Inter } from 'next/font/google';
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-sans',
+});
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://bali-webdevelover.com';
 
@@ -55,8 +61,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className="bg-background text-foreground">
+    <html lang="en" suppressHydrationWarning className={`${inter.variable}`}>
+      <body className="bg-background text-foreground font-sans">
         <Providers>
           <LanguageProvider>
             <div className="min-h-screen flex flex-col">
