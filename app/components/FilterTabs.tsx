@@ -23,15 +23,14 @@ export default function FilterTabs({ categories, activeCategory, onFilter }: Fil
             className={`whitespace-nowrap rounded-full px-4 py-2 text-sm font-semibold transition-colors duration-200
               ${activeCategory === category
                 ? 'bg-amber-800 text-white shadow-md'
-                : 'border bg-white text-gray-700 hover:bg-gray-100'
+                : 'border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-neutral-700'
               }`}
-            style={activeCategory === category ? {backgroundColor: '#8B4513'} : {}}
           >
             {category}
           </button>
         ))}
       </div>
-      <div className="pointer-events-none absolute right-0 top-0 h-full w-1/4 bg-gradient-to-l from-white dark:from-gray-900" />
+      <div className="pointer-events-none absolute right-0 top-0 h-full w-1/4 bg-gradient-to-l from-neutral-50 dark:from-neutral-950" />
     </div>
   );
 }
