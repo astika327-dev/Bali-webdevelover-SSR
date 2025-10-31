@@ -3,6 +3,7 @@ import path from 'path';
 import matter from 'gray-matter';
 import { compileMDX } from 'next-mdx-remote/rsc';
 import MdxImage from '../components/MdxImage';
+import Callout from '../components/Callout';
 
 // Helper function to calculate reading time
 function calculateReadingTime(content: string): number {
@@ -45,6 +46,7 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
     source: content,
     components: {
       img: MdxImage as React.ElementType,
+      Callout,
     },
     options: { parseFrontmatter: false },
   });
