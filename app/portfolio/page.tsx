@@ -16,10 +16,10 @@ export default function PortfolioPage() {
   return (
     <section className="container py-12 md:py-16">
       <FadeIn>
-        <h1 className="text-3xl md:text-4xl font-semibold tracking-tight text-[var(--brown)]">
+        <h1 className="text-3xl md:text-4xl font-semibold tracking-tight text-neutral-800 dark:text-neutral-200">
           {t('portfolio.title')}
         </h1>
-        <p className="text-[var(--brown)]/80 mt-2 max-w-2xl">
+        <p className="text-neutral-600 dark:text-neutral-400 mt-2 max-w-2xl">
           {t('portfolio.description')}
         </p>
       </FadeIn>
@@ -28,7 +28,7 @@ export default function PortfolioPage() {
         {portfolio.map((p, idx) => (
           <FadeIn key={p.link} delay={0.2 * (idx + 1)}>
             <div
-              className="rounded-2xl border border-[var(--tan)] bg-[var(--cream)] overflow-hidden shadow-sm hover:shadow-md transition h-full"
+              className="rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900 overflow-hidden shadow-sm hover:shadow-md transition h-full"
             >
               <button
                 onClick={() => setOpenIndex(idx)}
@@ -39,14 +39,14 @@ export default function PortfolioPage() {
                 <Image src={p.images[0]} alt={p.title} fill className="object-cover" />
               </div>
               <div className="p-4">
-                <h2 className="font-semibold text-[var(--brown)] leading-tight">{p.title}</h2>
-                <p className="text-sm text-[var(--brown)]/80 mt-1 line-clamp-2">{p.description}</p>
+                <h2 className="font-semibold text-neutral-800 dark:text-neutral-200 leading-tight">{p.title}</h2>
+                <p className="text-sm text-neutral-600 dark:text-neutral-400 mt-1 line-clamp-2">{p.description}</p>
                 <a
                   href={p.link}
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={(e) => e.stopPropagation()} // Mencegah lightbox terbuka saat tombol ini diklik
-                  className="inline-block text-sm font-semibold text-[var(--orange)] hover:text-[var(--orange-dark)] mt-3"
+                  className="inline-block text-sm font-semibold text-amber-600 dark:text-amber-500 hover:text-amber-700 dark:hover:text-amber-400 mt-3"
                 >
                   Kunjungi Situs &rarr;
                 </a>
