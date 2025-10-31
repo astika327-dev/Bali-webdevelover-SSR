@@ -45,14 +45,61 @@ export const metadata: Metadata = {
     description: site.blurb,
     images: ['/ogimg.png'],
   },
+  manifest: '/site.webmanifest',
   icons: {
     icon: '/favicon.png',
+    shortcut: '/favicon.png',
     apple: '/apple-touch-icon.png',
   },
   robots: {
     index: true,
     follow: true,
   },
+};
+
+const JsonLd = () => {
+  const orgSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: site.company,
+    url: siteUrl,
+    logo: `${siteUrl}/icon.png`,
+    sameAs: [
+      // Tambahkan URL media sosial Anda di sini
+      // 'https://twitter.com/your-profile',
+      // 'https://www.instagram.com/your-profile/'
+    ],
+  };
+
+  const webSiteSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: site.company,
+    url: siteUrl,
+    description: site.tagline,
+    publisher: {
+      '@type': 'Organization',
+      name: site.company,
+      logo: {
+        '@type': 'ImageObject',
+        url: `${siteUrl}/icon.png`,
+      },
+    },
+    inLanguage: 'id-ID', // Ganti jika bahasa utama Anda berbeda
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webSiteSchema) }}
+      />
+    </>
+  );
 };
 
 export default function RootLayout({
@@ -62,6 +109,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning className={`${inter.variable}`}>
+      <head>
+        <JsonLd />
+      </head>
       <body className="bg-background text-foreground font-sans">
         <Providers>
           <div className="min-h-screen flex flex-col">

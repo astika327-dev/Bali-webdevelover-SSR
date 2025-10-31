@@ -59,29 +59,91 @@ export default async function Page({ params }: { params: { slug: string } }) {
 
   // Fetch related posts
   const relatedPosts = await getRelatedPosts(category, params.slug);
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://bali-webdevelover.com';
+
+  const JsonLd = () => {
+    const articleSchema = {
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      mainEntityOfPage: {
+        '@type': 'WebPage',
+        '@id': `${siteUrl}/blog/${params.slug}`,
+      },
+      headline: title,
+      description: post.frontmatter.description,
+      image: `${siteUrl}${image || '/ogimg.png'}`,
+      author: {
+        '@type': 'Person',
+        name: author || site.company,
+      },
+      publisher: {
+        '@type': 'Organization',
+        name: site.company,
+        logo: {
+          '@type': 'ImageObject',
+          url: `${siteUrl}/icon.png`,
+        },
+      },
+      datePublished: new Date(date).toISOString(),
+      dateModified: new Date(date).toISOString(), // Asumsi tanggal modifikasi sama dengan tanggal publikasi
+    };
+
+    const breadcrumbSchema = {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Blog',
+          item: `${siteUrl}/blog`,
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: title,
+          item: `${siteUrl}/blog/${params.slug}`,
+        },
+      ],
+    };
+
+    return (
+      <>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+        />
+      </>
+    );
+  };
 
   return (
     <>
+      <JsonLd />
       {/* Header */}
-      <div className="relative bg-[var(--cream)] py-24 sm:py-32">
+      <div className="relative bg-neutral-50 dark:bg-neutral-900 py-24 sm:py-32">
         {image && (
             <Image
                 src={image}
                 alt={`Gambar untuk artikel ${title}`}
                 fill
-                className="absolute inset-0 h-full w-full object-cover opacity-10"
+                className="absolute inset-0 h-full w-full object-cover opacity-10 dark:opacity-20"
                 priority
             />
         )}
         <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
             <div className="mx-auto max-w-4xl text-center">
-                <div className="text-base font-semibold uppercase tracking-wider text-[var(--brown)]/70">
+                <div className="text-base font-semibold uppercase tracking-wider text-neutral-600 dark:text-neutral-400">
                     {category}
                 </div>
-                <h1 className="mt-4 text-4xl font-bold tracking-tight text-[var(--brown)] sm:text-6xl">
+                <h1 className="mt-4 text-4xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100 sm:text-6xl">
                     <Balancer>{title}</Balancer>
                 </h1>
-                <div className="mt-6 flex justify-center items-center gap-x-4 text-[var(--brown)]/80">
+                <div className="mt-6 flex justify-center items-center gap-x-4 text-neutral-700 dark:text-neutral-300">
                     <span>Oleh {author || site.company}</span>
                     <span className="opacity-50">•</span>
                     <time dateTime={date}>{formatDate(date)}</time>
