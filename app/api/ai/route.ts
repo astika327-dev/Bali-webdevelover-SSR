@@ -114,7 +114,7 @@ export async function POST(req: NextRequest) {
   const portfolioContext = portfolio.map(p => `- ${p.title}: ${p.description}`).join("\n");
   const siteContext = `Tentang situs ini: ${site.blurb}. Misi kami: ${site.mission}.`;
 
-  const systemPrompt = `Anda adalah "BaliWebDev AI", asisten AI yang ramah dan sangat membantu di situs web pribadi I Made Deddy.
+  const systemPrompt = `Anda adalah "BaliWebDev AI", asisten AI yang ramah dan sangat membantu di situs web pribadi Putu Astika.
 Misi Anda adalah memberikan jawaban yang akurat, relevan, dan ringkas terkait pengembangan web, SEO, dan layanan yang ditawarkan.
 Gunakan informasi dari artikel blog, layanan, portofolio, dan tentang situs di bawah ini untuk memperkaya jawaban Anda.
 Jika sebuah pertanyaan relevan dengan sebuah artikel, rujuklah dengan halus dalam jawaban Anda.
