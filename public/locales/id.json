@@ -122,5 +122,20 @@
   "terms.item6.title": "Hukum yang mengatur",
   "terms.item6.description": "Hukum lokal Indonesia berlaku kecuali ditentukan lain dalam proposal.",
   "terms.item7.title": "Kontak",
-  "terms.item7.description": "Untuk pertanyaan tentang persyaratan ini, hubungi melalui halaman kontak."
+  "terms.item7.description": "Untuk pertanyaan tentang persyaratan ini, hubungi melalui halaman kontak.",
+
+  "tensorflow.how_to_use.title": "Cara Penggunaan",
+  "tensorflow.how_to_use.points": [
+    "Mode Unggah: Uji model dengan mengunggah gambar objek fisik (Contoh: laptop, cangkir, ponsel, atau kucing). Model ini tidak dilatih untuk membaca teks atau UI (seperti screenshot PageSpeed).",
+    "Mode Kamera: Izinkan akses kamera untuk melihat bagaimana AI mendeteksi objek di sekitar Anda secara real-time.",
+    "Hasil: Kotak batas akan muncul secara otomatis, menunjukkan objek yang terdeteksi dan tingkat keyakinan (probabilitas) model."
+  ],
+  "tensorflow.why.title": "Transparansi Keahlian Kami",
+  "tensorflow.why.body": "Demo ini bukan sekadar fitur; ini adalah bukti nyata kemampuan kami mengimplementasikan Deep Learning (AI) canggih. Kami menunjukkan bahwa kami dapat membangun otomasi cerdas dan solusi real-time yang berjalan efisien di browser Anda—kemampuan yang dapat kami terapkan untuk mengoptimalkan proses bisnis Anda.",
+  "tensorflow.privacy.title": "Jaminan Privasi Anda (Sisi Klien)",
+  "tensorflow.privacy.points": [
+    "Berbasis Sains (Prinsip On-Device Processing): Semua komputasi AI (inferensi) terjadi 100% secara lokal di browser (GPU) Anda.",
+    "Tanpa Transfer Data: Data gambar atau feed video Anda TIDAK PERNAH DIUNGGAH, ditransfer, atau disimpan di server Vercel kami.",
+    "Aman Secara Arsitektural: Privasi Anda terjamin penuh karena data sensitif Anda tidak pernah meninggalkan perangkat Anda."
+  ]
 }

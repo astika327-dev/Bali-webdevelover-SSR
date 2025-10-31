@@ -121,5 +121,20 @@
   "terms.item6.title": "Governing law",
   "terms.item6.description": "Local Indonesian law applies unless specified differently in the proposal.",
   "terms.item7.title": "Contact",
-  "terms.item7.description": "For questions about these terms, reach out via the contact page."
+  "terms.item7.description": "For questions about these terms, reach out via the contact page.",
+
+  "tensorflow.how_to_use.title": "How to Use",
+  "tensorflow.how_to_use.points": [
+    "Upload Mode: Test the model by uploading a picture of a physical object (e.g., a laptop, cup, phone, or cat). The model is not trained to read text or UI (like PageSpeed screenshots).",
+    "Camera Mode: Grant camera access to see how the AI detects objects around you in real-time.",
+    "Results: Bounding boxes will appear automatically, showing the detected objects and the model's confidence level (probability)."
+  ],
+  "tensorflow.why.title": "A Showcase of Our Expertise",
+  "tensorflow.why.body": "This demo isn't just a feature; it's a tangible proof of our ability to implement advanced Deep Learning (AI). We're showing that we can build intelligent automation and real-time solutions that run efficiently in your browser—a capability we can apply to optimize your business processes.",
+  "tensorflow.privacy.title": "Your Privacy, Guaranteed (Client-Side)",
+  "tensorflow.privacy.points": [
+    "Science-Based (On-Device Processing): All AI computations (inference) happen 100% locally in your browser (on your GPU).",
+    "No Data Transfer: Your image data or video feed is NEVER UPLOADED, transferred, or stored on our Vercel servers.",
+    "Secure by Architecture: Your privacy is fully guaranteed because your sensitive data never leaves your device."
+  ]
 }
