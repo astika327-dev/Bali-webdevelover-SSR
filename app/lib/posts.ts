@@ -112,12 +112,12 @@ export async function getAdjacentPosts(slug: string): Promise<{ prevPost: { slug
     return { prevPost: null, nextPost: null };
   }
 
-  const prevPost = currentPostIndex > 0 ? {
+  const nextPost = currentPostIndex > 0 ? {
     slug: allPosts[currentPostIndex - 1].slug,
     title: allPosts[currentPostIndex - 1].frontmatter.title,
   } : null;
 
-  const nextPost = currentPostIndex < allPosts.length - 1 ? {
+  const prevPost = currentPostIndex < allPosts.length - 1 ? {
     slug: allPosts[currentPostIndex + 1].slug,
     title: allPosts[currentPostIndex + 1].frontmatter.title,
   } : null;
