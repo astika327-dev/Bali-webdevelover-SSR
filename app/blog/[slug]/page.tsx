@@ -9,6 +9,7 @@ import { formatDate } from "@/app/lib/utils";
 import { site } from "@/content/config";
 import RelatedPosts from "@/app/components/RelatedPosts"; // Import RelatedPosts
 import SocialShareButtons from "@/app/components/SocialShareButtons";
+import Comments from "@/app/components/Comments";
 
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
   const post = await getPostBySlug(params.slug);
@@ -99,6 +100,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
               </article>
               {/* Social Share Buttons */}
               <SocialShareButtons title={title} slug={params.slug} />
+              <Comments />
               <div className="mt-16">
                   <PostNavigation prevPost={prevPost} nextPost={nextPost} />
                   <RelatedPosts posts={relatedPosts} />
