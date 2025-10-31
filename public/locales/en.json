@@ -122,39 +122,46 @@
   "terms.item6.description": "Local Indonesian law applies unless specified differently in the proposal.",
   "terms.item7.title": "Contact",
   "terms.item7.description": "For questions about these terms, reach out via the contact page.",
-
-  "tensorflow.how_to_use.title": "How to Use",
-  "tensorflow.how_to_use.intro": "This section is designed to guide you in getting the most out of this Deep Learning demo.",
-  "tensorflow.how_to_use.sections": [
-    {
-      "title": "Image Upload Mode",
-      "points": [
-        "Ideal Input: Upload images containing common, physical objects. This model was scientifically trained on the COCO dataset to recognize real-world items.",
-        "Success Cases: Try photos of a laptop, a mobile phone, a coffee mug, people, cars, or pets.",
-        "Technical Limitations: The model is not trained to read text or analyze digital UI data (like PageSpeed score screenshots). It looks for physical patterns, not conceptual data."
+  "tensorflow": {
+    "how_to_use": {
+      "title": "How to Use",
+      "intro": "This section is designed to guide you in getting the most out of this Deep Learning demo.",
+      "sections": [
+        {
+          "title": "Image Upload Mode",
+          "points": [
+            "Ideal Input: Upload images containing common, physical objects. This model was scientifically trained on the COCO dataset to recognize real-world items.",
+            "Success Cases: Try photos of a laptop, a mobile phone, a coffee mug, people, cars, or pets.",
+            "Technical Limitations: The model is not trained to read text or analyze digital UI data (like PageSpeed score screenshots). It looks for physical patterns, not conceptual data."
+          ]
+        },
+        {
+          "title": "Live Camera Mode",
+          "points": [
+            "Grant Access: Allow your browser to access the camera. Remember (per the Privacy section), this video feed is processed locally and never leaves your device.",
+            "Interaction: Point the camera at objects around you (like your keyboard or mouse) and observe how the AI detects and tracks them in real-time."
+          ]
+        },
+        {
+          "title": "Reading the Results",
+          "points": [
+            "Bounding Box: A colored box will automatically appear around any detected object.",
+            "Confidence Score (Probability): The percentage number (%) indicates how certain the AI model is about its prediction."
+          ]
+        }
       ]
     },
-    {
-      "title": "Live Camera Mode",
-      "points": [
-        "Grant Access: Allow your browser to access the camera. Remember (per the Privacy section), this video feed is processed locally and never leaves your device.",
-        "Interaction: Point the camera at objects around you (like your keyboard or mouse) and observe how the AI detects and tracks them in real-time."
-      ]
+    "why": {
+      "title": "A Showcase of Our Expertise",
+      "body": "This demo isn't just a feature; it's a tangible proof of our ability to implement advanced Deep Learning (AI). We're showing that we can build intelligent automation and real-time solutions that run efficiently in your browser—a capability we can apply to optimize your business processes."
     },
-    {
-      "title": "Reading the Results",
+    "privacy": {
+      "title": "Your Privacy, Guaranteed (Client-Side)",
       "points": [
-        "Bounding Box: A colored box will automatically appear around any detected object.",
-        "Confidence Score (Probability): The percentage number (%) indicates how certain the AI model is about its prediction."
+        "Science-Based (On-Device Processing): All AI computations (inference) happen 100% locally in your browser (on your GPU).",
+        "No Data Transfer: Your image data or video feed is NEVER UPLOADED, transferred, or stored on our Vercel servers.",
+        "Secure by Architecture: Your privacy is fully guaranteed because your sensitive data never leaves your device."
       ]
     }
-  ],
-  "tensorflow.why.title": "A Showcase of Our Expertise",
-  "tensorflow.why.body": "This demo isn't just a feature; it's a tangible proof of our ability to implement advanced Deep Learning (AI). We're showing that we can build intelligent automation and real-time solutions that run efficiently in your browser—a capability we can apply to optimize your business processes.",
-  "tensorflow.privacy.title": "Your Privacy, Guaranteed (Client-Side)",
-  "tensorflow.privacy.points": [
-    "Science-Based (On-Device Processing): All AI computations (inference) happen 100% locally in your browser (on your GPU).",
-    "No Data Transfer: Your image data or video feed is NEVER UPLOADED, transferred, or stored on our Vercel servers.",
-    "Secure by Architecture: Your privacy is fully guaranteed because your sensitive data never leaves your device."
-  ]
+  }
 }
