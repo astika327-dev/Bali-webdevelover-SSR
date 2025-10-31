@@ -124,10 +124,30 @@
   "terms.item7.description": "For questions about these terms, reach out via the contact page.",
 
   "tensorflow.how_to_use.title": "How to Use",
-  "tensorflow.how_to_use.points": [
-    "Upload Mode: Test the model by uploading a picture of a physical object (e.g., a laptop, cup, phone, or cat). The model is not trained to read text or UI (like PageSpeed screenshots).",
-    "Camera Mode: Grant camera access to see how the AI detects objects around you in real-time.",
-    "Results: Bounding boxes will appear automatically, showing the detected objects and the model's confidence level (probability)."
+  "tensorflow.how_to_use.intro": "This section is designed to guide you in getting the most out of this Deep Learning demo.",
+  "tensorflow.how_to_use.sections": [
+    {
+      "title": "Image Upload Mode",
+      "points": [
+        "Ideal Input: Upload images containing common, physical objects. This model was scientifically trained on the COCO dataset to recognize real-world items.",
+        "Success Cases: Try photos of a laptop, a mobile phone, a coffee mug, people, cars, or pets.",
+        "Technical Limitations: The model is not trained to read text or analyze digital UI data (like PageSpeed score screenshots). It looks for physical patterns, not conceptual data."
+      ]
+    },
+    {
+      "title": "Live Camera Mode",
+      "points": [
+        "Grant Access: Allow your browser to access the camera. Remember (per the Privacy section), this video feed is processed locally and never leaves your device.",
+        "Interaction: Point the camera at objects around you (like your keyboard or mouse) and observe how the AI detects and tracks them in real-time."
+      ]
+    },
+    {
+      "title": "Reading the Results",
+      "points": [
+        "Bounding Box: A colored box will automatically appear around any detected object.",
+        "Confidence Score (Probability): The percentage number (%) indicates how certain the AI model is about its prediction."
+      ]
+    }
   ],
   "tensorflow.why.title": "A Showcase of Our Expertise",
   "tensorflow.why.body": "This demo isn't just a feature; it's a tangible proof of our ability to implement advanced Deep Learning (AI). We're showing that we can build intelligent automation and real-time solutions that run efficiently in your browser—a capability we can apply to optimize your business processes.",

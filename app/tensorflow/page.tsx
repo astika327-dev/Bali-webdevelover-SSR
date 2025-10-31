@@ -164,8 +164,8 @@ export default function TensorflowPage() {
     }
   };
 
-  // Safely get translation arrays
-  const howToUsePoints = getTranslation(translations, 'tensorflow.how_to_use.points') || [];
+  // Safely get translation arrays and objects
+  const howToUseData = getTranslation(translations, 'tensorflow.how_to_use') || { sections: [] };
   const privacyPoints = getTranslation(translations, 'tensorflow.privacy.points') || [];
 
   return (
@@ -225,10 +225,16 @@ export default function TensorflowPage() {
         <div className="grid md:grid-cols-3 gap-12 text-sm">
           {/* How to Use */}
           <div className="space-y-3">
-            <h3 className="font-semibold text-lg flex items-center gap-2">💡 {t('tensorflow.how_to_use.title')}</h3>
-            <ul className="space-y-2 list-disc list-inside text-neutral-700 dark:text-neutral-300">
-              {howToUsePoints.map((point: string, i: number) => <li key={i}>{point}</li>)}
-            </ul>
+            <h3 className="font-semibold text-lg flex items-center gap-2">💡 {howToUseData.title}</h3>
+            <p className="text-neutral-700 dark:text-neutral-300">{howToUseData.intro}</p>
+            {howToUseData.sections.map((section: { title: string, points: string[] }, i: number) => (
+              <div key={i} className="pt-2">
+                <h4 className="font-semibold text-neutral-800 dark:text-neutral-200">{section.title}</h4>
+                <ul className="space-y-1 list-disc list-inside text-neutral-700 dark:text-neutral-300 mt-1">
+                  {section.points.map((point: string, j: number) => <li key={j}>{point}</li>)}
+                </ul>
+              </div>
+            ))}
           </div>
 
           {/* Why */}
