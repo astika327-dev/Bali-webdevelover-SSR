@@ -64,10 +64,9 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning className={`${inter.variable}`}>
       <body className="bg-background text-foreground font-sans">
         <Providers>
-          <LanguageProvider>
-            <div className="min-h-screen flex flex-col">
-              <Navbar />
-              <main className="flex-1">
+          <div className="min-h-screen flex flex-col">
+            <Navbar />
+            <main className="flex-1">
                 <PageTransition>{children}</PageTransition>
               </main>
 
@@ -100,7 +99,6 @@ export default function RootLayout({
               </footer>
 
             </div>
-          </LanguageProvider>
         </Providers>
         <Analytics />
       </body>
