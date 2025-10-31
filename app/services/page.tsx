@@ -10,24 +10,29 @@ export default function ServicesPage() {
 
   const plans = [
     {
-      key: 'services.plans.starter',
+      key: 'services.plans.launchpad',
       badge: null,
     },
     {
-      key: 'services.plans.growth',
-      badge: t('services.plans.growth.badge'),
-    },
-    {
-      key: 'services.plans.premium',
+      key: 'services.plans.digital_hq',
       badge: null,
     },
-  ];
-
-  const addons = [
-    'services.addons.item1',
-    'services.addons.item2',
-    'services.addons.item3',
-    'services.addons.item4',
+    {
+      key: 'services.plans.booking_engine',
+      badge: null,
+    },
+    {
+      key: 'services.plans.headless_ecommerce',
+      badge: null,
+    },
+    {
+      key: 'services.plans.ai_powered',
+      badge: null,
+    },
+    {
+      key: 'services.plans.growth_retainer',
+      badge: null,
+    },
   ];
 
   const faqItems = [
@@ -57,6 +62,7 @@ export default function ServicesPage() {
               <div className="mt-2">
                 <div className="text-sm text-neutral-500">{t(`${p.key}.subtitle`)}</div>
               <h2 className="text-2xl font-semibold">{t(`${p.key}.name`)}</h2>
+              <p className="text-neutral-600 mt-2">{t(`${p.key}.description`)}</p>
             </div>
             <div className="text-3xl font-semibold mt-4">{t(`${p.key}.price`)}</div>
             
@@ -81,21 +87,6 @@ export default function ServicesPage() {
           </FadeIn>
         ))}
       </div>
-
-      <FadeIn className="mt-12" delay={0.4}>
-        <h2 className="text-xl font-semibold">{t('services.addons.title')}</h2>
-        <div className="grid md:grid-cols-3 gap-6 mt-4">
-          {addons.map((a, i) => (
-            <FadeIn key={a} delay={0.2 * (i + 1)}>
-              <div className="rounded-2xl border bg-white/70 p-5 h-full">
-                <div className="font-semibold">{t(`${a}.title`)}</div>
-                <p className="text-neutral-600 mt-2">{t(`${a}.desc`)}</p>
-                <div className="text-sm mt-3">{t(`${a}.from`)}</div>
-              </div>
-            </FadeIn>
-          ))}
-        </div>
-      </FadeIn>
 
       <FadeIn className="mt-12 text-sm text-neutral-600" delay={0.6}>
         <h3 className="font-semibold">{t('services.faq.title')}</h3>
