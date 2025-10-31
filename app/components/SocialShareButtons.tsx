@@ -97,7 +97,7 @@ const SocialShareButtons = ({ title, slug }: SocialShareButtonsProps) => {
         <button
           onClick={() => copyToClipboard(url)}
           aria-label="Copy link"
-          className="p-3 rounded-full text-white bg-gray-500 hover:bg-gray-600 transition-transform transform hover:scale-110"
+          className="p-3 rounded-full text-white bg-gray-500 hover:bg-gray-600 dark:bg-gray-700 dark:hover:bg-gray-600 transition-transform transform hover:scale-110"
         >
           <Copy size={24} />
         </button>
@@ -125,7 +125,7 @@ const SocialShareButtons = ({ title, slug }: SocialShareButtonsProps) => {
             <button
                 onClick={() => copyToClipboard(url)}
                 aria-label="Copy link"
-                className="p-3 rounded-full text-white bg-gray-500 hover:bg-gray-600 transition-transform transform hover:scale-110"
+                className="p-3 rounded-full text-white bg-gray-500 hover:bg-gray-600 dark:bg-gray-700 dark:hover:bg-gray-600 transition-transform transform hover:scale-110"
             >
                 <Copy size={24} />
             </button>
