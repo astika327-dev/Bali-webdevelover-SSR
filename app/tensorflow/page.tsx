@@ -18,7 +18,7 @@ const BBOX_COLORS = [
 ];
 
 export default function TensorflowPage() {
-  const { t, translations } = useLanguage();
+  const { translations } = useLanguage();
   const [mode, setMode] = useState<'upload' | 'camera'>('upload');
   const [model, setModel] = useState<cocoSsd.ObjectDetection | null>(null);
   const [status, setStatus] = useState('Memuat Model...');
@@ -165,9 +165,10 @@ export default function TensorflowPage() {
     }
   };
 
-  // Safely get translation arrays and objects
-  const howToUseData = getTranslation(translations, 'tensorflow.how_to_use') || { sections: [] };
-  const privacyPoints = getTranslation(translations, 'tensorflow.privacy.points') || [];
+  // Safely get translation data for all cards
+  const howToUseData = getTranslation(translations, 'tensorflow.how_to_use') || { title: 'How to Use', intro: '', sections: [] };
+  const whyData = getTranslation(translations, 'tensorflow.why') || { title: 'Why This Matters', body: '' };
+  const privacyData = getTranslation(translations, 'tensorflow.privacy') || { title: 'Your Privacy', points: [] };
 
   return (
     <section className="container py-12 md:py-16">
@@ -245,19 +246,19 @@ export default function TensorflowPage() {
           <div className="p-6 rounded-lg bg-neutral-50 dark:bg-neutral-900 border dark:border-neutral-800 shadow-sm">
             <h3 className="font-semibold text-lg flex items-center gap-2 mb-3">
               <Rocket className="w-5 h-5 text-purple-500"/>
-              {t('tensorflow.why.title')}
+              {whyData.title}
             </h3>
-            <p className="text-neutral-700 dark:text-neutral-300">{t('tensorflow.why.body')}</p>
+            <p className="text-neutral-700 dark:text-neutral-300">{whyData.body}</p>
           </div>
 
           {/* Privacy Card */}
           <div className="p-6 rounded-lg bg-neutral-50 dark:bg-neutral-900 border dark:border-neutral-800 shadow-sm">
             <h3 className="font-semibold text-lg flex items-center gap-2 mb-3">
               <ShieldCheck className="w-5 h-5 text-green-500"/>
-              {t('tensorflow.privacy.title')}
+              {privacyData.title}
             </h3>
             <ul className="space-y-2 list-disc list-inside text-neutral-700 dark:text-neutral-300">
-                {privacyPoints.map((point: string, i: number) => <li key={i}>{point}</li>)}
+                {privacyData.points.map((point: string, i: number) => <li key={i}>{point}</li>)}
             </ul>
           </div>
         </div>
