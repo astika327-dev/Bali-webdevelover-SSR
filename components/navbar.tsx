@@ -8,6 +8,7 @@ import type { Route } from 'next';
 import { site } from '../content/config';
 import { useLanguage } from '../context/LanguageContext';
 import LanguageToggle from './LanguageToggle';
+import ThemeToggle from './ThemeToggle';
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -44,7 +45,10 @@ export default function Navbar() {
               {t(l.labelKey)}
             </Link>
           ))}
-          <LanguageToggle />
+          <div className="flex items-center gap-2">
+            <LanguageToggle />
+            <ThemeToggle />
+          </div>
         </nav>
 
         {/* Mobile toggle */}
@@ -73,8 +77,9 @@ export default function Navbar() {
                 {t(l.labelKey)}
               </Link>
             ))}
-            <div className="pt-2">
+            <div className="pt-2 flex items-center gap-2">
               <LanguageToggle />
+              <ThemeToggle />
             </div>
           </nav>
         </div>
