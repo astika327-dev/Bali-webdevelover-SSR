@@ -4,6 +4,7 @@ import { useState, useRef, useEffect, useCallback } from 'react';
 import * as tf from '@tensorflow/tfjs';
 import * as cocoSsd from '@tensorflow-models/coco-ssd';
 import { useLanguage } from '../../context/LanguageContext';
+import { Lightbulb, Rocket, ShieldCheck } from 'lucide-react';
 
 // Helper to safely get nested translation keys
 const getTranslation = (translations: any, key: string): any => {
@@ -221,12 +222,15 @@ export default function TensorflowPage() {
         </div>
       </div>
 
-      <div className="mt-20 pt-12 border-t max-w-4xl mx-auto">
-        <div className="grid md:grid-cols-3 gap-12 text-sm">
-          {/* How to Use */}
-          <div className="space-y-3">
-            <h3 className="font-semibold text-lg flex items-center gap-2">💡 {howToUseData.title}</h3>
-            <p className="text-neutral-700 dark:text-neutral-300">{howToUseData.intro}</p>
+      <div className="mt-20 pt-12 border-t max-w-5xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-8 text-sm">
+          {/* How to Use Card */}
+          <div className="p-6 rounded-lg bg-neutral-50 dark:bg-neutral-900 border dark:border-neutral-800 shadow-sm">
+            <h3 className="font-semibold text-lg flex items-center gap-2 mb-3">
+              <Lightbulb className="w-5 h-5 text-blue-500"/>
+              {howToUseData.title}
+            </h3>
+            <p className="text-neutral-700 dark:text-neutral-300 mb-4">{howToUseData.intro}</p>
             {howToUseData.sections.map((section: { title: string, points: string[] }, i: number) => (
               <div key={i} className="pt-2">
                 <h4 className="font-semibold text-neutral-800 dark:text-neutral-200">{section.title}</h4>
@@ -237,15 +241,21 @@ export default function TensorflowPage() {
             ))}
           </div>
 
-          {/* Why */}
-          <div className="space-y-3">
-            <h3 className="font-semibold text-lg flex items-center gap-2">🚀 {t('tensorflow.why.title')}</h3>
+          {/* Why Card */}
+          <div className="p-6 rounded-lg bg-neutral-50 dark:bg-neutral-900 border dark:border-neutral-800 shadow-sm">
+            <h3 className="font-semibold text-lg flex items-center gap-2 mb-3">
+              <Rocket className="w-5 h-5 text-purple-500"/>
+              {t('tensorflow.why.title')}
+            </h3>
             <p className="text-neutral-700 dark:text-neutral-300">{t('tensorflow.why.body')}</p>
           </div>
 
-          {/* Privacy */}
-          <div className="space-y-3">
-            <h3 className="font-semibold text-lg flex items-center gap-2">🛡️ {t('tensorflow.privacy.title')}</h3>
+          {/* Privacy Card */}
+          <div className="p-6 rounded-lg bg-neutral-50 dark:bg-neutral-900 border dark:border-neutral-800 shadow-sm">
+            <h3 className="font-semibold text-lg flex items-center gap-2 mb-3">
+              <ShieldCheck className="w-5 h-5 text-green-500"/>
+              {t('tensorflow.privacy.title')}
+            </h3>
             <ul className="space-y-2 list-disc list-inside text-neutral-700 dark:text-neutral-300">
                 {privacyPoints.map((point: string, i: number) => <li key={i}>{point}</li>)}
             </ul>
