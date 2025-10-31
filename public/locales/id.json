@@ -125,10 +125,30 @@
   "terms.item7.description": "Untuk pertanyaan tentang persyaratan ini, hubungi melalui halaman kontak.",
 
   "tensorflow.how_to_use.title": "Cara Penggunaan",
-  "tensorflow.how_to_use.points": [
-    "Mode Unggah: Uji model dengan mengunggah gambar objek fisik (Contoh: laptop, cangkir, ponsel, atau kucing). Model ini tidak dilatih untuk membaca teks atau UI (seperti screenshot PageSpeed).",
-    "Mode Kamera: Izinkan akses kamera untuk melihat bagaimana AI mendeteksi objek di sekitar Anda secara real-time.",
-    "Hasil: Kotak batas akan muncul secara otomatis, menunjukkan objek yang terdeteksi dan tingkat keyakinan (probabilitas) model."
+  "tensorflow.how_to_use.intro": "Bagian ini dirancang untuk memandu Anda mendapatkan hasil maksimal dari demo Deep Learning ini.",
+  "tensorflow.how_to_use.sections": [
+    {
+      "title": "Mode Unggah Gambar",
+      "points": [
+        "Input Ideal: Unggah gambar yang berisi objek fisik dan umum. Model ini dilatih secara ilmiah pada dataset COCO untuk mengenali benda-benda di dunia nyata.",
+        "Contoh Sukses: Coba foto laptop, ponsel, cangkir kopi, orang, mobil, atau hewan peliharaan.",
+        "Batasan Teknis: Model ini tidak dilatih untuk membaca teks atau menganalisis data UI digital (seperti screenshot skor PageSpeed). Ia mencari pola fisik, bukan data konseptual."
+      ]
+    },
+    {
+      "title": "Mode Kamera Langsung",
+      "points": [
+        "Izin Akses: Izinkan browser Anda untuk mengakses kamera. Ingat (sesuai bagian Privasi), feed video ini diproses secara lokal dan tidak pernah meninggalkan perangkat Anda.",
+        "Interaksi: Arahkan kamera ke objek di sekitar Anda (seperti keyboard atau mouse Anda) dan amati bagaimana AI mendeteksi dan melacaknya secara real-time."
+      ]
+    },
+    {
+      "title": "Membaca Hasil",
+      "points": [
+        "Kotak Batas: Kotak berwarna akan secara otomatis muncul di sekitar objek yang terdeteksi.",
+        "Skor Keyakinan (Probabilitas): Angka persentase (%) menunjukkan seberapa yakin model AI tersebut terhadap prediksinya."
+      ]
+    }
   ],
   "tensorflow.why.title": "Transparansi Keahlian Kami",
   "tensorflow.why.body": "Demo ini bukan sekadar fitur; ini adalah bukti nyata kemampuan kami mengimplementasikan Deep Learning (AI) canggih. Kami menunjukkan bahwa kami dapat membangun otomasi cerdas dan solusi real-time yang berjalan efisien di browser Anda—kemampuan yang dapat kami terapkan untuk mengoptimalkan proses bisnis Anda.",
