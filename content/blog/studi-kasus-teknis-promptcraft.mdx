@@ -1,0 +1,84 @@
+---
+slug: 'studi-kasus-teknis-promptcraft'
+title: "Studi Kasus Produk: Cara Saya Membangun PromptCraft, Platform SaaS untuk Produktivitas AI"
+description: 'Dari masalah "Prompt yang Berantakan" menjadi Aplikasi Web Full-Stack. Studi kasus teknis saya tentang arsitektur dan stack di balik PromptCraft.'
+date: '2025-11-04'
+category: 'Studi Kasus'
+featured: true
+image: '/images/blog/promptcraft-blog.png'
+readingTime: 8
+---
+
+## Masalah (Kekacauan di Era AI Generatif)
+
+Dalam satu tahun terakhir, AI Generatif (seperti ChatGPT, Claude) telah mengubah cara kita bekerja. Namun, teknologi ini membawa masalah baru yang fundamental bagi profesional dan tim:
+
+* **Inefisiensi Workflow:** *Prompt* (perintah) yang efektif adalah aset berharga. Namun, kebanyakan profesional menyimpannya di tempat yang terpisah-pisah: file `notes.txt`, Google Docs, *spreadsheet*, atau obrolan tim yang hilang.
+* **Inkonsistensi Kualitas:** Dua orang yang berbeda akan mendapatkan hasil AI yang sangat berbeda, bahkan untuk tugas yang sama. Tidak ada "satu sumber kebenaran" (*single source of truth*) untuk *prompt* terbaik.
+* **Kesulitan Kolaborasi:** Tim tidak bisa dengan mudah berbagi, memberi versi, atau berkolaborasi dalam menyusun *prompt* yang kompleks.
+* **Kurangnya Monetisasi:** Seorang ahli *prompt engineer* tidak punya cara mudah untuk "mengemas" dan menjual keahlian *prompt* mereka yang telah teruji.
+
+Saya menyadari bahwa masalahnya bukan pada AI-nya, tetapi pada **manajemen *workflow*** di sekitarnya.
+
+## Hipotesis & Solusi (Membangun "Command Center")
+
+**Hipotesis saya:** Jika saya bisa membuat satu platform terpusat—semacam "Command Center" atau "Pustaka"—untuk mengelola, membuat, dan berbagi *prompt*, saya bisa secara drastis meningkatkan produktivitas dan kualitas output AI bagi siapa saja.
+
+**Solusi (Produk): Memperkenalkan PromptCraft**
+
+Saya memutuskan untuk membangun solusinya sendiri. PromptCraft (`https://promptcraft-v2.vercel.app/`) dirancang sebagai platform SaaS (Software as a Service) yang menjawab semua masalah di atas.
+
+Ini bukan sekadar "website", ini adalah **aplikasi web *full-stack*** dengan fitur inti:
+
+* **Pustaka Prompt Pribadi:** *Dashboard* aman bagi pengguna untuk menyimpan, mengedit, dan mengkategorikan *prompt* mereka (Fungsi CRUD penuh).
+* **Generator Prompt Cerdas:** Sebuah *tool* untuk membantu pengguna membuat *prompt* yang lebih baik dan terstruktur.
+* **Sistem Autentikasi:** Pengguna dapat mendaftar dan *login* dengan aman ke akun pribadi mereka.
+* **Fitur Marketplace (Visi):** Fondasi untuk fitur di mana kreator dapat memonetisasi *prompt* terbaik mereka.
+
+## Proses (Arsitektur & Pilihan Teknologi)
+
+Membangun SaaS yang cepat, aman, dan skalabel membutuhkan *stack* teknologi modern. Ini adalah "cetak biru" teknis dari PromptCraft, yang mendemonstrasikan keahlian inti saya di Bali-Webdevelover:
+
+* **Frontend (UI/UX): Next.js & TypeScript**
+    * **Mengapa Next.js?** Saya membutuhkan performa secepat kilat. *Server-Side Rendering* (SSR) dan *Static Site Generation* (SSG) dari Next.js memastikan aplikasi dimuat instan.
+    * **Mengapa TypeScript?** Untuk aplikasi sekompleks SaaS, JavaScript biasa tidak cukup. TypeScript memberlakukan aturan ketat pada kode saya, meminimalkan *bug* dan membuat sistem lebih mudah dipelihara.
+
+* **Desain & Komponen: Tailwind CSS & shadcn/ui**
+    * Saya menghindari *template* yang membosankan. **Tailwind CSS** memungkinkan saya membangun desain kustom yang unik dan *utility-first* tanpa mengorbankan kecepatan.
+    * **shadcn/ui** digunakan untuk komponen UI yang aksesibel dan konsisten (seperti *button*, *dialog*, *form*), mempercepat proses pengembangan tanpa mengunci saya pada satu tema desain.
+
+* **Backend & Database: `[ Supabase ]`**
+    * Saya memilih **Supabase** sebagai *backend-as-a-service*. Ini bukan sekadar database; ini adalah platform lengkap yang menangani banyak hal secara otomatis:
+    *   **Authentication:** Supabase menyediakan sistem *login* dan *signup* yang aman dan siap pakai, memungkinkan saya mengimplementasikan otentikasi pengguna dalam hitungan jam, bukan minggu.
+    *   **PostgreSQL Database:** Inti dari Supabase adalah database PostgreSQL yang *powerful*. Saya merancang skema untuk menyimpan *prompt* pengguna, kategori, dan data akun secara relasional dan efisien.
+    *   **Row-Level Security (RLS):** Keamanan adalah prioritas. Saya mengaktifkan RLS untuk memastikan bahwa seorang pengguna HANYA dapat mengakses dan memodifikasi *prompt* miliknya sendiri. Permintaan data ke database secara otomatis difilter di tingkat database, membuatnya sangat aman.
+
+* **Deployment: Vercel**
+    * Aplikasi ini di-*hosting* di Vercel, platform yang dibuat oleh kreator Next.js. Ini memberi saya *deployment* instan (CI/CD), skalabilitas global, dan performa tinggi secara otomatis.
+
+## Hasil (Sebuah Produk Nyata, Bukan Sekadar Janji)
+
+Hasil dari proyek ini bukanlah laporan atau desain, melainkan produk fungsional yang bisa Anda gunakan saat ini juga: **[https://promptcraft-v2.vercel.app/](https://promptcraft-v2.vercel.app/)**
+
+**Bagi Pengguna (Nilai Produk):**
+PromptCraft secara langsung memecahkan masalah efisiensi. Pengguna kini memiliki "rumah" untuk aset AI mereka, menghemat waktu pencarian, dan meningkatkan kualitas hasil kerja mereka.
+
+**Bagi Klien (Bukti Keahlian Saya):**
+PromptCraft adalah studi kasus utama saya. Ini membuktikan bahwa:
+
+* Saya tidak hanya membuat *website company profile* atau *landing page*.
+* Saya **membangun aplikasi web *full-stack* yang kompleks** dari awal.
+* Saya menguasai arsitektur SaaS modern, mulai dari autentikasi pengguna, manajemen database, hingga desain UI/UX yang responsif.
+* Saya memahami cara mengubah ide bisnis menjadi produk digital yang nyata.
+
+## Kesimpulan
+
+Membangun PromptCraft mempertajam keahlian saya dalam menciptakan solusi digital yang fungsional dan berorientasi pengguna. Keterampilan yang sama yang saya gunakan untuk membangun SaaS ini—pemahaman mendalam tentang Next.js, TypeScript, dan arsitektur backend—adalah keterampilan yang saya bawa ke setiap proyek klien.
+
+---
+
+### Coba PromptCraft atau Bangun Aplikasi Anda Sendiri
+
+* **Untuk Profesional/Kreator:** Tingkatkan produktivitas AI Anda. [Coba PromptCraft secara gratis di sini](https://promptcraft-v2.vercel.app/).
+* **Untuk Pemilik Bisnis:** Apakah Anda punya ide untuk aplikasi web kustom, *dashboard* internal, atau platform SaaS seperti ini? [Hubungi saya di Bali
+-Webdevelover](https://bali-webdevelover.com/contact) untuk konsultasi teknis.
