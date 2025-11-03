@@ -1,13 +1,13 @@
 "use client";
 
 import { useState, useMemo } from 'react';
-import type { Post } from '@/app/lib/posts';
+import type { PostMeta } from '@/app/lib/posts';
 import SearchBar from '@/app/components/SearchBar';
 import FilterTabs from '@/app/components/FilterTabs';
 import BlogCard from '@/app/components/BlogCard';
 
 interface BlogListClientProps {
-  posts: Post[];
+  posts: PostMeta[];
 }
 
 export default function BlogListClient({ posts }: BlogListClientProps) {
