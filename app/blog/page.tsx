@@ -5,6 +5,8 @@ import Balancer from 'react-wrap-balancer';
 import { Metadata } from 'next';
 import { site } from '@/content/config';
 import SkeletonCard from '../components/SkeletonCard';
+import { getAllPostsMeta } from '../lib/posts';
+import PaginationControls from '../components/PaginationControls';
 
 export const metadata: Metadata = {
   title: `Blog | ${site.company}`,
@@ -34,7 +36,19 @@ function Skeletons() {
   )
 }
 
-export default function BlogPage() {
+export default async function BlogPage({
+  searchParams,
+}: {
+  searchParams: { [key: string]: string | string[] | undefined };
+}) {
+  const page = searchParams['page'] ?? '1';
+  const currentPage = Number(page);
+  const limit = 5;
+  const skip = (currentPage - 1) * limit;
+
+  const { posts, totalCount } = await getAllPostsMeta({ limit, skip });
+  const totalPages = Math.ceil(totalCount / limit);
+
   return (
     <div>
       <div className="py-24 sm:py-32 bg-[var(--cream)]">
@@ -54,8 +68,10 @@ export default function BlogPage() {
 
       <div className="container mx-auto px-4 py-16">
         <Suspense fallback={<Skeletons />}>
-          <BlogList />
+          {/* @ts-expect-error Server Component */}
+          <BlogList posts={posts} />
         </Suspense>
+        <PaginationControls currentPage={currentPage} totalPages={totalPages} />
         <CtaBanner />
       </div>
     </div>

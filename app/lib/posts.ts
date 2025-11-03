@@ -84,7 +84,7 @@ export interface PostMeta {
 }
 
 // Helper to get only metadata for performance
-export async function getAllPostsMeta(): Promise<PostMeta[]> {
+export async function getAllPostsMeta({ limit, skip }: { limit?: number; skip?: number; } = {}): Promise<{ posts: PostMeta[]; totalCount: number; }> {
     const blogDirectory = path.join(contentDirectory, 'blog');
     const filenames = fs.readdirSync(blogDirectory);
 
@@ -100,14 +100,26 @@ export async function getAllPostsMeta(): Promise<PostMeta[]> {
         };
     });
 
-    return postsMeta
+    const sortedPosts = postsMeta
         .filter(post => post.frontmatter.published !== false)
         .sort((a, b) => new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime());
+
+    const totalCount = sortedPosts.length;
+
+    let paginatedPosts = sortedPosts;
+    if (skip !== undefined && limit !== undefined) {
+        paginatedPosts = sortedPosts.slice(skip, skip + limit);
+    }
+
+    return {
+        posts: paginatedPosts,
+        totalCount,
+    };
 }
 
 
 export async function getAdjacentPosts(slug: string): Promise<{ prevPost: { slug: string, title: string } | null, nextPost: { slug: string, title: string } | null }> {
-  const allPosts = await getAllPostsMeta();
+  const { posts: allPosts } = await getAllPostsMeta();
   const currentPostIndex = allPosts.findIndex(post => post.slug === slug);
 
   if (currentPostIndex === -1) {
@@ -128,7 +140,7 @@ export async function getAdjacentPosts(slug: string): Promise<{ prevPost: { slug
 }
 
 export async function getRelatedPosts(category: string, currentSlug: string): Promise<PostMeta[]> {
-  const allPosts = await getAllPostsMeta();
+  const { posts: allPosts } = await getAllPostsMeta();
   return allPosts
     .filter(post => post.frontmatter.category === category && post.slug !== currentSlug)
     .slice(0, 3);
