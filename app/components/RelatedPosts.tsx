@@ -23,7 +23,6 @@ const RelatedPosts: React.FC<RelatedPostsProps> = ({ posts }) => {
               slug: post.slug,
               frontmatter: post.frontmatter,
               readingTime: post.readingTime,
-              content: <></> // content is not needed for the card view
             }}
           /></div>
         ))}

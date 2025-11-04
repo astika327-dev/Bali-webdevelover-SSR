@@ -28,7 +28,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   });
 
   // Blog posts (single-language)
-  const posts = await getAllPostsMeta();
+  const { posts } = await getAllPostsMeta();
   const blogRoutes: MetadataRoute.Sitemap = posts.map((post) => ({
     url: `${siteUrl}/blog/${post.slug}`,
     lastModified: new Date(post.frontmatter.date),
