@@ -1,10 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Post } from "@/app/lib/posts";
+import { PostMeta } from "@/app/lib/posts";
 import { formatDate } from "@/app/lib/utils";
 
 interface BlogCardProps {
-  post: Post;
+  post: PostMeta;
   isFeatured?: boolean;
 }
 
