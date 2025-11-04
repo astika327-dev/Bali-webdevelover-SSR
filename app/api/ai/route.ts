@@ -105,7 +105,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ ok: false, error: "No messages provided" }, { status: 400 });
 
   // Fetch blog posts metadata
-  const posts = await getAllPostsMeta();
+  const { posts } = await getAllPostsMeta();
   const blogContext = posts
     .map((p) => `[${p.frontmatter.category}] ${p.frontmatter.title}: ${p.frontmatter.description}`)
     .join("\n");
