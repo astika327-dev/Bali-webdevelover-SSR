@@ -68,7 +68,6 @@ export default async function BlogPage({
 
       <div className="container mx-auto px-4 py-16">
         <Suspense fallback={<Skeletons />}>
-          {/* @ts-expect-error Server Component */}
           <BlogList posts={posts} />
         </Suspense>
         <PaginationControls currentPage={currentPage} totalPages={totalPages} />

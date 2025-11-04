@@ -19,7 +19,7 @@ export default function Navbar() {
     { href: '/about' as Route, labelKey: 'nav.about' },
     { href: '/services' as Route, labelKey: 'nav.services' },
     { href: '/portfolio' as Route, labelKey: 'nav.portfolio' },
-    { href: '/blog' as Route, labelKey: 'blog' },
+    { href: '/blog' as Route, labelKey: 'nav.blog' },
     { href: '/tensorflow' as Route, labelKey: 'nav.tensorflow' },
     { href: '/contact' as Route, labelKey: 'nav.contact' },
   ];
