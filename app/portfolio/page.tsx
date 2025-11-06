@@ -4,23 +4,21 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { portfolio } from 'content/config';
 import Lightbox from 'components/Lightbox';
-import { useLanguage } from '@/context/LanguageContext';
 import dynamic from 'next/dynamic';
 
 const FadeIn = dynamic(() => import('../components/FadeIn'), { ssr: false });
 
 export default function PortfolioPage() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
-  const { t } = useLanguage();
 
   return (
     <section className="container py-12 md:py-16">
       <FadeIn>
         <h1 className="text-3xl md:text-4xl font-semibold tracking-tight text-neutral-800 dark:text-neutral-200">
-          {t('portfolio.title')}
+          Work Portfolio
         </h1>
         <p className="text-neutral-600 dark:text-neutral-400 mt-2 max-w-2xl">
-          {t('portfolio.description')}
+          A selection of projects that showcase our skills in creating modern web solutions.
         </p>
       </FadeIn>
 
@@ -48,7 +46,7 @@ export default function PortfolioPage() {
                   onClick={(e) => e.stopPropagation()} // Mencegah lightbox terbuka saat tombol ini diklik
                   className="inline-block text-sm font-semibold text-amber-600 dark:text-amber-500 hover:text-amber-700 dark:hover:text-amber-400 mt-3"
                 >
-                  Kunjungi Situs &rarr;
+                  Visit Site &rarr;
                 </a>
               </div>
             </button>

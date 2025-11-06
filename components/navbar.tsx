@@ -6,22 +6,19 @@ import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import type { Route } from 'next';
 import { site } from '../content/config';
-import { useLanguage } from '../context/LanguageContext';
-import LanguageToggle from './LanguageToggle';
 import ThemeToggle from './ThemeToggle';
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
-  const { t } = useLanguage();
 
-  const links: Array<{ href: Route; labelKey: string }> = [
-    { href: '/' as Route, labelKey: 'nav.home' },
-    { href: '/about' as Route, labelKey: 'nav.about' },
-    { href: '/services' as Route, labelKey: 'nav.services' },
-    { href: '/portfolio' as Route, labelKey: 'nav.portfolio' },
-    { href: '/blog' as Route, labelKey: 'nav.blog' },
-    { href: '/tensorflow' as Route, labelKey: 'nav.tensorflow' },
-    { href: '/contact' as Route, labelKey: 'nav.contact' },
+  const links = [
+    { href: '/' as Route, label: 'Home' },
+    { href: '/about' as Route, label: 'About' },
+    { href: '/services' as Route, label: 'Services' },
+    { href: '/portfolio' as Route, label: 'Portfolio' },
+    { href: '/blog' as Route, label: 'Blog' },
+    { href: '/tensorflow' as Route, label: 'TensorFlow' },
+    { href: '/contact' as Route, label: 'Contact' },
   ];
 
   return (
@@ -43,11 +40,10 @@ export default function Navbar() {
         <nav className="hidden md:flex items-center gap-6 text-sm dark:text-neutral-200">
           {links.map(l => (
             <Link key={l.href} href={l.href} className="nav-link-underline">
-              {t(l.labelKey)}
+              {l.label}
             </Link>
           ))}
           <div className="flex items-center gap-2">
-            <LanguageToggle />
             <ThemeToggle />
           </div>
         </nav>
@@ -75,11 +71,10 @@ export default function Navbar() {
                 onClick={() => setOpen(false)}
                 className="py-2"
               >
-                {t(l.labelKey)}
+                {l.label}
               </Link>
             ))}
             <div className="pt-2 flex items-center gap-2">
-              <LanguageToggle />
               <ThemeToggle />
             </div>
           </nav>
