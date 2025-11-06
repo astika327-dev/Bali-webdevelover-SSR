@@ -1,9 +1,11 @@
-'use client';
-
-import { useLanguage } from '@/context/LanguageContext';
+import { getTranslation } from '@/lib/getTranslation';
 
 export default function TermsPage() {
-  const { t } = useLanguage();
+  const t = getTranslation('id');
+
+  const getText = (key: string): string => {
+    return t[key] || key;
+  };
 
   const terms = [
     'terms.item1',
@@ -16,13 +18,13 @@ export default function TermsPage() {
   ];
 
   return (
-    <section className="container py-12 md:py-16">
-      <h1 className="text-3xl md:text-4xl font-semibold tracking-tight">{t('terms.title')}</h1>
+    <section className="container py-12 md:py16">
+      <h1 className="text-3xl md:text-4xl font-semibold tracking-tight">{getText('terms.title')}</h1>
       <div className="prose max-w-none mt-4">
         <ol>
           {terms.map(term => (
             <li key={term}>
-              <strong>{t(`${term}.title`)}.</strong> {t(`${term}.description`)}
+              <strong>{getText(`${term}.title`)}.</strong> {getText(`${term}.description`)}
             </li>
           ))}
         </ol>

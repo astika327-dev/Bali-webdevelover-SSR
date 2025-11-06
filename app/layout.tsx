@@ -4,7 +4,6 @@ import Link from 'next/link';
 import Navbar from '../components/navbar';
 import { Analytics } from "@vercel/analytics/next";
 import { Providers } from './providers';
-import { LanguageProvider } from '../context/LanguageContext';
 import type { Metadata } from 'next';
 import PageTransition from './components/PageTransition';
 import { Inter } from 'next/font/google';
