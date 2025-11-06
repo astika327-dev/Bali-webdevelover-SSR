@@ -140,7 +140,7 @@ export default function TensorflowDetector() {
         const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } });
         if (videoRef.current) {
           videoRef.current.srcObject = stream;
-          await video.current.play();
+          await videoRef.current.play();
           setIsCameraOn(true);
           setStatus('Kamera aktif, deteksi dimulai.');
           detectObjectsOnVideo();
