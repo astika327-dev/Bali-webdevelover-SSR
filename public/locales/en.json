@@ -45,118 +45,31 @@
     "blurb": "We craft lean, high‑polish websites, landing pages, and micro apps for founders, villas, cafés, and growing brands. Built with solid fundamentals so Google and humans both approve."
   },
   "services": {
-    "custom_websites": {
-      "title": "Custom Websites",
-      "desc": "Modern, responsive builds with a premium feel, from portfolios to full business sites."
+    "title": "Our Services",
+    "subtitle": "Modern solutions to elevate your digital presence. We focus on performance, design, and tangible results.",
+    "landing_page": {
+      "title": "Landing Page",
+      "description": "A single, high-impact page designed for conversions. Perfect for validating ideas or launching events."
     },
-    "performance_seo": {
-      "title": "Performance & SEO",
-      "desc": "Core Web Vitals minded markup, accessible structure, and clean on‑page SEO setup."
+    "company_profile": {
+      "title": "Company Profile Website",
+      "description": "A professional multi-page site to build credibility and showcase your services. Ideal for MSMEs and consultants."
     },
-    "care_maintenance": {
-      "title": "Care & Maintenance",
-      "desc": "Small content edits, uptime watching, and scheduled backups so your site stays healthy."
+    "booking_website": {
+      "title": "Booking Website",
+      "description": "Turn visitors into customers 24/7 with a custom website integrated with a booking API or channel manager."
     },
-    "title": "Pricing Plans",
-    "subtitle": "Built for founders, villas, cafés, MSMEs, and growing brands.",
-    "plans": {
-      "launchpad": {
-        "name": "Launchpad",
-        "subtitle": "Founders, Idea Validation, Events",
-        "price": "Starts from Rp 2,000,000",
-        "description": "A professional one-page site optimized for speed and a single conversion goal. Launched quickly for your idea.",
-        "features": [
-          "1-3 Page Website",
-          "Custom & Responsive Design (Figma to Code)",
-          "Extreme Core Web Vitals (CWV) Optimization",
-          "Analytics Setup & Basic On-page SEO"
-        ],
-        "cta": "Choose Plan",
-        "eta": "ETA: 5-7 Days"
-      },
-      "digital_hq": {
-        "name": "Digital HQ",
-        "subtitle": "MSMEs, Cafes, Consultants, Portfolios",
-        "price": "Starts from Rp 4,500,000",
-        "description": "Build a credible digital home base. A multi-page custom-coded site to showcase services and build trust.",
-        "features": [
-          "Multi-page Site (up to 5-7 pages)",
-          "Custom Content Structure (e.g., for Portfolio/Services)",
-          "Full Custom Code (No CMS, No Template)",
-          "Baseline SEO & Performance Tuning",
-          "Includes 3-Month Care Plan"
-        ],
-        "cta": "Choose Plan",
-        "eta": "ETA: 1-2 Weeks"
-      },
-      "booking_engine": {
-        "name": "Booking Engine",
-        "subtitle": "Villas, Hotels, Restaurants, Tour Services",
-        "price": "Starts from Rp 6,000,000",
-        "description": "Turn visitors into customers 24/7. A custom website fully integrated with a booking API or channel manager.",
-        "features": [
-          "Multi-page Site (Focus on Gallery & Rooms)",
-          "Core Feature: Booking System API Integration",
-          "Custom Integration to Channel Manager (SiteMinder, etc.)",
-          "OR Custom Booking Form (via Email/API)",
-          "Seamless booking interface design."
-        ],
-        "cta": "Choose Plan",
-        "eta": "ETA: 2-3 Weeks"
-      },
-      "headless_ecommerce": {
-        "name": "Headless E-Commerce",
-        "subtitle": "Retail Brands, Merchandise, F&B",
-        "price": "Starts from Rp 9,000,000",
-        "description": "Launch a super-fast online store. Uses a custom front-end connected to a payment gateway or headless commerce API.",
-        "features": [
-          "Custom Front-end for E-commerce",
-          "Payment Gateway Integration (Midtrans, Xendit)",
-          "Custom Product & Checkout Page Design",
-          "Not a platform (Shopify/WooCommerce). This is a custom build.",
-          "Product data structure (JSON/API-based)."
-        ],
-        "cta": "Choose Plan",
-        "eta": "ETA: 3-4 Weeks"
-      },
-      "ai_powered": {
-        "name": "AI-Powered",
-        "subtitle": "Startups, Premium Brands, Innovators",
-        "price": "Starts from Rp 12,000,000",
-        "description": "Create 'smart' and interactive user experiences using custom AI API integrations (Gemini/OpenAI).",
-        "features": [
-          "Premium Multi-page Site",
-          "UI/UX with motion & premium design",
-          "Core Feature: Server-side AI API Integration",
-          "Example: Smart chatbot (trained on business data)",
-          "Example: Real-time content personalization",
-          "Simple custom backend (if needed for API key)."
-        ],
-        "cta": "Choose Plan",
-        "eta": "ETA: 4-6 Weeks"
-      },
-      "growth_retainer": {
-        "name": "Growth Retainer",
-        "subtitle": "Businesses that already have a website",
-        "price": "Starts from Rp 1,500,000 /month",
-        "description": "Your website exists, but isn't delivering? We help optimize it continuously using data and science.",
-        "features": [
-          "Technical SEO & Performance Audits",
-          "Conversion Rate Optimization (CRO) & A/B Testing",
-          "Analytics Data & User Behavior Analysis",
-          "Content & Design Updates Implementation (minor)",
-          "Security & Performance (CWV) Monitoring."
-        ],
-        "cta": "Choose Plan",
-        "eta": "Monthly Service"
-      }
+    "headless_ecommerce": {
+      "title": "Headless E-Commerce",
+      "description": "Launch a lightning-fast online store with a custom front-end connected to a payment gateway or headless API."
     },
-    "faq": {
-      "title": "FAQ",
-      "item1": "All plans include design, build, on‑page SEO, and basic analytics. Domain/hosting and paid third‑party tools are billed separately unless specified in a proposal.",
-      "item2": "Each plan includes the stated revision rounds. Additional rounds or scope changes can be added as extras.",
-      "item3": "Payments are typically split 50% to start and 50% on launch. Timelines adjust once content is finalized.",
-      "item4": "Care Plan includes small content updates, uptime checks, and scheduled backups. Bigger features are quoted separately."
+    "ai_powered_website": {
+      "title": "AI-Powered Website",
+      "description": "Create smart, interactive user experiences with custom AI API integrations (Gemini/OpenAI)."
+    },
+    "seo_optimization": {
+      "title": "SEO & Growth Retainer",
+      "description": "Continuously optimize your existing website for performance, conversions, and search rankings."
     }
   },
   "home": {
@@ -171,6 +84,8 @@
     "title": "Portfolio",
     "description": "Selected works that highlight clean UI, solid performance, and results-driven builds.",
     "visit_site": "Visit Site",
+    "view_case_study": "View Case Study",
+    "coming_soon": "Coming Soon",
     "item1": {
       "title": "MiniTools — Developer Utilities Suite",
       "description": "A fast, privacy-friendly collection of micro utilities for everyday work: formatters, encoders/decoders, generators, and quick helpers. Built with Next.js and Tailwind for snappy UX."
