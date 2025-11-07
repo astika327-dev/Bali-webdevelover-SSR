@@ -4,7 +4,7 @@ import { ArrowRight } from 'lucide-react';
 import { certificates } from '@/content/config';
 import { getTranslation } from '@/lib/getTranslation';
 import { Locale, i18n } from '@/i18n-config';
-import AiChatWidgetLoader from '@/components/AiChatWidgetLoader';
+import AiChatWidgetLoader from '../components/AiChatWidgetLoader';
 
 export function generateStaticParams() {
   return i18n.locales.map((locale) => ({ lang: locale }));
