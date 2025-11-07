@@ -43,7 +43,7 @@ export function middleware(request: NextRequest) {
 // Konfigurasi matcher untuk menentukan path mana yang akan dijalankan middleware
 export const config = {
   matcher: [
-    // Lewati semua path internal (misalnya, _next, api) dan aset statis
-    '/((?!api|_next/static|_next/image|images|assets|icon.png|ogimg.png|favicon.png|site.webmanifest|sw.js).*)',
+    // Lewati semua path internal (misalnya, _next, api) dan file aset
+    '/((?!api|_next/static|_next/image|images|assets|favicon.ico|sw.js).*)',
   ],
 };

@@ -15,7 +15,16 @@
     "subtitle": "Kami membangun situs web dan aplikasi seluler yang indah dan fungsional."
   },
   "contact": {
-    "title": "Hubungi Saya"
+    "title": "Hubungi Saya",
+    "description": "Punya proyek atau hanya ingin menyapa? Isi formulir di bawah ini dan saya akan segera menghubungi Anda.",
+    "form": {
+      "name_placeholder": "Nama",
+      "email_placeholder": "Email",
+      "message_placeholder": "Pesan",
+      "submit_button": "Kirim Pesan",
+      "success_message": "Pesan Anda telah berhasil dikirim!",
+      "error_message": "Terjadi kesalahan saat mengirim pesan Anda. Silakan coba lagi nanti."
+    }
   },
   "footer": {
     "copyright": "© 2025 Jules. Hak cipta dilindungi undang-undang.",
@@ -31,7 +40,7 @@
     }
   },
   "site": {
-    "name": "BaliWebDev",
+    "name": "Bali-WebDevelover",
     "title": "Partner Anda dalam Keunggulan Digital",
     "blurb": "Kami membuat situs web, halaman arahan, dan aplikasi mikro yang ramping dan berkualitas tinggi untuk para pendiri, vila, kafe, dan merek yang sedang berkembang. Dibuat dengan dasar-dasar yang kokoh sehingga Google dan manusia sama-sama menyetujuinya."
   },
