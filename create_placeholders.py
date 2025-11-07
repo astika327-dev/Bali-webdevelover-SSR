@@ -2,7 +2,7 @@ from PIL import Image
 import os
 
 # Direktori target untuk menyimpan gambar
-output_dir = "public/images/portfolio"
+output_dir = "public/screenshot"
 os.makedirs(output_dir, exist_ok=True)
 
 # Daftar nama file gambar yang dibutuhkan
@@ -16,7 +16,7 @@ image_filenames = [
 
 # Ukuran dan warna gambar placeholder
 width, height = 800, 600
-color = (200, 200, 200) # Abu-abu
+color = (255, 255, 255) # Putih
 
 # Buat dan simpan setiap gambar
 for filename in image_filenames:

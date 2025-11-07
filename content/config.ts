@@ -95,10 +95,10 @@ export const portfolio = [
     'A fast, privacy-friendly collection of micro utilities for everyday work: formatters, encoders/decoders, generators, and quick helpers. Built with Next.js and Tailwind for snappy UX.',
     link: 'https://astika327-dev.github.io/minitools/',
     images: [
-      '/images/portfolio/minitools-1.png',
-      '/images/portfolio/minitools-2.png',
-      '/images/portfolio/minitools-3.png',
-      '/images/portfolio/minitools-4.png'
+      '/screenshot/minitools-1.png',
+      '/screenshot/minitools-2.png',
+      '/screenshot/minitools-3.png',
+      '/screenshot/minitools-4.png'
     ]
   },
   {
@@ -107,9 +107,9 @@ export const portfolio = [
       'Operational guide and digital SOP dashboard for villa and hospitality management. Focused on team clarity, scalability, and workflow automation.',
     link: 'https://astika327-dev.github.io/opsplaybook-hospitality/',
     images: [
-      '/images/portfolio/opsplaybook-1.png',
-      '/images/portfolio/opsplaybook-2.png',
-      '/images/portfolio/opsplaybook-3.png'
+      '/screenshot/opsplaybook-1.png',
+      '/screenshot/opsplaybook-2.png',
+      '/screenshot/opsplaybook-3.png'
     ]
   },
   {
@@ -118,8 +118,8 @@ export const portfolio = [
       'Personal branding website built with minimalism and performance in mind. Showcasing portfolio, ideas, and technical notes.',
     link: 'https://astika.is-a.dev',
     images: [
-      '/images/portfolio/personalsite-1.png',
-      '/images/portfolio/personalsite-2.png'
+      '/screenshot/personalsite-1.png',
+      '/screenshot/personalsite-2.png'
     ]
   },
   {
@@ -128,9 +128,9 @@ export const portfolio = [
       'A clean, modern, and responsive website for U2Cleanpro. Professional cleaning services.',
     link: 'https://cleanpro-beryl.vercel.app/',
     images: [
-      '/images/portfolio/cleanpro-1.png',
-      '/images/portfolio/cleanpro-2.png',
-      '/images/portfolio/cleanpro-3.png'
+      '/screenshot/cleanpro-1.png',
+      '/screenshot/cleanpro-2.png',
+      '/screenshot/cleanpro-3.png'
     ]
   },
   {
@@ -139,7 +139,7 @@ export const portfolio = [
       'AI prompt engineering platform for creating, sharing, and discovering high-quality prompts across various AI models.',
     link: 'https://promptcraft-v2.vercel.app/',
     images: [
-      '/images/portfolio/promptcraft-1.png',
+      '/screenshot/promptcraft-1.png',
     ]
   },
 ];

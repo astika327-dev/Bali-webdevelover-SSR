@@ -3,12 +3,12 @@ import { Instrument_Serif, Inter } from 'next/font/google';
 import { SpeedInsights } from "@vercel/speed-insights/next"
 
 import '../globals.css';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
-import { Providers } from '@/app/providers';
-import { getTranslation } from '@/lib/getTranslation';
-import { Locale, i18n } from '@/i18n-config';
-import PageTransition from '@/components/PageTransition';
+import Navbar from '../../components/Navbar';
+import Footer from '../../components/Footer';
+import { Providers } from '../providers';
+import { getTranslation } from '../../lib/getTranslation';
+import { Locale, i18n } from '../../i18n-config';
+import PageTransition from '../../components/PageTransition';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 const instrument = Instrument_Serif({
