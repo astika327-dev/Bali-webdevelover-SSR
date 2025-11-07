@@ -1,3 +1,4 @@
+
 export type Certificate = { title: string; href: string };
 export type Plan = {
   name: string;
@@ -46,17 +47,29 @@ export const certificates: Certificate[] = [
 
 export const services = [
   {
-    title: "Custom Websites",
-    desc: "Modern, responsive builds with a premium feel, from portfolios to full business sites."
+    id: 'custom_websites',
+    features: ['custom_design', 'responsive', 'seo_friendly', 'cms_integration'],
+    tiers: [
+      { id: 'starter', price: '$500', priceSuffix: ' starting from' },
+      { id: 'business', price: '$1500', priceSuffix: ' starting from' },
+    ],
   },
   {
-    title: "Performance & SEO",
-    desc: "Core Web Vitals minded markup, accessible structure, and clean on‑page SEO setup."
+    id: 'performance_seo',
+    features: ['performance_audit', 'on_page_seo', 'technical_seo', 'analytics_setup'],
+    tiers: [
+      { id: 'basic_seo', price: '$300', priceSuffix: ' one time' },
+      { id: 'advanced_seo', price: '$800', priceSuffix: ' one time' },
+    ],
   },
   {
-    title: "Care & Maintenance",
-    desc: "Small content edits, uptime watching, and scheduled backups so your site stays healthy."
-  }
+    id: 'care_maintenance',
+    features: ['monthly_updates', 'security_monitoring', 'performance_checks', 'content_updates'],
+    tiers: [
+      { id: 'monthly_care', price: '$100', priceSuffix: ' per month' },
+      { id: 'yearly_care', price: '$1000', priceSuffix: ' per year' },
+    ],
+  },
 ];
 
 export const plans: Plan[] = [

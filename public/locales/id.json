@@ -1,193 +1,274 @@
 {
-  "nav.home": "Beranda",
-  "nav.portfolio": "Portofolio",
-  "nav.contact": "Kontak",
-  "nav.about": "Tentang",
-  "nav.services": "Layanan",
-  "nav.tensorflow": "Deteksi Objek",
-  "nav.blog": "Blog",
-  "nav.privacy": "Kebijakan Privasi",
-  "nav.terms": "Ketentuan Layanan",
-  "hero.title": "Pengembang Web & Seluler Kreatif",
-  "hero.subtitle": "Saya membangun situs web dan aplikasi seluler yang indah dan fungsional.",
-  "contact.title": "Hubungi Saya",
-  "footer.copyright": "© 2025 Jules. Hak cipta dilindungi undang-undang.",
-  "site.blurb": "Kami membuat situs web, halaman arahan, dan aplikasi mikro yang ramping dan berkualitas tinggi untuk para pendiri, vila, kafe, dan merek yang sedang berkembang. Dibuat dengan dasar-dasar yang kokoh sehingga Google dan manusia sama-sama menyetujuinya.",
-  "services.custom_websites.title": "Situs Web Kustom",
-  "services.custom_websites.desc": "Bangunan modern dan responsif dengan nuansa premium, dari portofolio hingga situs bisnis lengkap.",
-  "services.performance_seo.title": "Performa & SEO",
-  "services.performance_seo.desc": "Markup yang memperhatikan Core Web Vitals, struktur yang dapat diakses, dan penyiapan SEO on-page yang bersih.",
-  "services.care_maintenance.title": "Perawatan & Pemeliharaan",
-  "services.care_maintenance.desc": "Pengeditan konten kecil, pemantauan waktu aktif, dan pencadangan terjadwal agar situs Anda tetap sehat.",
-  "home.start_project": "Mulai Proyek",
-  "home.view_services": "Lihat Layanan",
-  "home.certificates.title": "Sertifikat",
-  "home.certificates.description": "Kredensial terverifikasi yang mencakup UI responsif, aksesibilitas, JavaScript, dan kinerja.",
-  "portfolio.title": "Portofolio",
-  "portfolio.description": "Karya-karya pilihan yang menonjolkan UI yang bersih, kinerja yang solid, dan hasil yang terukur.",
-  "portfolio.item1.title": "MiniTools — Rangkaian Utilitas Pengembang",
-  "portfolio.item1.description": "Kumpulan utilitas mikro yang cepat dan ramah privasi untuk pekerjaan sehari-hari: pemformat, penyandi/pengurai, generator, dan pembantu cepat. Dibuat dengan Next.js dan Tailwind untuk UX yang cepat.",
-  "portfolio.item2.title": "OpsPlaybook — Perangkat Perhotelan",
-  "portfolio.item2.description": "Panduan operasional dan dasbor SOP digital untuk manajemen vila dan perhotelan. Berfokus pada kejelasan tim, skalabilitas, dan otomatisasi alur kerja.",
-  "portfolio.item3.title": "Situs Pribadi — astika.is-a.dev",
-  "portfolio.item3.description": "Situs web branding pribadi yang dibuat dengan mempertimbangkan minimalis dan kinerja. Menampilkan portofolio, ide, dan catatan teknis.",
-  "about.title": "Tentang",
-  "about.p1": "Sebagai pengembang digital independen, saya berspesialisasi dalam membangun pengalaman web yang bersih, cepat, dan berpusat pada pengguna. Fokus saya adalah pada kejelasan, keseimbangan, dan presisi—memastikan setiap elemen di halaman ada karena suatu alasan dan melayani tujuan yang berbeda.",
-  "about.p2": "Pekerjaan saya memadukan teknologi web modern dengan fokus mendalam pada pengalaman pengguna (UX). Pendekatan ini memungkinkan saya untuk merancang sistem yang minimal namun berdampak, terstruktur namun intuitif. Saya membangun produk digital yang tidak hanya terlihat bagus, tetapi benar-benar berkomunikasi, mengonversi, dan secara intuitif membimbing pengguna.",
-  "about.p3": "Berbasis di Bali dan bekerja dari jarak jauh di seluruh dunia, saya menciptakan solusi yang menggabungkan logika, estetika, dan niat—dibuat untuk orang, bukan algoritma.",
-  "about.competencies.title": "Kompetensi Inti & Perangkat",
-  "about.competencies.p1": "Untuk mewujudkan ide-ide ini, saya mengandalkan tumpukan teknologi modern yang berorientasi pada kinerja.",
-  "about.competencies.languages.title": "Bahasa & Kerangka Kerja",
-  "about.competencies.languages.p1": "TypeScript, JavaScript (ES6+), React, Next.js, Node.js",
-  "about.competencies.styling.title": "Gaya & UI",
-  "about.competencies.styling.p1": "Tailwind CSS, Framer Motion, Radix UI, Shadcn/UI",
-  "about.competencies.backend.title": "Backend & Data",
-  "about.competencies.backend.p1": "Headless CMS (Sanity, Strapi), PostgreSQL, Vercel, Docker",
-  "about.competencies.design.title": "Desain & Strategi",
-  "about.competencies.design.p1": "Figma, Desain UI/UX, Optimisasi Kinerja, SEO",
-  "services.title": "Paket Harga",
-  "services.subtitle": "Dibuat untuk para pendiri, vila, kafe, UMKM, dan merek yang sedang berkembang.",
-  "services.plans.launchpad.name": "Launchpad",
-  "services.plans.launchpad.subtitle": "Founder, Validasi Ide, Event",
-  "services.plans.launchpad.price": "Mulai dari Rp 2.000.000",
-  "services.plans.launchpad.description": "Situs satu halaman profesional yang dioptimalkan untuk kecepatan dan satu tujuan konversi. Diluncurkan cepat untuk ide Anda.",
-  "services.plans.launchpad.features": [
-    "1- 3 Page Website",
-    "Desain Kustom & Responsif (Figma to Code)",
-    "Optimasi Ekstrem Core Web Vitals (CWV)",
-    "Setup Analytics & On-page SEO Dasar"
-  ],
-  "services.plans.launchpad.cta": "Pilih Paket",
-  "services.plans.launchpad.eta": "Estimasi Waktu: 5-7 Hari",
-  "services.plans.digital_hq.name": "Digital HQ",
-  "services.plans.digital_hq.subtitle": "UMKM, Kafe, Konsultan, Portofolio",
-  "services.plans.digital_hq.price": "Mulai dari Rp 4.500.000",
-  "services.plans.digital_hq.description": "Bangun home base digital yang kredibel. Situs multi-halaman custom code untuk menampilkan layanan dan membangun kepercayaan.",
-  "services.plans.digital_hq.features": [
-    "Situs Multi-halaman (hingga 5-7 halaman)",
-    "Struktur Konten Kustom (misal: untuk Portofolio/Layanan)",
-    "Full Custom Code (No CMS, No Template)",
-    "Baseline SEO & Performance Tuning",
-    "Termasuk 3 Bulan Care Plan"
-  ],
-  "services.plans.digital_hq.cta": "Pilih Paket",
-  "services.plans.digital_hq.eta": "Estimasi Waktu: 1-2 Minggu",
-  "services.plans.booking_engine.name": "Booking Engine",
-  "services.plans.booking_engine.subtitle": "Vila, Hotel, Restoran, Jasa Tur",
-  "services.plans.booking_engine.price": "Mulai dari Rp 6.000.000",
-  "services.plans.booking_engine.description": "Ubah pengunjung menjadi pelanggan 24/7. Situs web custom yang terintegrasi penuh dengan API booking atau channel manager.",
-  "services.plans.booking_engine.features": [
-    "Situs Multi-halaman (Fokus pada Galeri & Kamar)",
-    "Fitur Inti: Integrasi API Booking System",
-    "Integrasi Custom ke Channel Manager (SiteMinder, dll)",
-    "ATAU Form Booking Kustom (via Email/API)",
-    "Desain interface booking yang seamless."
-  ],
-  "services.plans.booking_engine.cta": "Pilih Paket",
-  "services.plans.booking_engine.eta": "Estimasi Waktu: 2-3 Minggu",
-  "services.plans.headless_ecommerce.name": "Headless E-Commerce",
-  "services.plans.headless_ecommerce.subtitle": "Merek Retail, Merchandise, F&B",
-  "services.plans.headless_ecommerce.price": "Mulai dari Rp 9.000.000",
-  "services.plans.headless_ecommerce.description": "Buka toko online super cepat. Menggunakan custom front-end yang terhubung ke payment gateway atau headless commerce API.",
-  "services.plans.headless_ecommerce.features": [
-    "Custom Front-end untuk E-commerce",
-    "Integrasi Payment Gateway (Midtrans, Xendit)",
-    "Desain Kustom Halaman Produk & Checkout",
-    "Bukan platform (Shopify/WooCommerce). Ini adalah build kustom.",
-    "Struktur data produk (JSON/API-based)."
-  ],
-  "services.plans.headless_ecommerce.cta": "Pilih Paket",
-  "services.plans.headless_ecommerce.eta": "Estimasi Waktu: 3-4 Minggu",
-  "services.plans.ai_powered.name": "AI-Powered",
-  "services.plans.ai_powered.subtitle": "Startup, Brand Premium, Inovator",
-  "services.plans.ai_powered.price": "Mulai dari Rp 12.000.000",
-  "services.plans.ai_powered.description": "Ciptakan pengalaman pengguna yang 'pintar' dan interaktif menggunakan integrasi API AI kustom (Gemini/OpenAI).",
-  "services.plans.ai_powered.features": [
-    "Situs Premium Multi-halaman",
-    "UI/UX dengan motion & desain premium",
-    "Fitur Inti: Integrasi Server-side API AI",
-    "Contoh: Chatbot cerdas (dilatih data bisnis)",
-    "Contoh: Personalisasi konten real-time",
-    "Backend kustom sederhana (jika diperlukan untuk API key)."
-  ],
-  "services.plans.ai_powered.cta": "Pilih Paket",
-  "services.plans.ai_powered.eta": "Estimasi Waktu: 4-6 Minggu",
-  "services.plans.growth_retainer.name": "Growth Retainer",
-  "services.plans.growth_retainer.subtitle": "Bisnis yang sudah memiliki website",
-  "services.plans.growth_retainer.price": "Mulai dari Rp 1.500.000 /bulan",
-  "services.plans.growth_retainer.description": "Website Anda sudah ada, tapi tidak menghasilkan? Kami bantu optimalkan secara berkelanjutan menggunakan data dan sains.",
-  "services.plans.growth_retainer.features": [
-    "SEO Teknis & Audit Performa",
-    "Optimasi Konversi (CRO) & A/B Testing",
-    "Analisis Data Analytics & Perilaku Pengguna",
-    "Implementasi Update Konten & Desain (minor)",
-    "Monitoring Keamanan & Performa (CWV)."
-  ],
-  "services.plans.growth_retainer.cta": "Pilih Paket",
-  "services.plans.growth_retainer.eta": "Layanan Bulanan",
-  "services.faq.title": "FAQ",
-  "services.faq.item1": "Semua paket mencakup desain, pembuatan, SEO on-page, dan analitik dasar. Domain/hosting dan alat pihak ketiga berbayar ditagih secara terpisah kecuali ditentukan dalam proposal.",
-  "services.faq.item2": "Setiap paket mencakup putaran revisi yang disebutkan. Putaran tambahan atau perubahan ruang lingkup dapat ditambahkan sebagai tambahan.",
-  "services.faq.item3": "Pembayaran biasanya dibagi 50% untuk memulai dan 50% saat peluncuran. Garis waktu disesuaikan setelah konten selesai.",
-  "services.faq.item4": "Paket Perawatan mencakup pembaruan konten kecil, pemeriksaan waktu aktif, dan pencadangan terjadwal. Fitur yang lebih besar dikutip secara terpisah.",
-  "privacy.title": "Kebijakan Privasi",
-  "privacy.p1": "Kami mengumpulkan detail kontak dasar yang Anda bagikan melalui situs ini. Informasi digunakan untuk menanggapi pertanyaan dan memberikan layanan. Kami tidak menjual data pribadi.",
-  "privacy.p2": "Tindakan keamanan yang wajar telah diterapkan, tetapi tidak ada metode transmisi yang sepenuhnya aman. Untuk penghapusan data atau pertanyaan, hubungi kami.",
-  "terms.title": "Syarat & Ketentuan",
-  "terms.item1.title": "Layanan",
-  "terms.item1.description": "Desain, pengembangan, SEO on-page, dan penyiapan analitik dasar sebagaimana disepakati dalam proposal tertulis.",
-  "terms.item2.title": "Tanggung jawab klien",
-  "terms.item2.description": "Menyediakan konten, persetujuan, dan akses yang diperlukan secara tepat waktu untuk melanjutkan.",
-  "terms.item3.title": "Pembayaran",
-  "terms.item3.description": "Struktur tipikal adalah 50% untuk memulai dan 50% saat peluncuran kecuali dinyatakan lain.",
-  "terms.item4.title": "Kekayaan intelektual",
-  "terms.item4.description": "Anda memiliki hasil akhir setelah pembayaran penuh; kami dapat mereferensikan pekerjaan dalam portofolio kecuali Anda meminta sebaliknya.",
-  "terms.item5.title": "Batasan tanggung jawab",
-  "terms.item5.description": "Kami tidak bertanggung jawab atas kerusakan tidak langsung, insidental, atau konsekuensial.",
-  "terms.item6.title": "Hukum yang mengatur",
-  "terms.item6.description": "Hukum lokal Indonesia berlaku kecuali ditentukan lain dalam proposal.",
-  "terms.item7.title": "Kontak",
-  "terms.item7.description": "Untuk pertanyaan tentang persyaratan ini, hubungi melalui halaman kontak.",
-  "tensorflow": {
-    "how_to_use": {
-      "title": "Cara Penggunaan",
-      "intro": "Bagian ini dirancang untuk memandu Anda mendapatkan hasil maksimal dari demo Deep Learning ini.",
-      "sections": [
-        {
-          "title": "Mode Unggah Gambar",
-          "points": [
-            "Input Ideal: Unggah gambar yang berisi objek fisik dan umum. Model ini dilatih secara ilmiah pada dataset COCO untuk mengenali benda-benda di dunia nyata.",
-            "Contoh Sukses: Coba foto laptop, ponsel, cangkir kopi, orang, mobil, atau hewan peliharaan.",
-            "Batasan Teknis: Model ini tidak dilatih untuk membaca teks atau menganalisis data UI digital (seperti screenshot skor PageSpeed). Ia mencari pola fisik, bukan data konseptual."
-          ]
-        },
-        {
-          "title": "Mode Kamera Langsung",
-          "points": [
-            "Izin Akses: Izinkan browser Anda untuk mengakses kamera. Ingat (sesuai bagian Privasi), feed video ini diproses secara lokal dan tidak pernah meninggalkan perangkat Anda.",
-            "Interaksi: Arahkan kamera ke objek di sekitar Anda (seperti keyboard atau mouse Anda) dan amati bagaimana AI mendeteksi dan melacaknya secara real-time."
-          ]
-        },
-        {
-          "title": "Membaca Hasil",
-          "points": [
-            "Kotak Batas: Kotak berwarna akan secara otomatis muncul di sekitar objek yang terdeteksi.",
-            "Skor Keyakinan (Probabilitas): Angka persentase (%) menunjukkan seberapa yakin model AI tersebut terhadap prediksinya."
-          ]
-        }
-      ]
+  "nav": {
+    "home": "Beranda",
+    "portfolio": "Portofolio",
+    "contact": "Kontak",
+    "about": "Tentang",
+    "services": "Layanan",
+    "tensorflow": "Deteksi Objek",
+    "blog": "Blog",
+    "privacy": "Kebijakan Privasi",
+    "terms": "Ketentuan Layanan"
+  },
+  "hero": {
+    "title": "Partner Anda dalam Keunggulan Digital",
+    "subtitle": "Kami membangun situs web dan aplikasi seluler yang indah dan fungsional."
+  },
+  "contact": {
+    "title": "Hubungi Saya"
+  },
+  "footer": {
+    "copyright": "© 2025 Jules. Hak cipta dilindungi undang-undang."
+  },
+  "site": {
+    "blurb": "Kami membuat situs web, halaman arahan, dan aplikasi mikro yang ramping dan berkualitas tinggi untuk para pendiri, vila, kafe, dan merek yang sedang berkembang. Dibuat dengan dasar-dasar yang kokoh sehingga Google dan manusia sama-sama menyetujuinya."
+  },
+  "services": {
+    "custom_websites": {
+      "title": "Situs Web Kustom",
+      "desc": "Bangunan modern dan responsif dengan nuansa premium, dari portofolio hingga situs bisnis lengkap."
     },
-    "why": {
-      "title": "Transparansi Keahlian Kami",
-      "body": "Demo ini bukan sekadar fitur; ini adalah bukti nyata kemampuan kami mengimplementasikan Deep Learning (AI) canggih. Kami menunjukkan bahwa kami dapat membangun otomasi cerdas dan solusi real-time yang berjalan efisien di browser Anda—kemampuan yang dapat kami terapkan untuk mengoptimalkan proses bisnis Anda."
+    "performance_seo": {
+      "title": "Performa & SEO",
+      "desc": "Markup yang memperhatikan Core Web Vitals, struktur yang dapat diakses, dan penyiapan SEO on-page yang bersih."
     },
-    "privacy": {
-      "title": "Jaminan Privasi Anda (Sisi Klien)",
-      "points": [
-        "Berbasis Sains (Prinsip On-Device Processing): Semua komputasi AI (inferensi) terjadi 100% secara lokal di browser (GPU) Anda.",
-        "Tanpa Transfer Data: Data gambar atau feed video Anda TIDAK PERNAH DIUNGGAH, ditransfer, atau disimpan di server Vercel kami.",
-        "Aman Secara Arsitektural: Privasi Anda terjamin penuh karena data sensitif Anda tidak pernah meninggalkan perangkat Anda."
-      ]
+    "care_maintenance": {
+      "title": "Perawatan & Pemeliharaan",
+      "desc": "Pengeditan konten kecil, pemantauan waktu aktif, dan pencadangan terjadwal agar situs Anda tetap sehat."
+    },
+    "title": "Paket Harga",
+    "subtitle": "Dibuat untuk para pendiri, vila, kafe, UMKM, dan merek yang sedang berkembang.",
+    "plans": {
+      "launchpad": {
+        "name": "Launchpad",
+        "subtitle": "Founder, Validasi Ide, Event",
+        "price": "Mulai dari Rp 2.000.000",
+        "description": "Situs satu halaman profesional yang dioptimalkan untuk kecepatan dan satu tujuan konversi. Diluncurkan cepat untuk ide Anda.",
+        "features": [
+          "1- 3 Page Website",
+          "Desain Kustom & Responsif (Figma to Code)",
+          "Optimasi Ekstrem Core Web Vitals (CWV)",
+          "Setup Analytics & On-page SEO Dasar"
+        ],
+        "cta": "Pilih Paket",
+        "eta": "Estimasi Waktu: 5-7 Hari"
+      },
+      "digital_hq": {
+        "name": "Digital HQ",
+        "subtitle": "UMKM, Kafe, Konsultan, Portofolio",
+        "price": "Mulai dari Rp 4.500.000",
+        "description": "Bangun home base digital yang kredibel. Situs multi-halaman custom code untuk menampilkan layanan dan membangun kepercayaan.",
+        "features": [
+          "Situs Multi-halaman (hingga 5-7 halaman)",
+          "Struktur Konten Kustom (misal: untuk Portofolio/Layanan)",
+          "Full Custom Code (No CMS, No Template)",
+          "Baseline SEO & Performance Tuning",
+          "Termasuk 3 Bulan Care Plan"
+        ],
+        "cta": "Pilih Paket",
+        "eta": "Estimasi Waktu: 1-2 Minggu"
+      },
+      "booking_engine": {
+        "name": "Booking Engine",
+        "subtitle": "Vila, Hotel, Restoran, Jasa Tur",
+        "price": "Mulai dari Rp 6.000.000",
+        "description": "Ubah pengunjung menjadi pelanggan 24/7. Situs web custom yang terintegrasi penuh dengan API booking atau channel manager.",
+        "features": [
+          "Situs Multi-halaman (Fokus pada Galeri & Kamar)",
+          "Fitur Inti: Integrasi API Booking System",
+          "Integrasi Custom ke Channel Manager (SiteMinder, dll)",
+          "ATAU Form Booking Kustom (via Email/API)",
+          "Desain interface booking yang seamless."
+        ],
+        "cta": "Pilih Paket",
+        "eta": "Estimasi Waktu: 2-3 Minggu"
+      },
+      "headless_ecommerce": {
+        "name": "Headless E-Commerce",
+        "subtitle": "Merek Retail, Merchandise, F&B",
+        "price": "Mulai dari Rp 9.000.000",
+        "description": "Buka toko online super cepat. Menggunakan custom front-end yang terhubung ke payment gateway atau headless commerce API.",
+        "features": [
+          "Custom Front-end untuk E-commerce",
+          "Integrasi Payment Gateway (Midtrans, Xendit)",
+          "Desain Kustom Halaman Produk & Checkout",
+          "Bukan platform (Shopify/WooCommerce). Ini adalah build kustom.",
+          "Struktur data produk (JSON/API-based)."
+        ],
+        "cta": "Pilih Paket",
+        "eta": "Estimasi Waktu: 3-4 Minggu"
+      },
+      "ai_powered": {
+        "name": "AI-Powered",
+        "subtitle": "Startup, Brand Premium, Inovator",
+        "price": "Mulai dari Rp 12.000.000",
+        "description": "Ciptakan pengalaman pengguna yang 'pintar' dan interaktif menggunakan integrasi API AI kustom (Gemini/OpenAI).",
+        "features": [
+          "Situs Premium Multi-halaman",
+          "UI/UX dengan motion & desain premium",
+          "Fitur Inti: Integrasi Server-side API AI",
+          "Contoh: Chatbot cerdas (dilatih data bisnis)",
+          "Contoh: Personalisasi konten real-time",
+          "Backend kustom sederhana (jika diperlukan untuk API key)."
+        ],
+        "cta": "Pilih Paket",
+        "eta": "Estimasi Waktu: 4-6 Minggu"
+      },
+      "growth_retainer": {
+        "name": "Growth Retainer",
+        "subtitle": "Bisnis yang sudah memiliki website",
+        "price": "Mulai dari Rp 1.500.000 /bulan",
+        "description": "Website Anda sudah ada, tapi tidak menghasilkan? Kami bantu optimalkan secara berkelanjutan menggunakan data dan sains.",
+        "features": [
+          "SEO Teknis & Audit Performa",
+          "Optimasi Konversi (CRO) & A/B Testing",
+          "Analisis Data Analytics & Perilaku Pengguna",
+          "Implementasi Update Konten & Desain (minor)",
+          "Monitoring Keamanan & Performa (CWV)."
+        ],
+        "cta": "Pilih Paket",
+        "eta": "Layanan Bulanan"
+      }
+    },
+    "faq": {
+      "title": "FAQ",
+      "item1": "Semua paket mencakup desain, pembuatan, SEO on-page, dan analitik dasar. Domain/hosting dan alat pihak ketiga berbayar ditagih secara terpisah kecuali ditentukan dalam proposal.",
+      "item2": "Setiap paket mencakup putaran revisi yang disebutkan. Putaran tambahan atau perubahan ruang lingkup dapat ditambahkan sebagai tambahan.",
+      "item3": "Pembayaran biasanya dibagi 50% untuk memulai dan 50% saat peluncuran. Garis waktu disesuaikan setelah konten selesai.",
+      "item4": "Paket Perawatan mencakup pembaruan konten kecil, pemeriksaan waktu aktif, dan pencadangan terjadwal. Fitur yang lebih besar dikutip secara terpisah."
     }
+  },
+  "home": {
+    "start_project": "Mulai Proyek",
+    "view_services": "Lihat Layanan",
+    "certificates": {
+      "title": "Sertifikat",
+      "description": "Kredensial terverifikasi yang mencakup UI responsif, aksesibilitas, JavaScript, dan kinerja."
+    }
+  },
+  "portfolio": {
+    "title": "Portofolio",
+    "description": "Karya-karya pilihan yang menonjolkan UI yang bersih, kinerja yang solid, dan hasil yang terukur.",
+    "visit_site": "Kunjungi Situs",
+    "item1": {
+      "title": "MiniTools — Rangkaian Utilitas Pengembang",
+      "description": "Kumpulan utilitas mikro yang cepat dan ramah privasi untuk pekerjaan sehari-hari: pemformat, penyandi/pengurai, generator, dan pembantu cepat. Dibuat dengan Next.js dan Tailwind untuk UX yang cepat."
+    },
+    "item2": {
+      "title": "OpsPlaybook — Perangkat Perhotelan",
+      "description": "Panduan operasional dan dasbor SOP digital untuk manajemen vila dan perhotelan. Berfokus pada kejelasan tim, skalabilitas, dan otomatisasi alur kerja."
+    },
+    "item3": {
+      "title": "Situs Pribadi — astika.is-a.dev",
+      "description": "Situs web branding pribadi yang dibuat dengan mempertimbangkan minimalis dan kinerja. Menampilkan portofolio, ide, dan catatan teknis."
+    }
+  },
+  "about": {
+    "title": "Tentang",
+    "p1": "Sebagai pengembang digital independen, saya berspesialisasi dalam membangun pengalaman web yang bersih, cepat, dan berpusat pada pengguna. Fokus saya adalah pada kejelasan, keseimbangan, dan presisi—memastikan setiap elemen di halaman ada karena suatu alasan dan melayani tujuan yang berbeda.",
+    "p2": "Pekerjaan saya memadukan teknologi web modern dengan fokus mendalam pada pengalaman pengguna (UX). Pendekatan ini memungkinkan saya untuk merancang sistem yang minimal namun berdampak, terstruktur namun intuitif. Saya membangun produk digital yang tidak hanya terlihat bagus, tetapi benar-benar berkomunikasi, mengonversi, dan secara intuitif membimbing pengguna.",
+    "p3": "Berbasis di Bali dan bekerja dari jarak jauh di seluruh dunia, saya menciptakan solusi yang menggabungkan logika, estetika, dan niat—dibuat untuk orang, bukan algoritma.",
+    "competencies": {
+      "title": "Kompetensi Inti & Perangkat",
+      "p1": "Untuk mewujudkan ide-ide ini, saya mengandalkan tumpukan teknologi modern yang berorientasi pada kinerja.",
+      "languages": {
+        "title": "Bahasa & Kerangka Kerja",
+        "p1": "TypeScript, JavaScript (ES6+), React, Next.js, Node.js"
+      },
+      "styling": {
+        "title": "Gaya & UI",
+        "p1": "Tailwind CSS, Framer Motion, Radix UI, Shadcn/UI"
+      },
+      "backend": {
+        "title": "Backend & Data",
+        "p1": "Headless CMS (Sanity, Strapi), PostgreSQL, Vercel, Docker"
+      },
+      "design": {
+        "title": "Desain & Strategi",
+        "p1": "Figma, Desain UI/UX, Optimisasi Kinerja, SEO"
+      }
+    }
+  },
+  "privacy": {
+    "title": "Jaminan Privasi Anda (Sisi Klien)",
+    "p1": "Kami mengumpulkan detail kontak dasar yang Anda bagikan melalui situs ini. Informasi digunakan untuk menanggapi pertanyaan dan memberikan layanan. Kami tidak menjual data pribadi.",
+    "p2": "Tindakan keamanan yang wajar telah diterapkan, tetapi tidak ada metode transmisi yang sepenuhnya aman. Untuk penghapusan data atau pertanyaan, hubungi kami.",
+    "points": [
+      "Berbasis Sains (Prinsip On-Device Processing): Semua komputasi AI (inferensi) terjadi 100% secara lokal di browser (GPU) Anda.",
+      "Tanpa Transfer Data: Data gambar atau feed video Anda TIDAK PERNAH DIUNGGAH, ditransfer, atau disimpan di server Vercel kami.",
+      "Aman Secara Arsitektural: Privasi Anda terjamin penuh karena data sensitif Anda tidak pernah meninggalkan perangkat Anda."
+    ]
+  },
+  "terms": {
+    "title": "Syarat & Ketentuan",
+    "item1": {
+      "title": "Layanan",
+      "description": "Desain, pengembangan, SEO on-page, dan penyiapan analitik dasar sebagaimana disepakati dalam proposal tertulis."
+    },
+    "item2": {
+      "title": "Tanggung jawab klien",
+      "description": "Menyediakan konten, persetujuan, dan akses yang diperlukan secara tepat waktu untuk melanjutkan."
+    },
+    "item3": {
+      "title": "Pembayaran",
+      "description": "Struktur tipikal adalah 50% untuk memulai dan 50% saat peluncuran kecuali dinyatakan lain."
+    },
+    "item4": {
+      "title": "Kekayaan intelektual",
+      "description": "Anda memiliki hasil akhir setelah pembayaran penuh; kami dapat mereferensikan pekerjaan dalam portofolio kecuali Anda meminta sebaliknya."
+    },
+    "item5": {
+      "title": "Batasan tanggung jawab",
+      "description": "Kami tidak bertanggung jawab atas kerusakan tidak langsung, insidental, atau konsekuensial."
+    },
+    "item6": {
+      "title": "Hukum yang mengatur",
+      "description": "Hukum lokal Indonesia berlaku kecuali ditentukan lain dalam proposal."
+    },
+    "item7": {
+      "title": "Kontak",
+      "description": "Untuk pertanyaan tentang persyaratan ini, hubungi melalui halaman kontak."
+    }
+  },
+  "tensorflow": {
+    "page": {
+      "title": "Deteksi Objek Real-Time",
+      "description": "Demo ini menggunakan model COCO-SSD untuk mendeteksi objek. Untuk mengoptimalkan performa, library AI dan model hanya akan dimuat setelah Anda menekan tombol di bawah ini.",
+      "ready_title": "Fitur Deteksi AI Siap Dimuat",
+      "ready_description": "Tekan tombol untuk mengunduh model (~35MB) dan memulai komponen.",
+      "start_button": "Mulai Deteksi Objek"
+    }
+  },
+  "tensorflow.how_to_use": {
+    "title": "Cara Penggunaan",
+    "intro": "Bagian ini dirancang untuk memandu Anda mendapatkan hasil maksimal dari demo Deep Learning ini.",
+    "sections": [
+      {
+        "title": "Mode Unggah Gambar",
+        "points": [
+          "Input Ideal: Unggah gambar yang berisi objek fisik dan umum. Model ini dilatih secara ilmiah pada dataset COCO untuk mengenali benda-benda di dunia nyata.",
+          "Contoh Sukses: Coba foto laptop, ponsel, cangkir kopi, orang, mobil, atau hewan peliharaan.",
+          "Batasan Teknis: Model ini tidak dilatih untuk membaca teks atau menganalisis data UI digital (seperti screenshot skor PageSpeed). Ia mencari pola fisik, bukan data konseptual."
+        ]
+      },
+      {
+        "title": "Mode Kamera Langsung",
+        "points": [
+          "Izin Akses: Izinkan browser Anda untuk mengakses kamera. Ingat (sesuai bagian Privasi), feed video ini diproses secara lokal dan tidak pernah meninggalkan perangkat Anda.",
+          "Interaksi: Arahkan kamera ke objek di sekitar Anda (seperti keyboard atau mouse Anda) dan amati bagaimana AI mendeteksi dan melacaknya secara real-time."
+        ]
+      },
+      {
+        "title": "Membaca Hasil",
+        "points": [
+          "Kotak Batas: Kotak berwarna akan secara otomatis muncul di sekitar objek yang terdeteksi.",
+          "Skor Keyakinan (Probabilitas): Angka persentase (%) menunjukkan seberapa yakin model AI tersebut terhadap prediksinya."
+        ]
+      }
+    ]
+  },
+  "why": {
+    "title": "Transparansi Keahlian Kami",
+    "body": "Demo ini bukan sekadar fitur; ini adalah bukti nyata kemampuan kami mengimplementasikan Deep Learning (AI) canggih. Kami menunjukkan bahwa kami dapat membangun otomasi cerdas dan solusi real-time yang berjalan efisien di browser Anda—kemampuan yang dapat kami terapkan untuk mengoptimalkan proses bisnis Anda."
   }
 }

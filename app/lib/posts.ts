@@ -1,9 +1,10 @@
+
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import { compileMDX } from 'next-mdx-remote/rsc';
-import MdxImage from '../components/MdxImage';
-import Callout from '../components/Callout';
+import MdxImage from '@/components/MdxImage';
+import Callout from '@/components/Callout';
 
 // Helper function to calculate reading time
 function calculateReadingTime(content: string): number {
@@ -19,14 +20,16 @@ export interface PostFrontmatter {
   author: string;
   published?: boolean;
   category: string;
-  image: string; // Add image back
+  image: string;
 }
 
 export interface Post {
   slug: string;
   frontmatter: PostFrontmatter;
   content: React.ReactElement;
-  readingTime: number; // Add readingTime
+  readingTime: number;
+  prevPost: { slug: string; title: string } | null;
+  nextPost: { slug: string; title: string } | null;
 }
 
 const contentDirectory = path.join(process.cwd(), 'content');
@@ -51,11 +54,15 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
     options: { parseFrontmatter: false },
   });
 
+  const { prevPost, nextPost } = await getAdjacentPosts(realSlug);
+
   return {
     slug: realSlug,
     frontmatter: data as PostFrontmatter,
     content: compiledContent,
-    readingTime: calculateReadingTime(content), // Calculate and add reading time
+    readingTime: calculateReadingTime(content),
+    prevPost,
+    nextPost,
   };
 }
 
@@ -69,7 +76,6 @@ export async function getAllPosts(): Promise<Post[]> {
     })
   );
 
-  // Filter out null posts and unpublished posts, sort by date, and assert the type
   return posts
     .filter((post): post is Post =>
       post !== null && post.frontmatter.published !== false
@@ -83,7 +89,6 @@ export interface PostMeta {
   readingTime: number;
 }
 
-// Helper to get only metadata for performance
 export async function getAllPostsMeta({ limit, skip }: { limit?: number; skip?: number; } = {}): Promise<{ posts: PostMeta[]; totalCount: number; }> {
     const blogDirectory = path.join(contentDirectory, 'blog');
     const filenames = fs.readdirSync(blogDirectory);

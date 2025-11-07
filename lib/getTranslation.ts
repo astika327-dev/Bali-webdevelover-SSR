@@ -1,37 +1,46 @@
 import 'server-only';
 import fs from 'fs';
 import path from 'path';
+import { Locale } from '@/i18n-config';
 
-const publicDirectory = path.join(process.cwd(), 'public');
+// Cache the dictionaries in memory
+const dictionaries: Record<Locale, any> = {
+  en: null,
+  id: null,
+};
+
+const loadDictionary = (locale: Locale) => {
+  if (dictionaries[locale]) {
+    return dictionaries[locale];
+  }
+  const filePath = path.join(process.cwd(), `public/locales/${locale}.json`);
+  const fileContent = fs.readFileSync(filePath, 'utf-8');
+  dictionaries[locale] = JSON.parse(fileContent);
+  return dictionaries[locale];
+};
+
 
 /**
- * Memuat dan mem-parsing file JSON terjemahan dari direktori public/locales.
- * Fungsi ini ditandai sebagai 'server-only' untuk mencegah penggunaannya di komponen klien.
- * @param {string} lang - Kode bahasa (misalnya, 'en', 'id').
- * @returns {Record<string, any>} Objek terjemahan.
+ * Returns a translation function `t` for the given language.
+ * This function handles nested keys (e.g., "hero.title").
+ * @param {Locale} lang - The language code ('en' or 'id').
+ * @returns {function(string): string} A function that takes a key and returns the translation.
  */
-export function getTranslation(lang: string): Record<string, any> {
-  try {
-    const filePath = path.join(publicDirectory, 'locales', `${lang}.json`);
+export const getTranslation = (lang: Locale) => {
+  const dictionary = loadDictionary(lang);
 
-    if (!fs.existsSync(filePath)) {
-      console.warn(`File terjemahan tidak ditemukan untuk bahasa: ${lang}. Kembali ke bahasa Inggris.`);
-      const fallbackPath = path.join(publicDirectory, 'locales', 'en.json');
-      const fileContents = fs.readFileSync(fallbackPath, 'utf8');
-      return JSON.parse(fileContents);
+  return (key: string): string => {
+    // Traverse nested keys (e.g., "hero.title")
+    const keys = key.split('.');
+    let result = dictionary;
+    for (const k of keys) {
+      if (result && typeof result === 'object' && k in result) {
+        result = result[k];
+      } else {
+        // If key not found, return the key itself as a fallback
+        return key;
+      }
     }
-
-    const fileContents = fs.readFileSync(filePath, 'utf8');
-    return JSON.parse(fileContents);
-  } catch (error) {
-    console.error('Gagal memuat file terjemahan:', error);
-    try {
-      const fallbackPath = path.join(publicDirectory, 'locales', 'en.json');
-      const fileContents = fs.readFileSync(fallbackPath, 'utf8');
-      return JSON.parse(fileContents);
-    } catch (fallbackError) {
-      console.error('Gagal memuat file terjemahan fallback (en.json):', fallbackError);
-      return {};
-    }
-  }
-}
+    return typeof result === 'string' ? result : key;
+  };
+};

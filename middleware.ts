@@ -1,0 +1,49 @@
+import { NextRequest, NextResponse } from 'next/server';
+import parser from 'accept-language-parser';
+
+const supportedLanguages = ['en', 'id'];
+const defaultLanguage = 'id';
+
+// Fungsi untuk mendapatkan bahasa yang disukai dari header
+function getPreferredLanguage(request: NextRequest): string {
+  const langHeader = request.headers.get('accept-language');
+  if (!langHeader) {
+    return defaultLanguage;
+  }
+  const languages = parser.parse(langHeader);
+  for (const lang of languages) {
+    if (supportedLanguages.includes(lang.code)) {
+      return lang.code;
+    }
+  }
+  return defaultLanguage;
+}
+
+export function middleware(request: NextRequest) {
+  const { pathname } = request.nextUrl;
+
+  // Cek apakah path sudah memiliki awalan bahasa yang didukung
+  const pathnameHasLocale = supportedLanguages.some(
+    (lang) => pathname.startsWith(`/${lang}/`) || pathname === `/${lang}`
+  );
+
+  if (pathnameHasLocale) {
+    return; // Tidak perlu melakukan apa-apa jika sudah ada locale
+  }
+
+  // Jika tidak ada locale, deteksi bahasa yang disukai dan alihkan
+  const preferredLanguage = getPreferredLanguage(request);
+  const newPath = `/${preferredLanguage}${pathname}`;
+
+  // Buat URL baru dengan locale yang benar dan pertahankan query params
+  const newUrl = new URL(newPath, request.url);
+  return NextResponse.redirect(newUrl);
+}
+
+// Konfigurasi matcher untuk menentukan path mana yang akan dijalankan middleware
+export const config = {
+  matcher: [
+    // Lewati semua path internal (misalnya, _next, api)
+    '/((?!api|_next/static|_next/image|assets|favicon.ico|sw.js).*)',
+  ],
+};
