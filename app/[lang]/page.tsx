@@ -2,13 +2,9 @@ import Link from 'next/link';
 import type { Route } from 'next';
 import { ArrowRight } from 'lucide-react';
 import { certificates } from '@/content/config';
-import dynamic from 'next/dynamic';
 import { getTranslation } from '@/lib/getTranslation';
 import { Locale, i18n } from '@/i18n-config';
-
-const AiChatWidget = dynamic(() => import('@/components/AiChatWidget'), {
-  ssr: false,
-});
+import AiChatWidgetLoader from '@/components/AiChatWidgetLoader';
 
 export function generateStaticParams() {
   return i18n.locales.map((locale) => ({ lang: locale }));
@@ -65,7 +61,7 @@ export default function HomePage({ params: { lang } }: { params: { lang: Locale 
       </div>
 
       {/* AI Chat Widget */}
-      <AiChatWidget />
+      <AiChatWidgetLoader />
 
       {/* Certificates */}
       <div className="space-y-4">
