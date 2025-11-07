@@ -110,7 +110,7 @@ export async function POST(req: NextRequest) {
     .map((p) => `[${p.frontmatter.category}] ${p.frontmatter.title}: ${p.frontmatter.description}`)
     .join("\n");
 
-  const servicesContext = services.map(s => `- ${s.title}: ${s.desc}`).join("\n");
+  const servicesContext = services.map(s => `- ${s.id}`).join("\n");
   const portfolioContext = portfolio.map(p => `- ${p.title}: ${p.description}`).join("\n");
   const siteContext = `Tentang situs ini: ${site.blurb}. Misi kami: ${site.mission}.`;
 
