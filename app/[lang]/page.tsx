@@ -24,24 +24,24 @@ export default function HomePage({ params: { lang } }: { params: { lang: Locale 
     <section className="container py-12 md:py-20 space-y-16">
       {/* Hero */}
       <div>
-        <p className="text-sm uppercase tracking-wider text-[var(--brown)]/70">
+        <p className="text-sm uppercase tracking-wider text-muted-foreground">
           {t('hero.subtitle')}
         </p>
-        <h1 className="text-4xl md:text-6xl font-semibold tracking-tight mt-3 text-[var(--brown)]">
+        <h1 className="text-4xl md:text-6xl font-semibold tracking-tight mt-3 text-foreground">
           {t('hero.title')}
         </h1>
-        <p className="text-[var(--brown)]/80 mt-4 max-w-2xl">{t('site.blurb')}</p>
+        <p className="text-muted-foreground mt-4 max-w-2xl">{t('site.blurb')}</p>
 
         <div className="mt-6 flex flex-wrap gap-3">
           <Link
             href={`/${lang}/contact` as Route}
-            className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-[var(--brown)] text-[var(--cream)] hover:bg-opacity-90 transition"
+            className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-primary text-primary-foreground hover:bg-opacity-90 transition"
           >
             {t('home.start_project')} <ArrowRight size={18} />
           </Link>
           <Link
             href={`/${lang}/services` as Route}
-            className="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-[var(--brown)] text-[var(--brown)] hover:bg-[var(--tan)]/40 transition"
+            className="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-primary text-primary hover:bg-secondary transition"
           >
             {t('home.view_services')}
           </Link>
@@ -49,17 +49,17 @@ export default function HomePage({ params: { lang } }: { params: { lang: Locale 
 
         {/* Services preview */}
         <div className="mt-14 grid md:grid-cols-3 gap-6">
-          <div className="p-6 rounded-2xl border border-[var(--tan)] bg-[var(--cream)]/80 shadow-sm hover:shadow-md transition">
-            <div className="font-semibold text-lg text-[var(--brown)]">{t('services.custom_websites.title')}</div>
-            <p className="text-[var(--brown)]/80 mt-2">{t('services.custom_websites.desc')}</p>
+          <div className="p-6 rounded-2xl border bg-card shadow-sm hover:shadow-md transition">
+            <div className="font-semibold text-lg text-foreground">{t('services.custom_websites.title')}</div>
+            <p className="text-muted-foreground mt-2">{t('services.custom_websites.desc')}</p>
           </div>
-          <div className="p-6 rounded-2xl border-[var(--tan)] bg-[var(--cream)]/80 shadow-sm hover:shadow-md transition">
-            <div className="font-semibold text-lg text-[var(--brown)]">{t('services.performance_seo.title')}</div>
-            <p className="text-[var(--brown)]/80 mt-2">{t('services.performance_seo.desc')}</p>
+          <div className="p-6 rounded-2xl border bg-card shadow-sm hover:shadow-md transition">
+            <div className="font-semibold text-lg text-foreground">{t('services.performance_seo.title')}</div>
+            <p className="text-muted-foreground mt-2">{t('services.performance_seo.desc')}</p>
           </div>
-          <div className="p-6 rounded-2xl border-[var(--tan)] bg-[var(--cream)]/80 shadow-sm hover:shadow-md transition">
-            <div className="font-semibold text-lg text-[var(--brown)]">{t('services.care_maintenance.title')}</div>
-            <p className="text-[var(--brown)]/80 mt-2">{t('services.care_maintenance.desc')}</p>
+          <div className="p-6 rounded-2xl border bg-card shadow-sm hover:shadow-md transition">
+            <div className="font-semibold text-lg text-foreground">{t('services.care_maintenance.title')}</div>
+            <p className="text-muted-foreground mt-2">{t('services.care_maintenance.desc')}</p>
           </div>
         </div>
       </div>
@@ -69,8 +69,8 @@ export default function HomePage({ params: { lang } }: { params: { lang: Locale 
 
       {/* Certificates */}
       <div className="space-y-4">
-        <h2 className="text-xl font-semibold text-[var(--brown)]">{t('home.certificates.title')}</h2>
-        <p className="text-[var(--brown)]/80 max-w-2xl">
+        <h2 className="text-xl font-semibold text-foreground">{t('home.certificates.title')}</h2>
+        <p className="text-muted-foreground max-w-2xl">
           {t('home.certificates.description')}
         </p>
 
@@ -81,7 +81,7 @@ export default function HomePage({ params: { lang } }: { params: { lang: Locale 
               href={c.href}
               target="_blank"
               rel="noreferrer"
-              className="px-4 py-2 rounded-full border border-[var(--brown)] text-[var(--brown)] bg-[var(--tan)]/30 hover:bg-[var(--tan)]/50 text-sm font-medium transition"
+              className="px-4 py-2 rounded-full border border-primary text-primary bg-secondary/60 hover:bg-secondary/80 text-sm font-medium transition"
             >
               {c.title}
             </a>
