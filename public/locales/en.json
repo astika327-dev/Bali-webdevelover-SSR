@@ -15,7 +15,16 @@
     "subtitle": "We build beautiful and functional websites and mobile apps."
   },
   "contact": {
-    "title": "Get in Touch"
+    "title": "Get in Touch",
+    "description": "Have a project in mind or just want to say hi? Fill out the form below and I'll get back to you as soon as possible.",
+    "form": {
+      "name_placeholder": "Name",
+      "email_placeholder": "Email",
+      "message_placeholder": "Message",
+      "submit_button": "Send Message",
+      "success_message": "Your message has been sent successfully!",
+      "error_message": "An error occurred while sending your message. Please try again later."
+    }
   },
   "footer": {
     "copyright": "© 2025 Jules. All rights reserved.",
@@ -31,7 +40,7 @@
     }
   },
   "site": {
-    "name": "BaliWebDev",
+    "name": "Bali-WebDevelover",
     "title": "Your Partner in Digital Excellence",
     "blurb": "We craft lean, high‑polish websites, landing pages, and micro apps for founders, villas, cafés, and growing brands. Built with solid fundamentals so Google and humans both approve."
   },

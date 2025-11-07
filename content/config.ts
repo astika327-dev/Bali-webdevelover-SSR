@@ -29,7 +29,7 @@ export type Client = {
   href?: string;
 };
 export const site = {
-  company: "BaliWebDev",
+  company: "Bali-WebDevelover",
   tagline: "Clean, speedy websites that convert",
   blurb:
     "We craft lean, high‑polish websites, landing pages, and micro apps for founders, villas, cafés, and growing brands. Built with solid fundamentals so Google and humans both approve.",
