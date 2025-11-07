@@ -8,6 +8,7 @@ import Footer from '@/components/Footer';
 import { Providers } from '@/app/providers';
 import { getTranslation } from '@/lib/getTranslation';
 import { Locale, i18n } from '@/i18n-config';
+import PageTransition from '@/components/PageTransition';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 const instrument = Instrument_Serif({
@@ -70,13 +71,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang={params.lang} suppressHydrationWarning>
-      <body className={`${inter.variable} ${instrument.variable} bg-[var(--cream)] font-sans`}>
+      <body className={`${inter.variable} ${instrument.variable} bg-background font-sans text-foreground`}>
         <Providers>
           <Navbar lang={params.lang} />
-          <main>{children}</main>
+          <main>
+            <PageTransition>{children}</PageTransition>
+          </main>
           <Footer lang={params.lang} />
         </Providers>
-        <SpeedInsights/>
+        <SpeedInsights />
       </body>
     </html>
   );

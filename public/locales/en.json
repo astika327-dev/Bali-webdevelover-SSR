@@ -18,9 +18,21 @@
     "title": "Get in Touch"
   },
   "footer": {
-    "copyright": "© 2025 Jules. All rights reserved."
+    "copyright": "© 2025 Jules. All rights reserved.",
+    "description": "Independent boutique web studio based in Bali, focused on building fast, elegant, and conversion-driven websites. We believe a website should not only look professional but also work as a valuable asset that drives measurable results for your company.",
+    "links": {
+      "services": "Services",
+      "portfolio": "Portfolio",
+      "about": "About",
+      "blog": "Blog",
+      "contact": "Contact",
+      "privacy": "Privacy",
+      "terms": "Terms"
+    }
   },
   "site": {
+    "name": "BaliWebDev",
+    "title": "Your Partner in Digital Excellence",
     "blurb": "We craft lean, high‑polish websites, landing pages, and micro apps for founders, villas, cafés, and growing brands. Built with solid fundamentals so Google and humans both approve."
   },
   "services": {

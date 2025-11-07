@@ -18,9 +18,21 @@
     "title": "Hubungi Saya"
   },
   "footer": {
-    "copyright": "© 2025 Jules. Hak cipta dilindungi undang-undang."
+    "copyright": "© 2025 Jules. Hak cipta dilindungi undang-undang.",
+    "description": "Studio web butik independen berbasis di Bali, berfokus pada pembuatan situs web yang cepat, elegan, dan berorientasi konversi. Kami percaya situs web tidak hanya harus terlihat profesional tetapi juga berfungsi sebagai aset berharga yang memberikan hasil terukur bagi perusahaan Anda.",
+    "links": {
+      "services": "Layanan",
+      "portfolio": "Portofolio",
+      "about": "Tentang",
+      "blog": "Blog",
+      "contact": "Kontak",
+      "privacy": "Privasi",
+      "terms": "Ketentuan"
+    }
   },
   "site": {
+    "name": "BaliWebDev",
+    "title": "Partner Anda dalam Keunggulan Digital",
     "blurb": "Kami membuat situs web, halaman arahan, dan aplikasi mikro yang ramping dan berkualitas tinggi untuk para pendiri, vila, kafe, dan merek yang sedang berkembang. Dibuat dengan dasar-dasar yang kokoh sehingga Google dan manusia sama-sama menyetujuinya."
   },
   "services": {
