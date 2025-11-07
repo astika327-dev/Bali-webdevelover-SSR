@@ -1,13 +1,11 @@
 
 export type Certificate = { title: string; href: string };
-export type Plan = {
-  name: string;
-  subtitle: string;
+export type Service = {
+  id: string;
+  title: string;
+  description: string;
   price: string;
-  features: string[];
-  cta: string;
-  eta: string;
-  badge?: string;
+  icon: string;
 };
 
 export type Stat = {
@@ -45,102 +43,48 @@ export const certificates: Certificate[] = [
   { title: "freeCodeCamp — JavaScript Algorithms & Data Structures", href: "https://www.freecodecamp.org/certification/astika/javascript-algorithms-and-data-structures-v8" }
 ];
 
-export const services = [
+export const services: Service[] = [
   {
-    id: 'custom_websites',
-    features: ['custom_design', 'responsive', 'seo_friendly', 'cms_integration'],
-    tiers: [
-      { id: 'starter', price: '$500', priceSuffix: ' starting from' },
-      { id: 'business', price: '$1500', priceSuffix: ' starting from' },
-    ],
+    id: 'landing_page',
+    title: 'Landing Page',
+    description: 'A single, high-impact page designed for conversions. Perfect for validating ideas or launching events.',
+    price: 'Rp 2.000.000 - Rp 3.500.000',
+    icon: 'Rocket'
   },
   {
-    id: 'performance_seo',
-    features: ['performance_audit', 'on_page_seo', 'technical_seo', 'analytics_setup'],
-    tiers: [
-      { id: 'basic_seo', price: '$300', priceSuffix: ' one time' },
-      { id: 'advanced_seo', price: '$800', priceSuffix: ' one time' },
-    ],
+    id: 'company_profile',
+    title: 'Company Profile Website',
+    description: 'A professional multi-page site to build credibility and showcase your services. Ideal for MSMEs and consultants.',
+    price: 'Rp 4.000.000 - Rp 6.000.000',
+    icon: 'Building2'
   },
   {
-    id: 'care_maintenance',
-    features: ['monthly_updates', 'security_monitoring', 'performance_checks', 'content_updates'],
-    tiers: [
-      { id: 'monthly_care', price: '$100', priceSuffix: ' per month' },
-      { id: 'yearly_care', price: '$1000', priceSuffix: ' per year' },
-    ],
-  },
-];
-
-export const plans: Plan[] = [
-  {
-    name: "Starter",
-    subtitle: "Launch‑ready landing page",
-    price: "Rp 1.500.000 - Rp 2.500.000",
-    features: [
-      "1–3 sections, custom look",
-      "Responsive and accessible",
-      "Light copy refinement (EN/ID)",
-      "Semantic HTML for basic SEO",
-      "Standard analytics wiring"
-    ],
-    cta: "Start Now",
-    eta: "3–5 days • 1 revision"
+    id: 'booking_website',
+    title: 'Booking Website',
+    description: 'Turn visitors into customers 24/7 with a custom website integrated with a booking API or channel manager.',
+    price: 'Rp 6.000.000 - Rp 8.000.000',
+    icon: 'CalendarCheck'
   },
   {
-    name: "Growth",
-    subtitle: "Small business website",
-    price: "Rp 4.000.000 - Rp 6.000.000",
-    features: [
-      "Up to 5–7 custom pages",
-      "Checked against Core Web Vitals",
-      "Copy polish (EN/ID, 2 rounds)",
-      "Baseline SEO + perf tuning",
-      "Simple analytics dashboard",
-      "3‑month Care Plan"
-    ],
-    cta: "Start Growth",
-    eta: "1–2 weeks • 2 revisions",
-    badge: "Most Popular"
+    id: 'headless_ecommerce',
+    title: 'Headless E-Commerce',
+    description: 'Launch a lightning-fast online store with a custom front-end connected to a payment gateway or headless API.',
+    price: 'Rp 8.000.000 - Rp 10.000.000',
+    icon: 'ShoppingCart'
   },
   {
-    name: "Premium",
-    subtitle: "Brand‑level experience",
-    price: "Rp 8.000.000 - Rp 12.000.000",
-    features: [
-      "12–15 uniquely designed pages",
-      "Premium UI with tasteful motion",
-      "Full copy refinement (EN/ID, 4 rounds)",
-      "Complete performance tuning",
-      "Advanced on‑page SEO",
-      "Analytics setup and reporting",
-      "6‑month Care Plan"
-    ],
-    cta: "Get Premium",
-    eta: "3–4 weeks • 4 revisions"
-  }
-];
-
-export const addons = [
-  {
-    title: "Custom Feature AI",
-    desc: "Separate pricing for custom features requiring dedicated backend and API integration (e.g., Gemini, complex booking systems).",
-    from: "from Rp 4,000,000"
+    id: 'ai_powered_website',
+    title: 'AI-Powered Website',
+    description: 'Create smart, interactive user experiences with custom AI API integrations (Gemini/OpenAI).',
+    price: 'Rp 10.000.000 - Rp 12.000.000',
+    icon: 'Sparkles'
   },
   {
-    title: "Booking Integration",
-    desc: "Channel manager or booking widget (e.g., SiteMinder, Cloudbeds, or a custom form)",
-    from: "from Rp 1.700.000"
-  },
-  {
-    title: "Brand Content Pack",
-    desc: "Copy refinement, menu/rooms descriptions (EN/ID), asset organization",
-    from: "from Rp 550.000"
-  },
-  {
-    title: "Photo Optimization",
-    desc: "Hero and gallery curation, compression, EXIF/alt text, lazy‑load setup",
-    from: "from Rp 300.000"
+    id: 'seo_optimization',
+    title: 'SEO & Growth Retainer',
+    description: 'Continuously optimize your existing website for performance, conversions, and search rankings.',
+    price: 'Starts from Rp 1.500.000 /month',
+    icon: 'TrendingUp'
   }
 ];
 
@@ -151,10 +95,10 @@ export const portfolio = [
     'A fast, privacy-friendly collection of micro utilities for everyday work: formatters, encoders/decoders, generators, and quick helpers. Built with Next.js and Tailwind for snappy UX.',
     link: 'https://astika327-dev.github.io/minitools/',
     images: [
-      '/screenshot/ssminitool1.png',
-      '/screenshot/ssminitool2.png',
-      '/screenshot/ssminitool3.png',
-      '/screenshot/ssminitool4.png'
+      '/images/portfolio/minitools-1.png',
+      '/images/portfolio/minitools-2.png',
+      '/images/portfolio/minitools-3.png',
+      '/images/portfolio/minitools-4.png'
     ]
   },
   {
@@ -163,9 +107,9 @@ export const portfolio = [
       'Operational guide and digital SOP dashboard for villa and hospitality management. Focused on team clarity, scalability, and workflow automation.',
     link: 'https://astika327-dev.github.io/opsplaybook-hospitality/',
     images: [
-      '/screenshot/ssops1.png',
-      '/screenshot/ssops2.png',
-      '/screenshot/ssops3.png'
+      '/images/portfolio/opsplaybook-1.png',
+      '/images/portfolio/opsplaybook-2.png',
+      '/images/portfolio/opsplaybook-3.png'
     ]
   },
   {
@@ -174,8 +118,8 @@ export const portfolio = [
       'Personal branding website built with minimalism and performance in mind. Showcasing portfolio, ideas, and technical notes.',
     link: 'https://astika.is-a.dev',
     images: [
-      '/screenshot/ssporto1.png',
-      '/screenshot/ssporto2.png'
+      '/images/portfolio/personalsite-1.png',
+      '/images/portfolio/personalsite-2.png'
     ]
   },
   {
@@ -184,9 +128,9 @@ export const portfolio = [
       'A clean, modern, and responsive website for U2Cleanpro. Professional cleaning services.',
     link: 'https://cleanpro-beryl.vercel.app/',
     images: [
-      '/screenshot/sscleanpro.png',
-      '/screenshot/sscleanpro2.png',
-      '/screenshot/sscleanpro3.png '
+      '/images/portfolio/cleanpro-1.png',
+      '/images/portfolio/cleanpro-2.png',
+      '/images/portfolio/cleanpro-3.png'
     ]
   },
   {
@@ -195,7 +139,7 @@ export const portfolio = [
       'AI prompt engineering platform for creating, sharing, and discovering high-quality prompts across various AI models.',
     link: 'https://promptcraft-v2.vercel.app/',
     images: [
-      '/screenshot/ssprompt.png',
+      '/images/portfolio/promptcraft-1.png',
     ]
   },
 ];

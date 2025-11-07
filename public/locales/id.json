@@ -45,118 +45,31 @@
     "blurb": "Kami membuat situs web, halaman arahan, dan aplikasi mikro yang ramping dan berkualitas tinggi untuk para pendiri, vila, kafe, dan merek yang sedang berkembang. Dibuat dengan dasar-dasar yang kokoh sehingga Google dan manusia sama-sama menyetujuinya."
   },
   "services": {
-    "custom_websites": {
-      "title": "Situs Web Kustom",
-      "desc": "Bangunan modern dan responsif dengan nuansa premium, dari portofolio hingga situs bisnis lengkap."
+    "title": "Layanan Kami",
+    "subtitle": "Solusi modern untuk meningkatkan kehadiran digital Anda. Kami fokus pada kinerja, desain, dan hasil yang nyata.",
+    "landing_page": {
+      "title": "Landing Page",
+      "description": "Satu halaman berdampak tinggi yang dirancang untuk konversi. Sempurna untuk memvalidasi ide atau meluncurkan acara."
     },
-    "performance_seo": {
-      "title": "Performa & SEO",
-      "desc": "Markup yang memperhatikan Core Web Vitals, struktur yang dapat diakses, dan penyiapan SEO on-page yang bersih."
+    "company_profile": {
+      "title": "Situs Web Profil Perusahaan",
+      "description": "Situs multi-halaman profesional untuk membangun kredibilitas dan menampilkan layanan Anda. Ideal untuk UMKM dan konsultan."
     },
-    "care_maintenance": {
-      "title": "Perawatan & Pemeliharaan",
-      "desc": "Pengeditan konten kecil, pemantauan waktu aktif, dan pencadangan terjadwal agar situs Anda tetap sehat."
+    "booking_website": {
+      "title": "Situs Web Booking",
+      "description": "Ubah pengunjung menjadi pelanggan 24/7 dengan situs web kustom yang terintegrasi dengan API pemesanan atau manajer saluran."
     },
-    "title": "Paket Harga",
-    "subtitle": "Dibuat untuk para pendiri, vila, kafe, UMKM, dan merek yang sedang berkembang.",
-    "plans": {
-      "launchpad": {
-        "name": "Launchpad",
-        "subtitle": "Founder, Validasi Ide, Event",
-        "price": "Mulai dari Rp 2.000.000",
-        "description": "Situs satu halaman profesional yang dioptimalkan untuk kecepatan dan satu tujuan konversi. Diluncurkan cepat untuk ide Anda.",
-        "features": [
-          "1- 3 Page Website",
-          "Desain Kustom & Responsif (Figma to Code)",
-          "Optimasi Ekstrem Core Web Vitals (CWV)",
-          "Setup Analytics & On-page SEO Dasar"
-        ],
-        "cta": "Pilih Paket",
-        "eta": "Estimasi Waktu: 5-7 Hari"
-      },
-      "digital_hq": {
-        "name": "Digital HQ",
-        "subtitle": "UMKM, Kafe, Konsultan, Portofolio",
-        "price": "Mulai dari Rp 4.500.000",
-        "description": "Bangun home base digital yang kredibel. Situs multi-halaman custom code untuk menampilkan layanan dan membangun kepercayaan.",
-        "features": [
-          "Situs Multi-halaman (hingga 5-7 halaman)",
-          "Struktur Konten Kustom (misal: untuk Portofolio/Layanan)",
-          "Full Custom Code (No CMS, No Template)",
-          "Baseline SEO & Performance Tuning",
-          "Termasuk 3 Bulan Care Plan"
-        ],
-        "cta": "Pilih Paket",
-        "eta": "Estimasi Waktu: 1-2 Minggu"
-      },
-      "booking_engine": {
-        "name": "Booking Engine",
-        "subtitle": "Vila, Hotel, Restoran, Jasa Tur",
-        "price": "Mulai dari Rp 6.000.000",
-        "description": "Ubah pengunjung menjadi pelanggan 24/7. Situs web custom yang terintegrasi penuh dengan API booking atau channel manager.",
-        "features": [
-          "Situs Multi-halaman (Fokus pada Galeri & Kamar)",
-          "Fitur Inti: Integrasi API Booking System",
-          "Integrasi Custom ke Channel Manager (SiteMinder, dll)",
-          "ATAU Form Booking Kustom (via Email/API)",
-          "Desain interface booking yang seamless."
-        ],
-        "cta": "Pilih Paket",
-        "eta": "Estimasi Waktu: 2-3 Minggu"
-      },
-      "headless_ecommerce": {
-        "name": "Headless E-Commerce",
-        "subtitle": "Merek Retail, Merchandise, F&B",
-        "price": "Mulai dari Rp 9.000.000",
-        "description": "Buka toko online super cepat. Menggunakan custom front-end yang terhubung ke payment gateway atau headless commerce API.",
-        "features": [
-          "Custom Front-end untuk E-commerce",
-          "Integrasi Payment Gateway (Midtrans, Xendit)",
-          "Desain Kustom Halaman Produk & Checkout",
-          "Bukan platform (Shopify/WooCommerce). Ini adalah build kustom.",
-          "Struktur data produk (JSON/API-based)."
-        ],
-        "cta": "Pilih Paket",
-        "eta": "Estimasi Waktu: 3-4 Minggu"
-      },
-      "ai_powered": {
-        "name": "AI-Powered",
-        "subtitle": "Startup, Brand Premium, Inovator",
-        "price": "Mulai dari Rp 12.000.000",
-        "description": "Ciptakan pengalaman pengguna yang 'pintar' dan interaktif menggunakan integrasi API AI kustom (Gemini/OpenAI).",
-        "features": [
-          "Situs Premium Multi-halaman",
-          "UI/UX dengan motion & desain premium",
-          "Fitur Inti: Integrasi Server-side API AI",
-          "Contoh: Chatbot cerdas (dilatih data bisnis)",
-          "Contoh: Personalisasi konten real-time",
-          "Backend kustom sederhana (jika diperlukan untuk API key)."
-        ],
-        "cta": "Pilih Paket",
-        "eta": "Estimasi Waktu: 4-6 Minggu"
-      },
-      "growth_retainer": {
-        "name": "Growth Retainer",
-        "subtitle": "Bisnis yang sudah memiliki website",
-        "price": "Mulai dari Rp 1.500.000 /bulan",
-        "description": "Website Anda sudah ada, tapi tidak menghasilkan? Kami bantu optimalkan secara berkelanjutan menggunakan data dan sains.",
-        "features": [
-          "SEO Teknis & Audit Performa",
-          "Optimasi Konversi (CRO) & A/B Testing",
-          "Analisis Data Analytics & Perilaku Pengguna",
-          "Implementasi Update Konten & Desain (minor)",
-          "Monitoring Keamanan & Performa (CWV)."
-        ],
-        "cta": "Pilih Paket",
-        "eta": "Layanan Bulanan"
-      }
+    "headless_ecommerce": {
+      "title": "E-Commerce Headless",
+      "description": "Luncurkan toko online secepat kilat dengan front-end kustom yang terhubung ke gateway pembayaran atau API headless."
     },
-    "faq": {
-      "title": "FAQ",
-      "item1": "Semua paket mencakup desain, pembuatan, SEO on-page, dan analitik dasar. Domain/hosting dan alat pihak ketiga berbayar ditagih secara terpisah kecuali ditentukan dalam proposal.",
-      "item2": "Setiap paket mencakup putaran revisi yang disebutkan. Putaran tambahan atau perubahan ruang lingkup dapat ditambahkan sebagai tambahan.",
-      "item3": "Pembayaran biasanya dibagi 50% untuk memulai dan 50% saat peluncuran. Garis waktu disesuaikan setelah konten selesai.",
-      "item4": "Paket Perawatan mencakup pembaruan konten kecil, pemeriksaan waktu aktif, dan pencadangan terjadwal. Fitur yang lebih besar dikutip secara terpisah."
+    "ai_powered_website": {
+      "title": "Situs Web Berbasis AI",
+      "description": "Ciptakan pengalaman pengguna yang cerdas dan interaktif dengan integrasi API AI kustom (Gemini/OpenAI)."
+    },
+    "seo_optimization": {
+      "title": "SEO & Retainer Pertumbuhan",
+      "description": "Optimalkan situs web Anda yang sudah ada secara berkelanjutan untuk kinerja, konversi, dan peringkat pencarian."
     }
   },
   "home": {
@@ -171,6 +84,8 @@
     "title": "Portofolio",
     "description": "Karya-karya pilihan yang menonjolkan UI yang bersih, kinerja yang solid, dan hasil yang terukur.",
     "visit_site": "Kunjungi Situs",
+    "view_case_study": "Lihat Studi Kasus",
+    "coming_soon": "Segera Hadir",
     "item1": {
       "title": "MiniTools — Rangkaian Utilitas Pengembang",
       "description": "Kumpulan utilitas mikro yang cepat dan ramah privasi untuk pekerjaan sehari-hari: pemformat, penyandi/pengurai, generator, dan pembantu cepat. Dibuat dengan Next.js dan Tailwind untuk UX yang cepat."
