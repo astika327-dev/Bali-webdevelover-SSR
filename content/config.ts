@@ -43,51 +43,6 @@ export const certificates: Certificate[] = [
   { title: "freeCodeCamp — JavaScript Algorithms & Data Structures", href: "https://www.freecodecamp.org/certification/astika/javascript-algorithms-and-data-structures-v8" }
 ];
 
-export const services: Service[] = [
-  {
-    id: 'landing_page',
-    title: 'Landing Page',
-    description: 'A single, high-impact page designed for conversions. Perfect for validating ideas or launching events.',
-    price: 'Rp 2.000.000 - Rp 3.500.000',
-    icon: 'Rocket'
-  },
-  {
-    id: 'company_profile',
-    title: 'Company Profile Website',
-    description: 'A professional multi-page site to build credibility and showcase your services. Ideal for MSMEs and consultants.',
-    price: 'Rp 4.000.000 - Rp 6.000.000',
-    icon: 'Building2'
-  },
-  {
-    id: 'booking_website',
-    title: 'Booking Website',
-    description: 'Turn visitors into customers 24/7 with a custom website integrated with a booking API or channel manager.',
-    price: 'Rp 6.000.000 - Rp 8.000.000',
-    icon: 'CalendarCheck'
-  },
-  {
-    id: 'headless_ecommerce',
-    title: 'Headless E-Commerce',
-    description: 'Launch a lightning-fast online store with a custom front-end connected to a payment gateway or headless API.',
-    price: 'Rp 8.000.000 - Rp 10.000.000',
-    icon: 'ShoppingCart'
-  },
-  {
-    id: 'ai_powered_website',
-    title: 'AI-Powered Website',
-    description: 'Create smart, interactive user experiences with custom AI API integrations (Gemini/OpenAI).',
-    price: 'Rp 10.000.000 - Rp 12.000.000',
-    icon: 'Sparkles'
-  },
-  {
-    id: 'seo_optimization',
-    title: 'SEO & Growth Retainer',
-    description: 'Continuously optimize your existing website for performance, conversions, and search rankings.',
-    price: 'Starts from Rp 1.500.000 /month',
-    icon: 'TrendingUp'
-  }
-];
-
 export const portfolio = [
   {
     title: 'MiniTools — Developer Utilities Suite',
