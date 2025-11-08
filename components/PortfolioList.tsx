@@ -32,7 +32,7 @@ export default function PortfolioList({ lang, viewCaseStudyText, comingSoonText 
                 aria-label={`Open gallery for ${p.title}`}
               >
                 <div className="relative aspect-[4/3]">
-                  <Image src={p.images[0]} alt={p.title} fill className="object-cover" />
+                  <Image src={p.images[0]} alt={p.title} width={400} height={300} className="object-cover w-full h-full" />
                 </div>
                 <div className="p-4">
                   <h2 className="font-semibold text-neutral-800 dark:text-neutral-200 leading-tight">{p.title}</h2>
