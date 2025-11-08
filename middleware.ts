@@ -19,7 +19,14 @@ function getPreferredLanguage(request: NextRequest): string {
   return defaultLanguage;
 }
 
+const PUBLIC_FILE = /\.(.*)$/; // Regex untuk mendeteksi file statis
+
 export function middleware(request: NextRequest) {
+  // Lewati request untuk file statis
+  if (PUBLIC_FILE.test(request.nextUrl.pathname)) {
+    return;
+  }
+
   const { pathname } = request.nextUrl;
 
   // Cek apakah path sudah memiliki awalan bahasa yang didukung
