@@ -53,9 +53,6 @@ export function generateMetadata({ params: { lang } }: { params: { lang: Locale 
       description: t('site.blurb'),
       images: ['/ogimg.png'],
     },
-    icons: {
-      shortcut: '/favicon.png',
-    },
   };
 }
 
