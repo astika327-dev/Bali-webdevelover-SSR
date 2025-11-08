@@ -15,8 +15,8 @@
     "subtitle": "We build beautiful and functional websites and mobile apps."
   },
   "contact": {
-    "title": "Get in Touch",
-    "description": "Have a project in mind or just want to say hi? Fill out the form below and I'll get back to you as soon as possible.",
+    "title": "Let's work together",
+    "description": "Have a project in mind, or just want to say hi? Fill out the form below or send me an email at hello@bali-webdeveloper.com. I'll get back to you as soon as possible.",
     "form": {
       "name_placeholder": "Name",
       "email_placeholder": "Email",
@@ -45,8 +45,8 @@
     "blurb": "We craft lean, high‑polish websites, landing pages, and micro apps for founders, villas, cafés, and growing brands. Built with solid fundamentals so Google and humans both approve."
   },
   "services": {
-    "title": "Our Services",
-    "subtitle": "Modern solutions to elevate your digital presence. We focus on performance, design, and tangible results.",
+    "title": "Pricing",
+    "subtitle": "Solutions for every stage of your business. All packages are built with a focus on performance, design, and tangible results.",
     "custom_websites": {
       "title": "Custom Website Development",
       "desc": "Crafting bespoke, high-performance websites from scratch. We build digital experiences that are not only beautiful but also intuitive, fast, and perfectly aligned with your brand's unique identity."
@@ -60,20 +60,20 @@
       "desc": "Keep your digital asset secure, up-to-date, and running smoothly. Our retainer plans provide peace of mind with regular updates, security monitoring, and performance checks."
     },
     "landing_page": {
-      "title": "Landing Page",
-      "description": "A single, high-impact page designed for conversions. Perfect for validating ideas or launching events."
+      "title": "Starter",
+      "description": "A professional, high-impact landing page designed for conversions. Perfect for validating ideas, launching events, or establishing an initial online presence."
     },
     "company_profile": {
-      "title": "Company Profile Website",
-      "description": "A professional multi-page site to build credibility and showcase your services. Ideal for MSMEs and consultants."
+      "title": "Business",
+      "description": "A complete, multi-page company profile site to build credibility and showcase your services. Ideal for MSMEs, consultants, and growing brands."
     },
     "booking_website": {
       "title": "Booking Website",
       "description": "Turn visitors into customers 24/7 with a custom website integrated with a booking API or channel manager."
     },
     "headless_ecommerce": {
-      "title": "Headless E-Commerce",
-      "description": "Launch a lightning-fast online store with a custom front-end connected to a payment gateway or headless API."
+      "title": "E-Commerce",
+      "description": "Launch a lightning-fast online store with a custom front-end connected to a modern payment gateway. Perfect for boutique brands and digital products."
     },
     "ai_powered_website": {
       "title": "AI-Powered Website",
@@ -93,8 +93,8 @@
     }
   },
   "portfolio": {
-    "title": "Portfolio",
-    "description": "Selected works that highlight clean UI, solid performance, and results-driven builds.",
+    "title": "Our Work",
+    "description": "Selected projects that showcase our focus on clean design, performance, and user experience.",
     "visit_site": "Visit Site",
     "view_case_study": "View Case Study",
     "coming_soon": "Coming Soon",
@@ -180,10 +180,10 @@
   },
   "tensorflow": {
     "page": {
-      "title": "Real-Time Object Detection",
-      "description": "This demo uses the COCO-SSD model to detect objects. To optimize performance, the AI library and model will only be loaded after you press the button below.",
-      "ready_title": "AI Detection Feature Ready to Load",
-      "ready_description": "Press the button to download the model (~35MB) and start the component.",
+      "title": "Client-Side AI",
+      "description": "This real-time object detection demo runs 100% in your browser. It uses the COCO-SSD model via TensorFlow.js to identify objects in images or live webcam feeds.",
+      "ready_title": "AI Ready to Load",
+      "ready_description": "To optimize performance, the AI library and model (~35MB) will only be loaded after you press the button below.",
       "start_button": "Start Object Detection"
     }
   },
