@@ -47,29 +47,17 @@
   "services": {
     "title": "Our Services",
     "subtitle": "Modern solutions to elevate your digital presence. We focus on performance, design, and tangible results.",
-    "landing_page": {
-      "title": "Landing Page",
-      "description": "A single, high-impact page designed for conversions. Perfect for validating ideas or launching events."
+    "custom_websites": {
+      "title": "Custom Websites",
+      "desc": "Make a memorable first impression with a website designed specifically for your brand. Fast, secure, and optimized for growth."
     },
-    "company_profile": {
-      "title": "Company Profile Website",
-      "description": "A professional multi-page site to build credibility and showcase your services. Ideal for MSMEs and consultants."
+    "performance_seo": {
+      "title": "Performance & SEO",
+      "desc": "Improve your Google ranking and provide a lightning-fast user experience. We turn visitors into customers."
     },
-    "booking_website": {
-      "title": "Booking Website",
-      "description": "Turn visitors into customers 24/7 with a custom website integrated with a booking API or channel manager."
-    },
-    "headless_ecommerce": {
-      "title": "Headless E-Commerce",
-      "description": "Launch a lightning-fast online store with a custom front-end connected to a payment gateway or headless API."
-    },
-    "ai_powered_website": {
-      "title": "AI-Powered Website",
-      "description": "Create smart, interactive user experiences with custom AI API integrations (Gemini/OpenAI)."
-    },
-    "seo_optimization": {
-      "title": "SEO & Growth Retainer",
-      "description": "Continuously optimize your existing website for performance, conversions, and search rankings."
+    "care_maintenance": {
+      "title": "Care & Maintenance",
+      "desc": "Focus on your business while we keep your website running smoothly, securely, and up-to-date. Peace of mind for you."
     }
   },
   "home": {
