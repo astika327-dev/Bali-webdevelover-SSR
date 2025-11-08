@@ -15,8 +15,8 @@
     "subtitle": "Kami membangun situs web dan aplikasi seluler yang indah dan fungsional."
   },
   "contact": {
-    "title": "Hubungi Saya",
-    "description": "Punya proyek atau hanya ingin menyapa? Isi formulir di bawah ini dan saya akan segera menghubungi Anda.",
+    "title": "Mari bekerja sama",
+    "description": "Punya proyek, atau hanya ingin menyapa? Isi formulir di bawah ini atau kirim email ke hello@bali-webdeveloper.com. Saya akan segera menghubungi Anda.",
     "form": {
       "name_placeholder": "Nama",
       "email_placeholder": "Email",
@@ -45,8 +45,8 @@
     "blurb": "Kami membuat situs web, halaman arahan, dan aplikasi mikro yang ramping dan berkualitas tinggi untuk para pendiri, vila, kafe, dan merek yang sedang berkembang. Dibuat dengan dasar-dasar yang kokoh sehingga Google dan manusia sama-sama menyetujuinya."
   },
   "services": {
-    "title": "Layanan Kami",
-    "subtitle": "Solusi modern untuk meningkatkan kehadiran digital Anda. Kami fokus pada kinerja, desain, dan hasil yang nyata.",
+    "title": "Harga",
+    "subtitle": "Solusi untuk setiap tahap bisnis Anda. Semua paket dibuat dengan fokus pada kinerja, desain, dan hasil yang nyata.",
     "custom_websites": {
       "title": "Pengembangan Situs Web Kustom",
       "desc": "Menciptakan situs web kustom berperforma tinggi dari awal. Kami membangun pengalaman digital yang tidak hanya indah tetapi juga intuitif, cepat, dan selaras sempurna dengan identitas unik merek Anda."
@@ -60,20 +60,20 @@
       "desc": "Jaga aset digital Anda agar tetap aman, mutakhir, dan berjalan lancar. Paket retainer kami memberikan ketenangan dengan pembaruan rutin, pemantauan keamanan, dan pemeriksaan kinerja."
     },
     "landing_page": {
-      "title": "Landing Page",
-      "description": "Satu halaman berdampak tinggi yang dirancang untuk konversi. Sempurna untuk memvalidasi ide atau meluncurkan acara."
+      "title": "Starter",
+      "description": "Halaman arahan profesional dan berdampak tinggi yang dirancang untuk konversi. Sempurna untuk memvalidasi ide, meluncurkan acara, atau membangun kehadiran online awal."
     },
     "company_profile": {
-      "title": "Situs Web Profil Perusahaan",
-      "description": "Situs multi-halaman profesional untuk membangun kredibilitas dan menampilkan layanan Anda. Ideal untuk UMKM dan konsultan."
+      "title": "Bisnis",
+      "description": "Situs profil perusahaan multi-halaman yang lengkap untuk membangun kredibilitas dan menampilkan layanan Anda. Ideal untuk UMKM, konsultan, dan merek yang sedang berkembang."
     },
     "booking_website": {
       "title": "Situs Web Booking",
       "description": "Ubah pengunjung menjadi pelanggan 24/7 dengan situs web kustom yang terintegrasi dengan API pemesanan atau manajer saluran."
     },
     "headless_ecommerce": {
-      "title": "E-Commerce Headless",
-      "description": "Luncurkan toko online secepat kilat dengan front-end kustom yang terhubung ke gateway pembayaran atau API headless."
+      "title": "E-Commerce",
+      "description": "Luncurkan toko online secepat kilat dengan front-end kustom yang terhubung ke gateway pembayaran modern. Sempurna untuk merek butik dan produk digital."
     },
     "ai_powered_website": {
       "title": "Situs Web Berbasis AI",
@@ -93,8 +93,8 @@
     }
   },
   "portfolio": {
-    "title": "Portofolio",
-    "description": "Karya-karya pilihan yang menonjolkan UI yang bersih, kinerja yang solid, dan hasil yang terukur.",
+    "title": "Karya Kami",
+    "description": "Proyek-proyek pilihan yang menunjukkan fokus kami pada desain yang bersih, kinerja, dan pengalaman pengguna.",
     "visit_site": "Kunjungi Situs",
     "view_case_study": "Lihat Studi Kasus",
     "coming_soon": "Segera Hadir",
@@ -180,10 +180,10 @@
   },
   "tensorflow": {
     "page": {
-      "title": "Deteksi Objek Real-Time",
-      "description": "Demo ini menggunakan model COCO-SSD untuk mendeteksi objek. Untuk mengoptimalkan performa, library AI dan model hanya akan dimuat setelah Anda menekan tombol di bawah ini.",
-      "ready_title": "Fitur Deteksi AI Siap Dimuat",
-      "ready_description": "Tekan tombol untuk mengunduh model (~35MB) dan memulai komponen.",
+      "title": "AI Sisi Klien",
+      "description": "Demo deteksi objek real-time ini berjalan 100% di browser Anda. Demo ini menggunakan model COCO-SSD melalui TensorFlow.js untuk mengidentifikasi objek dalam gambar atau umpan webcam langsung.",
+      "ready_title": "AI Siap Dimuat",
+      "ready_description": "Untuk mengoptimalkan performa, library AI dan model (~35MB) hanya akan dimuat setelah Anda menekan tombol di bawah ini.",
       "start_button": "Mulai Deteksi Objek"
     }
   },
