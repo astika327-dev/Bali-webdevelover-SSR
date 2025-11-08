@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { getTranslation } from '../../../lib/getTranslation';
 import { Locale, i18n } from '../../../i18n-config';
-import PortfolioList from '../../../components/PortfolioList';
+import PortfolioList from '../../components/PortfolioList';
 
 // Generate params for each language
 export function generateStaticParams() {

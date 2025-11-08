@@ -44,3 +44,27 @@ export const getTranslation = (lang: Locale) => {
     return typeof result === 'string' ? result : key;
   };
 };
+
+/**
+ * Returns a function that can retrieve any value (string, object, array) from the translation file.
+ * This is useful for accessing structured data like lists or objects.
+ * @param {Locale} lang - The language code ('en' or 'id').
+ * @returns {function(string): any} A function that takes a key and returns the corresponding value.
+ */
+export const getRawTranslation = (lang: Locale) => {
+  const dictionary = loadDictionary(lang);
+
+  return (key: string): any => {
+    const keys = key.split('.');
+    let result = dictionary;
+    for (const k of keys) {
+      if (result && typeof result === 'object' && k in result) {
+        result = result[k];
+      } else {
+        // If key not found, return null or a sensible default
+        return null;
+      }
+    }
+    return result;
+  };
+};

@@ -15,8 +15,8 @@
     "subtitle": "Kami membangun situs web dan aplikasi seluler yang indah dan fungsional."
   },
   "contact": {
-    "title": "Mari bekerja sama",
-    "description": "Punya proyek, atau hanya ingin menyapa? Isi formulir di bawah ini atau kirim email ke hello@bali-webdeveloper.com. Saya akan segera menghubungi Anda.",
+    "title": "Hubungi Saya",
+    "description": "Punya proyek atau hanya ingin menyapa? Isi formulir di bawah ini dan saya akan segera menghubungi Anda.",
     "form": {
       "name_placeholder": "Nama",
       "email_placeholder": "Email",
@@ -71,8 +71,8 @@
     }
   },
   "portfolio": {
-    "title": "Karya Kami",
-    "description": "Proyek-proyek pilihan yang menunjukkan fokus kami pada desain yang bersih, kinerja, dan pengalaman pengguna.",
+    "title": "Portofolio",
+    "description": "Karya-karya pilihan yang menonjolkan UI yang bersih, kinerja yang solid, dan hasil yang terukur.",
     "visit_site": "Kunjungi Situs",
     "view_case_study": "Lihat Studi Kasus",
     "coming_soon": "Segera Hadir",
@@ -158,10 +158,10 @@
   },
   "tensorflow": {
     "page": {
-      "title": "AI Sisi Klien",
-      "description": "Demo deteksi objek real-time ini berjalan 100% di browser Anda. Demo ini menggunakan model COCO-SSD melalui TensorFlow.js untuk mengidentifikasi objek dalam gambar atau umpan webcam langsung.",
-      "ready_title": "AI Siap Dimuat",
-      "ready_description": "Untuk mengoptimalkan performa, library AI dan model (~35MB) hanya akan dimuat setelah Anda menekan tombol di bawah ini.",
+      "title": "Deteksi Objek Real-Time",
+      "description": "Demo ini menggunakan model COCO-SSD untuk mendeteksi objek. Untuk mengoptimalkan performa, library AI dan model hanya akan dimuat setelah Anda menekan tombol di bawah ini.",
+      "ready_title": "Fitur Deteksi AI Siap Dimuat",
+      "ready_description": "Tekan tombol untuk mengunduh model (~35MB) dan memulai komponen.",
       "start_button": "Mulai Deteksi Objek"
     }
   },

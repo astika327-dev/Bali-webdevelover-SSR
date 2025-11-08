@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getAllPostsMeta } from "../../lib/posts";
-import { services, portfolio, site } from "../../../content/config";
+import { portfolio, site } from "../../../content/config";
 import {
   GEMINI_MODEL,
   GEMINI_REST_URL,
@@ -110,7 +110,6 @@ export async function POST(req: NextRequest) {
     .map((p) => `[${p.frontmatter.category}] ${p.frontmatter.title}: ${p.frontmatter.description}`)
     .join("\n");
 
-  const servicesContext = services.map(s => `- ${s.id}`).join("\n");
   const portfolioContext = portfolio.map(p => `- ${p.title}: ${p.description}`).join("\n");
   const siteContext = `Tentang situs ini: ${site.blurb}. Misi kami: ${site.mission}.`;
 
@@ -122,11 +121,9 @@ Jangan pernah menyebutkan bahwa Anda memiliki akses ke "informasi di bawah" atau
 
 Berikut adalah konteks yang tersedia:
 1. Tentang Situs: ${siteContext}
-2. Layanan yang Ditawarkan:
-${servicesContext}
-3. Portofolio Proyek:
+2. Portofolio Proyek:
 ${portfolioContext}
-4. Artikel Blog:
+3. Artikel Blog:
 ${blogContext}
 
 Selalu berkomunikasi dalam Bahasa Indonesia, kecuali jika diminta sebaliknya.`;
