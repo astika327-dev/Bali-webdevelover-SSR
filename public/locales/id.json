@@ -47,17 +47,29 @@
   "services": {
     "title": "Layanan Kami",
     "subtitle": "Solusi modern untuk meningkatkan kehadiran digital Anda. Kami fokus pada kinerja, desain, dan hasil yang nyata.",
-    "custom_websites": {
-      "title": "Situs Web Kustom",
-      "desc": "Ciptakan kesan pertama yang tak terlupakan dengan situs web yang dirancang khusus untuk merek Anda. Cepat, aman, dan dioptimalkan untuk pertumbuhan."
+    "landing_page": {
+      "title": "Landing Page",
+      "description": "Satu halaman berdampak tinggi yang dirancang untuk konversi. Sempurna untuk memvalidasi ide atau meluncurkan acara."
     },
-    "performance_seo": {
-      "title": "Performa & SEO",
-      "desc": "Tingkatkan peringkat Anda di Google dan berikan pengalaman pengguna secepat kilat. Kami mengubah pengunjung menjadi pelanggan."
+    "company_profile": {
+      "title": "Situs Web Profil Perusahaan",
+      "description": "Situs multi-halaman profesional untuk membangun kredibilitas dan menampilkan layanan Anda. Ideal untuk UMKM dan konsultan."
     },
-    "care_maintenance": {
-      "title": "Perawatan & Pemeliharaan",
-      "desc": "Fokus pada bisnis Anda sementara kami menjaga situs web Anda tetap berjalan lancar, aman, dan selalu terbarui. Ketenangan pikiran untuk Anda."
+    "booking_website": {
+      "title": "Situs Web Booking",
+      "description": "Ubah pengunjung menjadi pelanggan 24/7 dengan situs web kustom yang terintegrasi dengan API pemesanan atau manajer saluran."
+    },
+    "headless_ecommerce": {
+      "title": "E-Commerce Headless",
+      "description": "Luncurkan toko online secepat kilat dengan front-end kustom yang terhubung ke gateway pembayaran atau API headless."
+    },
+    "ai_powered_website": {
+      "title": "Situs Web Berbasis AI",
+      "description": "Ciptakan pengalaman pengguna yang cerdas dan interaktif dengan integrasi API AI kustom (Gemini/OpenAI)."
+    },
+    "seo_optimization": {
+      "title": "SEO & Retainer Pertumbuhan",
+      "description": "Optimalkan situs web Anda yang sudah ada secara berkelanjutan untuk kinerja, konversi, dan peringkat pencarian."
     }
   },
   "home": {
