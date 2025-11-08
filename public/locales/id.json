@@ -45,43 +45,21 @@
     "blurb": "Kami membuat situs web, halaman arahan, dan aplikasi mikro yang ramping dan berkualitas tinggi untuk para pendiri, vila, kafe, dan merek yang sedang berkembang. Dibuat dengan dasar-dasar yang kokoh sehingga Google dan manusia sama-sama menyetujuinya."
   },
   "services": {
-    "title": "Harga",
-    "subtitle": "Solusi untuk setiap tahap bisnis Anda. Semua paket dibuat dengan fokus pada kinerja, desain, dan hasil yang nyata.",
-    "custom_websites": {
-      "title": "Pengembangan Situs Web Kustom",
-      "desc": "Menciptakan situs web kustom berperforma tinggi dari awal. Kami membangun pengalaman digital yang tidak hanya indah tetapi juga intuitif, cepat, dan selaras sempurna dengan identitas unik merek Anda."
+    "title": "Layanan",
+    "subtitle": "Kami menawarkan berbagai layanan untuk membantu Anda online dan mengembangkan bisnis Anda.",
+    "card": {
+      "title": "Pemantauan Keamanan & Performa (CWV).",
+      "subtitle": "Layanan Bulanan"
     },
-    "performance_seo": {
-      "title": "Optimisasi Performa & SEO",
-      "desc": "Situs web hebat tidak akan terlihat tanpa SEO yang kuat. Kami menyempurnakan fondasi teknis situs Anda untuk meningkatkan peringkat pencarian, menaikkan lalu lintas organik, dan memastikan pengalaman pengguna secepat kilat."
-    },
-    "care_maintenance": {
-      "title": "Perawatan & Pemeliharaan Situs Web",
-      "desc": "Jaga aset digital Anda agar tetap aman, mutakhir, dan berjalan lancar. Paket retainer kami memberikan ketenangan dengan pembaruan rutin, pemantauan keamanan, dan pemeriksaan kinerja."
-    },
-    "landing_page": {
-      "title": "Starter",
-      "description": "Halaman arahan profesional dan berdampak tinggi yang dirancang untuk konversi. Sempurna untuk memvalidasi ide, meluncurkan acara, atau membangun kehadiran online awal."
-    },
-    "company_profile": {
-      "title": "Bisnis",
-      "description": "Situs profil perusahaan multi-halaman yang lengkap untuk membangun kredibilitas dan menampilkan layanan Anda. Ideal untuk UMKM, konsultan, dan merek yang sedang berkembang."
-    },
-    "booking_website": {
-      "title": "Situs Web Booking",
-      "description": "Ubah pengunjung menjadi pelanggan 24/7 dengan situs web kustom yang terintegrasi dengan API pemesanan atau manajer saluran."
-    },
-    "headless_ecommerce": {
-      "title": "E-Commerce",
-      "description": "Luncurkan toko online secepat kilat dengan front-end kustom yang terhubung ke gateway pembayaran modern. Sempurna untuk merek butik dan produk digital."
-    },
-    "ai_powered_website": {
-      "title": "Situs Web Berbasis AI",
-      "description": "Ciptakan pengalaman pengguna yang cerdas dan interaktif dengan integrasi API AI kustom (Gemini/OpenAI)."
-    },
-    "seo_optimization": {
-      "title": "SEO & Retainer Pertumbuhan",
-      "description": "Optimalkan situs web Anda yang sudah ada secara berkelanjutan untuk kinerja, konversi, dan peringkat pencarian."
+    "button_text": "Pilih Paket",
+    "faq": {
+      "title": "FAQ",
+      "items": [
+        "Semua paket termasuk desain, pembuatan, SEO on-page, dan analitik dasar. Domain/hosting dan alat pihak ketiga berbayar ditagih secara terpisah kecuali ditentukan dalam proposal.",
+        "Setiap paket mencakup putaran revisi yang disebutkan. Putaran tambahan atau perubahan ruang lingkup dapat ditambahkan sebagai biaya tambahan.",
+        "Pembayaran biasanya dibagi 50% di awal dan 50% saat peluncuran. Linimasa disesuaikan setelah konten difinalisasi.",
+        "Paket Perawatan mencakup pembaruan konten kecil, pemeriksaan waktu aktif, dan pencadangan terjadwal. Fitur yang lebih besar dikutip secara terpisah."
+      ]
     }
   },
   "home": {

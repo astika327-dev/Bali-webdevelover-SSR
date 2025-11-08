@@ -45,43 +45,21 @@
     "blurb": "We craft lean, high‑polish websites, landing pages, and micro apps for founders, villas, cafés, and growing brands. Built with solid fundamentals so Google and humans both approve."
   },
   "services": {
-    "title": "Pricing",
-    "subtitle": "Solutions for every stage of your business. All packages are built with a focus on performance, design, and tangible results.",
-    "custom_websites": {
-      "title": "Custom Website Development",
-      "desc": "Crafting bespoke, high-performance websites from scratch. We build digital experiences that are not only beautiful but also intuitive, fast, and perfectly aligned with your brand's unique identity."
+    "title": "Services",
+    "subtitle": "We offer a range of services to help you get online and grow your business.",
+    "card": {
+      "title": "Security & Performance (CWV) Monitoring.",
+      "subtitle": "Monthly Service"
     },
-    "performance_seo": {
-      "title": "Performance & SEO Optimization",
-      "desc": "A great website is invisible without strong SEO. We fine-tune your site's technical foundation to improve search rankings, increase organic traffic, and ensure a lightning-fast user experience."
-    },
-    "care_maintenance": {
-      "title": "Website Care & Maintenance",
-      "desc": "Keep your digital asset secure, up-to-date, and running smoothly. Our retainer plans provide peace of mind with regular updates, security monitoring, and performance checks."
-    },
-    "landing_page": {
-      "title": "Starter",
-      "description": "A professional, high-impact landing page designed for conversions. Perfect for validating ideas, launching events, or establishing an initial online presence."
-    },
-    "company_profile": {
-      "title": "Business",
-      "description": "A complete, multi-page company profile site to build credibility and showcase your services. Ideal for MSMEs, consultants, and growing brands."
-    },
-    "booking_website": {
-      "title": "Booking Website",
-      "description": "Turn visitors into customers 24/7 with a custom website integrated with a booking API or channel manager."
-    },
-    "headless_ecommerce": {
-      "title": "E-Commerce",
-      "description": "Launch a lightning-fast online store with a custom front-end connected to a modern payment gateway. Perfect for boutique brands and digital products."
-    },
-    "ai_powered_website": {
-      "title": "AI-Powered Website",
-      "description": "Create smart, interactive user experiences with custom AI API integrations (Gemini/OpenAI)."
-    },
-    "seo_optimization": {
-      "title": "SEO & Growth Retainer",
-      "description": "Continuously optimize your existing website for performance, conversions, and search rankings."
+    "button_text": "Choose Plan",
+    "faq": {
+      "title": "FAQ",
+      "items": [
+        "All plans include design, build, on-page SEO, and basic analytics. Domain/hosting and paid third-party tools are billed separately unless specified in a proposal.",
+        "Each plan includes the stated revision rounds. Additional rounds or scope changes can be added as extras.",
+        "Payments are typically split 50% to start and 50% on launch. Timelines adjust once content is finalized.",
+        "Care Plan includes small content updates, uptime checks, and scheduled backups. Bigger features are quoted separately."
+      ]
     }
   },
   "home": {
