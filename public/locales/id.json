@@ -47,6 +47,18 @@
   "services": {
     "title": "Layanan Kami",
     "subtitle": "Solusi modern untuk meningkatkan kehadiran digital Anda. Kami fokus pada kinerja, desain, dan hasil yang nyata.",
+    "custom_websites": {
+      "title": "Pengembangan Situs Web Kustom",
+      "desc": "Menciptakan situs web kustom berperforma tinggi dari awal. Kami membangun pengalaman digital yang tidak hanya indah tetapi juga intuitif, cepat, dan selaras sempurna dengan identitas unik merek Anda."
+    },
+    "performance_seo": {
+      "title": "Optimisasi Performa & SEO",
+      "desc": "Situs web hebat tidak akan terlihat tanpa SEO yang kuat. Kami menyempurnakan fondasi teknis situs Anda untuk meningkatkan peringkat pencarian, menaikkan lalu lintas organik, dan memastikan pengalaman pengguna secepat kilat."
+    },
+    "care_maintenance": {
+      "title": "Perawatan & Pemeliharaan Situs Web",
+      "desc": "Jaga aset digital Anda agar tetap aman, mutakhir, dan berjalan lancar. Paket retainer kami memberikan ketenangan dengan pembaruan rutin, pemantauan keamanan, dan pemeriksaan kinerja."
+    },
     "landing_page": {
       "title": "Landing Page",
       "description": "Satu halaman berdampak tinggi yang dirancang untuk konversi. Sempurna untuk memvalidasi ide atau meluncurkan acara."
