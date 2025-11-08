@@ -206,5 +206,24 @@
   "why": {
     "title": "Transparansi Keahlian Kami",
     "body": "Demo ini bukan sekadar fitur; ini adalah bukti nyata kemampuan kami mengimplementasikan Deep Learning (AI) canggih. Kami menunjukkan bahwa kami dapat membangun otomasi cerdas dan solusi real-time yang berjalan efisien di browser Anda—kemampuan yang dapat kami terapkan untuk mengoptimalkan proses bisnis Anda."
+  },
+  "blog": {
+    "title": "Blog Teknologi & Bisnis",
+    "description": "Pemikiran tentang kode, bisnis, dan persimpangan keduanya.",
+    "search_placeholder": "Cari artikel...",
+    "see_more": "Lihat Selengkapnya",
+    "all_categories": "Semua",
+    "page": "Halaman",
+    "of": "dari",
+    "reading_time": "menit baca",
+    "share_text": "Bagikan artikel ini",
+    "prev_post": "Artikel Sebelumnya",
+    "next_post": "Artikel Berikutnya",
+    "related_posts": "Artikel Terkait"
+  },
+  "cta": {
+    "title": "Siap Memulai Proyek?",
+    "description": "Mari kita bangun sesuatu yang hebat bersama. Hubungi kami untuk mendiskusikan ide Anda.",
+    "button": "Hubungi Kami"
   }
 }

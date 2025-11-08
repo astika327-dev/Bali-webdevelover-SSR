@@ -45,7 +45,7 @@ export default function Navbar({ lang }: { lang: Locale }) {
       <div className="container flex items-center justify-between py-3">
         <Link href={`/${lang}`} className="flex items-center gap-2 font-semibold tracking-tight dark:text-white">
           <Image
-            src="/favicon.png"
+            src="/icon.png"
             alt={`${site.company} logo`}
             width={28}
             height={28}
