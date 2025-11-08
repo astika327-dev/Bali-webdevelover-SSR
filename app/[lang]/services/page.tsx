@@ -1,4 +1,4 @@
-import { getTranslation } from '../../../lib/getTranslation';
+import { getTranslation, getRawTranslation } from '../../../lib/getTranslation';
 import { Locale, i18n } from '../../../i18n-config';
 import type { Metadata } from 'next';
 import Link from 'next/link';
@@ -23,8 +23,10 @@ export function generateMetadata({ params }: { params: { lang: Locale } }): Meta
    ========================= */
 export default function ServicesPage({ params: { lang } }: { params: { lang: Locale } }) {
   const t = getTranslation(lang);
-  const faqTitle = t('services.faq.title') as string;
-  const faqItems = t('services.faq.items') as unknown as string[];
+  const getRawT = getRawTranslation(lang);
+  const faqData = getRawT('services.faq');
+  const faqTitle = faqData?.title || 'FAQ';
+  const faqItems = faqData?.items || [];
 
   return (
     <section className="container py-12 md:py-20">
@@ -39,10 +41,11 @@ export default function ServicesPage({ params: { lang } }: { params: { lang: Loc
         <p className="text-[var(--brown)]/80 dark:text-neutral-400 mt-2 ml-10">
           {t('services.card.subtitle')}
         </p>
-        <Link href={`/${lang}/contact`}>
-          <a className="mt-6 block w-full text-center bg-[var(--cream)] hover:bg-[var(--tan)] text-[var(--brown)] font-semibold py-3 rounded-lg border border-neutral-300 dark:border-neutral-700 transition-colors duration-300">
-            {t('services.button_text')}
-          </a>
+        <Link
+          href={`/${lang}/contact`}
+          className="mt-6 block w-full text-center bg-[var(--cream)] hover:bg-[var(--tan)] text-[var(--brown)] font-semibold py-3 rounded-lg border border-neutral-300 dark:border-neutral-700 transition-colors duration-300"
+        >
+          {t('services.button_text')}
         </Link>
       </div>
 
@@ -52,11 +55,12 @@ export default function ServicesPage({ params: { lang } }: { params: { lang: Loc
           {faqTitle}
         </h2>
         <ul className="mt-8 space-y-4 text-left">
-          {faqItems.map((item: string, index: number) => (
-            <li key={index} className="text-[var(--brown)]/90 dark:text-neutral-300 leading-relaxed">
-              <span className="font-semibold">•</span> {item}
-            </li>
-          ))}
+          {Array.isArray(faqItems) &&
+            faqItems.map((item: string, index: number) => (
+              <li key={index} className="text-[var(--brown)]/90 dark:text-neutral-300 leading-relaxed">
+                <span className="font-semibold">•</span> {item}
+              </li>
+            ))}
         </ul>
       </div>
     </section>

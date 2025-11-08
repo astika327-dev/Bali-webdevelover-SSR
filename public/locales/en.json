@@ -15,8 +15,8 @@
     "subtitle": "We build beautiful and functional websites and mobile apps."
   },
   "contact": {
-    "title": "Let's work together",
-    "description": "Have a project in mind, or just want to say hi? Fill out the form below or send me an email at hello@bali-webdeveloper.com. I'll get back to you as soon as possible.",
+    "title": "Get in Touch",
+    "description": "Have a project in mind or just want to say hi? Fill out the form below and I'll get back to you as soon as possible.",
     "form": {
       "name_placeholder": "Name",
       "email_placeholder": "Email",
@@ -71,8 +71,8 @@
     }
   },
   "portfolio": {
-    "title": "Our Work",
-    "description": "Selected projects that showcase our focus on clean design, performance, and user experience.",
+    "title": "Portfolio",
+    "description": "Selected works that highlight clean UI, solid performance, and results-driven builds.",
     "visit_site": "Visit Site",
     "view_case_study": "View Case Study",
     "coming_soon": "Coming Soon",
@@ -158,10 +158,10 @@
   },
   "tensorflow": {
     "page": {
-      "title": "Client-Side AI",
-      "description": "This real-time object detection demo runs 100% in your browser. It uses the COCO-SSD model via TensorFlow.js to identify objects in images or live webcam feeds.",
-      "ready_title": "AI Ready to Load",
-      "ready_description": "To optimize performance, the AI library and model (~35MB) will only be loaded after you press the button below.",
+      "title": "Real-Time Object Detection",
+      "description": "This demo uses the COCO-SSD model to detect objects. To optimize performance, the AI library and model will only be loaded after you press the button below.",
+      "ready_title": "AI Detection Feature Ready to Load",
+      "ready_description": "Press the button to download the model (~35MB) and start the component.",
       "start_button": "Start Object Detection"
     }
   },
