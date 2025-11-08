@@ -14,10 +14,12 @@ const __dirname = path.dirname(__filename);
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // The webpack alias configuration was removed as it is suspected to interfere
-  // with the Next.js Image Optimizer in a production environment.
-  images: {
-    unoptimized: true,
+  webpack: (config) => {
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      '@': path.resolve(__dirname),
+    };
+    return config;
   },
 };
 
