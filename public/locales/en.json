@@ -47,6 +47,18 @@
   "services": {
     "title": "Our Services",
     "subtitle": "Modern solutions to elevate your digital presence. We focus on performance, design, and tangible results.",
+    "custom_websites": {
+      "title": "Custom Website Development",
+      "desc": "Crafting bespoke, high-performance websites from scratch. We build digital experiences that are not only beautiful but also intuitive, fast, and perfectly aligned with your brand's unique identity."
+    },
+    "performance_seo": {
+      "title": "Performance & SEO Optimization",
+      "desc": "A great website is invisible without strong SEO. We fine-tune your site's technical foundation to improve search rankings, increase organic traffic, and ensure a lightning-fast user experience."
+    },
+    "care_maintenance": {
+      "title": "Website Care & Maintenance",
+      "desc": "Keep your digital asset secure, up-to-date, and running smoothly. Our retainer plans provide peace of mind with regular updates, security monitoring, and performance checks."
+    },
     "landing_page": {
       "title": "Landing Page",
       "description": "A single, high-impact page designed for conversions. Perfect for validating ideas or launching events."
