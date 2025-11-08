@@ -206,5 +206,24 @@
   "why": {
     "title": "A Showcase of Our Expertise",
     "body": "This demo isn't just a feature; it's a tangible proof of our ability to implement advanced Deep Learning (AI). We're showing that we can build intelligent automation and real-time solutions that run efficiently in your browser—a capability we can apply to optimize your business processes."
+  },
+  "blog": {
+    "title": "Tech & Business Blog",
+    "description": "Thoughts on code, business, and the intersection of the two.",
+    "search_placeholder": "Search articles...",
+    "see_more": "See More",
+    "all_categories": "All",
+    "page": "Page",
+    "of": "of",
+    "reading_time": "min read",
+    "share_text": "Share this article",
+    "prev_post": "Previous Post",
+    "next_post": "Next Post",
+    "related_posts": "Related Posts"
+  },
+  "cta": {
+    "title": "Ready to Start a Project?",
+    "description": "Let's build something great together. Get in touch to discuss your idea.",
+    "button": "Contact Us"
   }
 }
