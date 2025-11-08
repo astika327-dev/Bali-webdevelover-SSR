@@ -53,6 +53,11 @@ export function generateMetadata({ params: { lang } }: { params: { lang: Locale 
       description: t('site.blurb'),
       images: ['/ogimg.png'],
     },
+    icons: {
+      icon: '/icon.png',
+      shortcut: '/favicon.png',
+      apple: '/apple-touch-icon.png',
+    },
   };
 }
 

@@ -4,10 +4,7 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { portfolio } from '../content/config';
 import Lightbox from './Lightbox';
-import dynamic from 'next/dynamic';
 import { Locale } from '../i18n-config';
-
-const FadeIn = dynamic(() => import('./FadeIn'), { ssr: false });
 
 interface PortfolioListProps {
   lang: Locale;
