@@ -15,9 +15,30 @@
     "subtitle": "Kami membangun situs web dan aplikasi seluler yang indah dan fungsional."
   },
   "contact": {
-    "title": "Hubungi Saya",
-    "description": "Punya proyek atau hanya ingin menyapa? Isi formulir di bawah ini dan saya akan segera menghubungi Anda.",
+    "meta": {
+      "title": "Hubungi Kami",
+      "description": "Hubungi kami melalui email, WhatsApp, atau formulir kontak kami. Temukan lokasi kantor dan tautan media sosial kami."
+    },
+    "email": {
+      "title": "Email",
+      "description": "Hubungi kami melalui email untuk pertanyaan mendetail."
+    },
+    "whatsapp": {
+      "title": "WhatsApp",
+      "description": "Untuk respons yang lebih cepat, hubungi kami secara langsung.",
+      "button": "Chat di WhatsApp"
+    },
+    "office": {
+      "title": "Kantor Kami",
+      "line1": "Bali, Indonesia",
+      "line2": "(Perusahaan remote-first)"
+    },
+    "social": {
+      "title": "Temukan Kami di Tempat Lain"
+    },
     "form": {
+      "title": "Kirim Pesan kepada Kami",
+      "description": "Punya proyek atau hanya ingin menyapa? Isi formulir di bawah ini dan saya akan segera menghubungi Anda.",
       "name_placeholder": "Nama",
       "email_placeholder": "Email",
       "message_placeholder": "Pesan",
