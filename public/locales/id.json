@@ -45,22 +45,77 @@
     "blurb": "Kami membuat situs web, halaman arahan, dan aplikasi mikro yang ramping dan berkualitas tinggi untuk para pendiri, vila, kafe, dan merek yang sedang berkembang. Dibuat dengan dasar-dasar yang kokoh sehingga Google dan manusia sama-sama menyetujuinya."
   },
   "services": {
-    "title": "Layanan",
-    "subtitle": "Kami menawarkan berbagai layanan untuk membantu Anda online dan mengembangkan bisnis Anda.",
-    "card": {
-      "title": "Pemantauan Keamanan & Performa (CWV).",
-      "subtitle": "Layanan Bulanan"
-    },
-    "button_text": "Pilih Paket",
-    "faq": {
-      "title": "FAQ",
-      "items": [
-        "Semua paket termasuk desain, pembuatan, SEO on-page, dan analitik dasar. Domain/hosting dan alat pihak ketiga berbayar ditagih secara terpisah kecuali ditentukan dalam proposal.",
-        "Setiap paket mencakup putaran revisi yang disebutkan. Putaran tambahan atau perubahan ruang lingkup dapat ditambahkan sebagai biaya tambahan.",
-        "Pembayaran biasanya dibagi 50% di awal dan 50% saat peluncuran. Linimasa disesuaikan setelah konten difinalisasi.",
-        "Paket Perawatan mencakup pembaruan konten kecil, pemeriksaan waktu aktif, dan pencadangan terjadwal. Fitur yang lebih besar dikutip secara terpisah."
-      ]
-    }
+    "title": "Paket Layanan Kami",
+    "subtitle": "Pilih paket yang sempurna untuk meluncurkan dan menumbuhkan kehadiran online Anda.",
+    "button_text": "Mulai",
+    "packages": [
+      {
+        "id": "starter",
+        "title": "Situs Starter",
+        "price": "Rp 2.000.000",
+        "benefits": [
+          "Situs Web Satu Halaman",
+          "Desain Responsif",
+          "Formulir Kontak",
+          "Pengaturan SEO Dasar"
+        ]
+      },
+      {
+        "id": "business",
+        "title": "Situs Bisnis",
+        "price": "Rp 4.000.000",
+        "benefits": [
+          "Hingga 5 Halaman",
+          "Desain Kustom",
+          "Sistem Manajemen Konten (CMS)",
+          "SEO Lanjutan"
+        ]
+      },
+      {
+        "id": "ecommerce",
+        "title": "E-Commerce",
+        "price": "Rp 6.000.000",
+        "benefits": [
+          "Toko Online Penuh",
+          "Manajemen Produk",
+          "Integrasi Gerbang Pembayaran",
+          "Keranjang Belanja"
+        ]
+      },
+      {
+        "id": "premium",
+        "title": "Bisnis Premium",
+        "price": "Rp 8.000.000",
+        "benefits": [
+          "Situs Kompleks Multi-halaman",
+          "Fitur CMS Lanjutan",
+          "Integrasi Blog",
+          "Dukungan Prioritas"
+        ]
+      },
+      {
+        "id": "pro",
+        "title": "E-Commerce Pro",
+        "price": "Rp 10.000.000",
+        "benefits": [
+          "Fitur E-commerce Lanjutan",
+          "Akun Pelanggan",
+          "Aturan Pengiriman Kustom",
+          "Integrasi Pemasaran"
+        ]
+      },
+      {
+        "id": "enterprise",
+        "title": "Solusi Enterprise",
+        "price": "Rp 12.000.000+",
+        "benefits": [
+          "Aplikasi Sepenuhnya Kustom",
+          "Integrasi API",
+          "Dukungan Khusus",
+          "Arsitektur Skalabel"
+        ]
+      }
+    ]
   },
   "home": {
     "start_project": "Mulai Proyek",
