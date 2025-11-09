@@ -16,25 +16,38 @@
   },
   "contact": {
     "meta": {
-      "title": "Hubungi Kami",
-      "description": "Hubungi kami melalui email, WhatsApp, atau formulir kontak kami. Temukan lokasi kantor dan tautan media sosial kami."
+      "title": "Mari Wujudkan Ide Anda",
+      "description": "Punya ide proyek atau hanya ingin berdiskusi? Kami siap membantu. Hubungi kami melalui email, WhatsApp, atau formulir kontak di bawah ini."
+    },
+    "header": {
+      "title": "Mulai Percakapan",
+      "subtitle": "Pilih cara yang paling nyaman bagi Anda untuk menghubungi kami. Kami antusias untuk mendengar tentang proyek Anda."
     },
     "email": {
-      "title": "Email",
-      "description": "Hubungi kami melalui email untuk pertanyaan mendetail."
+      "address": "baliwebdevelover@gmail.com",
+      "title": "Kirim Email",
+      "description": "Ideal untuk pertanyaan proyek yang mendetail atau pertanyaan yang tidak mendesak.",
+      "button": "Kirim Email"
     },
     "whatsapp": {
-      "title": "WhatsApp",
-      "description": "Untuk respons yang lebih cepat, hubungi kami secara langsung.",
-      "button": "Chat di WhatsApp"
+      "number": "+62881037549162",
+      "url": "https://wa.me/62881037549162",
+      "title": "Chat di WhatsApp",
+      "description": "Terbaik untuk pertanyaan cepat atau untuk menjadwalkan konsultasi awal.",
+      "button": "Mulai Chat"
     },
     "office": {
-      "title": "Kantor Kami",
+      "title": "Lokasi Kami",
       "line1": "Bali, Indonesia",
-      "line2": "(Perusahaan remote-first)"
+      "line2": "Remote-First & Tersedia Global"
     },
     "social": {
-      "title": "Temukan Kami di Tempat Lain"
+      "title": "Terhubung Dengan Kami",
+      "links": {
+        "instagram": "https://www.instagram.com/baliwebdevelover/",
+        "facebook": "https://www.facebook.com/profile.php?id=61562916962359",
+        "github": "https://github.com/skepen"
+      }
     },
     "form": {
       "title": "Kirim Pesan kepada Kami",

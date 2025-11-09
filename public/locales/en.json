@@ -16,25 +16,38 @@
   },
   "contact": {
     "meta": {
-      "title": "Contact Us",
-      "description": "Get in touch with us via email, WhatsApp, or our contact form. Find our office location and social media links."
+      "title": "Let's Build Something Great",
+      "description": "Have a project in mind or just want to discuss an idea? We're here to help. Reach out via email, WhatsApp, or the contact form below."
+    },
+    "header": {
+      "title": "Let's Start a Conversation",
+      "subtitle": "Choose your preferred way to get in touch. We're excited to hear about your project."
     },
     "email": {
-      "title": "Email",
-      "description": "Get in touch via email for detailed inquiries."
+      "address": "baliwebdevelover@gmail.com",
+      "title": "Email Us",
+      "description": "Ideal for detailed project inquiries or non-urgent questions.",
+      "button": "Send an Email"
     },
     "whatsapp": {
-      "title": "WhatsApp",
-      "description": "For a faster response, chat with us directly.",
-      "button": "Chat on WhatsApp"
+      "number": "+62881037549162",
+      "url": "https://wa.me/62881037549162",
+      "title": "Chat on WhatsApp",
+      "description": "Best for quick questions or to schedule an initial consultation.",
+      "button": "Start a Chat"
     },
     "office": {
-      "title": "Our Office",
+      "title": "Our Location",
       "line1": "Bali, Indonesia",
-      "line2": "(Remote-first company)"
+      "line2": "Remote-First & Available Globally"
     },
     "social": {
-      "title": "Find Us Elsewhere"
+      "title": "Connect With Us",
+      "links": {
+        "instagram": "https://www.instagram.com/baliwebdevelover/",
+        "facebook": "https://www.facebook.com/profile.php?id=61562916962359",
+        "github": "https://github.com/skepen"
+      }
     },
     "form": {
       "title": "Send Us a Message",
