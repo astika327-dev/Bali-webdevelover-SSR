@@ -98,14 +98,14 @@ const TensorflowDetector: React.FC<TensorflowDetectorProps> = ({
 
   const detectObjectsOnImage = useCallback(async () => {
     if (!model || !imageRef.current) return;
-    setStatus('Detecting objects in image...');
+    setStatus('Detecting objects...');
 
     const tensor = tf.browser.fromPixels(imageRef.current);
     const predictions = await model.detect(tensor);
     tensor.dispose();
 
     drawBoundingBoxes(predictions);
-    setStatus('Detection complete.');
+    setStatus(`Detection complete. Found ${predictions.length} objects.`);
   }, [model, drawBoundingBoxes]);
 
   const detectObjectsOnVideo = useCallback(async () => {
