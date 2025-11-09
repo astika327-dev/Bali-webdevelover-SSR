@@ -15,9 +15,30 @@
     "subtitle": "We build beautiful and functional websites and mobile apps."
   },
   "contact": {
-    "title": "Get in Touch",
-    "description": "Have a project in mind or just want to say hi? Fill out the form below and I'll get back to you as soon as possible.",
+    "meta": {
+      "title": "Contact Us",
+      "description": "Get in touch with us via email, WhatsApp, or our contact form. Find our office location and social media links."
+    },
+    "email": {
+      "title": "Email",
+      "description": "Get in touch via email for detailed inquiries."
+    },
+    "whatsapp": {
+      "title": "WhatsApp",
+      "description": "For a faster response, chat with us directly.",
+      "button": "Chat on WhatsApp"
+    },
+    "office": {
+      "title": "Our Office",
+      "line1": "Bali, Indonesia",
+      "line2": "(Remote-first company)"
+    },
+    "social": {
+      "title": "Find Us Elsewhere"
+    },
     "form": {
+      "title": "Send Us a Message",
+      "description": "Have a project in mind or just want to say hi? Fill out the form below and I'll get back to you as soon as possible.",
       "name_placeholder": "Name",
       "email_placeholder": "Email",
       "message_placeholder": "Message",
