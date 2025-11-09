@@ -24,9 +24,22 @@ export function generateStaticParams() {
 
 export function generateMetadata({ params: { lang } }: { params: { lang: Locale } }): Metadata {
   const t = getTranslation(lang);
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
+
+  // Create language alternates
+  const languages = {} as Record<Locale, string> & { 'x-default': string };
+  i18n.locales.forEach(locale => {
+    languages[locale] = `${baseUrl}/${locale}`;
+  });
+  languages['x-default'] = `${baseUrl}/${i18n.defaultLocale}`;
+
 
   return {
-    metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'),
+    metadataBase: new URL(baseUrl),
+    alternates: {
+      canonical: `${baseUrl}/${lang}`,
+      languages,
+    },
     title: {
       default: t('site.title'),
       template: `%s | ${t('site.name')}`,
@@ -35,7 +48,7 @@ export function generateMetadata({ params: { lang } }: { params: { lang: Locale 
     openGraph: {
       title: t('site.title'),
       description: t('site.blurb'),
-      url: './',
+      url: `${baseUrl}/${lang}`,
       siteName: t('site.name'),
       images: [
         {
@@ -58,6 +71,7 @@ export function generateMetadata({ params: { lang } }: { params: { lang: Locale 
       shortcut: '/favicon.png',
       apple: '/apple-touch-icon.png',
     },
+    manifest: '/site.webmanifest',
   };
 }
 
