@@ -45,22 +45,77 @@
     "blurb": "We craft lean, high‑polish websites, landing pages, and micro apps for founders, villas, cafés, and growing brands. Built with solid fundamentals so Google and humans both approve."
   },
   "services": {
-    "title": "Services",
-    "subtitle": "We offer a range of services to help you get online and grow your business.",
-    "card": {
-      "title": "Security & Performance (CWV) Monitoring.",
-      "subtitle": "Monthly Service"
-    },
-    "button_text": "Choose Plan",
-    "faq": {
-      "title": "FAQ",
-      "items": [
-        "All plans include design, build, on-page SEO, and basic analytics. Domain/hosting and paid third-party tools are billed separately unless specified in a proposal.",
-        "Each plan includes the stated revision rounds. Additional rounds or scope changes can be added as extras.",
-        "Payments are typically split 50% to start and 50% on launch. Timelines adjust once content is finalized.",
-        "Care Plan includes small content updates, uptime checks, and scheduled backups. Bigger features are quoted separately."
-      ]
-    }
+    "title": "Our Service Packages",
+    "subtitle": "Choose the perfect plan to launch and grow your online presence.",
+    "button_text": "Get Started",
+    "packages": [
+      {
+        "id": "starter",
+        "title": "Starter Site",
+        "price": "IDR 2,000,000",
+        "benefits": [
+          "Single Page Website",
+          "Responsive Design",
+          "Contact Form",
+          "Basic SEO Setup"
+        ]
+      },
+      {
+        "id": "business",
+        "title": "Business Site",
+        "price": "IDR 4,000,000",
+        "benefits": [
+          "Up to 5 Pages",
+          "Custom Design",
+          "Content Management System (CMS)",
+          "Advanced SEO"
+        ]
+      },
+      {
+        "id": "ecommerce",
+        "title": "E-Commerce",
+        "price": "IDR 6,000,000",
+        "benefits": [
+          "Full Online Store",
+          "Product Management",
+          "Payment Gateway Integration",
+          "Shopping Cart"
+        ]
+      },
+      {
+        "id": "premium",
+        "title": "Premium Business",
+        "price": "IDR 8,000,000",
+        "benefits": [
+          "Multi-page Complex Site",
+          "Advanced CMS Features",
+          "Blog Integration",
+          "Priority Support"
+        ]
+      },
+      {
+        "id": "pro",
+        "title": "Pro E-Commerce",
+        "price": "IDR 10,000,000",
+        "benefits": [
+          "Advanced E-commerce features",
+          "Customer Accounts",
+          "Custom Shipping Rules",
+          "Marketing Integrations"
+        ]
+      },
+      {
+        "id": "enterprise",
+        "title": "Enterprise Solution",
+        "price": "IDR 12,000,000+",
+        "benefits": [
+          "Fully Custom Application",
+          "API Integrations",
+          "Dedicated Support",
+          "Scalable Architecture"
+        ]
+      }
+    ]
   },
   "home": {
     "start_project": "Start a Project",

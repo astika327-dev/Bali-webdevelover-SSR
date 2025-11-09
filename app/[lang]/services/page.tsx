@@ -1,8 +1,7 @@
 import { getTranslation, getRawTranslation } from '../../../lib/getTranslation';
 import { Locale, i18n } from '../../../i18n-config';
 import type { Metadata } from 'next';
-import Link from 'next/link';
-import { Check } from 'lucide-react';
+import ServiceCard from '../../components/ServiceCard';
 
 // Generate params for each language
 export function generateStaticParams() {
@@ -24,44 +23,31 @@ export function generateMetadata({ params }: { params: { lang: Locale } }): Meta
 export default function ServicesPage({ params: { lang } }: { params: { lang: Locale } }) {
   const t = getTranslation(lang);
   const getRawT = getRawTranslation(lang);
-  const faqData = getRawT('services.faq');
-  const faqTitle = faqData?.title || 'FAQ';
-  const faqItems = faqData?.items || [];
+  const servicePackages = getRawT('services.packages') || [];
+  const buttonText = t('services.button_text');
 
   return (
     <section className="container py-12 md:py-20">
-      {/* Service Card */}
-      <div className="max-w-md mx-auto border border-neutral-200/80 dark:border-neutral-800/80 rounded-2xl p-8 shadow-lg bg-white/50 dark:bg-neutral-900/50">
-        <div className="flex items-center gap-4">
-          <Check className="w-6 h-6 text-green-500" />
-          <h2 className="text-xl font-semibold text-[var(--brown)] dark:text-neutral-200">
-            {t('services.card.title')}
-          </h2>
-        </div>
-        <p className="text-[var(--brown)]/80 dark:text-neutral-400 mt-2 ml-10">
-          {t('services.card.subtitle')}
+      <header className="space-y-3 text-center max-w-3xl mx-auto mb-12">
+        <h1 className="text-4xl md:text-5xl font-semibold tracking-tight text-[var(--brown)] dark:text-neutral-100">
+          {t('services.title')}
+        </h1>
+        <p className="text-lg text-[var(--brown)]/80 dark:text-neutral-400">
+          {t('services.subtitle')}
         </p>
-        <Link
-          href={`/${lang}/contact`}
-          className="mt-6 block w-full text-center bg-[var(--cream)] hover:bg-[var(--tan)] text-[var(--brown)] font-semibold py-3 rounded-lg border border-neutral-300 dark:border-neutral-700 transition-colors duration-300"
-        >
-          {t('services.button_text')}
-        </Link>
-      </div>
+      </header>
 
-      {/* FAQ Section */}
-      <div className="mt-20 max-w-3xl mx-auto">
-        <h2 className="text-3xl font-semibold text-center text-[var(--brown)] dark:text-neutral-200">
-          {faqTitle}
-        </h2>
-        <ul className="mt-8 space-y-4 text-left">
-          {Array.isArray(faqItems) &&
-            faqItems.map((item: string, index: number) => (
-              <li key={index} className="text-[var(--brown)]/90 dark:text-neutral-300 leading-relaxed">
-                <span className="font-semibold">•</span> {item}
-              </li>
-            ))}
-        </ul>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {Array.isArray(servicePackages) &&
+          servicePackages.map((pkg, index) => (
+            <ServiceCard
+              key={pkg.id}
+              pkg={pkg}
+              buttonText={buttonText}
+              lang={lang}
+              index={index}
+            />
+          ))}
       </div>
     </section>
   );
