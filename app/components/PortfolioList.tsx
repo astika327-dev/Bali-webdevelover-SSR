@@ -4,7 +4,6 @@ import { portfolio } from '../../content/config';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Locale } from '../../i18n-config';
-import { useEffect, useState } from 'react';
 
 type PortfolioListProps = {
   lang: Locale;
@@ -13,16 +12,6 @@ type PortfolioListProps = {
 };
 
 export default function PortfolioList({ lang, viewCaseStudyText, comingSoonText }: PortfolioListProps) {
-    const [isMounted, setIsMounted] = useState(false);
-
-    useEffect(() => {
-        setIsMounted(true);
-    }, []);
-
-    if (!isMounted) {
-        return null; // Or a loading spinner
-    }
-
     return (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
             {portfolio.map((item, index) => (
