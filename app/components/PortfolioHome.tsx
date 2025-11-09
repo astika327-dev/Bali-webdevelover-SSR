@@ -1,11 +1,9 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import type { Route } from 'next';
 import { portfolio } from '@/content/config';
-import { MoveRight } from 'lucide-react';
+import { MoveRight, LayoutTemplate } from 'lucide-react';
 
 type PortfolioHomeProps = {
   lang: string;
@@ -15,20 +13,11 @@ type PortfolioHomeProps = {
 };
 
 export default function PortfolioHome({ lang, dictionary }: PortfolioHomeProps) {
-  const [isMounted, setIsMounted] = useState(false);
   const featuredPortfolio = portfolio.filter(p =>
     p.title === 'U2CleanPro' ||
     p.title === 'PromptCraft' ||
     p.title === 'Personal Site — astika.is-a.dev'
   );
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  if (!isMounted) {
-    return null; // Atau tampilkan skeleton loader
-  }
 
   return (
     <div className="space-y-6">
@@ -57,14 +46,8 @@ export default function PortfolioHome({ lang, dictionary }: PortfolioHomeProps) 
             rel="noopener noreferrer"
             className="group block"
           >
-            <div className="relative aspect-[4/3] rounded-2xl border border-[var(--tan)] bg-white/80 overflow-hidden shadow-sm hover:shadow-lg transition">
-              <Image
-                src={p.images[0]}
-                alt={p.title}
-                fill
-                className="object-cover group-hover:scale-105 transition-transform duration-300"
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              />
+            <div className="relative aspect-[4/3] rounded-2xl border border-[var(--tan)] bg-neutral-100 dark:bg-neutral-900 overflow-hidden shadow-sm hover:shadow-lg transition flex items-center justify-center">
+              <LayoutTemplate className="w-12 h-12 text-neutral-300 dark:text-neutral-700" />
             </div>
             <div className="mt-3">
               <h3 className="font-semibold text-lg text-[var(--brown)] group-hover:text-opacity-80 transition">
