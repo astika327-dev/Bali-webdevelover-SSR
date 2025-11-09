@@ -1,7 +1,7 @@
 'use client';
 
 import { portfolio } from '../../content/config';
-import { ImageIcon } from 'lucide-react';
+import { LayoutTemplate } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Locale } from '../../i18n-config';
@@ -18,7 +18,7 @@ export default function PortfolioList({ lang, viewCaseStudyText, comingSoonText 
             {portfolio.map((item, index) => (
                 <div key={index} className="group">
                     <div className="relative aspect-video w-full rounded-xl overflow-hidden border border-neutral-200/80 dark:border-neutral-800/80 mb-4 flex items-center justify-center bg-neutral-100 dark:bg-neutral-900">
-                        <ImageIcon className="w-12 h-12 text-neutral-300 dark:text-neutral-700" />
+                        <LayoutTemplate className="w-12 h-12 text-neutral-300 dark:text-neutral-700" />
                         {/* <Image
                             src={item.images[0]}
                             alt={item.title}
