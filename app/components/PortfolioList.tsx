@@ -34,10 +34,18 @@ export default function PortfolioList({ lang, viewCaseStudyText, comingSoonText 
                             fill
                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                             className="object-cover object-top transition-transform duration-300 group-hover:scale-105"
+                            priority={index < 2}
                         />
                     </div>
                     <h3 className="text-xl font-semibold text-[var(--brown)] dark:text-neutral-200">{item.title}</h3>
-                    <p className="text-[var(--brown)]/80 dark:text-neutral-400 mt-1">{item.description}</p>
+                    <p className="text-[var(--brown)]/80 dark:text-neutral-400 mt-1 mb-3">{item.description}</p>
+                    <div className="flex flex-wrap gap-2 mb-3">
+                        {item.stack && item.stack.map((tech) => (
+                            <span key={tech} className="bg-neutral-200/60 dark:bg-neutral-800/60 text-sm text-[var(--brown)]/80 dark:text-neutral-300 px-2.5 py-1 rounded-md">
+                                {tech}
+                            </span>
+                        ))}
+                    </div>
                     <Link
                         href={item.link || '#'}
                         target="_blank"
