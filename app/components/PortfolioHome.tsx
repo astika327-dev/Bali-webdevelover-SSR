@@ -35,17 +35,17 @@ export default function PortfolioHome({ lang, dictionary }: PortfolioHomeProps) 
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-2xl md:text-3xl font-semibold text-[var(--brown)] tracking-tight">
-            {dictionary['home.portfolio.title']}
+            {dictionary.title}
           </h2>
           <p className="text-[var(--brown)]/80 mt-1 max-w-2xl">
-            {dictionary['home.portfolio.description']}
+            {dictionary.description}
           </p>
         </div>
         <Link
           href={`/${lang}/portfolio` as Route}
           className="hidden sm:inline-flex items-center gap-2 px-5 py-3 rounded-full border border-[var(--brown)] text-[var(--brown)] hover:bg-[var(--tan)]/40 transition"
         >
-          {dictionary['home.portfolio.view_all']} <MoveRight size={18} />
+          {dictionary.view_all} <MoveRight size={18} />
         </Link>
       </div>
       <div className="grid md:grid-cols-3 gap-6">
@@ -80,7 +80,7 @@ export default function PortfolioHome({ lang, dictionary }: PortfolioHomeProps) 
           href={`/${lang}/portfolio` as Route}
           className="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-[var(--brown)] text-[var(--brown)] hover:bg-[var(--tan)]/40 transition"
         >
-          {dictionary['home.portfolio.view_all']} <MoveRight size={18} />
+            {dictionary.view_all} <MoveRight size={18} />
         </Link>
       </div>
     </div>
