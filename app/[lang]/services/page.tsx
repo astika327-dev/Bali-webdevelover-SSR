@@ -17,9 +17,16 @@ export function generateStaticParams() {
 // Generate metadata for the page
 export function generateMetadata({ params }: { params: { lang: Locale } }): Metadata {
   const t = getTranslation(params.lang);
+  const canonicalUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/${params.lang}/services`;
   return {
     title: t('services.title'),
     description: t('services.subtitle'),
+    alternates: {
+      canonical: canonicalUrl,
+    },
+    openGraph: {
+      url: canonicalUrl,
+    }
   };
 }
 

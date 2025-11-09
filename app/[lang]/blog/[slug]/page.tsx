@@ -38,9 +38,14 @@ export async function generateMetadata({
 
   const ogImage = `${process.env.NEXT_PUBLIC_BASE_URL}${post.frontmatter.image}`;
 
+  const canonicalUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/${params.lang}/blog/${params.slug}`;
+
   return {
     title: post.frontmatter.title,
     description: post.frontmatter.description,
+    alternates: {
+      canonical: canonicalUrl,
+    },
     openGraph: {
       title: post.frontmatter.title,
       description: post.frontmatter.description,

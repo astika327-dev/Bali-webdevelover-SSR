@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import type { Route } from 'next';
 import { ArrowRight } from 'lucide-react';
+import type { Metadata } from 'next';
 import { certificates } from '@/content/config';
 import { getTranslation } from '@/lib/getTranslation';
 import { Locale, i18n } from '@/i18n-config';
@@ -8,6 +9,32 @@ import AiChatWidgetLoader from '../components/AiChatWidgetLoader';
 
 export function generateStaticParams() {
   return i18n.locales.map((locale) => ({ lang: locale }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { lang: Locale };
+}): Promise<Metadata> {
+  const t = getTranslation(params.lang);
+  const canonicalUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/${params.lang}`;
+
+  return {
+    title: t('site.title'),
+    description: t('site.blurb'),
+    alternates: {
+      canonical: canonicalUrl,
+    },
+    openGraph: {
+      title: t('site.title'),
+      description: t('site.blurb'),
+      url: canonicalUrl,
+    },
+    twitter: {
+      title: t('site.title'),
+      description: t('site.blurb'),
+    },
+  };
 }
 
 /* =========================
