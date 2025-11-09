@@ -212,16 +212,6 @@
       }
     }
   },
-  "privacy": {
-    "title": "Jaminan Privasi Anda (Sisi Klien)",
-    "p1": "Kami mengumpulkan detail kontak dasar yang Anda bagikan melalui situs ini. Informasi digunakan untuk menanggapi pertanyaan dan memberikan layanan. Kami tidak menjual data pribadi.",
-    "p2": "Tindakan keamanan yang wajar telah diterapkan, tetapi tidak ada metode transmisi yang sepenuhnya aman. Untuk penghapusan data atau pertanyaan, hubungi kami.",
-    "points": [
-      "Berbasis Sains (Prinsip On-Device Processing): Semua komputasi AI (inferensi) terjadi 100% secara lokal di browser (GPU) Anda.",
-      "Tanpa Transfer Data: Data gambar atau feed video Anda TIDAK PERNAH DIUNGGAH, ditransfer, atau disimpan di server Vercel kami.",
-      "Aman Secara Arsitektural: Privasi Anda terjamin penuh karena data sensitif Anda tidak pernah meninggalkan perangkat Anda."
-    ]
-  },
   "terms": {
     "title": "Syarat & Ketentuan",
     "item1": {
@@ -260,39 +250,47 @@
       "ready_title": "Fitur Deteksi AI Siap Dimuat",
       "ready_description": "Tekan tombol untuk mengunduh model (~35MB) dan memulai komponen.",
       "start_button": "Mulai Deteksi Objek"
+    },
+    "how_to_use": {
+      "title": "Cara Penggunaan",
+      "intro": "Bagian ini dirancang untuk memandu Anda mendapatkan hasil maksimal dari demo Deep Learning ini.",
+      "sections": [
+        {
+          "title": "Mode Unggah Gambar",
+          "points": [
+            "Input Ideal: Unggah gambar yang berisi objek fisik dan umum. Model ini dilatih secara ilmiah pada dataset COCO untuk mengenali benda-benda di dunia nyata.",
+            "Contoh Sukses: Coba foto laptop, ponsel, cangkir kopi, orang, mobil, atau hewan peliharaan.",
+            "Batasan Teknis: Model ini tidak dilatih untuk membaca teks atau menganalisis data UI digital (seperti screenshot skor PageSpeed). Ia mencari pola fisik, bukan data konseptual."
+          ]
+        },
+        {
+          "title": "Mode Kamera Langsung",
+          "points": [
+            "Izin Akses: Izinkan browser Anda untuk mengakses kamera. Ingat (sesuai bagian Privasi), feed video ini diproses secara lokal dan tidak pernah meninggalkan perangkat Anda.",
+            "Interaksi: Arahkan kamera ke objek di sekitar Anda (seperti keyboard atau mouse Anda) dan amati bagaimana AI mendeteksi dan melacaknya secara real-time."
+          ]
+        },
+        {
+          "title": "Membaca Hasil",
+          "points": [
+            "Kotak Batas: Kotak berwarna akan secara otomatis muncul di sekitar objek yang terdeteksi.",
+            "Skor Keyakinan (Probabilitas): Angka persentase (%) menunjukkan seberapa yakin model AI tersebut terhadap prediksinya."
+          ]
+        }
+      ]
+    },
+    "why": {
+      "title": "Transparansi Keahlian Kami",
+      "body": "Demo ini bukan sekadar fitur; ini adalah bukti nyata kemampuan kami mengimplementasikan Deep Learning (AI) canggih. Kami menunjukkan bahwa kami dapat membangun otomasi cerdas dan solusi real-time yang berjalan efisien di browser Anda—kemampuan yang dapat kami terapkan untuk mengoptimalkan proses bisnis Anda."
+    },
+    "privacy": {
+      "title": "Jaminan Privasi Anda (Sisi Klien)",
+      "points": [
+        "Berbasis Sains (Prinsip On-Device Processing): Semua komputasi AI (inferensi) terjadi 100% secara lokal di browser (GPU) Anda.",
+        "Tanpa Transfer Data: Data gambar atau feed video Anda TIDAK PERNAH DIUNGGAH, ditransfer, atau disimpan di server Vercel kami.",
+        "Aman Secara Arsitektural: Privasi Anda terjamin penuh karena data sensitif Anda tidak pernah meninggalkan perangkat Anda."
+      ]
     }
-  },
-  "tensorflow.how_to_use": {
-    "title": "Cara Penggunaan",
-    "intro": "Bagian ini dirancang untuk memandu Anda mendapatkan hasil maksimal dari demo Deep Learning ini.",
-    "sections": [
-      {
-        "title": "Mode Unggah Gambar",
-        "points": [
-          "Input Ideal: Unggah gambar yang berisi objek fisik dan umum. Model ini dilatih secara ilmiah pada dataset COCO untuk mengenali benda-benda di dunia nyata.",
-          "Contoh Sukses: Coba foto laptop, ponsel, cangkir kopi, orang, mobil, atau hewan peliharaan.",
-          "Batasan Teknis: Model ini tidak dilatih untuk membaca teks atau menganalisis data UI digital (seperti screenshot skor PageSpeed). Ia mencari pola fisik, bukan data konseptual."
-        ]
-      },
-      {
-        "title": "Mode Kamera Langsung",
-        "points": [
-          "Izin Akses: Izinkan browser Anda untuk mengakses kamera. Ingat (sesuai bagian Privasi), feed video ini diproses secara lokal dan tidak pernah meninggalkan perangkat Anda.",
-          "Interaksi: Arahkan kamera ke objek di sekitar Anda (seperti keyboard atau mouse Anda) dan amati bagaimana AI mendeteksi dan melacaknya secara real-time."
-        ]
-      },
-      {
-        "title": "Membaca Hasil",
-        "points": [
-          "Kotak Batas: Kotak berwarna akan secara otomatis muncul di sekitar objek yang terdeteksi.",
-          "Skor Keyakinan (Probabilitas): Angka persentase (%) menunjukkan seberapa yakin model AI tersebut terhadap prediksinya."
-        ]
-      }
-    ]
-  },
-  "why": {
-    "title": "Transparansi Keahlian Kami",
-    "body": "Demo ini bukan sekadar fitur; ini adalah bukti nyata kemampuan kami mengimplementasikan Deep Learning (AI) canggih. Kami menunjukkan bahwa kami dapat membangun otomasi cerdas dan solusi real-time yang berjalan efisien di browser Anda—kemampuan yang dapat kami terapkan untuk mengoptimalkan proses bisnis Anda."
   },
   "blog": {
     "title": "Blog Teknologi & Bisnis",

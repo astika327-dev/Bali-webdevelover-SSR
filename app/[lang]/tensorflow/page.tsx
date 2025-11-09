@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
-import TensorflowDetector from '@/components/TensorflowDetector';
-import { getTranslation } from '@/lib/getTranslation';
+import { getTranslation, getRawTranslation } from '../../../lib/getTranslation';
 import { Locale, i18n } from '@/i18n-config';
+import TensorflowPageClient from './TensorflowPageClient';
 
 // Generate params for each language
 export function generateStaticParams() {
@@ -12,37 +12,24 @@ export function generateStaticParams() {
 export function generateMetadata({ params }: { params: { lang: Locale } }): Metadata {
   const t = getTranslation(params.lang);
   return {
-    title: t('tensorflow.title'),
-    description: t('tensorflow.description'),
+    title: t('tensorflow.page.title'),
+    description: t('tensorflow.page.description'),
   };
 }
 
-
 /* =========================
-   TensorFlow Page
+   TensorFlow Page (Server Component)
    ========================= */
 export default function TensorFlowPage({ params: { lang } }: { params: { lang: Locale } }) {
-  const t = getTranslation(lang);
+  // Fetch all required translations on the server.
+  const t = getRawTranslation(lang);
+  const translations = {
+    page: t('tensorflow.page'),
+    how_to_use: t('tensorflow.how_to_use'),
+    why: t('tensorflow.why'),
+    privacy: t('tensorflow.privacy'),
+  };
 
-  return (
-    <section className="container max-w-4xl py-12 md:py-20">
-      <header className="space-y-3 text-center">
-        <h1 className="text-4xl md:text-5xl font-semibold tracking-tight text-[var(--brown)]">
-          {t('tensorflow.title')}
-        </h1>
-        <p className="text-[var(--brown)]/80 max-w-2xl mx-auto">
-          {t('tensorflow.description')}
-        </p>
-      </header>
-
-      <div className="mt-12">
-        <TensorflowDetector
-          loadModelText={t('tensorflow.load_model_text')}
-          modelLoadedText={t('tensorflow.model_loaded_text')}
-          selectImageText={t('tensorflow.select_image_text')}
-          unsupportedFormatText={t('tensorflow.unsupported_format_text')}
-        />
-      </div>
-    </section>
-  );
+  // Pass the translations object to the client component.
+  return <TensorflowPageClient translations={translations} />;
 }
