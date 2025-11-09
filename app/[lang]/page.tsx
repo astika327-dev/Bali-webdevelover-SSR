@@ -42,7 +42,7 @@ export async function generateMetadata({
    ========================= */
 export default function HomePage({ params: { lang } }: { params: { lang: Locale } }) {
   const t = getTranslation(lang);
-  const homeDictionary = getRawTranslation(lang).home as { [key: string]: any };
+  const homeDictionary = getRawTranslation(lang)('home') as { [key: string]: any };
 
   return (
     <section className="container py-12 md:py-20 space-y-16">
