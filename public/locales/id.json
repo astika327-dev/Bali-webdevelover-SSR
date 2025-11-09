@@ -48,6 +48,18 @@
     "title": "Paket Layanan Kami",
     "subtitle": "Pilih paket yang sempurna untuk meluncurkan dan menumbuhkan kehadiran online Anda.",
     "button_text": "Mulai",
+    "custom_websites": {
+      "title": "Situs Web Kustom",
+      "desc": "Dari situs satu halaman yang elegan hingga situs multi-halaman yang kompleks, kami membangun pengalaman digital yang cepat, indah, dan disesuaikan dengan merek Anda."
+    },
+    "performance_seo": {
+      "title": "Performa & SEO",
+      "desc": "Kami mengoptimalkan setiap situs untuk kecepatan dan visibilitas mesin pencari, memastikan Anda menjangkau audiens Anda dan mengubah pengunjung menjadi pelanggan."
+    },
+    "care_maintenance": {
+      "title": "Perawatan & Pemeliharaan",
+      "desc": "Paket perawatan opsional kami menjaga situs Anda tetap aman, diperbarui, dan berjalan lancar, sehingga Anda dapat fokus pada bisnis Anda."
+    },
     "packages": [
       {
         "id": "starter",
@@ -115,7 +127,16 @@
           "Arsitektur Skalabel"
         ]
       }
-    ]
+    ],
+    "faq": {
+      "title": "Pertanyaan yang Sering Diajukan",
+      "items": [
+        "Semua paket sudah termasuk desain, pembuatan, SEO on-page, dan analitik dasar. Domain/hosting dan alat pihak ketiga berbayar akan ditagih secara terpisah kecuali ditentukan dalam proposal.",
+        "Setiap paket mencakup jumlah revisi yang telah disebutkan. Putaran revisi tambahan atau perubahan lingkup dapat ditambahkan sebagai biaya ekstra.",
+        "Pembayaran biasanya dibagi 50% di muka dan 50% saat peluncuran. Jadwal akan disesuaikan setelah semua konten selesai.",
+        "Paket Perawatan mencakup pembaruan konten kecil, pemeriksaan uptime, dan pencadangan terjadwal. Fitur yang lebih besar akan dihitung biayanya secara terpisah."
+      ]
+    }
   },
   "home": {
     "start_project": "Mulai Proyek",
