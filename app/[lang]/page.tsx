@@ -1,11 +1,11 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import type { Route } from 'next';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, MoveRight, Globe, Zap, HeartHandshake } from 'lucide-react';
 import type { Metadata } from 'next';
-import { certificates } from '@/content/config';
+import { certificates, portfolio } from '@/content/config';
 import { getTranslation } from '@/lib/getTranslation';
 import { Locale, i18n } from '@/i18n-config';
-import AiChatWidgetLoader from '../components/AiChatWidgetLoader';
 
 export function generateStaticParams() {
   return i18n.locales.map((locale) => ({ lang: locale }));
@@ -72,23 +72,78 @@ export default function HomePage({ params: { lang } }: { params: { lang: Locale 
 
         {/* Services preview */}
         <div className="mt-14 grid md:grid-cols-3 gap-6">
-          <div className="p-6 rounded-2xl border border-[var(--tan)] bg-[var(--cream)]/80 shadow-sm hover:shadow-md transition">
-            <div className="font-semibold text-lg text-[var(--brown)]">{t('services.custom_websites.title')}</div>
-            <p className="text-[var(--brown)]/80 mt-2">{t('services.custom_websites.desc')}</p>
+          <div className="p-6 rounded-2xl border border-[var(--tan)] bg-white/50 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+            <Globe size={32} className="text-amber-800/80 mb-3" />
+            <h3 className="font-semibold text-lg text-[var(--brown)]">{t('services.custom_websites.title')}</h3>
+            <p className="text-[var(--brown)]/80 mt-2 text-sm">{t('services.custom_websites.desc')}</p>
           </div>
-          <div className="p-6 rounded-2xl border-[var(--tan)] bg-[var(--cream)]/80 shadow-sm hover:shadow-md transition">
-            <div className="font-semibold text-lg text-[var(--brown)]">{t('services.performance_seo.title')}</div>
-            <p className="text-[var(--brown)]/80 mt-2">{t('services.performance_seo.desc')}</p>
+          <div className="p-6 rounded-2xl border-[var(--tan)] bg-white/50 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+            <Zap size={32} className="text-amber-800/80 mb-3" />
+            <h3 className="font-semibold text-lg text-[var(--brown)]">{t('services.performance_seo.title')}</h3>
+            <p className="text-[var(--brown)]/80 mt-2 text-sm">{t('services.performance_seo.desc')}</p>
           </div>
-          <div className="p-6 rounded-2xl border-[var(--tan)] bg-[var(--cream)]/80 shadow-sm hover:shadow-md transition">
-            <div className="font-semibold text-lg text-[var(--brown)]">{t('services.care_maintenance.title')}</div>
-            <p className="text-[var(--brown)]/80 mt-2">{t('services.care_maintenance.desc')}</p>
+          <div className="p-6 rounded-2xl border-[var(--tan)] bg-white/50 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+            <HeartHandshake size={32} className="text-amber-800/80 mb-3" />
+            <h3 className="font-semibold text-lg text-[var(--brown)]">{t('services.care_maintenance.title')}</h3>
+            <p className="text-[var(--brown)]/80 mt-2 text-sm">{t('services.care_maintenance.desc')}</p>
           </div>
         </div>
       </div>
 
-      {/* AI Chat Widget */}
-      <AiChatWidgetLoader />
+      {/* Featured Portfolio */}
+      <div className="space-y-6">
+        <div className="flex items-center justify-between">
+          <div>
+            <h2 className="text-2xl md:text-3xl font-semibold text-[var(--brown)] tracking-tight">
+              {t('home.portfolio.title')}
+            </h2>
+            <p className="text-[var(--brown)]/80 mt-1 max-w-2xl">
+              {t('home.portfolio.description')}
+            </p>
+          </div>
+          <Link
+            href={`/${lang}/portfolio` as Route}
+            className="hidden sm:inline-flex items-center gap-2 px-5 py-3 rounded-full border border-[var(--brown)] text-[var(--brown)] hover:bg-[var(--tan)]/40 transition"
+          >
+            {t('home.portfolio.view_all')} <MoveRight size={18} />
+          </Link>
+        </div>
+        <div className="grid md:grid-cols-3 gap-6">
+          {portfolio.slice(0, 3).map((p) => (
+            <a
+              key={p.title}
+              href={p.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group block"
+            >
+              <div className="relative aspect-[4/3] rounded-2xl border border-[var(--tan)] bg-white/80 overflow-hidden shadow-sm hover:shadow-lg transition">
+                <Image
+                  src={p.images[0]}
+                  alt={p.title}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-300"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                />
+              </div>
+              <div className="mt-3">
+                <h3 className="font-semibold text-lg text-[var(--brown)] group-hover:text-opacity-80 transition">
+                  {p.title}
+                </h3>
+                <p className="text-[var(--brown)]/80 mt-1 text-sm">{p.description}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+        <div className="text-center sm:hidden">
+          <Link
+            href={`/${lang}/portfolio` as Route}
+            className="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-[var(--brown)] text-[var(--brown)] hover:bg-[var(--tan)]/40 transition"
+          >
+            {t('home.portfolio.view_all')} <MoveRight size={18} />
+          </Link>
+        </div>
+      </div>
 
       {/* Certificates */}
       <div className="space-y-4">

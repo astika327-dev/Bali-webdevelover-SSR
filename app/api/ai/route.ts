@@ -145,7 +145,10 @@ Selalu berkomunikasi dalam Bahasa Indonesia, kecuali jika diminta sebaliknya.`;
   if (contents.length === 0 || !contents.some((item) => item.role === "user"))
     return NextResponse.json({ ok: false, error: "At least one user message is required" }, { status: 400 });
 
-  if (!key) return offlineResponse("Missing GEMINI_API_KEY in the environment.", lastUser);
+  if (!key) {
+    console.error("[/api/ai] Critical: Missing GEMINI_API_KEY in the environment.");
+    return offlineResponse("Missing GEMINI_API_KEY in the environment.", lastUser);
+  }
 
   // Timeout handler
   const controller = new AbortController();

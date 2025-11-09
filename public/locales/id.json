@@ -165,6 +165,11 @@
     "certificates": {
       "title": "Sertifikat",
       "description": "Kredensial terverifikasi yang mencakup UI responsif, aksesibilitas, JavaScript, dan kinerja."
+    },
+    "portfolio": {
+      "title": "Karya Pilihan",
+      "description": "Proyek-proyek pilihan yang menampilkan UI bersih, performa solid, dan hasil yang berfokus pada bisnis.",
+      "view_all": "Lihat Semua Proyek"
     }
   },
   "portfolio": {

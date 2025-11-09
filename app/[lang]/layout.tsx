@@ -9,6 +9,7 @@ import { Providers } from '../providers';
 import { getTranslation } from '../../lib/getTranslation';
 import { Locale, i18n } from '../../i18n-config';
 import PageTransition from '../../components/PageTransition';
+import AiChatWidgetLoader from '../components/AiChatWidgetLoader';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 const instrument = Instrument_Serif({
@@ -94,6 +95,7 @@ export default function RootLayout({
             <PageTransition>{children}</PageTransition>
           </main>
           <Footer lang={params.lang} />
+          <AiChatWidgetLoader />
         </Providers>
         <SpeedInsights />
       </body>
