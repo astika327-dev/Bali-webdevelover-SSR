@@ -66,9 +66,9 @@
     "blurb": "Kami membuat situs web, halaman arahan, dan aplikasi mikro yang ramping dan berkualitas tinggi untuk para pendiri, vila, kafe, dan merek yang sedang berkembang. Dibuat dengan dasar-dasar yang kokoh sehingga Google dan manusia sama-sama menyetujuinya."
   },
   "services": {
-    "title": "Paket Layanan Kami",
-    "subtitle": "Pilih paket yang sempurna untuk meluncurkan dan menumbuhkan kehadiran online Anda.",
-    "button_text": "Mulai",
+    "title": "Solusi Digital untuk Pertumbuhan Bisnis",
+    "subtitle": "Dari halaman arahan yang elegan hingga aplikasi web yang kompleks, kami membangun pengalaman digital yang mendorong hasil dan mengangkat citra merek Anda.",
+    "button_text": "Mulai Proyek",
     "custom_websites": {
       "title": "Situs Web Kustom",
       "desc": "Dari situs satu halaman yang elegan hingga situs multi-halaman yang kompleks, kami membangun pengalaman digital yang cepat, indah, dan disesuaikan dengan merek Anda."
@@ -152,10 +152,40 @@
     "faq": {
       "title": "Pertanyaan yang Sering Diajukan",
       "items": [
-        "Semua paket sudah termasuk desain, pembuatan, SEO on-page, dan analitik dasar. Domain/hosting dan alat pihak ketiga berbayar akan ditagih secara terpisah kecuali ditentukan dalam proposal.",
-        "Setiap paket mencakup jumlah revisi yang telah disebutkan. Putaran revisi tambahan atau perubahan lingkup dapat ditambahkan sebagai biaya ekstra.",
-        "Pembayaran biasanya dibagi 50% di muka dan 50% saat peluncuran. Jadwal akan disesuaikan setelah semua konten selesai.",
-        "Paket Perawatan mencakup pembaruan konten kecil, pemeriksaan uptime, dan pencadangan terjadwal. Fitur yang lebih besar akan dihitung biayanya secara terpisah."
+        {
+          "question": "Apa saja yang termasuk dalam setiap paket?",
+          "answer": "Semua paket sudah termasuk desain, pembuatan, SEO on-page, dan analitik dasar. Domain/hosting dan alat pihak ketiga berbayar akan ditagih secara terpisah kecuali ditentukan dalam proposal."
+        },
+        {
+          "question": "Berapa banyak revisi yang termasuk?",
+          "answer": "Setiap paket mencakup jumlah revisi yang telah disebutkan. Putaran revisi tambahan atau perubahan lingkup dapat ditambahkan sebagai biaya ekstra."
+        },
+        {
+          "question": "Bagaimana proses pembayarannya?",
+          "answer": "Pembayaran biasanya dibagi 50% di muka dan 50% saat peluncuran. Jadwal akan disesuaikan setelah semua konten selesai."
+        },
+        {
+          "question": "Apa saja yang dicakup oleh Paket Perawatan?",
+          "answer": "Paket Perawatan mencakup pembaruan konten kecil, pemeriksaan performa, pemantauan uptime, dan pencadangan terjadwal. Penambahan fitur besar akan dihitung biayanya secara terpisah."
+        }
+      ]
+    },
+    "workflow": {
+      "title": "Proses Kerja Kami",
+      "subtitle": "Pendekatan terstruktur untuk memastikan kualitas dan kejelasan dari awal hingga akhir.",
+      "steps": [
+        {
+          "title": "Penemuan & Strategi",
+          "description": "Kami mulai dengan memahami tujuan bisnis Anda, target audiens, dan persyaratan proyek untuk membangun fondasi yang kokoh."
+        },
+        {
+          "title": "Desain & Pengembangan",
+          "description": "Selanjutnya, kami menciptakan desain yang indah dan ramah pengguna, lalu membangun situs web berkinerja tinggi menggunakan teknologi modern."
+        },
+        {
+          "title": "Peluncuran & Serah Terima",
+          "description": "Setelah pengujian menyeluruh, kami men-deploy situs Anda dan memberikan pelatihan yang Anda butuhkan untuk mengelola aset digital baru Anda."
+        }
       ]
     }
   },

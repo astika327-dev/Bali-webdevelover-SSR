@@ -66,9 +66,9 @@
     "blurb": "We craft lean, high‑polish websites, landing pages, and micro apps for founders, villas, cafés, and growing brands. Built with solid fundamentals so Google and humans both approve."
   },
   "services": {
-    "title": "Our Service Packages",
-    "subtitle": "Choose the perfect plan to launch and grow your online presence.",
-    "button_text": "Get Started",
+    "title": "Solutions Designed for Growth",
+    "subtitle": "From sleek landing pages to complex web applications, we build digital experiences that drive results and elevate your brand.",
+    "button_text": "Start a Project",
     "custom_websites": {
       "title": "Custom Websites",
       "desc": "From sleek one-pagers to complex multi-page sites, we build digital experiences that are fast, beautiful, and tailored to your brand."
@@ -152,10 +152,40 @@
     "faq": {
       "title": "Frequently Asked Questions",
       "items": [
-        "All plans include design, build, on-page SEO, and basic analytics. Domain/hosting and paid third-party tools are billed separately unless specified in a proposal.",
-        "Each plan includes the stated revision rounds. Additional rounds or scope changes can be added as extras.",
-        "Payments are typically split 50% to start and 50% on launch. Timelines adjust once content is finalized.",
-        "Care Plan includes small content updates, uptime checks, and scheduled backups. Bigger features are quoted separately."
+        {
+          "question": "What is included in each plan?",
+          "answer": "All plans include design, build, on-page SEO, and basic analytics. Domain/hosting and paid third-party tools are billed separately unless specified in a proposal."
+        },
+        {
+          "question": "How many revisions are included?",
+          "answer": "Each plan includes the stated revision rounds. Additional rounds or scope changes can be added as extras."
+        },
+        {
+          "question": "What is the payment process?",
+          "answer": "Payments are typically split 50% to start and 50% on launch. Timelines adjust once content is finalized."
+        },
+        {
+          "question": "What does the Care Plan cover?",
+          "answer": "The Care Plan includes small content updates, performance checks, uptime monitoring, and scheduled backups. Major feature additions are quoted separately."
+        }
+      ]
+    },
+    "workflow": {
+      "title": "Our Process",
+      "subtitle": "A structured approach to ensure quality and clarity from start to finish.",
+      "steps": [
+        {
+          "title": "Discovery & Strategy",
+          "description": "We start by understanding your business goals, target audience, and project requirements to build a solid foundation."
+        },
+        {
+          "title": "Design & Development",
+          "description": "Next, we create a beautiful, user-friendly design and build a high-performance website using modern technology."
+        },
+        {
+          "title": "Launch & Handover",
+          "description": "After thorough testing, we deploy your site and provide you with the training you need to manage your new digital asset."
+        }
       ]
     }
   },
