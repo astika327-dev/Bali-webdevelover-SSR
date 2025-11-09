@@ -46,9 +46,9 @@ export const certificates: Certificate[] = [
 export const portfolio = [
   {
     title: 'MiniTools — Developer Utilities Suite',
-  description:
-    'A fast, privacy-friendly collection of micro utilities for everyday work: formatters, encoders/decoders, generators, and quick helpers. Built with Next.js and Tailwind for snappy UX.',
+    description: 'A fast, privacy-friendly collection of micro utilities for everyday work: formatters, encoders/decoders, generators, and quick helpers. Built with Next.js and Tailwind for snappy UX.',
     link: 'https://astika327-dev.github.io/minitools/',
+    stack: ['Next.js', 'Tailwind CSS', 'TypeScript'],
     images: [
       '/screenshot/minitools-1.png',
       '/screenshot/minitools-2.png',
@@ -58,9 +58,9 @@ export const portfolio = [
   },
   {
     title: 'OpsPlaybook — Hospitality Toolkit',
-    description:
-      'Operational guide and digital SOP dashboard for villa and hospitality management. Focused on team clarity, scalability, and workflow automation.',
+    description: 'Operational guide and digital SOP dashboard for villa and hospitality management. Focused on team clarity, scalability, and workflow automation.',
     link: 'https://astika327-dev.github.io/opsplaybook-hospitality/',
+    stack: ['Next.js', 'Tailwind CSS', 'MDX'],
     images: [
       '/screenshot/opsplaybook-1.png',
       '/screenshot/opsplaybook-2.png',
@@ -69,9 +69,9 @@ export const portfolio = [
   },
   {
     title: 'Personal Site — astika.is-a.dev',
-    description:
-      'Personal branding website built with minimalism and performance in mind. Showcasing portfolio, ideas, and technical notes.',
+    description: 'Personal branding website built with minimalism and performance in mind. Showcasing portfolio, ideas, and technical notes.',
     link: 'https://astika.is-a.dev',
+    stack: ['Next.js', 'Tailwind CSS', 'MDX', 'shadcn/ui'],
     images: [
       '/screenshot/personalsite-1.png',
       '/screenshot/personalsite-2.png'
@@ -79,9 +79,9 @@ export const portfolio = [
   },
   {
     title: 'U2CleanPro',
-    description:
-      'A clean, modern, and responsive website for U2Cleanpro. Professional cleaning services.',
+    description: 'A clean, modern, and responsive website for U2Cleanpro. Professional cleaning services.',
     link: 'https://cleanpro-beryl.vercel.app/',
+    stack: ['Next.js', 'Tailwind CSS', 'Framer Motion'],
     images: [
       '/screenshot/cleanpro-1.png',
       '/screenshot/cleanpro-2.png',
@@ -90,9 +90,9 @@ export const portfolio = [
   },
   {
     title: 'PromptCraft',
-    description:
-      'AI prompt engineering platform for creating, sharing, and discovering high-quality prompts across various AI models.',
+    description: 'AI prompt engineering platform for creating, sharing, and discovering high-quality prompts across various AI models.',
     link: 'https://promptcraft-v2.vercel.app/',
+    stack: ['Next.js', 'MongoDB', 'NextAuth'],
     images: [
       '/screenshot/promptcraft-1.png',
     ]
