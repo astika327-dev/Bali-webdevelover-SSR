@@ -2,10 +2,10 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { Clock } from 'lucide-react';
 import Balancer from 'react-wrap-balancer';
+import dynamic from 'next/dynamic';
 
 import { getAllPosts, getPostBySlug, getRelatedPosts } from '@/app/lib/posts';
 import PostNavigation from '@/components/PostNavigation';
-import Comments from '@/components/Comments';
 import SocialShareButtons from '@/components/SocialShareButtons';
 import { getTranslation } from '@/lib/getTranslation';
 import { Locale, i18n } from '@/i18n-config';
@@ -70,6 +70,8 @@ export async function generateMetadata({
 /* =========================
    Blog Post Page
    ========================= */
+const Comments = dynamic(() => import('@/components/Comments'), { ssr: false });
+
 export default async function PostPage({ params }: { params: { slug: string; lang: Locale } }) {
   const post = await getPostBySlug(params.slug);
   if (!post) notFound();
