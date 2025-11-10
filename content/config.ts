@@ -47,7 +47,7 @@ export const portfolio = [
   {
     title: 'MiniTools — Developer Utilities Suite',
     description: 'A fast, privacy-friendly collection of micro utilities for everyday work: formatters, encoders/decoders, generators, and quick helpers. Built with Next.js and Tailwind for snappy UX.',
-    link: 'https://astika327-dev.github.io/minitools/',
+    link: 'https://mini-tools-bwd.netlify.app/',
     stack: ['Next.js', 'Tailwind CSS', 'TypeScript'],
     images: [
       '/screenshot/minitools-1.png',
@@ -121,7 +121,7 @@ export const testimonials: Testimonial[] = [];
 
 export const clients: Client[] = [
   { name: 'OpsPlaybook', href: 'https://astika327-dev.github.io/opsplaybook-hospitality/' },
-  { name: 'MiniTools', href: 'https://astika327-dev.github.io/minitools/' },
+  { name: 'MiniTools', href: 'https://mini-tools-bwd.netlify.app/' },
   { name: 'Villa Atmaja' },
   { name: 'Café Lago' },
   { name: 'Astika Personal' },
