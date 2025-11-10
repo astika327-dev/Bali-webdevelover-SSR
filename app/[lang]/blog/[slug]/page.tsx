@@ -79,8 +79,39 @@ export default async function PostPage({ params }: { params: { slug: string; lan
   const relatedPosts = await getRelatedPosts(post.frontmatter.category, params.slug);
   const t = getTranslation(params.lang);
 
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || '';
+  const postUrl = `${baseUrl}/${params.lang}/blog/${params.slug}`;
+  const imageUrl = `${baseUrl}${post.frontmatter.image}`;
+
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: post.frontmatter.title,
+    datePublished: post.frontmatter.date,
+    dateModified: post.frontmatter.date, // Assuming no separate modified date
+    description: post.frontmatter.description,
+    image: imageUrl,
+    url: postUrl,
+    author: {
+      '@type': 'Person',
+      name: t('site.author'),
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: t('site.name'),
+      logo: {
+        '@type': 'ImageObject',
+        url: `${baseUrl}/icon.png`,
+      },
+    },
+  };
+
   return (
     <article className="container max-w-3xl py-12 md:py-20">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Header */}
       <header className="space-y-4 text-center">
         <div className="uppercase text-sm tracking-wider text-[var(--brown)]/70">

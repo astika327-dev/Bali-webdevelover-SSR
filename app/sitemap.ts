@@ -1,44 +1,33 @@
 import { MetadataRoute } from 'next';
-import { getAllPostsMeta } from './lib/posts'; // Assuming this function exists
-import { supportedLangs } from '../constants/langs';
-
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://bali-webdevelover.com';
+import { getAllPosts } from './lib/posts';
+import { i18n } from '@/i18n-config';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  // Localized static pages
-  const staticPages = [
-    '', // Home
-    '/about',
-    '/services',
-    '/portfolio',
-    '/contact',
-    '/privacy',
-    '/terms',
-  ];
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
 
-  const localizedRoutes: MetadataRoute.Sitemap = [];
-  staticPages.forEach((page) => {
-    supportedLangs.forEach((lang) => {
-      localizedRoutes.push({
-        url: `${siteUrl}/${lang}${page}`,
-        lastModified: new Date(),
-        // alternates are handled by Next.js metadata API in each page layout
-      });
-    });
-  });
+  // 1. Get all blog posts
+  const posts = await getAllPosts();
 
-  // Blog posts (single-language)
-  const { posts } = await getAllPostsMeta();
-  const blogRoutes: MetadataRoute.Sitemap = posts.map((post) => ({
-    url: `${siteUrl}/blog/${post.slug}`,
-    lastModified: new Date(post.frontmatter.date),
-  }));
+  const postUrls = posts.flatMap((post) =>
+    i18n.locales.map((locale) => ({
+      url: `${baseUrl}/${locale}/blog/${post.slug}`,
+      lastModified: new Date(post.frontmatter.date),
+      changeFrequency: 'monthly' as 'monthly',
+      priority: 0.8,
+    }))
+  );
 
-  // Blog index page
-  const blogIndexRoute = {
-    url: `${siteUrl}/blog`,
-    lastModified: new Date(),
-  };
+  // 2. Define static pages
+  const staticPages = ['', 'portfolio', 'services', 'contact', 'blog'];
 
-  return [...localizedRoutes, ...blogRoutes, blogIndexRoute];
+  const staticUrls = staticPages.flatMap((page) =>
+    i18n.locales.map((locale) => ({
+      url: `${baseUrl}/${locale}${page ? `/${page}` : ''}`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as 'weekly',
+      priority: page ? 0.7 : 1.0,
+    }))
+  );
+
+  return [...staticUrls, ...postUrls];
 }
