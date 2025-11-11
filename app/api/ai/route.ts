@@ -1,6 +1,6 @@
 
 import { NextRequest, NextResponse } from "next/server";
-import { createClient, VectorAlgorithms, SchemaFieldTypes } from 'redis';
+import { createClient } from 'redis';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
 // Configuration
