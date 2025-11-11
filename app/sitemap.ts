@@ -1,12 +1,12 @@
 import { MetadataRoute } from 'next';
-import { getAllPosts } from './lib/posts';
+import { getAllPostsMetaCached } from './lib/posts';
 import { i18n } from '@/i18n-config';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
 
   // 1. Get all blog posts
-  const posts = await getAllPosts();
+  const posts = await getAllPostsMetaCached();
 
   const postUrls = posts.flatMap((post) =>
     i18n.locales.map((locale) => ({

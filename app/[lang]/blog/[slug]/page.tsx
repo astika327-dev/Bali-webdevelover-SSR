@@ -4,7 +4,7 @@ import { Clock } from 'lucide-react';
 import Balancer from 'react-wrap-balancer';
 import dynamic from 'next/dynamic';
 
-import { getAllPosts, getPostBySlug, getRelatedPosts } from '@/app/lib/posts';
+import { getAllPostsMetaCached, getPostBySlug, getRelatedPosts } from '@/app/lib/posts';
 import PostNavigation from '@/components/PostNavigation';
 import SocialShareButtons from '@/components/SocialShareButtons';
 import { getTranslation } from '@/lib/getTranslation';
@@ -15,7 +15,7 @@ import RelatedPosts from '@/components/RelatedPosts';
 
 // Generate params for all languages and slugs
 export async function generateStaticParams() {
-  const posts = await getAllPosts();
+  const posts = await getAllPostsMetaCached();
   const params = i18n.locales.flatMap((locale) =>
     posts.map((post) => ({
       lang: locale,
