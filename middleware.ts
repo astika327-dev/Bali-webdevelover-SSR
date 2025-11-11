@@ -24,7 +24,7 @@ const PUBLIC_FILE = /\.(.*)$/; // Regex untuk mendeteksi file statis
 export function middleware(request: NextRequest) {
   // Lewati request untuk file statis
   if (PUBLIC_FILE.test(request.nextUrl.pathname)) {
-    return;
+    return NextResponse.next();
   }
 
   const { pathname } = request.nextUrl;
@@ -35,7 +35,7 @@ export function middleware(request: NextRequest) {
   );
 
   if (pathnameHasLocale) {
-    return; // Tidak perlu melakukan apa-apa jika sudah ada locale
+    return NextResponse.next(); // Tidak perlu melakukan apa-apa jika sudah ada locale
   }
 
   // Jika tidak ada locale, deteksi bahasa yang disukai dan alihkan
@@ -55,9 +55,9 @@ export const config = {
      * - api (API routes)
      * - _next/static (static files)
      * - _next/image (image optimization files)
-     * - favicon.ico (favicon file)
-     * - anything with a dot (.) in it (likely a file extension)
+     *
+     * We will let the middleware function itself handle static files.
      */
-    '/((?!api|_next/static|_next/image|favicon.ico|.*\\.).*)',
+    '/((?!api|_next/static|_next/image).*)',
   ],
 };
