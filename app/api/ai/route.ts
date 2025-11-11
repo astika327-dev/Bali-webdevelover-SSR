@@ -16,7 +16,7 @@ if (!REDIS_URL || !GEMINI_API_KEY) {
     throw new Error("Missing required environment variables: REDIS_URL and/or GEMINI_API_KEY");
 }
 // Use a global variable to hold the client connection
-let redisClient;
+let redisClient: ReturnType<typeof createClient> | undefined;
 
 async function getRedisClient() {
     if (!redisClient) {
