@@ -1,215 +1,118 @@
+
 import { NextRequest, NextResponse } from "next/server";
-import { getAllPostsMeta } from "../../lib/posts";
-import { portfolio, site } from "../../../content/config";
-import {
-  GEMINI_MODEL,
-  GEMINI_REST_URL,
-  MAX_MESSAGES,
-  MAX_PROMPT_LEN,
-  REQUEST_TIMEOUT_MS,
-} from "./config";
+import { createClient, VectorAlgorithms, SchemaFieldTypes } from 'redis';
+import { GoogleGenerativeAI } from '@google/generative-ai';
+import 'dotenv/config';
 
-export const runtime = "nodejs";
+// Configuration
+const REDIS_URL = process.env.KV_URL;
+const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
+const EMBEDDING_MODEL = 'text-embedding-004';
+const GENERATIVE_MODEL = 'gemini-1.5-flash';
+const REDIS_INDEX_NAME = 'blog-posts-index';
+const TOP_K = 3; // Number of relevant chunks to retrieve
 
-// Helper
-const clamp = (value: unknown) => {
-  const base = typeof value === "string" ? value : JSON.stringify(value ?? "");
-  return base.replace(/\s+/g, " ").trim().slice(0, MAX_PROMPT_LEN);
-};
+// --- Client Initialization ---
+if (!REDIS_URL || !GEMINI_API_KEY) {
+    throw new Error("Missing required environment variables: KV_URL and/or GEMINI_API_KEY");
+}
+// Use a global variable to hold the client connection
+let redisClient;
 
-// Tipe data
-type ChatMessage = {
-  role?: string;
-  content?: unknown;
-};
+async function getRedisClient() {
+    if (!redisClient) {
+        redisClient = createClient({ url: REDIS_URL });
+        if (!redisClient.isOpen) {
+            await redisClient.connect();
+        }
+    }
+    return redisClient;
+}
 
-type GeminiContent = {
-  role: "user" | "model";
-  parts: { text: string }[];
-};
 
-// Pesan fallback jika Gemini tidak bisa diakses
-const FALLBACK_RESPONSES: { test: RegExp; reply: string }[] = [
-  {
-    test: /seo|search|serp/i,
-    reply:
-      "Gemini is offline, but here are SEO wins: tighten title tags (<60 chars), add internal links from strong pages, and include schema.org markup for FAQs or services.",
-  },
-  {
-    test: /performance|speed|core web vitals|lcp|cls|tti/i,
-    reply:
-      "Gemini can’t be reached, so here’s your performance plan: inline critical CSS, lazy-load third-party scripts, and convert hero images to AVIF/WebP with proper width hints.",
-  },
-  {
-    test: /stack|tech|framework|cms|headless/i,
-    reply:
-      "The assistant is offline. For a villa booking site, I’d recommend Next.js + Tailwind, Strapi/Sanity CMS, and Vercel or Cloudflare Pages for hosting. Add Cloudinary for media and Resend for email.",
-  },
-];
+const genAI = new GoogleGenerativeAI(GEMINI_API_KEY);
+const embeddingModel = genAI.getGenerativeModel({ model: EMBEDDING_MODEL });
+const generativeModel = genAI.getGenerativeModel({ model: GENERATIVE_MODEL });
+// --- End Client Initialization ---
 
-const DEFAULT_FALLBACK =
-  "Gemini isn't reachable right now. Refine your project scope into clear deliverables and MVP phases. Once the AI connection restores, I’ll refine further.";
 
-const offlineResponse = (reason: string, lastUserMessage?: string) => {
-  const fallback =
-    FALLBACK_RESPONSES.find(({ test }) => lastUserMessage && test.test(lastUserMessage))?.reply ??
-    DEFAULT_FALLBACK;
-
-  return NextResponse.json({
-    reply: { content: fallback },
-    meta: { warning: reason, offline: true },
-  });
-};
-
-// Bangun format percakapan sesuai Gemini
-const buildConversation = (messages: ChatMessage[]) => {
-  // Jangan potong pesan sistem dan pesan pengguna pertama
-  const systemMessages = messages.slice(0, 2);
-  const userMessages = messages.slice(2);
-  const trimmedUserMessages = userMessages.slice(-MAX_MESSAGES);
-  const finalMessages = [...systemMessages, ...trimmedUserMessages];
-
-  const contents: GeminiContent[] = [];
-  let lastUser: string | undefined;
-
-  for (const message of finalMessages) {
-    if (!message || typeof message !== "object") continue;
-
-    const role = message.role === "assistant" ? "model" : message.role === "user" ? "user" : null;
-    if (!role) continue;
-
-    const text = clamp(message.content);
-    if (!text) continue;
-
-    contents.push({ role, parts: [{ text }] });
-    if (role === "user") lastUser = text;
-  }
-
-  return { contents, lastUser };
-};
-
-// Handler utama
-export async function POST(req: NextRequest) {
-  let payload: unknown;
-
-  try {
-    payload = await req.json();
-  } catch {
-    return NextResponse.json({ ok: false, error: "Invalid JSON body" }, { status: 400 });
-  }
-
-  const key = process.env.GEMINI_API_KEY;
-  const messages = (payload as { messages?: ChatMessage[] })?.messages ?? [];
-
-  if (!Array.isArray(messages) || messages.length === 0)
-    return NextResponse.json({ ok: false, error: "No messages provided" }, { status: 400 });
-
-  // Fetch blog posts metadata
-  const { posts } = await getAllPostsMeta();
-  const blogContext = posts
-    .map((p) => `[${p.frontmatter.category}] ${p.frontmatter.title}: ${p.frontmatter.description}`)
-    .join("\n");
-
-  const portfolioContext = portfolio.map(p => `- ${p.title}: ${p.description}`).join("\n");
-  const siteContext = `Tentang situs ini: ${site.blurb}. Misi kami: ${site.mission}.`;
-
+// Helper to build conversation for Gemini
+const buildConversation = (userQuery: string, context: string) => {
   const systemPrompt = `Anda adalah "BaliWebDev AI", asisten AI yang ramah dan sangat membantu di situs web pribadi Putu Astika.
-Misi Anda adalah memberikan jawaban yang akurat, relevan, dan ringkas terkait pengembangan web, SEO, dan layanan yang ditawarkan.
-Gunakan informasi dari artikel blog, layanan, portofolio, dan tentang situs di bawah ini untuk memperkaya jawaban Anda.
-Jika sebuah pertanyaan relevan dengan sebuah artikel, rujuklah dengan halus dalam jawaban Anda.
-Jangan pernah menyebutkan bahwa Anda memiliki akses ke "informasi di bawah" atau "konteks yang diberikan". Jawablah seolah-olah Anda sudah mengetahui informasi ini.
+Misi Anda adalah memberikan jawaban yang akurat, relevan, dan ringkas berdasarkan informasi yang diberikan.
+Gunakan HANYA informasi dari konteks di bawah ini untuk menjawab pertanyaan pengguna.
+Jangan pernah menyebutkan bahwa Anda memiliki akses ke "konteks" atau "informasi yang diberikan". Jawablah seolah-olah Anda sudah mengetahui informasi ini.
+Jika konteks tidak cukup untuk menjawab pertanyaan, katakan dengan sopan bahwa Anda tidak dapat menemukan informasi yang relevan di dalam basis pengetahuan yang ada.
 
-Berikut adalah konteks yang tersedia:
-1. Tentang Situs: ${siteContext}
-2. Portofolio Proyek:
-${portfolioContext}
-3. Artikel Blog:
-${blogContext}
+Berikut adalah konteks yang relevan dari beberapa artikel blog:
+---
+${context}
+---
 
 Selalu berkomunikasi dalam Bahasa Indonesia, kecuali jika diminta sebaliknya.`;
 
-  const fullMessages: ChatMessage[] = [
-    {
-      role: "user",
-      content: systemPrompt,
-    },
-    {
-      role: "assistant",
-      content: "Tentu, saya siap membantu.",
-    },
-    ...messages,
+  return [
+    { role: "user", parts: [{ text: systemPrompt }] },
+    { role: "model", parts: [{ text: "Tentu, saya siap membantu. Apa pertanyaan Anda?" }] },
   ];
+};
 
-  const { contents, lastUser } = buildConversation(fullMessages);
 
-  if (contents.length === 0 || !contents.some((item) => item.role === "user"))
-    return NextResponse.json({ ok: false, error: "At least one user message is required" }, { status: 400 });
+export async function POST(req: NextRequest) {
+    try {
+        const client = await getRedisClient();
 
-  if (!key) {
-    console.error("[/api/ai] Critical: Missing GEMINI_API_KEY in the environment.");
-    return offlineResponse("Missing GEMINI_API_KEY in the environment.", lastUser);
-  }
+        const payload = await req.json();
+        const messages = payload?.messages ?? [];
+        const lastUserMessage = messages.findLast((m) => m.role === 'user')?.content;
 
-  // Timeout handler
-  const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
+        if (!lastUserMessage) {
+            return NextResponse.json({ reply: { content: "Maaf, saya tidak menerima pesan apa pun." } }, { status: 400 });
+        }
 
-  try {
-    const response = await fetch(`${GEMINI_REST_URL}?key=${key}`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ contents }),
-      signal: controller.signal,
-      cache: "no-store",
-    });
+        // 1. Create embedding for the user's query
+        const embeddingResult = await embeddingModel.embedContent(lastUserMessage);
+        const queryEmbedding = Buffer.from(new Float32Array(embeddingResult.embedding.values).buffer);
 
-    const json = await response.json().catch(() => ({}));
+        // 2. Perform Vector Similarity Search in Redis
+        const searchQuery = `*=>[KNN ${TOP_K} @embedding $query_vector AS vector_score]`;
 
-    if (!response.ok) {
-      const message = json?.error?.message || JSON.stringify(json) || "Unknown Gemini error";
-      console.error("[/api/ai] Gemini request failed:", { status: response.status, message });
-      return offlineResponse(`Gemini error (${response.status}): ${message}`, lastUser);
-    }
-
-    if (!json?.candidates?.length) {
-      console.error("[/api/ai] No candidates returned from Gemini:", json);
-      return offlineResponse("Gemini returned no candidates.", lastUser);
-    }
-
-    const text =
-      (json.candidates[0]?.content?.parts || [])
-        .map((p: { text?: string }) => p?.text ?? "")
-        .join("")
-        .trim();
-
-    if (!text) return offlineResponse("Gemini responded without text content.", lastUser);
-
-    const warnings: string[] = [];
-
-    if (json.promptFeedback?.safetyRatings?.length) {
-      const blocked = json.promptFeedback.safetyRatings.filter(
-        (r: { probability?: string }) => r.probability === "HIGH" || r.probability === "MEDIUM"
-      );
-      if (blocked.length)
-        warnings.push(
-          `Gemini filtered some content: ${blocked
-            .map((r: { category?: string }) => r.category || "unknown")
-            .join(", ")}.`
+        const searchResults = await client.ft.search(
+            REDIS_INDEX_NAME,
+            searchQuery,
+            {
+                PARAMS: {
+                    query_vector: queryEmbedding,
+                },
+                RETURN: ['title', 'content', 'slug', 'vector_score'],
+                DIALECT: 2,
+            }
         );
+
+        // 3. Construct the context from search results
+        let context = "Tidak ada konteks relevan yang ditemukan dalam artikel blog.";
+        if (searchResults.documents.length > 0) {
+            context = searchResults.documents
+                .map(doc => `Judul Artikel: ${doc.value.title}\nKonten: ${doc.value.content}`)
+                .join("\n\n---\n\n");
+        }
+
+        // 4. Build the final prompt and call Gemini
+        const conversationHistory = buildConversation(lastUserMessage, context);
+
+        const chat = generativeModel.startChat({
+            history: conversationHistory,
+        });
+
+        const result = await chat.sendMessage(lastUserMessage);
+        const response = result.response;
+        const text = response.text();
+
+        return NextResponse.json({ reply: { content: text } });
+
+    } catch (error) {
+        console.error("[/api/ai] Error:", error);
+        const message = error instanceof Error ? error.message : "Terjadi kesalahan internal.";
+        return NextResponse.json({ reply: { content: `Maaf, terjadi kesalahan: ${message}` } }, { status: 500 });
     }
-
-    if (json.promptFeedback?.blockReason)
-      warnings.push(`Gemini block reason: ${json.promptFeedback.blockReason}.`);
-
-    const body: Record<string, unknown> = { reply: { content: text } };
-    if (warnings.length) body.meta = { warning: warnings.join(" ") };
-
-    return NextResponse.json(body);
-  } catch (error) {
-    const message = error instanceof Error ? error.message : String(error);
-    console.error("[/api/ai] REST request failed:", message);
-    return offlineResponse(`Gemini request failed: ${message}`, lastUser);
-  } finally {
-    clearTimeout(timeout);
-  }
 }
