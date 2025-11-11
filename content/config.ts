@@ -1,12 +1,11 @@
+
 export type Certificate = { title: string; href: string };
-export type Plan = {
-  name: string;
-  subtitle: string;
+export type Service = {
+  id: string;
+  title: string;
+  description: string;
   price: string;
-  features: string[];
-  cta: string;
-  eta: string;
-  badge?: string;
+  icon: string;
 };
 
 export type Stat = {
@@ -44,127 +43,61 @@ export const certificates: Certificate[] = [
   { title: "freeCodeCamp — JavaScript Algorithms & Data Structures", href: "https://www.freecodecamp.org/certification/astika/javascript-algorithms-and-data-structures-v8" }
 ];
 
-export const services = [
-  {
-    title: "Custom Websites",
-    desc: "Modern, responsive builds with a premium feel, from portfolios to full business sites."
-  },
-  {
-    title: "Performance & SEO",
-    desc: "Core Web Vitals minded markup, accessible structure, and clean on‑page SEO setup."
-  },
-  {
-    title: "Care & Maintenance",
-    desc: "Small content edits, uptime watching, and scheduled backups so your site stays healthy."
-  }
-];
-
-export const plans: Plan[] = [
-  {
-    name: "Starter",
-    subtitle: "Launch‑ready landing page",
-    price: "Rp 1.500.000 - Rp 2.500.000",
-    features: [
-      "1–3 sections, custom look",
-      "Responsive and accessible",
-      "Light copy refinement (EN/ID)",
-      "Semantic HTML for basic SEO",
-      "Standard analytics wiring"
-    ],
-    cta: "Start Now",
-    eta: "3–5 days • 1 revision"
-  },
-  {
-    name: "Growth",
-    subtitle: "Small business website",
-    price: "Rp 4.000.000 - Rp 6.000.000",
-    features: [
-      "Up to 5–7 custom pages",
-      "Checked against Core Web Vitals",
-      "Copy polish (EN/ID, 2 rounds)",
-      "Baseline SEO + perf tuning",
-      "Simple analytics dashboard",
-      "3‑month Care Plan"
-    ],
-    cta: "Start Growth",
-    eta: "1–2 weeks • 2 revisions",
-    badge: "Most Popular"
-  },
-  {
-    name: "Premium",
-    subtitle: "Brand‑level experience",
-    price: "Rp 8.000.000 - Rp 12.000.000",
-    features: [
-      "12–15 uniquely designed pages",
-      "Premium UI with tasteful motion",
-      "Full copy refinement (EN/ID, 4 rounds)",
-      "Complete performance tuning",
-      "Advanced on‑page SEO",
-      "Analytics setup and reporting",
-      "6‑month Care Plan"
-    ],
-    cta: "Get Premium",
-    eta: "3–4 weeks • 4 revisions"
-  }
-];
-
-export const addons = [
-  {
-    title: "Custom Feature AI",
-    desc: "Separate pricing for custom features requiring dedicated backend and API integration (e.g., Gemini, complex booking systems).",
-    from: "from Rp 4,000,000"
-  },
-  {
-    title: "Booking Integration",
-    desc: "Channel manager or booking widget (e.g., SiteMinder, Cloudbeds, or a custom form)",
-    from: "from Rp 1.700.000"
-  },
-  {
-    title: "Brand Content Pack",
-    desc: "Copy refinement, menu/rooms descriptions (EN/ID), asset organization",
-    from: "from Rp 550.000"
-  },
-  {
-    title: "Photo Optimization",
-    desc: "Hero and gallery curation, compression, EXIF/alt text, lazy‑load setup",
-    from: "from Rp 300.000"
-  }
-];
-
 export const portfolio = [
   {
     title: 'MiniTools — Developer Utilities Suite',
-  description:
-    'A fast, privacy-friendly collection of micro utilities for everyday work: formatters, encoders/decoders, generators, and quick helpers. Built with Next.js and Tailwind for snappy UX.',
-    link: 'https://astika327-dev.github.io/minitools/',
+    description: 'A fast, privacy-friendly collection of micro utilities for everyday work: formatters, encoders/decoders, generators, and quick helpers. Built with Next.js and Tailwind for snappy UX.',
+    link: 'https://mini-tools-bwd.netlify.app/',
+    stack: ['Next.js', 'Tailwind CSS', 'TypeScript'],
     images: [
-      '/screenshot/ssminitool1.png',
-      '/screenshot/ssminitool2.png',
-      '/screenshot/ssminitool3.png',
-      '/screenshot/ssminitool4.png'
+      '/screenshot/minitools-1.png',
+      '/screenshot/minitools-2.png',
+      '/screenshot/minitools-3.png',
+      '/screenshot/minitools-4.png'
     ]
   },
   {
     title: 'OpsPlaybook — Hospitality Toolkit',
-    description:
-      'Operational guide and digital SOP dashboard for villa and hospitality management. Focused on team clarity, scalability, and workflow automation.',
+    description: 'Operational guide and digital SOP dashboard for villa and hospitality management. Focused on team clarity, scalability, and workflow automation.',
     link: 'https://astika327-dev.github.io/opsplaybook-hospitality/',
+    stack: ['Next.js', 'Tailwind CSS', 'MDX'],
     images: [
-      '/screenshot/ssops1.png',
-      '/screenshot/ssops2.png',
-      '/screenshot/ssops3.png'
+      '/screenshot/opsplaybook-1.png',
+      '/screenshot/opsplaybook-2.png',
+      '/screenshot/opsplaybook-3.png',
+      '/screenshot/opsplaybook-4.png'
     ]
   },
   {
     title: 'Personal Site — astika.is-a.dev',
-    description:
-      'Personal branding website built with minimalism and performance in mind. Showcasing portfolio, ideas, and technical notes.',
+    description: 'Personal branding website built with minimalism and performance in mind. Showcasing portfolio, ideas, and technical notes.',
     link: 'https://astika.is-a.dev',
+    stack: ['Next.js', 'Tailwind CSS', 'MDX', 'shadcn/ui'],
     images: [
-      '/screenshot/ssporto1.png',
-      '/screenshot/ssporto2.png'
+      '/screenshot/personalsite-1.png',
+      '/screenshot/personalsite-2.png'
     ]
-  }
+  },
+  {
+    title: 'U2CleanPro',
+    description: 'A clean, modern, and responsive website for U2Cleanpro. Professional cleaning services.',
+    link: 'https://cleanpro-beryl.vercel.app/',
+    stack: ['Next.js', 'Tailwind CSS', 'Framer Motion'],
+    images: [
+      '/screenshot/cleanpro-1.png',
+      '/screenshot/cleanpro-2.png',
+      '/screenshot/cleanpro-3.png'
+    ]
+  },
+  {
+    title: 'PromptCraft',
+    description: 'AI prompt engineering platform for creating, sharing, and discovering high-quality prompts across various AI models.',
+    link: 'https://promptcraft-v2.vercel.app/',
+    stack: ['Next.js', 'MongoDB', 'NextAuth'],
+    images: [
+      '/screenshot/promptcraft-1.png',
+    ]
+  },
 ];
 
 export const stats: Stat[] = [
@@ -189,9 +122,8 @@ export const testimonials: Testimonial[] = [];
 
 export const clients: Client[] = [
   { name: 'OpsPlaybook', href: 'https://astika327-dev.github.io/opsplaybook-hospitality/' },
-  { name: 'MiniTools', href: 'https://astika327-dev.github.io/minitools/' },
+  { name: 'MiniTools', href: 'https://mini-tools-bwd.netlify.app/' },
   { name: 'Villa Atmaja' },
   { name: 'Café Lago' },
   { name: 'Astika Personal' },
 ];
-

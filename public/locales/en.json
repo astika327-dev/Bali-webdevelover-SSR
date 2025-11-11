@@ -1,124 +1,362 @@
 {
-  "nav.home": "Home",
-  "nav.portfolio": "Portfolio",
-  "nav.contact": "Contact",
-  "nav.about": "About",
-  "nav.services": "Services",
-  "nav.privacy": "Privacy Policy",
-  "nav.terms": "Terms of Service",
-  "hero.title": "Creative Web & Mobile Developer",
-  "hero.subtitle": "I build beautiful and functional websites and mobile apps.",
-  "contact.title": "Get in Touch",
-  "footer.copyright": "© 2025 Jules. All rights reserved.",
-  "site.blurb": "We craft lean, high‑polish websites, landing pages, and micro apps for founders, villas, cafés, and growing brands. Built with solid fundamentals so Google and humans both approve.",
-  "services.custom_websites.title": "Custom Websites",
-  "services.custom_websites.desc": "Modern, responsive builds with a premium feel, from portfolios to full business sites.",
-  "services.performance_seo.title": "Performance & SEO",
-  "services.performance_seo.desc": "Core Web Vitals minded markup, accessible structure, and clean on‑page SEO setup.",
-  "services.care_maintenance.title": "Care & Maintenance",
-  "services.care_maintenance.desc": "Small content edits, uptime watching, and scheduled backups so your site stays healthy.",
-  "home.start_project": "Start a Project",
-  "home.view_services": "View Services",
-  "home.certificates.title": "Certificates",
-  "home.certificates.description": "Verified credentials covering responsive UI, accessibility, JavaScript, and performance.",
-  "portfolio.title": "Portfolio",
-  "portfolio.description": "Selected works that highlight clean UI, solid performance, and results-driven builds.",
-  "portfolio.item1.title": "MiniTools — Developer Utilities Suite",
-  "portfolio.item1.description": "A fast, privacy-friendly collection of micro utilities for everyday work: formatters, encoders/decoders, generators, and quick helpers. Built with Next.js and Tailwind for snappy UX.",
-  "portfolio.item2.title": "OpsPlaybook — Hospitality Toolkit",
-  "portfolio.item2.description": "Operational guide and digital SOP dashboard for villa and hospitality management. Focused on team clarity, scalability, and workflow automation.",
-  "portfolio.item3.title": "Personal Site — astika.is-a.dev",
-  "portfolio.item3.description": "Personal branding website built with minimalism and performance in mind. Showcasing portfolio, ideas, and technical notes.",
-  "about.title": "About",
-  "about.p1": "As an independent digital developer, I specialize in building clean, fast, and user-centric web experiences. My focus is on clarity, balance, and precision—ensuring every element on a page exists for a reason and serves a distinct purpose.",
-  "about.p2": "My work blends modern web technologies with a deep focus on user experience (UX). This approach allows me to design systems that are minimal yet impactful, structured yet intuitive. I build digital products that don’t just look polished, but actually communicate, convert, and intuitively guide the user.",
-  "about.p3": "Based in Bali and working remotely worldwide, I create solutions that merge logic, aesthetics, and intent—made for people, not algorithms.",
-  "about.competencies.title": "Core Competencies & Toolkit",
-  "about.competencies.p1": "To bring these ideas to life, I rely on a curated stack of modern, performance-oriented technologies.",
-  "about.competencies.languages.title": "Languages & Frameworks",
-  "about.competencies.languages.p1": "TypeScript, JavaScript (ES6+), React, Next.js, Node.js",
-  "about.competencies.styling.title": "Styling & UI",
-  "about.competencies.styling.p1": "Tailwind CSS, Framer Motion, Radix UI, Shadcn/UI",
-  "about.competencies.backend.title": "Backend & Data",
-  "about.competencies.backend.p1": "Headless CMS (Sanity, Strapi), PostgreSQL, Vercel, Docker",
-  "about.competencies.design.title": "Design & Strategy",
-  "about.competencies.design.p1": "Figma, UI/UX Design, Performance Optimization, SEO",
-  "services.title": "Pricing Plans",
-  "services.subtitle": "Built for founders, villas, cafés, MSMEs, and growing brands.",
-  "services.plans.starter.name": "Starter",
-  "services.plans.starter.subtitle": "Launch‑ready landing page",
-  "services.plans.starter.price": "Rp 1.500.000 - Rp 2.500.000",
-  "services.plans.starter.features": [
-    "1–3 sections, custom look",
-    "Responsive and accessible",
-    "Light copy refinement (EN/ID)",
-    "Semantic HTML for basic SEO",
-    "Standard analytics wiring"
-  ],
-  "services.plans.starter.cta": "Start Now",
-  "services.plans.starter.eta": "3–5 days • 1 revision",
-  "services.plans.growth.name": "Growth",
-  "services.plans.growth.subtitle": "Small business website",
-  "services.plans.growth.price": "Rp 4.000.000 - Rp 6.000.000",
-  "services.plans.growth.features": [
-    "Up to 5–7 custom pages",
-    "Checked against Core Web Vitals",
-    "Copy polish (EN/ID, 2 rounds)",
-    "Baseline SEO + perf tuning",
-    "Simple analytics dashboard",
-    "3‑month Care Plan"
-  ],
-  "services.plans.growth.cta": "Start Growth",
-  "services.plans.growth.eta": "1–2 weeks • 2 revisions",
-  "services.plans.growth.badge": "Most Popular",
-  "services.plans.premium.name": "Premium",
-  "services.plans.premium.subtitle": "Brand‑level experience",
-  "services.plans.premium.price": "Rp 8.000.000 - Rp 12.000.000",
-  "services.plans.premium.features": [
-    "12–15 uniquely designed pages",
-    "Premium UI with tasteful motion",
-    "Full copy refinement (EN/ID, 4 rounds)",
-    "Complete performance tuning",
-    "Advanced on‑page SEO",
-    "Analytics setup and reporting",
-    "6‑month Care Plan"
-  ],
-  "services.plans.premium.cta": "Get Premium",
-  "services.plans.premium.eta": "3–4 weeks • 4 revisions",
-  "services.addons.title": "Add-ons",
-  "services.addons.item1.title": "Custom Feature AI",
-  "services.addons.item1.desc": "Separate pricing for custom features requiring dedicated backend and API integration (e.g., Gemini, complex booking systems).",
-  "services.addons.item1.from": "from Rp 4,000,000",
-  "services.addons.item2.title": "Booking Integration",
-  "services.addons.item2.desc": "Channel manager or booking widget (e.g., SiteMinder, Cloudbeds, or a custom form)",
-  "services.addons.item2.from": "from Rp 1.700.000",
-  "services.addons.item3.title": "Brand Content Pack",
-  "services.addons.item3.desc": "Copy refinement, menu/rooms descriptions (EN/ID), asset organization",
-  "services.addons.item3.from": "from Rp 550.000",
-  "services.addons.item4.title": "Photo Optimization",
-  "services.addons.item4.desc": "Hero and gallery curation, compression, EXIF/alt text, lazy‑load setup",
-  "services.addons.item4.from": "from Rp 300.000",
-  "services.faq.title": "FAQ",
-  "services.faq.item1": "All plans include design, build, on‑page SEO, and basic analytics. Domain/hosting and paid third‑party tools are billed separately unless specified in a proposal.",
-  "services.faq.item2": "Each plan includes the stated revision rounds. Additional rounds or scope changes can be added as extras.",
-  "services.faq.item3": "Payments are typically split 50% to start and 50% on launch. Timelines adjust once content is finalized.",
-  "services.faq.item4": "Care Plan includes small content updates, uptime checks, and scheduled backups. Bigger features are quoted separately.",
-  "privacy.title": "Privacy Policy",
-  "privacy.p1": "We collect basic contact details you share through this site. Information is used to respond to inquiries and deliver services. We do not sell personal data.",
-  "privacy.p2": "Reasonable security measures are in place, but no method of transmission is perfectly secure. For data removal or questions, contact us.",
-  "terms.title": "Terms & Conditions",
-  "terms.item1.title": "Services",
-  "terms.item1.description": "Design, development, on‑page SEO, and basic analytics setup as agreed in a written proposal.",
-  "terms.item2.title": "Client responsibilities",
-  "terms.item2.description": "Provide timely content, approvals, and access needed to proceed.",
-  "terms.item3.title": "Payments",
-  "terms.item3.description": "Typical structure is 50% to start and 50% on launch unless otherwise stated.",
-  "terms.item4.title": "Intellectual property",
-  "terms.item4.description": "You own final deliverables upon full payment; we may reference work in portfolio unless you request otherwise.",
-  "terms.item5.title": "Limitation of liability",
-  "terms.item5.description": "We are not liable for indirect, incidental, or consequential damages.",
-  "terms.item6.title": "Governing law",
-  "terms.item6.description": "Local Indonesian law applies unless specified differently in the proposal.",
-  "terms.item7.title": "Contact",
-  "terms.item7.description": "For questions about these terms, reach out via the contact page."
+  "nav": {
+    "home": "Home",
+    "portfolio": "Portfolio",
+    "contact": "Contact",
+    "about": "About",
+    "services": "Services",
+    "blog": "Blog",
+    "tensorflow": "Object Detection",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service"
+  },
+  "hero": {
+    "title": "Your Partner in Digital Excellence",
+    "subtitle": "We build beautiful and functional websites and mobile apps."
+  },
+  "contact": {
+    "meta": {
+      "title": "Let's Build Something Great",
+      "description": "Have a project in mind or just want to discuss an idea? We're here to help. Reach out via email, WhatsApp, or the contact form below."
+    },
+    "header": {
+      "title": "Let's Start a Conversation",
+      "subtitle": "Choose your preferred way to get in touch. We're excited to hear about your project."
+    },
+    "email": {
+      "address": "baliwebdevelover@gmail.com",
+      "title": "Email Us",
+      "description": "Ideal for detailed project inquiries or non-urgent questions.",
+      "button": "Send an Email"
+    },
+    "whatsapp": {
+      "number": "+62881037549162",
+      "url": "https://wa.me/62881037549162",
+      "title": "Chat on WhatsApp",
+      "description": "Best for quick questions or to schedule an initial consultation.",
+      "button": "Start a Chat"
+    },
+    "office": {
+      "title": "Our Location",
+      "line1": "Bali, Indonesia",
+      "line2": "Remote-First & Available Globally"
+    },
+    "social": {
+      "title": "Connect With Us",
+      "links": {
+        "instagram": "https://www.instagram.com/baliwebdevelover/",
+        "facebook": "https://www.facebook.com/profile.php?id=61562916962359",
+        "github": "https://github.com/skepen"
+      }
+    },
+    "form": {
+      "title": "Send Us a Message",
+      "description": "Have a project in mind or just want to say hi? Fill out the form below and I'll get back to you as soon as possible.",
+      "name_placeholder": "Name",
+      "email_placeholder": "Email",
+      "message_placeholder": "Message",
+      "submit_button": "Send Message",
+      "success_message": "Your message has been sent successfully!",
+      "error_message": "An error occurred while sending your message. Please try again later."
+    }
+  },
+  "footer": {
+    "copyright": "© 2025 Jules. All rights reserved.",
+    "description": "Independent boutique web studio based in Bali, focused on building fast, elegant, and conversion-driven websites. We believe a website should not only look professional but also work as a valuable asset that drives measurable results for your company.",
+    "links": {
+      "services": "Services",
+      "portfolio": "Portfolio",
+      "about": "About",
+      "blog": "Blog",
+      "contact": "Contact",
+      "privacy": "Privacy",
+      "terms": "Terms"
+    }
+  },
+  "site": {
+    "name": "Bali-WebDevelover",
+    "title": "Your Partner in Digital Excellence",
+    "blurb": "We craft lean, high‑polish websites, landing pages, and micro apps for founders, villas, cafés, and growing brands. Built with solid fundamentals so Google and humans both approve."
+  },
+  "services": {
+    "title": "Solutions Designed for Growth",
+    "subtitle": "From sleek landing pages to complex web applications, we build digital experiences that drive results and elevate your brand.",
+    "button_text": "Start a Project",
+    "custom_websites": {
+      "title": "Custom Websites",
+      "desc": "From sleek one-pagers to complex multi-page sites, we build digital experiences that are fast, beautiful, and tailored to your brand."
+    },
+    "performance_seo": {
+      "title": "Performance & SEO",
+      "desc": "We optimize every site for speed and search engine visibility, ensuring you reach your audience and convert visitors into customers."
+    },
+    "care_maintenance": {
+      "title": "Care & Maintenance",
+      "desc": "Our optional care plans keep your site secure, updated, and running smoothly, so you can focus on your business."
+    },
+    "packages": [
+      {
+        "id": "starter",
+        "title": "Starter Site",
+        "price": "IDR 2,000,000",
+        "benefits": [
+          "Single Page Website",
+          "Responsive Design",
+          "Contact Form",
+          "Basic SEO Setup"
+        ]
+      },
+      {
+        "id": "business",
+        "title": "Business Site",
+        "price": "IDR 4,000,000",
+        "benefits": [
+          "Up to 5 Pages",
+          "Custom Design",
+          "Content Management System (CMS)",
+          "Advanced SEO"
+        ]
+      },
+      {
+        "id": "ecommerce",
+        "title": "E-Commerce",
+        "price": "IDR 6,000,000",
+        "benefits": [
+          "Full Online Store",
+          "Product Management",
+          "Payment Gateway Integration",
+          "Shopping Cart"
+        ]
+      },
+      {
+        "id": "premium",
+        "title": "Premium Business",
+        "price": "IDR 8,000,000",
+        "benefits": [
+          "Multi-page Complex Site",
+          "Advanced CMS Features",
+          "Blog Integration",
+          "Priority Support"
+        ]
+      },
+      {
+        "id": "pro",
+        "title": "Pro E-Commerce",
+        "price": "IDR 10,000,000",
+        "benefits": [
+          "Advanced E-commerce features",
+          "Customer Accounts",
+          "Custom Shipping Rules",
+          "Marketing Integrations"
+        ]
+      },
+      {
+        "id": "enterprise",
+        "title": "Enterprise Solution",
+        "price": "IDR 12,000,000+",
+        "benefits": [
+          "Fully Custom Application",
+          "API Integrations",
+          "Dedicated Support",
+          "Scalable Architecture"
+        ]
+      }
+    ],
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "items": [
+        {
+          "question": "What is included in each plan?",
+          "answer": "All plans include design, build, on-page SEO, and basic analytics. Domain/hosting and paid third-party tools are billed separately unless specified in a proposal."
+        },
+        {
+          "question": "How many revisions are included?",
+          "answer": "Each plan includes the stated revision rounds. Additional rounds or scope changes can be added as extras."
+        },
+        {
+          "question": "What is the payment process?",
+          "answer": "Payments are typically split 50% to start and 50% on launch. Timelines adjust once content is finalized."
+        },
+        {
+          "question": "What does the Care Plan cover?",
+          "answer": "The Care Plan includes small content updates, performance checks, uptime monitoring, and scheduled backups. Major feature additions are quoted separately."
+        }
+      ]
+    },
+    "workflow": {
+      "title": "Our Process",
+      "subtitle": "A structured approach to ensure quality and clarity from start to finish.",
+      "steps": [
+        {
+          "title": "Discovery & Strategy",
+          "description": "We start by understanding your business goals, target audience, and project requirements to build a solid foundation."
+        },
+        {
+          "title": "Design & Development",
+          "description": "Next, we create a beautiful, user-friendly design and build a high-performance website using modern technology."
+        },
+        {
+          "title": "Launch & Handover",
+          "description": "After thorough testing, we deploy your site and provide you with the training you need to manage your new digital asset."
+        }
+      ]
+    }
+  },
+  "home": {
+    "start_project": "Start a Project",
+    "view_services": "View Services",
+    "certificates": {
+      "title": "Certificates",
+      "description": "Verified credentials covering responsive UI, accessibility, JavaScript, and performance."
+    },
+    "portfolio": {
+      "title": "Featured Work",
+      "description": "Selected projects that showcase clean UI, solid performance, and business-focused results.",
+      "view_all": "View All Projects"
+    }
+  },
+  "portfolio": {
+    "title": "Portfolio",
+    "description": "Selected works that highlight clean UI, solid performance, and results-driven builds.",
+    "visit_site": "Visit Site",
+    "view_case_study": "View Case Study",
+    "coming_soon": "Coming Soon",
+    "item1": {
+      "title": "MiniTools — Developer Utilities Suite",
+      "description": "A fast, privacy-friendly collection of micro utilities for everyday work: formatters, encoders/decoders, generators, and quick helpers. Built with Next.js and Tailwind for snappy UX."
+    },
+    "item2": {
+      "title": "OpsPlaybook — Hospitality Toolkit",
+      "description": "Operational guide and digital SOP dashboard for villa and hospitality management. Focused on team clarity, scalability, and workflow automation."
+    },
+    "item3": {
+      "title": "Personal Site — astika.is-a.dev",
+      "description": "Personal branding website built with minimalism and performance in mind. Showcasing portfolio, ideas, and technical notes."
+    }
+  },
+  "about": {
+    "title": "About",
+    "p1": "As an independent digital developer, I specialize in building clean, fast, and user-centric web experiences. My focus is on clarity, balance, and precision—ensuring every element on a page exists for a reason and serves a distinct purpose.",
+    "p2": "My work blends modern web technologies with a deep focus on user experience (UX). This approach allows me to design systems that are minimal yet impactful, structured yet intuitive. I build digital products that don’t just look polished, but actually communicate, convert, and intuitively guide the user.",
+    "p3": "Based in Bali and working remotely worldwide, I create solutions that merge logic, aesthetics, and intent—made for people, not algorithms.",
+    "competencies": {
+      "title": "Core Competencies & Toolkit",
+      "p1": "To bring these ideas to life, I rely on a curated stack of modern, performance-oriented technologies.",
+      "languages": {
+        "title": "Languages & Frameworks",
+        "p1": "TypeScript, JavaScript (ES6+), React, Next.js, Node.js"
+      },
+      "styling": {
+        "title": "Styling & UI",
+        "p1": "Tailwind CSS, Framer Motion, Radix UI, Shadcn/UI"
+      },
+      "backend": {
+        "title": "Backend & Data",
+        "p1": "Headless CMS (Sanity, Strapi), PostgreSQL, Vercel, Docker"
+      },
+      "design": {
+        "title": "Design & Strategy",
+        "p1": "Figma, UI/UX Design, Performance Optimization, SEO"
+      }
+    }
+  },
+  "terms": {
+    "title": "Terms & Conditions",
+    "item1": {
+      "title": "Services",
+      "description": "Design, development, on‑page SEO, and basic analytics setup as agreed in a written proposal."
+    },
+    "item2": {
+      "title": "Client responsibilities",
+      "description": "Provide timely content, approvals, and access needed to proceed."
+    },
+    "item3": {
+      "title": "Payments",
+      "description": "Typical structure is 50% to start and 50% on launch unless otherwise stated."
+    },
+    "item4": {
+      "title": "Intellectual property",
+      "description": "You own final deliverables upon full payment; we may reference work in portfolio unless you request otherwise."
+    },
+    "item5": {
+      "title": "Limitation of liability",
+      "description": "We are not liable for indirect, incidental, or consequential damages."
+    },
+    "item6": {
+      "title": "Governing law",
+      "description": "Local Indonesian law applies unless specified differently in the proposal."
+    },
+    "item7": {
+      "title": "Contact",
+      "description": "For questions about these terms, reach out via the contact page."
+    }
+  },
+  "tensorflow": {
+    "page": {
+      "title": "Real-Time Object Detection",
+      "description": "This demo uses the COCO-SSD model to detect objects. To optimize performance, the AI library and model will only be loaded after you press the button below.",
+      "ready_title": "AI Detection Feature Ready to Load",
+      "ready_description": "Press the button to download the model (~35MB) and start the component.",
+      "start_button": "Start Object Detection"
+    },
+    "how_to_use": {
+      "title": "How to Use",
+      "intro": "This section is designed to guide you in getting the most out of this Deep Learning demo.",
+      "sections": [
+        {
+          "title": "Image Upload Mode",
+          "points": [
+            "Ideal Input: Upload images containing common, physical objects. This model was scientifically trained on the COCO dataset to recognize real-world items.",
+            "Success Cases: Try photos of a laptop, a mobile phone, a coffee mug, people, cars, or pets.",
+            "Technical Limitations: The model is not trained to read text or analyze digital UI data (like PageSpeed score screenshots). It looks for physical patterns, not conceptual data."
+          ]
+        },
+        {
+          "title": "Live Camera Mode",
+          "points": [
+            "Grant Access: Allow your browser to access the camera. Remember (per the Privacy section), this video feed is processed locally and never leaves your device.",
+            "Interaction: Point the camera at objects around you (like your keyboard or mouse) and observe how the AI detects and tracks them in real-time."
+          ]
+        },
+        {
+          "title": "Reading the Results",
+          "points": [
+            "Bounding Box: A colored box will automatically appear around any detected object.",
+            "Confidence Score (Probability): The percentage number (%) indicates how certain the AI model is about its prediction."
+          ]
+        }
+      ]
+    },
+    "why": {
+      "title": "A Showcase of Our Expertise",
+      "body": "This demo isn't just a feature; it's a tangible proof of our ability to implement advanced Deep Learning (AI). We're showing that we can build intelligent automation and real-time solutions that run efficiently in your browser—a capability we can apply to optimize your business processes."
+    },
+    "privacy": {
+      "title": "Your Privacy, Guaranteed (Client-Side)",
+      "points": [
+        "Science-Based (On-Device Processing): All AI computations (inference) happen 100% locally in your browser (on your GPU).",
+        "No Data Transfer: Your image data or video feed is NEVER UPLOADED, transferred, or stored on our Vercel servers.",
+        "Secure by Architecture: Your privacy is fully guaranteed because your sensitive data never leaves your device."
+      ]
+    }
+  },
+  "blog": {
+    "title": "Tech & Business Blog",
+    "description": "Thoughts on code, business, and the intersection of the two.",
+    "search_placeholder": "Search articles...",
+    "see_more": "See More",
+    "all_categories": "All",
+    "page": "Page",
+    "of": "of",
+    "reading_time": "min read",
+    "share_text": "Share this article",
+    "prev_post": "Previous Post",
+    "next_post": "Next Post",
+    "related_posts": "Related Posts"
+  },
+  "cta": {
+    "title": "Ready to Start a Project?",
+    "description": "Let's build something great together. Get in touch to discuss your idea.",
+    "button": "Contact Us"
+  }
 }

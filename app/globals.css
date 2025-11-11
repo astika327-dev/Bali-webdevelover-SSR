@@ -2,26 +2,95 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  /* warna dasar pastel hangat */
-  --cream:  #f8f5ee;   /* putih pasir */
-  --tan:    #e8d8c3;   /* pasir hangat */
-  --brown:  #5c4033;   /* cokelat kayu */
+@layer base {
+  :root {
+    --background: 45 44% 95%;
+    --foreground: 19 29% 28%;
+
+    --card: 45 44% 95%;
+    --card-foreground: 19 29% 28%;
+
+    --popover: 45 44% 95%;
+    --popover-foreground: 19 29% 28%;
+
+    --primary: 19 29% 32%;
+    --primary-foreground: 45 44% 98%;
+
+    --secondary: 45 15% 90%;
+    --secondary-foreground: 19 29% 32%;
+
+    --muted: 45 15% 85%;
+    --muted-foreground: 19 25% 45%;
+
+    --accent: 45 15% 88%;
+    --accent-foreground: 19 29% 32%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 45 44% 98%;
+
+    --border: 45 15% 80%;
+    --input: 45 15% 75%;
+    --ring: 19 29% 32%;
+
+    --radius: 0.5rem;
+  }
+
+  .nav-link-underline {
+    position: relative;
+    display: inline-block;
+  }
+
+  .nav-link-underline::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: currentColor;
+    transition: width 0.3s ease-in-out;
+  }
+
+  .nav-link-underline:hover::after {
+    width: 100%;
+  }
+
+  .dark {
+    --background: 20 30% 12%;
+    --foreground: 43 33% 98%;
+
+    --card: 20 30% 12%;
+    --card-foreground: 43 33% 98%;
+
+    --popover: 20 30% 12%;
+    --popover-foreground: 43 33% 98%;
+
+    --primary: 43 33% 98%;
+    --primary-foreground: 20 30% 15%;
+
+    --secondary: 20 30% 20%;
+    --secondary-foreground: 43 33% 98%;
+
+    --muted: 20 30% 25%;
+    --muted-foreground: 43 33% 80%;
+
+    --accent: 20 30% 22%;
+    --accent-foreground: 43 33% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 43 33% 98%;
+
+    --border: 20 30% 25%;
+    --input: 20 30% 30%;
+    --ring: 43 33% 80%;
+  }
 }
 
-html, body {
-  height: 100%;
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }
 
-body {
-  background-color: var(--cream);
-  color: var(--brown);
-  @apply antialiased;
-}
-
-/* gradien lembut di background */
-.gradient {
-  background-image:
-    radial-gradient(80rem 60rem at 10% -10%, rgba(92,64,51,0.06), transparent 50%),
-    radial-gradient(50rem 50rem at 110% 10%, rgba(232,216,195,0.3), transparent 50%);
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
