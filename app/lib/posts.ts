@@ -5,6 +5,7 @@ import matter from 'gray-matter';
 import { compileMDX } from 'next-mdx-remote/rsc';
 import MdxImage from '@/components/MdxImage';
 import Callout from '@/components/Callout';
+import { cache } from 'react';
 
 // Helper function to calculate reading time
 function calculateReadingTime(content: string): number {
@@ -32,7 +33,35 @@ export interface Post {
   nextPost: { slug: string; title: string } | null;
 }
 
+export interface PostMeta {
+  slug: string;
+  frontmatter: PostFrontmatter;
+  readingTime: number;
+}
+
 const contentDirectory = path.join(process.cwd(), 'content');
+
+// Cached function to get all posts metadata
+export const getAllPostsMetaCached = cache(async (): Promise<PostMeta[]> => {
+  const blogDirectory = path.join(contentDirectory, 'blog');
+  const filenames = fs.readdirSync(blogDirectory);
+
+  const postsMeta = filenames.map((filename) => {
+    const filePath = path.join(blogDirectory, filename);
+    const fileContent = fs.readFileSync(filePath, { encoding: 'utf8' });
+    const { data, content } = matter(fileContent);
+
+    return {
+      slug: filename.replace(/\.mdx$/, ''),
+      frontmatter: data as PostFrontmatter,
+      readingTime: calculateReadingTime(content),
+    };
+  });
+
+  return postsMeta
+    .filter(post => post.frontmatter.published !== false)
+    .sort((a, b) => new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime());
+});
 
 export async function getPostBySlug(slug: string): Promise<Post | null> {
   const realSlug = slug.replace(/\.mdx$/, '');
@@ -66,54 +95,13 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
   };
 }
 
-export async function getAllPosts(): Promise<Post[]> {
-  const blogDirectory = path.join(contentDirectory, 'blog');
-  const filenames = fs.readdirSync(blogDirectory);
-
-  const posts = await Promise.all(
-    filenames.map(async (filename) => {
-      return getPostBySlug(filename);
-    })
-  );
-
-  return posts
-    .filter((post): post is Post =>
-      post !== null && post.frontmatter.published !== false
-    )
-    .sort((a, b) => new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime());
-}
-
-export interface PostMeta {
-  slug: string;
-  frontmatter: PostFrontmatter;
-  readingTime: number;
-}
-
 export async function getAllPostsMeta({ limit, skip }: { limit?: number; skip?: number; } = {}): Promise<{ posts: PostMeta[]; totalCount: number; }> {
-    const blogDirectory = path.join(contentDirectory, 'blog');
-    const filenames = fs.readdirSync(blogDirectory);
+    const allPosts = await getAllPostsMetaCached();
+    const totalCount = allPosts.length;
 
-    const postsMeta = filenames.map((filename) => {
-        const filePath = path.join(blogDirectory, filename);
-        const fileContent = fs.readFileSync(filePath, { encoding: 'utf8' });
-        const { data, content } = matter(fileContent);
-
-        return {
-            slug: filename.replace(/\.mdx$/, ''),
-            frontmatter: data as PostFrontmatter,
-            readingTime: calculateReadingTime(content),
-        };
-    });
-
-    const sortedPosts = postsMeta
-        .filter(post => post.frontmatter.published !== false)
-        .sort((a, b) => new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime());
-
-    const totalCount = sortedPosts.length;
-
-    let paginatedPosts = sortedPosts;
+    let paginatedPosts = allPosts;
     if (skip !== undefined && limit !== undefined) {
-        paginatedPosts = sortedPosts.slice(skip, skip + limit);
+        paginatedPosts = allPosts.slice(skip, skip + limit);
     }
 
     return {
@@ -124,7 +112,7 @@ export async function getAllPostsMeta({ limit, skip }: { limit?: number; skip?: 
 
 
 export async function getAdjacentPosts(slug: string): Promise<{ prevPost: { slug: string, title: string } | null, nextPost: { slug: string, title: string } | null }> {
-  const { posts: allPosts } = await getAllPostsMeta();
+  const allPosts = await getAllPostsMetaCached();
   const currentPostIndex = allPosts.findIndex(post => post.slug === slug);
 
   if (currentPostIndex === -1) {
@@ -145,7 +133,7 @@ export async function getAdjacentPosts(slug: string): Promise<{ prevPost: { slug
 }
 
 export async function getRelatedPosts(category: string, currentSlug: string): Promise<PostMeta[]> {
-  const { posts: allPosts } = await getAllPostsMeta();
+  const allPosts = await getAllPostsMetaCached();
   return allPosts
     .filter(post => post.frontmatter.category === category && post.slug !== currentSlug)
     .slice(0, 3);
