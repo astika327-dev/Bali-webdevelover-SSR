@@ -137,7 +137,7 @@ export default async function PostPage({ params }: { params: { slug: string; lan
       {/* Social Share Buttons */}
       <div className='my-8'>
         <SocialShareButtons
-          url={`${process.env.NEXT_PUBLIC_BASE_URL}/${params.lang}/blog/${params.slug}`}
+          url={`/${params.lang}/blog/${params.slug}`}
           title={post.frontmatter.title}
           text={t('blog.share_text')}
         />

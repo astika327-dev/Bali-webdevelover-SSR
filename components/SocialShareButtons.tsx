@@ -11,9 +11,17 @@ type SocialShareButtonsProps = {
 
 const SocialShareButtons = ({ url, title, text }: SocialShareButtonsProps) => {
   const [copied, setCopied] = useState(false);
+  const [absoluteUrl, setAbsoluteUrl] = useState('');
+
+  useEffect(() => {
+    // Ensure this code runs only on the client side
+    if (typeof window !== 'undefined') {
+      setAbsoluteUrl(window.location.origin + url);
+    }
+  }, [url]);
 
   const encodedTitle = encodeURIComponent(title);
-  const encodedUrl = encodeURIComponent(url);
+  const encodedUrl = encodeURIComponent(absoluteUrl);
 
   const copyToClipboard = (text: string, platform: string = 'link') => {
     navigator.clipboard.writeText(text).then(() => {
@@ -26,7 +34,7 @@ const SocialShareButtons = ({ url, title, text }: SocialShareButtonsProps) => {
     const shareData = {
       title: title,
       text: title,
-      url: url,
+      url: absoluteUrl,
     };
 
     if (navigator.share && navigator.canShare(shareData)) {
@@ -35,10 +43,10 @@ const SocialShareButtons = ({ url, title, text }: SocialShareButtonsProps) => {
       } catch (error) {
         console.error('Error sharing:', error);
         // Fallback to copy if user cancels share dialog
-        copyToClipboard(url, 'instagram');
+        copyToClipboard(absoluteUrl, 'instagram');
       }
     } else {
-      copyToClipboard(url, 'instagram');
+      copyToClipboard(absoluteUrl, 'instagram');
     }
   };
 
@@ -88,7 +96,7 @@ const SocialShareButtons = ({ url, title, text }: SocialShareButtonsProps) => {
           </button>
         ))}
         <button
-          onClick={() => copyToClipboard(url)}
+          onClick={() => copyToClipboard(absoluteUrl)}
           aria-label="Copy link"
           className="p-3 rounded-full text-white bg-gray-500 hover:bg-gray-600 dark:bg-gray-700 dark:hover:bg-gray-600 transition-transform transform hover:scale-110"
         >
@@ -116,7 +124,7 @@ const SocialShareButtons = ({ url, title, text }: SocialShareButtonsProps) => {
             </button>
             ))}
             <button
-                onClick={() => copyToClipboard(url)}
+                onClick={() => copyToClipboard(absoluteUrl)}
                 aria-label="Copy link"
                 className="p-3 rounded-full text-white bg-gray-500 hover:bg-gray-600 dark:bg-gray-700 dark:hover:bg-gray-600 transition-transform transform hover:scale-110"
             >
