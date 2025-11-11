@@ -18,11 +18,11 @@ export const contactSchema = z.object({
     .string()
     .optional()
     .transform((value) => (value ?? '').trim())
+    .transform((value) => (value ? value.replace(/\s+/g, '') : undefined))
     .refine(
       (value) => !value || /^[+\d\s().-]{7,20}$/.test(value),
       'Enter a valid WhatsApp number'
-    )
-    .transform((value) => (value ? value.replace(/\s+/g, '') : undefined)),
+    ),
     
   message: z
     .string()

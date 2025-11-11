@@ -1,34 +1,37 @@
 'use client';
 
-import { useLanguage } from '@/context/LanguageContext';
+import { usePathname } from 'next/navigation';
+import Link from 'next/link';
+import { i18n } from '../i18n-config';
 
-const LanguageToggle = () => {
-  const { language, setLanguage } = useLanguage();
+export default function LanguageToggle() {
+  const pathname = usePathname();
+
+  const getLocalizedPath = (locale: string) => {
+    if (!pathname) return '/';
+    const segments = pathname.split('/');
+    segments[1] = locale;
+    return segments.join('/');
+  };
 
   return (
-    <div className="flex items-center space-x-2">
-      <button
-        onClick={() => setLanguage('en')}
-        className={`px-3 py-1 text-sm rounded-md transition-colors ${
-          language === 'en'
-            ? 'bg-gray-800 text-white'
-            : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-        }`}
-      >
-        EN
-      </button>
-      <button
-        onClick={() => setLanguage('id')}
-        className={`px-3 py-1 text-sm rounded-md transition-colors ${
-          language === 'id'
-            ? 'bg-gray-800 text-white'
-            : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-        }`}
-      >
-        ID
-      </button>
+    <div className="flex items-center gap-2 text-sm">
+      {i18n.locales.map((locale) => {
+        const isActive = pathname.startsWith(`/${locale}`);
+        return (
+          <Link
+            key={locale}
+            href={getLocalizedPath(locale)}
+            className={`px-3 py-1 rounded-full transition ${
+              isActive
+                ? 'bg-neutral-200 dark:bg-neutral-700 font-semibold'
+                : 'hover:bg-neutral-100 dark:hover:bg-neutral-800'
+            }`}
+          >
+            {locale.toUpperCase()}
+          </Link>
+        );
+      })}
     </div>
   );
-};
-
-export default LanguageToggle;
+}

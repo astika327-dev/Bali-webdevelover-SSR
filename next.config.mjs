@@ -1,9 +1,26 @@
+
 // @ts-check
+import nextBundleAnalyzer from '@next/bundle-analyzer';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const withBundleAnalyzer = nextBundleAnalyzer({
+  enabled: process.env.ANALYZE === 'true',
+});
+
+// Since __dirname is not available in ES modules, we need to create it
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Your existing Next.js config here
-  // e.g., images, experimental features, etc.
+  webpack: (config) => {
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      '@': path.resolve(__dirname),
+    };
+    return config;
+  },
 };
 
-export default nextConfig;
+export default withBundleAnalyzer(nextConfig);
