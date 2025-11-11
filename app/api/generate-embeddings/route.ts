@@ -13,7 +13,7 @@ import 'server-only';
 const contentDirectory = path.join(process.cwd(), 'content');
 
 // --- Configuration ---
-const REDIS_URL = process.env.KV_URL;
+const REDIS_URL = process.env.REDIS_URL;
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 const INDEXING_SECRET = process.env.INDEXING_SECRET; // Secret to protect this endpoint
 const EMBEDDING_MODEL = 'text-embedding-004';
@@ -40,7 +40,7 @@ export async function POST(req: NextRequest) {
 
     if (!REDIS_URL || !GEMINI_API_KEY) {
         return NextResponse.json(
-            { error: "Missing required environment variables: KV_URL and/or GEMINI_API_KEY" },
+            { error: "Missing required environment variables: REDIS_URL and/or GEMINI_API_KEY" },
             { status: 500 }
         );
     }

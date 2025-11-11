@@ -2,10 +2,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient, VectorAlgorithms, SchemaFieldTypes } from 'redis';
 import { GoogleGenerativeAI } from '@google/generative-ai';
-import 'dotenv/config';
 
 // Configuration
-const REDIS_URL = process.env.KV_URL;
+const REDIS_URL = process.env.REDIS_URL;
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 const EMBEDDING_MODEL = 'text-embedding-004';
 const GENERATIVE_MODEL = 'gemini-1.5-flash';
@@ -14,7 +13,7 @@ const TOP_K = 3; // Number of relevant chunks to retrieve
 
 // --- Client Initialization ---
 if (!REDIS_URL || !GEMINI_API_KEY) {
-    throw new Error("Missing required environment variables: KV_URL and/or GEMINI_API_KEY");
+    throw new Error("Missing required environment variables: REDIS_URL and/or GEMINI_API_KEY");
 }
 // Use a global variable to hold the client connection
 let redisClient;
