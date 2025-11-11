@@ -18,6 +18,11 @@ if (!REDIS_URL || !GEMINI_API_KEY) {
 // Use a global variable to hold the client connection
 let redisClient: ReturnType<typeof createClient> | undefined;
 
+interface ChatMessage {
+    role: 'user' | 'assistant';
+    content: string;
+}
+
 async function getRedisClient() {
     if (!redisClient) {
         redisClient = createClient({ url: REDIS_URL });
@@ -62,8 +67,8 @@ export async function POST(req: NextRequest) {
         const client = await getRedisClient();
 
         const payload = await req.json();
-        const messages = payload?.messages ?? [];
-        const lastUserMessage = messages.findLast((m) => m.role === 'user')?.content;
+        const messages: ChatMessage[] = payload?.messages ?? [];
+        const lastUserMessage = messages.findLast((m: ChatMessage) => m.role === 'user')?.content;
 
         if (!lastUserMessage) {
             return NextResponse.json({ reply: { content: "Maaf, saya tidak menerima pesan apa pun." } }, { status: 400 });
