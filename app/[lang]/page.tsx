@@ -18,12 +18,18 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const t = getTranslation(params.lang);
   const canonicalUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/${params.lang}`;
+  const languages = {} as Record<Locale, string> & { 'x-default': string };
+  i18n.locales.forEach(locale => {
+    languages[locale] = `${process.env.NEXT_PUBLIC_BASE_URL}/${locale}`;
+  });
+  languages['x-default'] = `${process.env.NEXT_PUBLIC_BASE_URL}/${i18n.defaultLocale}`;
 
   return {
     title: t('site.title'),
     description: t('site.blurb'),
     alternates: {
       canonical: canonicalUrl,
+      languages,
     },
     openGraph: {
       title: t('site.title'),

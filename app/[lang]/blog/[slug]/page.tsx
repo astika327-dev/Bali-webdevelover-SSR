@@ -39,12 +39,18 @@ export async function generateMetadata({
   const ogImage = `${process.env.NEXT_PUBLIC_BASE_URL}${post.frontmatter.image}`;
 
   const canonicalUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/${params.lang}/blog/${params.slug}`;
+  const languages = {} as Record<Locale, string> & { 'x-default': string };
+  i18n.locales.forEach(locale => {
+    languages[locale] = `${process.env.NEXT_PUBLIC_BASE_URL}/${locale}/blog/${params.slug}`;
+  });
+  languages['x-default'] = `${process.env.NEXT_PUBLIC_BASE_URL}/${i18n.defaultLocale}/blog/${params.slug}`;
 
   return {
     title: post.frontmatter.title,
     description: post.frontmatter.description,
     alternates: {
       canonical: canonicalUrl,
+      languages,
     },
     openGraph: {
       title: post.frontmatter.title,

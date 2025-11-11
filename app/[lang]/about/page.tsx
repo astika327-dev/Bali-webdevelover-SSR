@@ -8,8 +8,19 @@ export function generateStaticParams() {
 
 export function generateMetadata({ params: { lang } }: { params: { lang: Locale } }): Metadata {
     const t = getTranslation(lang);
+    const canonicalUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/${lang}/about`;
+    const languages = {} as Record<Locale, string> & { 'x-default': string };
+    i18n.locales.forEach(locale => {
+        languages[locale] = `${process.env.NEXT_PUBLIC_BASE_URL}/${locale}/about`;
+    });
+    languages['x-default'] = `${process.env.NEXT_PUBLIC_BASE_URL}/${i18n.defaultLocale}/about`;
+
     return {
         title: t('about.title'),
+        alternates: {
+            canonical: canonicalUrl,
+            languages,
+        },
     };
 }
 
