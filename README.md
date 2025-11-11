@@ -2,6 +2,22 @@
 
 A clean, professional business website built with Next.js 14 and Tailwind CSS. Dynamic pages, an email contact form, and structured content.
 
+## Features
+
+- **Blog System**: Fully-featured blog with posts written in MDX.
+- **Portfolio Showcase**: A dedicated page to display portfolio projects.
+- **Services Page**: A page to list and describe the services offered.
+- **Contact Form**: A functional contact form with email notifications.
+- **AI Chat Widget**: An integrated AI chat widget powered by Google Gemini for user assistance.
+- **TensorFlow.js Integration**: On-page object detection using TensorFlow.js.
+- **Multi-language Support (i18n)**: Supports English and Indonesian languages.
+- **Dark/Light Mode**: Theme toggle for user preference.
+- **Search Functionality**: A search bar to find content within the site.
+- **Social Sharing**: Buttons to easily share blog posts on social media.
+- **Comments Section**: A comments section for blog posts.
+- **SEO Optimized**: Automatic sitemap generation and other SEO best practices.
+- **Responsive Design**: Built with Tailwind CSS for a mobile-first responsive layout.
+
 ## Getting started
 
 1. Install dependencies
