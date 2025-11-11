@@ -12,11 +12,18 @@ export function generateStaticParams() {
 export function generateMetadata({ params }: { params: { lang: Locale } }): Metadata {
   const t = getTranslation(params.lang);
   const canonicalUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/${params.lang}/portfolio`;
+  const languages = {} as Record<Locale, string> & { 'x-default': string };
+  i18n.locales.forEach(locale => {
+    languages[locale] = `${process.env.NEXT_PUBLIC_BASE_URL}/${locale}/portfolio`;
+  });
+  languages['x-default'] = `${process.env.NEXT_PUBLIC_BASE_URL}/${i18n.defaultLocale}/portfolio`;
+
   return {
     title: t('portfolio.title'),
     description: t('portfolio.description'),
     alternates: {
       canonical: canonicalUrl,
+      languages,
     },
     openGraph: {
       url: canonicalUrl,

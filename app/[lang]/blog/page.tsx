@@ -12,9 +12,20 @@ export function generateStaticParams() {
 // Generate metadata for the page
 export function generateMetadata({ params }: { params: { lang: Locale } }): Metadata {
   const t = getTranslation(params.lang);
+  const canonicalUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/${params.lang}/blog`;
+  const languages = {} as Record<Locale, string> & { 'x-default': string };
+  i18n.locales.forEach(locale => {
+    languages[locale] = `${process.env.NEXT_PUBLIC_BASE_URL}/${locale}/blog`;
+  });
+  languages['x-default'] = `${process.env.NEXT_PUBLIC_BASE_URL}/${i18n.defaultLocale}/blog`;
+
   return {
     title: t('blog.title'),
     description: t('blog.description'),
+    alternates: {
+      canonical: canonicalUrl,
+      languages,
+    },
   };
 }
 

@@ -12,11 +12,18 @@ export function generateStaticParams() {
 export function generateMetadata({ params }: { params: { lang: Locale } }): Metadata {
   const t = getTranslation(params.lang);
   const canonicalUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/${params.lang}/tensorflow`;
+  const languages = {} as Record<Locale, string> & { 'x-default': string };
+  i18n.locales.forEach(locale => {
+    languages[locale] = `${process.env.NEXT_PUBLIC_BASE_URL}/${locale}/tensorflow`;
+  });
+  languages['x-default'] = `${process.env.NEXT_PUBLIC_BASE_URL}/${i18n.defaultLocale}/tensorflow`;
+
   return {
     title: t('tensorflow.page.title'),
     description: t('tensorflow.page.description'),
     alternates: {
       canonical: canonicalUrl,
+      languages,
     },
     openGraph: {
       url: canonicalUrl,

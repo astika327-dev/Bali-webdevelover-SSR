@@ -27,20 +27,8 @@ export function generateMetadata({ params: { lang } }: { params: { lang: Locale 
   const t = getTranslation(lang);
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
 
-  // Create language alternates
-  const languages = {} as Record<Locale, string> & { 'x-default': string };
-  i18n.locales.forEach(locale => {
-    languages[locale] = `${baseUrl}/${locale}`;
-  });
-  languages['x-default'] = `${baseUrl}/${i18n.defaultLocale}`;
-
-
   return {
     metadataBase: new URL(baseUrl),
-    alternates: {
-      canonical: `${baseUrl}/${lang}`,
-      languages,
-    },
     title: {
       default: t('site.title'),
       template: `%s | ${t('site.name')}`,
