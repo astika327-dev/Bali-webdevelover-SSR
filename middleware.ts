@@ -19,14 +19,7 @@ function getPreferredLanguage(request: NextRequest): string {
   return defaultLanguage;
 }
 
-const PUBLIC_FILE = /\.(.*)$/; // Regex untuk mendeteksi file statis
-
 export function middleware(request: NextRequest) {
-  // Lewati request untuk file statis
-  if (PUBLIC_FILE.test(request.nextUrl.pathname)) {
-    return NextResponse.next();
-  }
-
   const { pathname } = request.nextUrl;
 
   // Cek apakah path sudah memiliki awalan bahasa yang didukung
@@ -55,9 +48,8 @@ export const config = {
      * - api (API routes)
      * - _next/static (static files)
      * - _next/image (image optimization files)
-     *
-     * We will let the middleware function itself handle static files.
+     * - any files with an extension (e.g. .ico, .png)
      */
-    '/((?!api|_next/static|_next/image).*)',
+    '/((?!api|_next/static|_next/image|.*\\..*).*)',
   ],
 };
