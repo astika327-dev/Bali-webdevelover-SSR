@@ -56,18 +56,18 @@ export const portfolio = [
       '/screenshot/minitools-4.png'
     ]
   },
-  {
-    title: 'OpsPlaybook — Hospitality Toolkit',
-    description: 'Operational guide and digital SOP dashboard for villa and hospitality management. Focused on team clarity, scalability, and workflow automation.',
-    link: 'https://astika327-dev.github.io/opsplaybook-hospitality/',
-    stack: ['Next.js', 'Tailwind CSS', 'MDX'],
-    images: [
-      '/screenshot/opsplaybook-1.png',
-      '/screenshot/opsplaybook-2.png',
-      '/screenshot/opsplaybook-3.png',
-      '/screenshot/opsplaybook-4.png'
-    ]
-  },
+  // {
+  //   title: 'OpsPlaybook — Hospitality Toolkit',
+  //   description: 'Operational guide and digital SOP dashboard for villa and hospitality management. Focused on team clarity, scalability, and workflow automation.',
+  //   link: 'https://astika327-dev.github.io/opsplaybook-hospitality/',
+  //   stack: ['Next.js', 'Tailwind CSS', 'MDX'],
+  //   images: [
+  //     '/screenshot/opsplaybook-1.png',
+  //     '/screenshot/opsplaybook-2.png',
+  //     '/screenshot/opsplaybook-3.png',
+  //     '/screenshot/opsplaybook-4.png'
+  //   ]
+  // },
   {
     title: 'Personal Site — astika.is-a.dev',
     description: 'Personal branding website built with minimalism and performance in mind. Showcasing portfolio, ideas, and technical notes.',
