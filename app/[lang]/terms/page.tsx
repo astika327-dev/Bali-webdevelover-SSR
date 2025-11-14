@@ -1,4 +1,4 @@
-import { getTranslation } from '@/lib/getTranslation';
+import { getRawTranslation } from '@/lib/getTranslation';
 import { Locale, i18n } from '@/i18n-config';
 import type { Metadata } from 'next';
 
@@ -7,7 +7,8 @@ export async function generateStaticParams() {
 }
 
 export function generateMetadata({ params: { lang } }: { params: { lang: Locale } }): Metadata {
-    const t = getTranslation(lang);
+    const t = getRawTranslation(lang);
+    const title = t('terms.title') as string;
     const canonicalUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/${lang}/terms`;
     const languages = {} as Record<Locale, string> & { 'x-default': string };
     i18n.locales.forEach(locale => {
@@ -16,7 +17,7 @@ export function generateMetadata({ params: { lang } }: { params: { lang: Locale 
     languages['x-default'] = `${process.env.NEXT_PUBLIC_BASE_URL}/${i18n.defaultLocale}/terms`;
 
     return {
-        title: t('terms.title'),
+        title,
         alternates: {
             canonical: canonicalUrl,
             languages,
@@ -24,30 +25,34 @@ export function generateMetadata({ params: { lang } }: { params: { lang: Locale 
     };
 }
 
-export default function TermsPage({ params: { lang } }: { params: { lang: Locale } }) {
-  const t = getTranslation(lang);
+type TermsSection = {
+  title: string;
+  content: string | string[];
+};
 
-  const terms = [
-    'terms.item1',
-    'terms.item2',
-    'terms.item3',
-    'terms.item4',
-    'terms.item5',
-    'terms.item6',
-    'terms.item7',
-  ];
+export default function TermsPage({ params: { lang } }: { params: { lang: Locale } }) {
+  const t = getRawTranslation(lang);
+  const terms = t('terms') as { title: string; last_updated: string; sections: TermsSection[] };
 
   return (
     <section className="container py-12 md:py-16">
-      <h1 className="text-3xl md:text-4xl font-semibold tracking-tight">{t('terms.title')}</h1>
-      <div className="prose max-w-none mt-4">
-        <ol>
-          {terms.map(term => (
-            <li key={term}>
-              <strong>{t(`${term}.title`)}.</strong> {t(`${term}.description`)}
-            </li>
-          ))}
-        </ol>
+      <h1 className="text-3xl md:text-4xl font-semibold tracking-tight">{terms.title}</h1>
+      <p className="text-muted-foreground mt-2">{terms.last_updated}</p>
+      <div className="prose max-w-none mt-6 dark:prose-invert">
+        {terms.sections.map((section, index) => (
+          <div key={index} className="mt-4">
+            <h2 className="text-xl md:text-2xl font-semibold tracking-tight">{section.title}</h2>
+            {Array.isArray(section.content) ? (
+              <ol className="list-decimal pl-6">
+                {section.content.map((item, i) => (
+                  <li key={i}>{item}</li>
+                ))}
+              </ol>
+            ) : (
+              <p>{section.content}</p>
+            )}
+          </div>
+        ))}
       </div>
     </section>
   );
