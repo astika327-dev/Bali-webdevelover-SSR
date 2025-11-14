@@ -57,8 +57,6 @@ export function generateMetadata({ params: { lang } }: { params: { lang: Locale 
     },
     icons: {
       icon: '/icon.png',
-      shortcut: '/favicon.png',
-      apple: '/apple-touch-icon.png',
     },
     manifest: '/site.webmanifest',
   };
