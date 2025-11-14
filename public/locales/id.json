@@ -260,36 +260,93 @@
       }
     }
   },
+  "privacy": {
+    "title": "Kebijakan Privasi",
+    "last_updated": "Terakhir diperbarui: 14 November 2025",
+    "sections": [
+      {
+        "title": "1. Pendahuluan",
+        "content": "Selamat datang di Bali-WebDevelover ('kami'). Kami berkomitmen untuk melindungi privasi Anda. Kebijakan Privasi ini menjelaskan bagaimana kami mengumpulkan, menggunakan, mengungkapkan, dan menjaga informasi Anda saat Anda mengunjungi situs web kami. Harap baca kebijakan privasi ini dengan saksama. Jika Anda tidak setuju dengan ketentuan kebijakan privasi ini, mohon untuk tidak mengakses situs ini."
+      },
+      {
+        "title": "2. Informasi yang Kami Kumpulkan",
+        "content": [
+          "Data Pribadi: Informasi yang dapat diidentifikasi secara pribadi, seperti nama, alamat email, dan nomor telepon Anda, yang Anda berikan secara sukarela kepada kami saat Anda menghubungi kami melalui formulir kontak.",
+          "Data Turunan: Informasi yang dikumpulkan server kami secara otomatis saat Anda mengakses Situs, seperti alamat IP Anda, jenis browser Anda, sistem operasi Anda, waktu akses Anda, dan halaman yang telah Anda lihat secara langsung sebelum dan sesudah mengakses Situs."
+        ]
+      },
+      {
+        "title": "3. Bagaimana Kami Menggunakan Informasi Anda",
+        "content": [
+          "Untuk memberi Anda pengalaman yang lancar, efisien, dan disesuaikan.",
+          "Untuk menanggapi pertanyaan Anda dan memberikan dukungan pelanggan.",
+          "Untuk memantau dan menganalisis penggunaan dan tren untuk meningkatkan pengalaman Anda dengan Situs.",
+          "Untuk menjaga keamanan dan pengoperasian Situs."
+        ]
+      },
+      {
+        "title": "4. Pengungkapan Informasi Anda",
+        "content": "Kami tidak menjual, mendistribusikan, atau menyewakan informasi pribadi Anda kepada pihak ketiga kecuali kami memiliki izin Anda atau diwajibkan oleh hukum untuk melakukannya."
+      },
+      {
+        "title": "5. Keamanan Informasi Anda",
+        "content": "Kami menggunakan langkah-langkah keamanan administratif, teknis, dan fisik untuk membantu melindungi informasi pribadi Anda. Meskipun kami telah mengambil langkah-langkah yang wajar untuk mengamankan informasi pribadi yang Anda berikan kepada kami, perlu diketahui bahwa terlepas dari upaya kami, tidak ada langkah-langkah keamanan yang sempurna atau tidak dapat ditembus, dan tidak ada metode transmisi data yang dapat dijamin terhadap intersepsi atau jenis penyalahgunaan lainnya."
+      },
+      {
+        "title": "6. Kebijakan untuk Anak-Anak",
+        "content": "Kami tidak dengan sengaja meminta informasi dari atau memasarkan kepada anak-anak di bawah usia 13 tahun. Jika Anda mengetahui adanya data yang kami kumpulkan dari anak-anak di bawah usia 13 tahun, silakan hubungi kami menggunakan informasi kontak yang disediakan."
+      },
+      {
+        "title": "7. Perubahan pada Kebijakan Privasi Ini",
+        "content": "Kami dapat memperbarui Kebijakan Privasi ini dari waktu ke waktu untuk mencerminkan, misalnya, perubahan pada praktik kami atau karena alasan operasional, hukum, atau peraturan lainnya. Kami akan memberitahu Anda tentang perubahan apa pun dengan memposting Kebijakan Privasi baru di halaman ini."
+      },
+      {
+        "title": "8. Hubungi Kami",
+        "content": "Jika Anda memiliki pertanyaan atau komentar tentang Kebijakan Privasi ini, silakan hubungi kami melalui formulir kontak di situs web kami atau dengan mengirim email kepada kami di alamat yang tersedia di halaman kontak kami."
+      }
+    ]
+  },
   "terms": {
-    "title": "Syarat & Ketentuan",
-    "item1": {
-      "title": "Layanan",
-      "description": "Desain, pengembangan, SEO on-page, dan penyiapan analitik dasar sebagaimana disepakati dalam proposal tertulis."
-    },
-    "item2": {
-      "title": "Tanggung jawab klien",
-      "description": "Menyediakan konten, persetujuan, dan akses yang diperlukan secara tepat waktu untuk melanjutkan."
-    },
-    "item3": {
-      "title": "Pembayaran",
-      "description": "Struktur tipikal adalah 50% untuk memulai dan 50% saat peluncuran kecuali dinyatakan lain."
-    },
-    "item4": {
-      "title": "Kekayaan intelektual",
-      "description": "Anda memiliki hasil akhir setelah pembayaran penuh; kami dapat mereferensikan pekerjaan dalam portofolio kecuali Anda meminta sebaliknya."
-    },
-    "item5": {
-      "title": "Batasan tanggung jawab",
-      "description": "Kami tidak bertanggung jawab atas kerusakan tidak langsung, insidental, atau konsekuensial."
-    },
-    "item6": {
-      "title": "Hukum yang mengatur",
-      "description": "Hukum lokal Indonesia berlaku kecuali ditentukan lain dalam proposal."
-    },
-    "item7": {
-      "title": "Kontak",
-      "description": "Untuk pertanyaan tentang persyaratan ini, hubungi melalui halaman kontak."
-    }
+    "title": "Ketentuan Layanan",
+    "last_updated": "Terakhir diperbarui: 14 November 2025",
+    "sections": [
+      {
+        "title": "1. Persetujuan terhadap Ketentuan",
+        "content": "Dengan menggunakan layanan kami, Anda setuju untuk terikat oleh Ketentuan Layanan ini. Jika Anda tidak menyetujui ketentuan ini, jangan gunakan layanan ini. Ketentuan ini merupakan perjanjian yang mengikat secara hukum yang dibuat antara Anda, baik secara pribadi maupun atas nama suatu entitas ('Anda') dan Bali-WebDevelover ('kami'), mengenai akses Anda ke dan penggunaan layanan kami."
+      },
+      {
+        "title": "2. Hak Kekayaan Intelektual",
+        "content": "Kecuali dinyatakan lain, Situs dan Layanan adalah milik kami dan semua kode sumber, basis data, fungsionalitas, perangkat lunak, desain situs web, audio, video, teks, foto, dan grafik di Situs (secara kolektif, 'Konten') dan merek dagang, merek layanan, dan logo yang terkandung di dalamnya ('Merek') dimiliki atau dikendalikan oleh kami atau dilisensikan kepada kami, dan dilindungi oleh undang-undang hak cipta dan merek dagang. Setelah pembayaran penuh, klien memiliki hasil akhir. Kami berhak menggunakan karya tersebut dalam portofolio kami."
+      },
+      {
+        "title": "3. Pernyataan Pengguna",
+        "content": "Dengan menggunakan Situs, Anda menyatakan dan menjamin bahwa: (1) semua informasi pendaftaran yang Anda kirimkan akan benar, akurat, terkini, dan lengkap; (2) Anda akan menjaga keakuratan informasi tersebut dan segera memperbarui informasi pendaftaran tersebut jika diperlukan; (3) Anda memiliki kapasitas hukum dan Anda setuju untuk mematuhi Ketentuan Layanan ini."
+      },
+      {
+        "title": "4. Aktivitas yang Dilarang",
+        "content": "Anda tidak boleh mengakses atau menggunakan Situs untuk tujuan apa pun selain dari yang kami sediakan. Situs tidak boleh digunakan sehubungan dengan usaha komersial apa pun kecuali yang secara khusus didukung atau disetujui oleh kami."
+      },
+      {
+        "title": "5. Layanan & Pembayaran",
+        "content": "Kami menyediakan pengembangan web dan layanan terkait sebagaimana diuraikan dalam proposal tertulis. Struktur pembayaran tipikal adalah 50% di muka untuk memulai pekerjaan dan 50% setelah selesai, sebelum pengiriman akhir, kecuali disepakati lain secara tertulis. Semua biaya tidak dapat dikembalikan."
+      },
+      {
+        "title": "6. Batasan Tanggung Jawab",
+        "content": "Dalam keadaan apa pun, kami atau direktur, karyawan, atau agen kami tidak akan bertanggung jawab kepada Anda atau pihak ketiga mana pun atas kerusakan langsung, tidak langsung, konsekuensial, contoh, insidental, khusus, atau hukuman, termasuk kehilangan laba, kehilangan pendapatan, kehilangan data, atau kerusakan lain yang timbul dari penggunaan Anda atas situs, bahkan jika kami telah diberitahu tentang kemungkinan kerusakan tersebut."
+      },
+      {
+        "title": "7. Hukum yang Mengatur",
+        "content": "Ketentuan Layanan ini dan penggunaan Anda atas Situs diatur oleh dan ditafsirkan sesuai dengan hukum Indonesia yang berlaku untuk perjanjian yang dibuat dan akan dilaksanakan sepenuhnya di Indonesia, tanpa memperhatikan pertentangan prinsip hukumnya."
+      },
+      {
+        "title": "8. Perubahan pada Ketentuan Ini",
+        "content": "Kami berhak, atas kebijakan kami sendiri, untuk membuat perubahan atau modifikasi pada Ketentuan Layanan ini kapan saja dan untuk alasan apa pun. Kami akan memberitahu Anda tentang perubahan apa pun dengan memperbarui tanggal 'Terakhir diperbarui' dari Ketentuan Layanan ini."
+      },
+      {
+        "title": "9. Hubungi Kami",
+        "content": "Untuk menyelesaikan keluhan mengenai Situs atau untuk menerima informasi lebih lanjut mengenai penggunaan Situs, silakan hubungi kami menggunakan informasi yang disediakan di halaman kontak kami."
+      }
+    ]
   },
   "tensorflow": {
     "page": {

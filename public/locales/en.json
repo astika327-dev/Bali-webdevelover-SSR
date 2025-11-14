@@ -260,36 +260,93 @@
       }
     }
   },
+  "privacy": {
+    "title": "Privacy Policy",
+    "last_updated": "Last updated: November 14, 2025",
+    "sections": [
+      {
+        "title": "1. Introduction",
+        "content": "Welcome to Bali-WebDevelover ('we', 'our', 'us'). We are committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website. Please read this privacy policy carefully. If you do not agree with the terms of this privacy policy, please do not access the site."
+      },
+      {
+        "title": "2. Information We Collect",
+        "content": [
+          "Personal Data: Personally identifiable information, such as your name, email address, and telephone number, that you voluntarily give to us when you contact us through the contact form.",
+          "Derivative Data: Information our servers automatically collect when you access the Site, such as your IP address, your browser type, your operating system, your access times, and the pages you have viewed directly before and after accessing the Site."
+        ]
+      },
+      {
+        "title": "3. How We Use Your Information",
+        "content": [
+          "To provide you with a smooth, efficient, and customized experience.",
+          "To respond to your inquiries and provide customer support.",
+          "To monitor and analyze usage and trends to improve your experience with the Site.",
+          "To maintain the security and operation of the Site."
+        ]
+      },
+      {
+        "title": "4. Disclosure of Your Information",
+        "content": "We do not sell, distribute, or lease your personal information to third parties unless we have your permission or are required by law to do so."
+      },
+      {
+        "title": "5. Security of Your Information",
+        "content": "We use administrative, technical, and physical security measures to help protect your personal information. While we have taken reasonable steps to secure the personal information you provide to us, please be aware that despite our efforts, no security measures are perfect or impenetrable, and no method of data transmission can be guaranteed against any interception or other type of misuse."
+      },
+      {
+        "title": "6. Policy for Children",
+        "content": "We do not knowingly solicit information from or market to children under the age of 13. If you become aware of any data we have collected from children under age 13, please contact us using the contact information provided below."
+      },
+      {
+        "title": "7. Changes to This Privacy Policy",
+        "content": "We may update this Privacy Policy from time to time in order to reflect, for example, changes to our practices or for other operational, legal, or regulatory reasons. We will notify you of any changes by posting the new Privacy Policy on this page."
+      },
+      {
+        "title": "8. Contact Us",
+        "content": "If you have questions or comments about this Privacy Policy, please contact us through the contact form on our website or by emailing us at the address provided on our contact page."
+      }
+    ]
+  },
   "terms": {
-    "title": "Terms & Conditions",
-    "item1": {
-      "title": "Services",
-      "description": "Design, development, on‑page SEO, and basic analytics setup as agreed in a written proposal."
-    },
-    "item2": {
-      "title": "Client responsibilities",
-      "description": "Provide timely content, approvals, and access needed to proceed."
-    },
-    "item3": {
-      "title": "Payments",
-      "description": "Typical structure is 50% to start and 50% on launch unless otherwise stated."
-    },
-    "item4": {
-      "title": "Intellectual property",
-      "description": "You own final deliverables upon full payment; we may reference work in portfolio unless you request otherwise."
-    },
-    "item5": {
-      "title": "Limitation of liability",
-      "description": "We are not liable for indirect, incidental, or consequential damages."
-    },
-    "item6": {
-      "title": "Governing law",
-      "description": "Local Indonesian law applies unless specified differently in the proposal."
-    },
-    "item7": {
-      "title": "Contact",
-      "description": "For questions about these terms, reach out via the contact page."
-    }
+    "title": "Terms of Service",
+    "last_updated": "Last updated: November 14, 2025",
+    "sections": [
+      {
+        "title": "1. Agreement to Terms",
+        "content": "By using our services, you agree to be bound by these Terms of Service. If you do not agree to these terms, do not use the services. These Terms constitute a legally binding agreement made between you, whether personally or on behalf of an entity ('you') and Bali-WebDevelover ('we', 'us', or 'our'), concerning your access to and use of our services."
+      },
+      {
+        "title": "2. Intellectual Property Rights",
+        "content": "Unless otherwise indicated, the Site and the Services are our proprietary property and all source code, databases, functionality, software, website designs, audio, video, text, photographs, and graphics on the Site (collectively, the 'Content') and the trademarks, service marks, and logos contained therein (the 'Marks') are owned or controlled by us or licensed to us, and are protected by copyright and trademark laws. Upon full payment, the client owns the final deliverables. We reserve the right to use the work in our portfolio."
+      },
+      {
+        "title": "3. User Representations",
+        "content": "By using the Site, you represent and warrant that: (1) all registration information you submit will be true, accurate, current, and complete; (2) you will maintain the accuracy of such information and promptly update such registration information as necessary; (3) you have the legal capacity and you agree to comply with these Terms of Service."
+      },
+      {
+        "title": "4. Prohibited Activities",
+        "content": "You may not access or use the Site for any purpose other than that for which we make the Site available. The Site may not be used in connection with any commercial endeavors except those that are specifically endorsed or approved by us."
+      },
+      {
+        "title": "5. Services & Payments",
+        "content": "We provide web development and related services as outlined in a written proposal. The typical payment structure is 50% upfront to commence work and 50% upon completion, prior to final delivery, unless otherwise agreed upon in writing. All fees are non-refundable."
+      },
+      {
+        "title": "6. Limitation of Liability",
+        "content": "In no event will we or our directors, employees, or agents be liable to you or any third party for any direct, indirect, consequential, exemplary, incidental, special, or punitive damages, including lost profit, lost revenue, loss of data, or other damages arising from your use of the site, even if we have been advised of the possibility of such damages."
+      },
+      {
+        "title": "7. Governing Law",
+        "content": "These Terms of Service and your use of the Site are governed by and construed in accordance with the laws of Indonesia applicable to agreements made and to be entirely performed within Indonesia, without regard to its conflict of law principles."
+      },
+      {
+        "title": "8. Changes to These Terms",
+        "content": "We reserve the right, in our sole discretion, to make changes or modifications to these Terms of Service at any time and for any reason. We will alert you about any changes by updating the 'Last updated' date of these Terms of Service."
+      },
+      {
+        "title": "9. Contact Us",
+        "content": "In order to resolve a complaint regarding the Site or to receive further information regarding use of the Site, please contact us using the information provided on our contact page."
+      }
+    ]
   },
   "tensorflow": {
     "page": {
