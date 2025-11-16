@@ -11,7 +11,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const postUrls = posts.flatMap((post) =>
     i18n.locales.map((locale) => ({
       url: `${baseUrl}/${locale}/blog/${post.slug}`,
-      lastModified: new Date(post.frontmatter.date),
+      lastModified: new Date(post.lastModified || post.frontmatter.date),
       changeFrequency: 'monthly' as 'monthly',
       priority: 0.8,
     }))

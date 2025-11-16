@@ -37,6 +37,7 @@ export interface PostMeta {
   slug: string;
   frontmatter: PostFrontmatter;
   readingTime: number;
+  lastModified?: string;
 }
 
 const contentDirectory = path.join(process.cwd(), 'content');
@@ -50,11 +51,13 @@ export const getAllPostsMetaCached = cache(async (): Promise<PostMeta[]> => {
     const filePath = path.join(blogDirectory, filename);
     const fileContent = fs.readFileSync(filePath, { encoding: 'utf8' });
     const { data, content } = matter(fileContent);
+    const stats = fs.statSync(filePath);
 
     return {
       slug: filename.replace(/\.mdx$/, ''),
       frontmatter: data as PostFrontmatter,
       readingTime: calculateReadingTime(content),
+      lastModified: stats.mtime.toISOString(),
     };
   });
 
