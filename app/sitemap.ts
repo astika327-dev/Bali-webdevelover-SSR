@@ -18,7 +18,17 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   );
 
   // 2. Define static pages
-  const staticPages = ['', 'portfolio', 'services', 'contact', 'blog'];
+  const staticPages = [
+    '', // Home
+    'about',
+    'portfolio',
+    'services',
+    'contact',
+    'blog',
+    'privacy',
+    'terms',
+    'tensorflow',
+  ];
 
   const staticUrls = staticPages.flatMap((page) =>
     i18n.locales.map((locale) => ({
