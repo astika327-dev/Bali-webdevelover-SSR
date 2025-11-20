@@ -1,7 +1,7 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
-import { Play, Pause, RotateCcw } from 'lucide-react';
+import { useState, useEffect, useRef, MouseEvent, TouchEvent, useCallback } from 'react';
+import { Play, Pause, RotateCcw, GripVertical } from 'lucide-react';
 import { cn } from '../../lib/utils';
 
 interface SpeechPlayerProps {
@@ -14,21 +14,74 @@ const SpeechPlayer: React.FC<SpeechPlayerProps> = ({ contentRef, lang }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
 
+  // Draggable state
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const dragStartPosRef = useRef({ x: 0, y: 0 }); // To store initial mouse position on drag start
+  const playerStartPosRef = useRef({ x: 0, y: 0 }); // To store initial player position on drag start
+
+  const playerRef = useRef<HTMLDivElement>(null);
   const elementQueueRef = useRef<HTMLElement[]>([]);
   const currentElementIndexRef = useRef(0);
   const highlightedElementRef = useRef<HTMLElement | null>(null);
 
-  useEffect(() => {
-    setIsMounted(true);
-    const synth = window.speechSynthesis;
-    return () => {
-      if (highlightedElementRef.current) {
-        highlightedElementRef.current.classList.remove('tts-highlight');
-      }
-      synth.cancel();
-    };
+  const handleMouseMove = useCallback((e: globalThis.MouseEvent) => {
+    const dx = e.clientX - dragStartPosRef.current.x;
+    const dy = e.clientY - dragStartPosRef.current.y;
+    setPosition({
+      x: playerStartPosRef.current.x + dx,
+      y: playerStartPosRef.current.y + dy,
+    });
   }, []);
 
+  const handleTouchMove = useCallback((e: globalThis.TouchEvent) => {
+    const dx = e.touches[0].clientX - dragStartPosRef.current.x;
+    const dy = e.touches[0].clientY - dragStartPosRef.current.y;
+    setPosition({
+      x: playerStartPosRef.current.x + dx,
+      y: playerStartPosRef.current.y + dy,
+    });
+  }, []);
+
+  const handleDragEnd = useCallback(() => {
+    window.removeEventListener('mousemove', handleMouseMove);
+    window.removeEventListener('touchmove', handleTouchMove);
+    window.removeEventListener('mouseup', handleDragEnd);
+    window.removeEventListener('touchend', handleDragEnd);
+  }, [handleMouseMove, handleTouchMove]);
+
+  const handleDragStart = useCallback((clientX: number, clientY: number) => {
+    dragStartPosRef.current = { x: clientX, y: clientY };
+    playerStartPosRef.current = { ...position };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('touchmove', handleTouchMove);
+    window.addEventListener('mouseup', handleDragEnd);
+    window.addEventListener('touchend', handleDragEnd);
+  }, [position, handleMouseMove, handleTouchMove, handleDragEnd]);
+
+  const handleMouseDown = (e: MouseEvent) => handleDragStart(e.clientX, e.clientY);
+  const handleTouchStart = (e: TouchEvent) => handleDragStart(e.touches[0].clientX, e.touches[0].clientY);
+
+  useEffect(() => {
+    setIsMounted(true);
+    // Set initial position to bottom right after mount
+    if (playerRef.current) {
+        const playerWidth = playerRef.current.offsetWidth;
+        const playerHeight = playerRef.current.offsetHeight;
+        setPosition({
+            x: window.innerWidth - playerWidth - 16,
+            y: window.innerHeight - playerHeight - 16
+        });
+    }
+
+    const synth = window.speechSynthesis;
+    return () => {
+      synth.cancel();
+      handleDragEnd(); // Clean up listeners on unmount
+    };
+  }, [handleDragEnd]);
+
+  // ... (rest of the component logic is the same)
   const clearHighlight = () => {
     if (highlightedElementRef.current) {
       highlightedElementRef.current.classList.remove('tts-highlight');
@@ -44,68 +97,53 @@ const SpeechPlayer: React.FC<SpeechPlayerProps> = ({ contentRef, lang }) => {
       clearHighlight();
       return;
     }
-
     clearHighlight();
-
     const element = elementQueueRef.current[currentElementIndexRef.current];
     const text = element.innerText;
-
-    // Skip empty elements
     if (!text || text.trim().length === 0) {
         currentElementIndexRef.current++;
         speakNext();
         return;
     }
-
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.lang = lang === 'id' ? 'id-ID' : 'en-US';
-
     const voices = window.speechSynthesis.getVoices();
     let selectedVoice = voices.find(voice => voice.lang === utterance.lang && voice.name.includes('Google'));
     if (!selectedVoice) {
       selectedVoice = voices.find(voice => voice.lang === utterance.lang);
     }
     utterance.voice = selectedVoice || null;
-
     utterance.onstart = () => {
       element.classList.add('tts-highlight');
-      element.style.backgroundColor = 'rgba(255, 255, 0, 0.3)'; // yellow-ish highlight
+      element.style.backgroundColor = 'rgba(255, 255, 0, 0.3)';
       highlightedElementRef.current = element;
       element.scrollIntoView({ behavior: 'smooth', block: 'center' });
     };
-
     utterance.onend = () => {
       currentElementIndexRef.current++;
       speakNext();
     };
-
     utterance.onerror = (e) => {
       console.error("Speech synthesis error:", e);
-      // Try to continue with the next element
       currentElementIndexRef.current++;
       speakNext();
     };
-
     window.speechSynthesis.speak(utterance);
   };
 
   const handlePlay = () => {
     const synth = window.speechSynthesis;
-
     if (synth.paused && isPaused) {
       synth.resume();
       setIsPlaying(true);
       setIsPaused(false);
       return;
     }
-
     if (contentRef.current) {
-      // Query for speakable elements
       const elements = Array.from(contentRef.current.querySelectorAll('h1, h2, h3, h4, p, li, blockquote'));
       elementQueueRef.current = elements as HTMLElement[];
       currentElementIndexRef.current = 0;
-
-      synth.cancel(); // Stop any previous speech
+      synth.cancel();
       speakNext();
       setIsPlaying(true);
       setIsPaused(false);
@@ -127,11 +165,28 @@ const SpeechPlayer: React.FC<SpeechPlayerProps> = ({ contentRef, lang }) => {
     clearHighlight();
   };
 
+
   if (!isMounted) return null;
 
   return (
-    <div className="fixed bottom-4 right-4 z-50">
+    <div
+      ref={playerRef}
+      className="fixed z-50 touch-none"
+      style={{
+        left: 0,
+        top: 0,
+        transform: `translate(${position.x}px, ${position.y}px)`,
+      }}
+    >
       <div className="flex items-center gap-4 rounded-full bg-background/80 p-3 shadow-lg backdrop-blur-sm border border-border">
+        <div
+          className="cursor-grab active:cursor-grabbing"
+          onMouseDown={handleMouseDown}
+          onTouchStart={handleTouchStart}
+        >
+            <GripVertical size={24} className="text-foreground/50"/>
+        </div>
+
         {isPlaying ? (
           <button onClick={handlePause} className="text-foreground transition-colors hover:text-primary" aria-label="Pause article">
             <Pause size={24} />
