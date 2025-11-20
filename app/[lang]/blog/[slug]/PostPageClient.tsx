@@ -11,7 +11,7 @@ import SocialShareButtons from '@/components/SocialShareButtons';
 import { formatDate } from '@/lib/utils';
 import CtaBanner from '@/components/CtaBanner';
 import RelatedPosts from '@/components/RelatedPosts';
-import SpeechPlayer from '@/components/SpeechPlayer';
+import SpeechPlayer from '../../../components/SpeechPlayer';
 import { Locale } from '@/i18n-config';
 
 const Comments = dynamic(() => import('@/components/Comments'), { ssr: false });
