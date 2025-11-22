@@ -42,7 +42,7 @@ export default async function BlogPage({
 }) {
   const page = typeof searchParams?.page === 'string' ? Number(searchParams.page) : 1;
   const limit = 5;
-  const { posts, totalCount } = await getAllPostsMeta({ limit, skip: (page - 1) * limit });
+  const { posts, totalCount } = await getAllPostsMeta({ limit, skip: (page - 1) * limit, lang });
   const t = getTranslation(lang);
 
   return (

@@ -24,7 +24,7 @@ export async function generateMetadata({
 }: {
   params: { slug: string; lang: Locale };
 }): Promise<Metadata> {
-  const post = await getPostBySlug(params.slug);
+  const post = await getPostBySlug(params.slug, params.lang);
   if (!post) return {};
 
   const t = getTranslation(params.lang);
@@ -70,10 +70,10 @@ export async function generateMetadata({
    Blog Post Page (Server Component)
    ========================= */
 export default async function PostPage({ params }: { params: { slug: string; lang: Locale } }) {
-  const post = await getPostBySlug(params.slug);
+  const post = await getPostBySlug(params.slug, params.lang);
   if (!post) notFound();
 
-  const relatedPosts = await getRelatedPosts(post.frontmatter.category, params.slug);
+  const relatedPosts = await getRelatedPosts(post.frontmatter.category, params.slug, params.lang);
   const t = getTranslation(params.lang);
 
   const translations = {
