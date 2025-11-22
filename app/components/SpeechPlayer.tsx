@@ -24,6 +24,9 @@ const SpeechPlayer: React.FC<SpeechPlayerProps> = ({ contentRef, lang }) => {
   const currentElementIndexRef = useRef(0);
   const highlightedElementRef = useRef<HTMLElement | null>(null);
 
+  // Control ref to handle stopping efficiently across callbacks
+  const shouldStopRef = useRef(false);
+
   const handleMouseMove = useCallback((e: globalThis.MouseEvent) => {
     const dx = e.clientX - dragStartPosRef.current.x;
     const dy = e.clientY - dragStartPosRef.current.y;
@@ -76,12 +79,12 @@ const SpeechPlayer: React.FC<SpeechPlayerProps> = ({ contentRef, lang }) => {
 
     const synth = window.speechSynthesis;
     return () => {
+      shouldStopRef.current = true; // Signal to stop any pending loops
       synth.cancel();
       handleDragEnd(); // Clean up listeners on unmount
     };
   }, [handleDragEnd]);
 
-  // ... (rest of the component logic is the same)
   const clearHighlight = () => {
     if (highlightedElementRef.current) {
       highlightedElementRef.current.classList.remove('tts-highlight');
@@ -91,6 +94,12 @@ const SpeechPlayer: React.FC<SpeechPlayerProps> = ({ contentRef, lang }) => {
   };
 
   const speakNext = () => {
+    if (shouldStopRef.current) {
+        // If we were told to stop, ensure we clean up and don't continue
+        clearHighlight();
+        return;
+    }
+
     if (currentElementIndexRef.current >= elementQueueRef.current.length) {
       setIsPlaying(false);
       setIsPaused(false);
@@ -114,17 +123,30 @@ const SpeechPlayer: React.FC<SpeechPlayerProps> = ({ contentRef, lang }) => {
     }
     utterance.voice = selectedVoice || null;
     utterance.onstart = () => {
+      // Double check if we stopped while loading
+      if (shouldStopRef.current) {
+        window.speechSynthesis.cancel();
+        clearHighlight();
+        return;
+      }
       element.classList.add('tts-highlight');
       element.style.backgroundColor = 'rgba(255, 255, 0, 0.3)';
       highlightedElementRef.current = element;
       element.scrollIntoView({ behavior: 'smooth', block: 'center' });
     };
     utterance.onend = () => {
+      if (shouldStopRef.current) return;
       currentElementIndexRef.current++;
       speakNext();
     };
     utterance.onerror = (e) => {
       console.error("Speech synthesis error:", e);
+      if (shouldStopRef.current) return;
+
+      // If error is 'interrupted', it usually means cancel() was called.
+      // We should verify if we intended to stop.
+      // But since we have shouldStopRef, we are safe.
+
       currentElementIndexRef.current++;
       speakNext();
     };
@@ -132,6 +154,7 @@ const SpeechPlayer: React.FC<SpeechPlayerProps> = ({ contentRef, lang }) => {
   };
 
   const handlePlay = () => {
+    shouldStopRef.current = false;
     const synth = window.speechSynthesis;
     if (synth.paused && isPaused) {
       synth.resume();
@@ -157,6 +180,7 @@ const SpeechPlayer: React.FC<SpeechPlayerProps> = ({ contentRef, lang }) => {
   };
 
   const handleStop = () => {
+    shouldStopRef.current = true;
     window.speechSynthesis.cancel();
     setIsPlaying(false);
     setIsPaused(false);
