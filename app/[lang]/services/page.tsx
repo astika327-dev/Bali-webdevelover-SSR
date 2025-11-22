@@ -13,9 +13,10 @@ export function generateStaticParams() {
 }
 
 // Generate metadata for the page
-export function generateMetadata({ params }: { params: { lang: Locale } }): Metadata {
-  const t = getTranslation(params.lang);
-  const canonicalUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/${params.lang}/services`;
+export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
+  const { lang } = await params;
+  const t = getTranslation(lang);
+  const canonicalUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/${lang}/services`;
   const languages = {} as Record<Locale, string> & { 'x-default': string };
   i18n.locales.forEach(locale => {
     languages[locale] = `${process.env.NEXT_PUBLIC_BASE_URL}/${locale}/services`;
@@ -38,7 +39,8 @@ export function generateMetadata({ params }: { params: { lang: Locale } }): Meta
 /* =========================
    Services Page
    ========================= */
-export default function ServicesPage({ params: { lang } }: { params: { lang: Locale } }) {
+export default async function ServicesPage(props: { params: Promise<{ lang: Locale }> }) {
+  const { lang } = await props.params;
   const t = getTranslation(lang);
   const getRawT = getRawTranslation(lang);
   const servicePackages = getRawT('services.packages') || [];

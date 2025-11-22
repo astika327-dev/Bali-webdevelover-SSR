@@ -3,9 +3,10 @@ import { getTranslation, getRawTranslation } from '@/lib/getTranslation';
 import { Locale, i18n } from '@/i18n-config';
 import ContactClientPage from '@/app/components/ContactClientPage';
 
-export function generateMetadata({ params }: { params: { lang: Locale } }): Metadata {
-  const canonicalUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/${params.lang}/contact`;
-  const contactData = getRawTranslation(params.lang)('contact') as any;
+export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
+  const { lang } = await params;
+  const canonicalUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/${lang}/contact`;
+  const contactData = getRawTranslation(lang)('contact') as any;
   const languages = {} as Record<Locale, string> & { 'x-default': string };
   i18n.locales.forEach(locale => {
     languages[locale] = `${process.env.NEXT_PUBLIC_BASE_URL}/${locale}/contact`;
@@ -25,7 +26,8 @@ export function generateMetadata({ params }: { params: { lang: Locale } }): Meta
   };
 }
 
-export default function ContactPage({ params: { lang } }: { params: { lang: Locale } }) {
+export default async function ContactPage(props: { params: Promise<{ lang: Locale }> }) {
+  const { lang } = await props.params;
   const t = getTranslation(lang);
   const contactData = getRawTranslation(lang)('contact') as any;
 

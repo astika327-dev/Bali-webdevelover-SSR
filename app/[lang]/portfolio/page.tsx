@@ -9,9 +9,10 @@ export function generateStaticParams() {
 }
 
 // Generate metadata for the page
-export function generateMetadata({ params }: { params: { lang: Locale } }): Metadata {
-  const t = getTranslation(params.lang);
-  const canonicalUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/${params.lang}/portfolio`;
+export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
+  const { lang } = await params;
+  const t = getTranslation(lang);
+  const canonicalUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/${lang}/portfolio`;
   const languages = {} as Record<Locale, string> & { 'x-default': string };
   i18n.locales.forEach(locale => {
     languages[locale] = `${process.env.NEXT_PUBLIC_BASE_URL}/${locale}/portfolio`;
@@ -35,7 +36,8 @@ export function generateMetadata({ params }: { params: { lang: Locale } }): Meta
 /* =========================
    Portfolio Page
    ========================= */
-export default function PortfolioPage({ params: { lang } }: { params: { lang: Locale } }) {
+export default async function PortfolioPage(props: { params: Promise<{ lang: Locale }> }) {
+  const { lang } = await props.params;
   const t = getTranslation(lang);
 
   return (

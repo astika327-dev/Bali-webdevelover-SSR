@@ -23,7 +23,8 @@ export function generateStaticParams() {
   return i18n.locales.map((locale) => ({ lang: locale }));
 }
 
-export function generateMetadata({ params: { lang } }: { params: { lang: Locale } }): Metadata {
+export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
+  const { lang } = await params;
   const t = getTranslation(lang);
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
 
@@ -65,22 +66,22 @@ export function generateMetadata({ params: { lang } }: { params: { lang: Locale 
 /* ==================
    Root Layout
    ================== */
-export default function RootLayout({
-  children,
-  params,
-}: {
+export default async function RootLayout(props: {
   children: React.ReactNode;
-  params: { lang: Locale };
+  params: Promise<{ lang: string }>;
 }) {
+  const { lang: rawLang } = await props.params;
+  const lang = i18n.locales.includes(rawLang as Locale) ? (rawLang as Locale) : i18n.defaultLocale;
+  const { children } = props;
   return (
-    <html lang={params.lang} suppressHydrationWarning>
+    <html lang={lang} suppressHydrationWarning>
       <body className={`${inter.variable} ${instrument.variable} bg-background font-sans text-foreground`}>
         <Providers>
-          <Navbar lang={params.lang} />
+          <Navbar lang={lang} />
           <main>
             <PageTransition>{children}</PageTransition>
           </main>
-          <Footer lang={params.lang} />
+          <Footer lang={lang} />
           <AiChatWidgetLoader />
         </Providers>
         <SpeedInsights />

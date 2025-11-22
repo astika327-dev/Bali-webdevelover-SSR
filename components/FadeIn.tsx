@@ -19,7 +19,7 @@ export default function FadeIn({
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
 
-  const variants = {
+  const variants: any = {
     hidden: {
       opacity: 0,
       y: direction === 'up' ? 20 : direction === 'down' ? -20 : 0,

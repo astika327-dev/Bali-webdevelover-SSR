@@ -6,7 +6,8 @@ export async function generateStaticParams() {
   return i18n.locales.map((locale) => ({ lang: locale }));
 }
 
-export function generateMetadata({ params: { lang } }: { params: { lang: Locale } }): Metadata {
+export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
+    const { lang } = await params;
     const t = getRawTranslation(lang);
     const title = t('terms.title') as string;
     const canonicalUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/${lang}/terms`;
@@ -30,7 +31,8 @@ type TermsSection = {
   content: string | string[];
 };
 
-export default function TermsPage({ params: { lang } }: { params: { lang: Locale } }) {
+export default async function TermsPage(props: { params: Promise<{ lang: Locale }> }) {
+  const { lang } = await props.params;
   const t = getRawTranslation(lang);
   const terms = t('terms') as { title: string; last_updated: string; sections: TermsSection[] };
 

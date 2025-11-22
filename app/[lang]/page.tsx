@@ -14,10 +14,11 @@ export function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: { lang: Locale };
+  params: Promise<{ lang: Locale }>;
 }): Promise<Metadata> {
-  const t = getTranslation(params.lang);
-  const canonicalUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/${params.lang}`;
+  const { lang } = await params;
+  const t = getTranslation(lang);
+  const canonicalUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/${lang}`;
   const languages = {} as Record<Locale, string> & { 'x-default': string };
   i18n.locales.forEach(locale => {
     languages[locale] = `${process.env.NEXT_PUBLIC_BASE_URL}/${locale}`;
@@ -46,7 +47,8 @@ export async function generateMetadata({
 /* =========================
    Home Page (Server Component)
    ========================= */
-export default function HomePage({ params: { lang } }: { params: { lang: Locale } }) {
+export default async function HomePage(props: { params: Promise<{ lang: Locale }> }) {
+  const { lang } = await props.params;
   const t = getTranslation(lang);
   const homeDictionary = getRawTranslation(lang)('home') as { [key: string]: any };
 

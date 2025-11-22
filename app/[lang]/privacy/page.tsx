@@ -6,7 +6,8 @@ export async function generateStaticParams() {
   return i18n.locales.map((locale) => ({ lang: locale }));
 }
 
-export function generateMetadata({ params: { lang } }: { params: { lang: Locale } }): Metadata {
+export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
+    const { lang } = await params;
     const t = getRawTranslation(lang);
     const title = t('privacy.title') as string;
     const canonicalUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/${lang}/privacy`;
@@ -30,7 +31,8 @@ type PrivacySection = {
   content: string | string[];
 };
 
-export default function PrivacyPage({ params: { lang } }: { params: { lang: Locale } }) {
+export default async function PrivacyPage(props: { params: Promise<{ lang: Locale }> }) {
+  const { lang } = await props.params;
   const t = getRawTranslation(lang);
   const privacy = t('privacy') as { title: string; last_updated: string; sections: PrivacySection[] };
 

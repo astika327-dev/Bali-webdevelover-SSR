@@ -22,21 +22,22 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: { slug: string; lang: Locale };
+  params: Promise<{ slug: string; lang: Locale }>;
 }): Promise<Metadata> {
-  const post = await getPostBySlug(params.slug, params.lang);
+  const { slug, lang } = await params;
+  const post = await getPostBySlug(slug, lang);
   if (!post) return {};
 
-  const t = getTranslation(params.lang);
+  const t = getTranslation(lang);
 
   const ogImage = `${process.env.NEXT_PUBLIC_BASE_URL}${post.frontmatter.image}`;
 
-  const canonicalUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/${params.lang}/blog/${params.slug}`;
+  const canonicalUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/${lang}/blog/${slug}`;
   const languages = {} as Record<Locale, string> & { 'x-default': string };
   i18n.locales.forEach(locale => {
-    languages[locale] = `${process.env.NEXT_PUBLIC_BASE_URL}/${locale}/blog/${params.slug}`;
+    languages[locale] = `${process.env.NEXT_PUBLIC_BASE_URL}/${locale}/blog/${slug}`;
   });
-  languages['x-default'] = `${process.env.NEXT_PUBLIC_BASE_URL}/${i18n.defaultLocale}/blog/${params.slug}`;
+  languages['x-default'] = `${process.env.NEXT_PUBLIC_BASE_URL}/${i18n.defaultLocale}/blog/${slug}`;
 
   return {
     title: post.frontmatter.title,
@@ -48,10 +49,10 @@ export async function generateMetadata({
     openGraph: {
       title: post.frontmatter.title,
       description: post.frontmatter.description,
-      url: `/${params.lang}/blog/${params.slug}`,
+      url: `/${lang}/blog/${slug}`,
       siteName: t('site.name'),
       images: [{ url: ogImage }],
-      locale: params.lang,
+      locale: lang,
       type: 'article',
       publishedTime: post.frontmatter.date,
       authors: [t('site.author')],
@@ -69,12 +70,13 @@ export async function generateMetadata({
 /* =========================
    Blog Post Page (Server Component)
    ========================= */
-export default async function PostPage({ params }: { params: { slug: string; lang: Locale } }) {
-  const post = await getPostBySlug(params.slug, params.lang);
+export default async function PostPage(props: { params: Promise<{ slug: string; lang: Locale }> }) {
+  const { slug, lang } = await props.params;
+  const post = await getPostBySlug(slug, lang);
   if (!post) notFound();
 
-  const relatedPosts = await getRelatedPosts(post.frontmatter.category, params.slug, params.lang);
-  const t = getTranslation(params.lang);
+  const relatedPosts = await getRelatedPosts(post.frontmatter.category, slug, lang);
+  const t = getTranslation(lang);
 
   const translations = {
     readingTime: t('blog.reading_time'),
@@ -89,7 +91,7 @@ export default async function PostPage({ params }: { params: { slug: string; lan
   };
 
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || '';
-  const postUrl = `${baseUrl}/${params.lang}/blog/${params.slug}`;
+  const postUrl = `${baseUrl}/${lang}/blog/${slug}`;
   const imageUrl = `${baseUrl}${post.frontmatter.image}`;
 
   const jsonLd = {
@@ -124,7 +126,7 @@ export default async function PostPage({ params }: { params: { slug: string; lan
       <PostPageClient
         post={post}
         relatedPosts={relatedPosts}
-        lang={params.lang}
+        lang={lang}
         translations={translations}
       />
     </>

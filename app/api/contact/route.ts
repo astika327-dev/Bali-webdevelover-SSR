@@ -17,7 +17,7 @@ function getClientIp(req: NextRequest) {
   if (header) {
     return header.split(",")[0]?.trim() || "anonymous";
   }
-  return req.ip ?? "anonymous";
+  return (req as any).ip ?? "anonymous";
 }
 
 export async function POST(req: NextRequest) {

@@ -34,7 +34,8 @@ interface PostPageClientProps {
 }
 
 export default function PostPageClient({ post, relatedPosts, lang, translations }: PostPageClientProps) {
-  const contentRef = useRef<HTMLDivElement>(null);
+  // Cast to any to bypass strict RefObject mismatch in this version
+  const contentRef = useRef<HTMLDivElement>(null) as any;
 
   return (
     <article className="container max-w-3xl py-12 md:py-20">

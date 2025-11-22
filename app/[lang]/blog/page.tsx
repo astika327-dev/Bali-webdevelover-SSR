@@ -10,9 +10,10 @@ export function generateStaticParams() {
 }
 
 // Generate metadata for the page
-export function generateMetadata({ params }: { params: { lang: Locale } }): Metadata {
-  const t = getTranslation(params.lang);
-  const canonicalUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/${params.lang}/blog`;
+export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
+  const { lang } = await params;
+  const t = getTranslation(lang);
+  const canonicalUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/${lang}/blog`;
   const languages = {} as Record<Locale, string> & { 'x-default': string };
   i18n.locales.forEach(locale => {
     languages[locale] = `${process.env.NEXT_PUBLIC_BASE_URL}/${locale}/blog`;
@@ -33,13 +34,12 @@ export function generateMetadata({ params }: { params: { lang: Locale } }): Meta
 /* =========================
    Blog Page
    ========================= */
-export default async function BlogPage({
-  params: { lang },
-  searchParams,
-}: {
-  params: { lang: Locale };
-  searchParams?: { [key: string]: string | string[] | undefined };
+export default async function BlogPage(props: {
+  params: Promise<{ lang: Locale }>;
+  searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
+  const { lang } = await props.params;
+  const searchParams = await props.searchParams;
   const page = typeof searchParams?.page === 'string' ? Number(searchParams.page) : 1;
   const limit = 5;
   const { posts, totalCount } = await getAllPostsMeta({ limit, skip: (page - 1) * limit, lang });
